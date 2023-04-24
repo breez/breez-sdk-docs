@@ -1,0 +1,6 @@
+[book]
+authors = ["Roei Erez"]
+language = "en"
+multilingual = true
+src = "src"
+title = "Breez SDK"
