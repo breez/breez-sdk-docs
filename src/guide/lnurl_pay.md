@@ -1,1 +1,1 @@
-# Lnurl Pay
+# lnurl-pay
