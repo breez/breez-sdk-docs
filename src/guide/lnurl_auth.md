@@ -1,1 +1,1 @@
-# Lnurl Auth
+# lnurl Auth
