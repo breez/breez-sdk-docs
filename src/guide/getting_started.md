@@ -16,6 +16,7 @@ Connecting to a node requires a seed (your master key) and credentials. The seed
 let seed = <your seed>;
 let credentials = BreezServices::register_node(Network::Bitcoin, seed).await?;
 ```
+
 ## Recovering an existing node
 ```rust
 let seed = <your seed>;

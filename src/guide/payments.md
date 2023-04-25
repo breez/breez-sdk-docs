@@ -1,4 +1,4 @@
-# Payments
+# Sending and receiving Lightning payments
 
 ## Receiving Lightning Payments
 Breez SDK doesn't require you to open a channel and set up your inbound liquidity.

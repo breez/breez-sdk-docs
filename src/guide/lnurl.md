@@ -1,1 +1,1 @@
-# lnurl
+# Using LNURL

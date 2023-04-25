@@ -1,4 +1,4 @@
-# Receive via on-chain
+# Receiving an on-chain transaction (swap-in)
 There are cases when you have funds in some bitcoin address and you would like to send those to your lightning node.
 
 ```rust
