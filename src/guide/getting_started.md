@@ -46,7 +46,7 @@ let sdk = BreezServices::init_services(
 BreezServices::start(rt(), &sdk).await?;
 ```
 
-At any point we can fetch our balance from the Greenlight node
+At any point we can fetch our balance from the Greenlight node:
 
 ```rust
 if let Some(node_state) = sdk.node_info()? {
@@ -54,4 +54,4 @@ if let Some(node_state) = sdk.node_info()? {
     let balance_onchain = node_state.onchain_balance_msat;
 }
 ```
-We are now ready to receive [payments](guide/payments.md)
+You are now ready to receive a Lightning [payment](guide/payments.md).
