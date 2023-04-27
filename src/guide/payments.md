@@ -8,8 +8,6 @@ Breez SDK automatically connects your node to the LSP peer and you can now recei
 let invoice = sdk.receive_payment(3000, "Invoice for 3000 sats".into()).await?;
 ```
 
-Or make payments
-
 ## Sending Lightning Payments
 ```rust
 let bolt11 = "...";
