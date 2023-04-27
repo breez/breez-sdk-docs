@@ -1,1 +1,1 @@
-# Send on-chain
+# Sending an on-chain transaction (swap-out)
