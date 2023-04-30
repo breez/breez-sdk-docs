@@ -54,4 +54,4 @@ if let Some(node_state) = sdk.node_info()? {
     let balance_onchain = node_state.onchain_balance_msat;
 }
 ```
-You are now ready to receive a Lightning [payment](guide/payments.md).
+You are now ready to receive a Lightning [payment](payments.md).
