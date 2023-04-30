@@ -4,3 +4,10 @@ language = "en"
 multilingual = true
 src = "src"
 title = "Breez SDK"
+
+[output.html]
+git-repository-url = "https://github.com/breez/breez-sdk-docs"
+edit-url-template = "https://github.com/breez/breez-sdk-docs/edit/main/{path}"
+
+[output.html.print]
+enable = false
