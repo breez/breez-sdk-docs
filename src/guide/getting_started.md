@@ -33,7 +33,7 @@ let credentials = BreezServices::register_node(Network::Bitcoin, seed, None, Som
 ## Recovering an existing node
 ```rust,no_run
 let seed = <your seed>;
-let credentials = BreezServices::register_node(Network::Bitcoin, seed).await?;
+let credentials = BreezServices::recover_node(Network::Bitcoin, seed).await?;
 ```
 
 Once the credentials are retrieved they should be saved in a secured storage.
@@ -42,7 +42,7 @@ The next step is to initialize the SDK and start the node:
 ## Initializing the SDK
 ```rust,no_run
 // Create the default config
-let config = BreezServices::default_config(EnvironmentType::Production)
+let mut config = BreezServices::default_config(EnvironmentType::Production);
 
 // Customize the config object according to your needs
 config.api_key = Some("your API key".into());
