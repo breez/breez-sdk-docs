@@ -1,4 +1,4 @@
-# Install
+# Installing
 
 The Breez SDK is available in the following platforms:
 
