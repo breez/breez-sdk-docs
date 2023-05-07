@@ -11,6 +11,10 @@ The Breez SDK provides the following services:
 
 Connecting to a node requires a seed (your master key) and credentials. The seed is a bip39 mnemonic and the credentials are retrieved by registering a new node or recovering an existing one.
 
+## Installation
+
+Breez SDK is available in several platforms. Follow the [install](install.md) page to install on your platform.
+
 ## Registering a new node
 ```rust,no_run
 let seed = <your seed>;

@@ -2,6 +2,7 @@
 
 # API Overview
 
+- [Install](guide/install.md)
 - [Getting Started](guide/getting_started.md)
 - [Lightning payments](guide/payments.md)
 - [Receiving an on-chain transaction](guide/recieve_onchain.md)
