@@ -18,7 +18,11 @@ Breez SDK is available in several platforms. Follow the [Installing](install.md)
 ## Registering a new node
 ```rust,no_run
 let seed = <your seed>;
-let credentials = BreezServices::register_node(Network::Bitcoin, seed).await?;
+let invite_code = <your greenlight invite code>;
+
+// register_node takes either greenlight credentials (certifate & key) or invite code. 
+// At this example we are using the invite code option.
+let credentials = BreezServices::register_node(Network::Bitcoin, seed, None, Some(invite_code)).await?;
 ```
 
 ## Recovering an existing node
