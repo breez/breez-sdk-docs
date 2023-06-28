@@ -15,6 +15,11 @@ Connecting to a node requires a seed (your master key) and credentials. The seed
 
 Breez SDK is available in several platforms. Follow the [Installing](install.md) page for instructions on how to install on your platform.
 
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+The first step is to register a new node. In order to do that a seed is needed.
 ## Registering a new node
 ```rust,no_run
 let seed = <your seed>;
@@ -62,4 +67,36 @@ if let Some(node_state) = sdk.node_info()? {
     let balance_onchain = node_state.onchain_balance_msat;
 }
 ```
+</section>
+<div slot="title">Swift</div>
+<section>
+
+The first step is to register a new node
+## Registering a new node
+```swift
+// TODO
+```
+
+## Recovering an existing node
+```swift
+// TODO
+```
+
+Once the credentials are retrieved they should be saved in a secured storage.
+The next step is to initialize the SDK and start the node:
+
+## Initializing the SDK
+```swift
+/* TODO
+*/
+```
+
+At any point we can fetch our balance from the Greenlight node:
+
+```swift
+// TODO
+```
+</section>
+</custom-tabs>
+
 You are now ready to receive a Lightning [payment](payments.md).
