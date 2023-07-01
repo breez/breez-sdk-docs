@@ -74,12 +74,22 @@ if let Some(node_state) = sdk.node_info()? {
 The first step is to register a new node
 ## Registering a new node
 ```swift
-// TODO
+do {
+ let seed = try mnemonicToSeed(phrase: "<mnemonics words>");
+ let invite_code = <your greenlight invite code>;
+
+ // register_node takes either greenlight credentials (certifate & key) or invite code. 
+ // At this example we are using the invite code option.
+ let credentials = try registerNode(network: Network.bitcoin, seed: seed, inviteCode: inviteCode); 
+} catch SdkError.Error(let message) {
+  print(message)
+}
 ```
 
 ## Recovering an existing node
 ```swift
-// TODO
+ let seed = try mnemonicToSeed(phrase: "<mnemonics words>");
+ let credentials = try recoverNode(network: Network.bitcoin, seed: seed);
 ```
 
 Once the credentials are retrieved they should be saved in a secured storage.
@@ -87,15 +97,41 @@ The next step is to initialize the SDK and start the node:
 
 ## Initializing the SDK
 ```swift
-/* TODO
-*/
+
+// SDK events listener
+class SDKListener: EventListener {
+    func onEvent(e: BreezEvent) {
+        print("received event ", e);
+    }
+}
+
+// Create the default config
+let config = breez_sdk.defaultConfig(envType: EnvironmentType.production)
+
+// Customize the config object according to your needs
+config.apiKey = "your API key";
+config.workingDir = "path to an existing directory";
+
+do {
+ let sdkServices = try initServices(config: config, seed: seed, creds: credentials, listener: SDKListener());
+ try sdkServices.start();
+} catch SdkError.Error(let message) {
+  print(message)
+}
 ```
 
 At any point we can fetch our balance from the Greenlight node:
 
 ```swift
-// TODO
+do {
+ let nodeInfo = try sdkServices.nodeInfo();
+ let lnBalance = nodeInfo.channelsBalanceMsat;
+ let onchainBalance = nodeInfo.onchainBalanceMsat;
+} catch SdkError.Error(let message) {
+  print(message)
+}
 ```
+
 </section>
 </custom-tabs>
 

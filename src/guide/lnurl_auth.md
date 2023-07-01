@@ -1,6 +1,9 @@
 # LNURL-Auth
 
 ## Usage
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
 
 ```rust,no_run
 // Endpoint can also be of the form:
@@ -21,7 +24,33 @@ if let Ok(LnUrlAuth{data: ad}) = parse(lnurl_auth_url).await {
     }
 }
 ```
+</section>
+<div slot="title">Swift</div>
+<section>
 
+```swift
+// Endpoint can also be of the form:
+// keyauth://domain.com/auth?key=val
+let lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu";
+
+do {
+ let inputType = try parseInput(s: lnurlAuthUrl)
+ if case .lnUrlAuth(data) = inputType {
+    let result = try sdk.lnurlAuth(data)
+    switch result {
+    case .ok:
+        print("Successfully authenticated")
+    case .errorStatus(data):
+        print("Failed to authenticate")
+    }    
+ }
+} catch SdkError.Error(let message) {
+  print(message)
+}
+```
+
+</section>
+</custom-tab>
 
 ## Supported Specs
 
