@@ -46,8 +46,8 @@ do {
 
  // Send your funds to the bellow bitcoin address
  let address = swapInfo.bitcoinAddress;
-} catch SdkError.Error(let message) {
-  print(message)
+} catch {
+    // handle error
 }
 ```
 
@@ -56,8 +56,8 @@ Once you've sent the funds to the above address, the SDK will monitor this addre
 ```swift
 do {
  let swapInfo = try sdk.inProgressSwap()
-} catch SdkError.Error(let message) {
-  print(message)
+} catch {
+    // handle error
 }
 ```
 
@@ -71,8 +71,8 @@ In order to execute a refund, you need to supply an on-chain address to where th
 ```swift
 do {
  let refundables = try sdk.listRefundables()
-} catch SdkError.Error(let message) {
-  print(message)
+} catch {
+    // handle error
 }
 ```
 
@@ -81,13 +81,14 @@ Once you have a refundable swap in hand, use the follwing code to execute a refu
 ```swift
 let destinationAddress = "..."
 let satPerVbyte = <refund tx fee rate>
+
 do {
  try sdk.refund(
-  swapAddress: refundable.bitcoinAddress, 
-  toAddress: destinationAddress, 
+  swapAddress: "",
+  toAddress: destinationAddress,
   satPerVbyte: satPerVbyte)
-} catch SdkError.Error(let message) {
-  print(message)
+} catch {
+    // handle error
 }
 ```
 </section>

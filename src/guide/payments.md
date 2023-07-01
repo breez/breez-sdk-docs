@@ -33,8 +33,8 @@ Breez SDK automatically connects your node to the LSP peer and you can now recei
 ```swift
 do {
  let invoice = try sdk.receivePayment(amountSats: 3000, description: "Invoice for 3000 sats")
-} catch SdkError.Error(let message) {
-  print(message)
+} catch {
+    // handle error
 }
 ```
 
@@ -43,8 +43,8 @@ do {
 let bolt11 = "...";
 do {
  let payment = try sdk.sendPayment(bolt11: bolt11, amountSats: 3000)
-} catch SdkError.Error(let message) {
-  print(message)
+} catch {
+    // handle error
 }
 ```
 
@@ -53,8 +53,8 @@ do {
 let nodeId = "...";
 do {
  let payment = try sdk.sendSpontaneousPayment(nodeId: nodeId, amountSats: 3000)
-} catch SdkError.Error(let message) {
-  print(message)
+} catch {
+    // handle error
 }
 ```
 

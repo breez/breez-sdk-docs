@@ -35,17 +35,17 @@ let lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0
 
 do {
  let inputType = try parseInput(s: lnurlAuthUrl)
- if case .lnUrlAuth(data) = inputType {
-    let result = try sdk.lnurlAuth(data)
+ if case .lnUrlAuth(let data) = inputType {
+     let result = try sdk.lnurlAuth(reqData: data)
     switch result {
     case .ok:
         print("Successfully authenticated")
-    case .errorStatus(data):
+    case .errorStatus(let data):
         print("Failed to authenticate")
-    }    
+    }
  }
-} catch SdkError.Error(let message) {
-  print(message)
+} catch {
+    // handle error
 }
 ```
 

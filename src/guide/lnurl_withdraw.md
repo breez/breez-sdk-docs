@@ -30,14 +30,14 @@ if let Ok(LnUrlWithdraw{data: wd}) = parse(lnurl_withdraw_url).await {
 let lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk";
 
 do {
- let inputType = try parseInput(s: input)
- if case .lnUrlWithdraw(data) = inputType {
+ let inputType = try parseInput(s: lnurlWithdrawUrl)
+ if case .lnUrlWithdraw(let data) = inputType {
     let amountSat = data.minWithdrawable;
     let description = "Test withdraw"
-    try sdk.withdrawLnurl(amountSats: amountSat, description: "comment", reqData: data)
+    try sdk.withdrawLnurl(reqData: data, amountSats: amountSat, description: "comment")
  }
-} catch SdkError.Error(let message) {
-  print(message)
+} catch {
+    // handle error
 }
 
 ```
