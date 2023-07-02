@@ -53,13 +53,13 @@ for rs in sdk.in_progress_reverse_swaps().await? {
 
 ```swift
 try {
- let currentFees = try sdk.fetchReverseSwapFees()
+  let currentFees = try sdk.fetchReverseSwapFees()
 
- println("Percentage fee for the reverse swap service: \(currentFees.feesPercentage))");
- println("Estimated miner fees in sats for locking up funds: \(currentFees.feesLockup)");
- println("Estimated miner fees in sats for claiming funds: \(currentFees.feesClaim)");
-} catch {
-    print(error)
+  println("Percentage fee for the reverse swap service: \(currentFees.feesPercentage)");
+  println("Estimated miner fees in sats for locking up funds: \(currentFees.feesLockup)");
+  println("Estimated miner fees in sats for claiming funds: \(currentFees.feesClaim)");
+} catch SdkError.Error(let message) {
+  print(message)
 }
 ```
 
@@ -81,9 +81,9 @@ let destinationAddress = "bc1..";
 let amountSat = currentFees.min;
 let satPerVbyte = <fee rate>
 try {
- try sdk.sendOnchain(amountSat: amountSat, onchainRecipientAddress: destinationAddress, pairHash: currentFees.feesHash, satPerVbyte: satPerVbyte)
-} catch {
-    print(error)
+  try sdk.sendOnchain(amountSat: amountSat, onchainRecipientAddress: destinationAddress, pairHash: currentFees.feesHash, satPerVbyte: satPerVbyte)
+} catch SdkError.Error(let message) {
+  print(message)
 }
 ```
 
@@ -95,7 +95,10 @@ You can check its status with:
 
 ```swift
 for rs in sdk.inProgressReverseSwaps() {
-    println("Reverse swap \(rs.id) in progress, status is \(rs.breezStatus)");
+  println("Reverse swap \(rs.id) in progress, status is \(rs.breezStatus)");
+}
+```
+</section>
 }
 ```
 </section>

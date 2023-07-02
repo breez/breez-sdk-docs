@@ -25,14 +25,14 @@ sdk.send_payment(node_id.into(), Some(3000)).await?;
 
 </section>
 <div slot="title">Swift</div>
-
+<section>
 ## Receiving Lightning Payments
 Breez SDK doesn't require you to open a channel and set up your inbound liquidity.
 Breez SDK automatically connects your node to the LSP peer and you can now receive payments:
 
 ```swift
 do {
- let invoice = try sdk.receivePayment(amountSats: 3000, description: "Invoice for 3000 sats")
+  let invoice = try sdk.receivePayment(amountSats: 3000, description: "Invoice for 3000 sats")
 } catch SdkError.Error(let message) {
   print(message)
 }
@@ -42,7 +42,7 @@ do {
 ```swift
 let bolt11 = "...";
 do {
- let payment = try sdk.sendPayment(bolt11: bolt11, amountSats: 3000)
+  let payment = try sdk.sendPayment(bolt11: bolt11, amountSats: 3000)
 } catch SdkError.Error(let message) {
   print(message)
 }
@@ -52,12 +52,12 @@ do {
 ```swift
 let nodeId = "...";
 do {
- let payment = try sdk.sendSpontaneousPayment(nodeId: nodeId, amountSats: 3000)
+  let payment = try sdk.sendSpontaneousPayment(nodeId: nodeId, amountSats: 3000)
 } catch SdkError.Error(let message) {
   print(message)
 }
 ```
-
+</section>
 <section>
 
 </section>

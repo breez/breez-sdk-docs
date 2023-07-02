@@ -31,11 +31,11 @@ if let Ok(LnUrlPay{data: pd}) = parse(lnurl_pay_url).await {
 // lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
 let lnurlPayUrl = "lightning@address.com";
 do {
- let inputType = try parseInput(s: input)
- if case .lnUrlPay(data) = inputType {
+  let inputType = try parseInput(s: input)
+  if case .lnUrlPay(data) = inputType {
     let amountSats = inputType.minSendable;
     try sdk.payLnurl(amountSats: amountSats, "comment", reqData: data)
- }
+  }
 } catch SdkError.Error(let message) {
   print(message)
 }

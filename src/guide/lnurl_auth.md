@@ -34,8 +34,8 @@ if let Ok(LnUrlAuth{data: ad}) = parse(lnurl_auth_url).await {
 let lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu";
 
 do {
- let inputType = try parseInput(s: lnurlAuthUrl)
- if case .lnUrlAuth(data) = inputType {
+  let inputType = try parseInput(s: lnurlAuthUrl)
+  if case .lnUrlAuth(data) = inputType {
     let result = try sdk.lnurlAuth(data)
     switch result {
     case .ok:
@@ -43,7 +43,7 @@ do {
     case .errorStatus(data):
         print("Failed to authenticate")
     }    
- }
+  }
 } catch SdkError.Error(let message) {
   print(message)
 }
