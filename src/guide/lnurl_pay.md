@@ -41,6 +41,26 @@ do {
 }
 ```
 </section>
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+// Endpoint can also be of the form:
+// lnurlp://domain.com/lnurl-pay?key=val
+// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
+let lnurlPayUrl = "lightning@address.com";
+
+try {
+    const input = await parseInput(lnurlAuthUrl)
+    if (input.type === InputType.LNURL_PAY) {
+        const amountSats = input.minSendable;
+        const result = await sdkServices.payLnurl(input.data, amountSats, "comment")
+    }    
+} catch (error) {
+    console.log(error)
+}
+```
+</section>
 </custom-tab>
 
 ## Supported Specs

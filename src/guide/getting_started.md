@@ -133,6 +133,68 @@ do {
 ```
 
 </section>
+<div slot="title">React Native</div>
+<section>
+
+The first step is to register a new node
+## Registering a new node
+```typescript
+try {
+    const seed = await mnemonicToSeed("<mnemonics words>");
+    const invite_code = "<your greenlight invite code>";
+
+    // register_node takes either greenlight credentials (certifate & key) or invite code. 
+    // At this example we are using the invite code option.
+    const credentials = await registerNode(Network.BITCOIN, seed, inviteCode); 
+} catch (error) {
+    console.log(error)
+}
+```
+
+## Recovering an existing node
+```typescript
+    const seed = await mnemonicToSeed("<mnemonics words>");
+    const credentials = await recoverNode(Network.BITCOIN, seed);
+```
+
+Once the credentials are retrieved they should be saved in a secured storage.
+The next step is to initialize the SDK and start the node:
+
+## Initializing the SDK
+```typescript
+
+// SDK events listener
+addEventListener((type, data) => {
+    console.log(`received event ${type}`);
+})
+
+// Create the default config
+let config = defaultConfig(EnvironmentType.PRODUCTION)
+
+// Customize the config object according to your needs
+config.apiKey = "your API key";
+config.workingDir = "path to an existing directory";
+
+try {
+    const sdkServices = await initServices(config, credentials.deviceKey, credentials.deviceCert, seed);
+    await sdkServices.start();
+} catch (error) {
+    console.log(error);
+}
+```
+
+At any point we can fetch our balance from the Greenlight node:
+
+```typescript
+try {
+    const nodeInfo = await sdkServices.nodeInfo();
+    const lnBalance = nodeInfo.channelsBalanceMsat;
+    const onchainBalance = nodeInfo.onchainBalanceMsat;
+} catch (error) {
+    console.log(error);
+}
+```
+</section>
 </custom-tabs>
 
 You are now ready to receive a Lightning [payment](payments.md).
