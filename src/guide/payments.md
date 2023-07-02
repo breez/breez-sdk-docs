@@ -66,7 +66,7 @@ Breez SDK automatically connects your node to the LSP peer and you can now recei
 
 ```typescript
 try {
-    const invoice = await sdkServices.receivePayment(3000, "Invoice for 3000 sats")
+    const invoice = await receivePayment(3000, "Invoice for 3000 sats")
 } catch (error) {
     console.log(error)
 }
@@ -76,7 +76,7 @@ try {
 ```typescript
 const bolt11 = "...";
 try {
-    const payment = await sdkServices.sendPayment(bolt11, 3000)
+    const payment = await sendPayment(bolt11, 3000)
 } catch (error) {
     console.log(error)
 }
@@ -86,7 +86,7 @@ try {
 ```typescript
 const nodeId = "...";
 try {
-    const payment = await sdkServices.sendSpontaneousPayment(nodeId, 3000)
+    const payment = await sendSpontaneousPayment(nodeId, 3000)
 } catch (error) {
     console.log(error)
 }

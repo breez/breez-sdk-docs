@@ -95,7 +95,7 @@ do {
 
 ```typescript
 try {
-    const swapInfo = await sdkServices.receiveOnchain();
+    const swapInfo = await receiveOnchain();
 
     // Send your funds to the below bitcoin address
     const address = swapInfo.bitcoinAddress;
@@ -108,7 +108,7 @@ Once you've sent the funds to the above address, the SDK will monitor this addre
 
 ```typescript
 try {
-    const swapInfo = await sdkServices.inProgressSwap()
+    const swapInfo = await inProgressSwap()
 } catch (error) {
     console.log(error)
 }
@@ -123,7 +123,7 @@ In order to execute a refund, you need to supply an on-chain address to where th
 
 ```typescript
 try {
-    const refundables = await sdkServices.listRefundables()
+    const refundables = await listRefundables()
 } catch (error) {
     console.log(error)
 }
@@ -135,7 +135,7 @@ Once you have a refundable swap in hand, use the follwing code to execute a refu
 const destinationAddress = "..."
 const satPerVbyte = <refund tx fee rate>
 try {
-    const result = await sdkServices.refund(refundable.bitcoinAddress, destinationAddress, satPerVbyte)
+    const result = await refund(refundable.bitcoinAddress, destinationAddress, satPerVbyte)
 } catch (error) {
     console.log(error)
 }

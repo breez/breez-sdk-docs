@@ -177,7 +177,7 @@ config.workingDir = "path to an existing directory";
 
 try {
     const sdkServices = await initServices(config, credentials.deviceKey, credentials.deviceCert, seed);
-    await sdkServices.start();
+    await start();
 } catch (error) {
     console.log(error);
 }
@@ -187,7 +187,7 @@ At any point we can fetch our balance from the Greenlight node:
 
 ```typescript
 try {
-    const nodeInfo = await sdkServices.nodeInfo();
+    const nodeInfo = await nodeInfo();
     const lnBalance = nodeInfo.channelsBalanceMsat;
     const onchainBalance = nodeInfo.onchainBalanceMsat;
 } catch (error) {

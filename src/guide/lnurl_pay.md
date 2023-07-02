@@ -54,7 +54,7 @@ try {
     const input = await parseInput(lnurlAuthUrl)
     if (input.type === InputType.LNURL_PAY) {
         const amountSats = input.minSendable;
-        const result = await sdkServices.payLnurl(input.data, amountSats, "comment")
+        const result = await payLnurl(input.data, amountSats, "comment")
     }    
 } catch (error) {
     console.log(error)

@@ -104,7 +104,7 @@ for rs in sdk.inProgressReverseSwaps() {
 
 ```typescript
 try {
-    const currentFees = await sdkServices.fetchReverseSwapFees()
+    const currentFees = await fetchReverseSwapFees()
 
     console.log(`Percentage fee for the reverse swap service: ${currentFees.feesPercentage}`);
     console.log(`Estimated miner fees in sats for locking up funds: ${currentFees.feesLockup}`);
@@ -132,7 +132,7 @@ const destinationAddress = "bc1..";
 const amountSat = currentFees.min;
 const satPerVbyte = <fee rate>
 try {
-    const reverseSwapInfo = sdkServices.sendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte)
+    const reverseSwapInfo = sendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte)
 } catch (error) {
     console.log(error)
 }
@@ -146,7 +146,7 @@ You can check its status with:
 
 ```typescript
 try {
-    const swaps = await sdk.inProgressReverseSwaps()
+    const swaps = await inProgressReverseSwaps()
     for (const swap in swaps) {
         println(`Reverse swap ${swap.id} in progress, status is ${swap.breezStatus}`);
     }

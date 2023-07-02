@@ -54,7 +54,7 @@ try {
     const input = await parseInput(lnurlAuthUrl)
     if (input.type === InputType.LNURL_WITHDRAW) {
         const amountSats = input.minWithdrawable;
-        const result = await sdkServices.withdrawLnurl(input.data, amountSats, "comment")
+        const result = await withdrawLnurl(input.data, amountSats, "comment")
     }    
 } catch (error) {
     console.log(error)
