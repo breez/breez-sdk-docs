@@ -195,6 +195,61 @@ try {
 }
 ```
 </section>
+<div slot="title">Go</div>
+<section>
+
+The first step is to register a new node
+## Registering a new node
+```go
+if seed, err := breez_sdk.MnemonicToSeed("<mnemonics words>"); err != nil {
+    inviteCode := "<your greenlight invite code>"
+
+    // register_node takes either greenlight credentials (certifate & key) or invite code. 
+    // At this example we are using the invite code option.
+    credentials, err = breez_sdk.RegisterNode(breez_sdk.NetworkBitcoin, seed, nil, &inviteCode)
+}
+```
+
+## Recovering an existing node
+```go
+if seed, err := breez_sdk.MnemonicToSeed("<mnemonics words>"); err != nil {
+    credentials := breez_sdk.RecoverNode(Network.BITCOIN, seed)
+}
+```
+
+Once the credentials are retrieved they should be saved in a secured storage.
+The next step is to initialize the SDK and start the node:
+
+## Initializing the SDK
+```go
+// SDK events listener
+type BreezListener struct{}
+
+func (BreezListener) OnEvent(e breez_sdk.BreezEvent) {
+    log.Printf("received event %#v", e)
+}
+
+// Create the default config
+config := breez_sdk.DefaultConfig(breez_sdk.EnvironmentTypeProduction)
+
+// Customize the config object according to your needs
+config.apiKey = "your API key"
+config.workingDir = "path to an existing directory"
+
+if sdkServices, err := breez_sdk.InitServices(config, seed, credentials, BreezListener{}); err != nil {
+    sdkServices.Start()
+}
+```
+
+At any point we can fetch our balance from the Greenlight node:
+
+```go
+if nodeInfo, err := sdkServices.NodeInfo(); err != nil {
+    lnBalance := nodeInfo.ChannelsBalanceMsat
+    onchainBalance := nodeInfo.OnchainBalanceMsat
+}
+```
+</section>
 </custom-tabs>
 
 You are now ready to receive a Lightning [payment](payments.md).

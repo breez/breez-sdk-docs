@@ -36,6 +36,14 @@ or
 $ yarn add @breeztech/react-native-breez-sdk
 ```
 
+## Go
+
+We recommend using our official Go package: [breez/breez-sdk-go](https://github.com/breez/breez-sdk-go).
+
+```console
+$ go get github.com/breez/breez-sdk-go
+```
+
 ## C#
 
 Currently c# is built from source only. Please visit the [sdk-bindings](https://github.com/breez/breez-sdk/tree/main/libs/sdk-bindings#c) project for instructions.

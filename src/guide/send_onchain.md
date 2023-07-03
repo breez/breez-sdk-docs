@@ -155,6 +155,52 @@ try {
 }
 ```
 </section>
+<div slot="title">Go</div>
+<section>
+
+```go
+if currentFees, err := sdkServices.FetchReverseSwapFees(); err != nil {
+    log.Printf("Percentage fee for the reverse swap service: %v", currentFees.FeesPercentage);
+    log.Printf("Estimated miner fees in sats for locking up funds: %v", currentFees.FeesLockup);
+    log.Printf("Estimated miner fees in sats for claiming funds: %v", currentFees.FeesClaim);
+}
+```
+
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```go
+log.Printf("Minimum amount, in sats: %v", currentFees.Min);
+log.Printf("Maximum amount, in sats: %v", currentFees.Max);
+```
+
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```go
+destinationAddress := "bc1..";
+amountSat := currentFees.Min;
+satPerVbyte := <fee rate>
+
+reverseSwapInfo, err := sdkServices.SendOnchain(amountSat, destinationAddress, currentFees.FeesHash, satPerVbyte)
+```
+
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```go
+if swaps, err := sdkServices.InProgressReverseSwaps(); err != nil {
+    for _, swap := range swaps {
+        log.Printf("Reverse swap %v in progress, status is %v", swap.Id, swap.BreezStatus);
+    }
+}
+```
+</section>
 </custom-tabs>
 If the reverse swap is successful, you'll get the on-chain payment on your destination address and the HODL invoice will
 change from pending to settled.
