@@ -42,7 +42,7 @@ sdk.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte).await
 
 ```swift
 do {
-  let swapInfo = try sdk.receiveOnchain();
+  let swapInfo = try sdk.receiveOnchain()
 
   // Send your funds to the bellow bitcoin address
   let address = swapInfo.bitcoinAddress;

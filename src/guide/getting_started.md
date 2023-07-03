@@ -75,12 +75,12 @@ The first step is to register a new node
 ## Registering a new node
 ```swift
 do {
- let seed = try mnemonicToSeed(phrase: "<mnemonics words>");
- let inviteCode = "";
+ let seed = try mnemonicToSeed(phrase: "<mnemonics words>")
+ let inviteCode = ""
 
  // register_node takes either greenlight credentials (certifate & key) or invite code.
  // At this example we are using the invite code option.
- let credentials = try registerNode(network: Network.bitcoin, seed: seed, registerCredentials: nil,  inviteCode: inviteCode);
+ let credentials = try registerNode(network: Network.bitcoin, seed: seed, registerCredentials: nil,  inviteCode: inviteCode)
 } catch  {
   // handle error
 }
@@ -89,8 +89,8 @@ do {
 ## Recovering an existing node
 ```swift
 do {
-  let seed = try mnemonicToSeed(phrase: "<mnemonics words>");
-  let credentials = try recoverNode(network: Network.bitcoin, seed: seed);
+  let seed = try mnemonicToSeed(phrase: "<mnemonics words>")
+  let credentials = try recoverNode(network: Network.bitcoin, seed: seed)
 } catch  {
   // handle error
 }
@@ -105,7 +105,7 @@ The next step is to initialize the SDK and start the node:
 // SDK events listener
 class SDKListener: EventListener {
   func onEvent(e: BreezEvent) {
-    print("received event ", e);
+    print("received event ", e)
   }
 }
 
@@ -128,9 +128,9 @@ At any point we can fetch our balance from the Greenlight node:
 
 ```swift
 do {
-  let nodeInfo = try sdk.nodeInfo();
-  let lnBalance = nodeInfo?.channelsBalanceMsat;
-  let onchainBalance = nodeInfo?.onchainBalanceMsat;
+  let nodeInfo = try sdk.nodeInfo()
+  let lnBalance = nodeInfo?.channelsBalanceMsat
+  let onchainBalance = nodeInfo?.onchainBalanceMsat
 } catch {
   // handle error
 }
