@@ -55,11 +55,11 @@ for rs in sdk.in_progress_reverse_swaps().await? {
 try {
   let currentFees = try sdk.fetchReverseSwapFees()
 
-  println("Percentage fee for the reverse swap service: \(currentFees.feesPercentage)");
-  println("Estimated miner fees in sats for locking up funds: \(currentFees.feesLockup)");
-  println("Estimated miner fees in sats for claiming funds: \(currentFees.feesClaim)");
-} catch SdkError.Error(let message) {
-  print(message)
+  println("Percentage fee for the reverse swap service: \(currentFees.feesPercentage)")
+  println("Estimated miner fees in sats for locking up funds: \(currentFees.feesLockup)")
+  println("Estimated miner fees in sats for claiming funds: \(currentFees.feesClaim)")
+} catch {
+    // handle error
 }
 ```
 
@@ -70,20 +70,20 @@ of the total costs.
 Fetching the fees also tells you what is the range of amounts you can send:
 
 ```swift
-println("Minimum amount, in sats: \(currentFees.min)");
-println("Maximum amount, in sats: \(currentFees.max)");
+println("Minimum amount, in sats: \(current_fees.min)")
+println("Maximum amount, in sats: \(current_fees.max)")
 ```
 
 Once you checked the fees are acceptable, you can start the reverse swap:
 
 ```swift
-let destinationAddress = "bc1..";
-let amountSat = currentFees.min;
+let destinationAddress = "bc1.."
+let amountSat = currentFees.min
 let satPerVbyte = <fee rate>
 try {
   try sdk.sendOnchain(amountSat: amountSat, onchainRecipientAddress: destinationAddress, pairHash: currentFees.feesHash, satPerVbyte: satPerVbyte)
-} catch SdkError.Error(let message) {
-  print(message)
+} catch {
+    // handle error
 }
 ```
 
@@ -95,7 +95,7 @@ You can check its status with:
 
 ```swift
 for rs in sdk.inProgressReverseSwaps() {
-  println("Reverse swap \(rs.id) in progress, status is \(rs.breezStatus)");
+  println("Reverse swap \(rs.id) in progress, status is \(rs.breezStatus)")
 }
 ```
 </section>
@@ -121,8 +121,8 @@ of the total costs.
 Fetching the fees also tells you what is the range of amounts you can send:
 
 ```typescript
-console.log(`Minimum amount, in sats: ${currentFees.min}`);
-console.log(`Maximum amount, in sats: ${currentFees.max}`);
+console.log(`Minimum amount, in sats: ${current_fees.min}`);
+console.log(`Maximum amount, in sats: ${current_fees.max}`);
 ```
 
 Once you checked the fees are acceptable, you can start the reverse swap:
