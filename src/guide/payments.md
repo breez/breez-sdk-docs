@@ -3,6 +3,7 @@
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
 <section>
+
 ## Receiving Lightning Payments
 Breez SDK doesn't require you to open a channel and set up your inbound liquidity.
 Breez SDK automatically connects your node to the LSP peer and you can now receive payments:
@@ -26,6 +27,7 @@ sdk.send_payment(node_id.into(), Some(3000)).await?;
 </section>
 <div slot="title">Swift</div>
 <section>
+
 ## Receiving Lightning Payments
 Breez SDK doesn't require you to open a channel and set up your inbound liquidity.
 Breez SDK automatically connects your node to the LSP peer and you can now receive payments:
@@ -60,6 +62,7 @@ do {
 </section>
 <div slot="title">React Native</div>
 <section>
+
 ## Receiving Lightning Payments
 Breez SDK doesn't require you to open a channel and set up your inbound liquidity.
 Breez SDK automatically connects your node to the LSP peer and you can now receive payments:
