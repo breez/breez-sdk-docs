@@ -210,7 +210,7 @@ if seed, err := breez_sdk.MnemonicToSeed("<mnemonics words>"); err != nil {
 
     // register_node takes either greenlight credentials (certifate & key) or invite code. 
     // At this example we are using the invite code option.
-    credentials, err = breez_sdk.RegisterNode(breez_sdk.NetworkBitcoin, seed, nil, &inviteCode)
+    credentials, err := breez_sdk.RegisterNode(breez_sdk.NetworkBitcoin, seed, nil, &inviteCode)
 }
 ```
 
