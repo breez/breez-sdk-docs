@@ -42,7 +42,7 @@ as a package dependency in Xcode.
 Add the following to the dependencies array of your `Package.swift`:
 
 ``` swift
-.package(url: "https://github.com/breez/breez-sdk-swift.git", from: "0.0.4"),
+.package(url: "https://github.com/breez/breez-sdk-swift.git", from: "<version>"),
 ```
 
 ### CocoaPods
