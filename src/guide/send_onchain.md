@@ -70,8 +70,8 @@ of the total costs.
 Fetching the fees also tells you what is the range of amounts you can send:
 
 ```swift
-println("Minimum amount, in sats: \(current_fees.min)");
-println("Maximum amount, in sats: \(current_fees.max)");
+println("Minimum amount, in sats: \(currentFees.min)");
+println("Maximum amount, in sats: \(currentFees.max)");
 ```
 
 Once you checked the fees are acceptable, you can start the reverse swap:
@@ -121,8 +121,8 @@ of the total costs.
 Fetching the fees also tells you what is the range of amounts you can send:
 
 ```typescript
-console.log(`Minimum amount, in sats: ${current_fees.min}`);
-console.log(`Maximum amount, in sats: ${current_fees.max}`);
+console.log(`Minimum amount, in sats: ${currentFees.min}`);
+console.log(`Maximum amount, in sats: ${currentFees.max}`);
 ```
 
 Once you checked the fees are acceptable, you can start the reverse swap:

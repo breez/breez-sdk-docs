@@ -141,11 +141,11 @@ The first step is to register a new node
 ```typescript
 try {
     const seed = await mnemonicToSeed("<mnemonics words>");
-    const invite_code = "<your greenlight invite code>";
+    const inviteCode = "<your greenlight invite code>";
 
     // register_node takes either greenlight credentials (certifate & key) or invite code. 
     // At this example we are using the invite code option.
-    const credentials = await registerNode(Network.BITCOIN, seed, inviteCode); 
+    const credentials = await registerNode(Network.BITCOIN, seed, null, inviteCode); 
 } catch (error) {
     console.log(error)
 }
