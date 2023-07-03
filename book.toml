@@ -6,7 +6,7 @@ src = "src"
 title = "Breez SDK"
 
 [output.html]
-additional-js = ["tabs.js"]
+additional-js = ["tabs.js", "highlight.js"]
 git-repository-url = "https://github.com/breez/breez-sdk-docs"
 edit-url-template = "https://github.com/breez/breez-sdk-docs/edit/main/{path}"
 
