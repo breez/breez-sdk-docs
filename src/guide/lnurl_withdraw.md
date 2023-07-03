@@ -69,11 +69,12 @@ try {
 // lnurlw://domain.com/lnurl-withdraw?key=val
 lnurlWithdrawUrl := "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk"
 
-if input, err := breez_sdk.ParseInput(lnurlAuthUrl); err != nil {
-    switch input.Type {
+if input, err := breez_sdk.ParseInput(lnurlWithdrawUrl); err != nil {
+    switch inputType := input.(type) {
     case breez_sdk.InputTypeLnUrlWithdraw:
-        amountsSats := input.MinWithdrawable
-        result, err := sdkServices.WithdrawLnurl(input.Data, amountsSats, "comment")
+        amountsSats := inputType.Data.MinWithdrawable
+        description := "comment"
+        result, err := sdkServices.WithdrawLnurl(inputType.Data, amountsSats, &description)
     }
 }
 ```

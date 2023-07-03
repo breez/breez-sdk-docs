@@ -71,10 +71,11 @@ try {
 lnurlPayUrl := "lightning@address.com"
 
 if input, err := breez_sdk.ParseInput(lnurlPayUrl); err != nil {
-    switch input.Type {
+    switch inputType := input.(type) {
     case breez_sdk.InputTypeLnUrlPay:
-        amountsSats := input.MinSendable
-        result, err := sdkServices.PayLnurl(input.Data, amountsSats, "comment")
+        amountsSats := inputType.Data.MinSendable
+        comment := "comment"
+        result, err := sdkServices.PayLnurl(inputType.Data, amountsSats, &comment)
     }
 }
 ```
