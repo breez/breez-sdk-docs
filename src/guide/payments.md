@@ -137,4 +137,37 @@ try {
 }
 ```
 </section>
+<div slot="title">Python</div>
+<section>
+
+## Receiving Lightning Payments
+Breez SDK doesn't require you to open a channel and set up your inbound liquidity.
+Breez SDK automatically connects your node to the LSP peer and you can now receive payments:
+
+```python
+try:
+  invoice = sdk_services.receive_payment(3000, "Invoice for 3000 sats")
+except Exception as error:
+  # Handle error
+```
+
+## Sending Lightning Payments
+```python
+bolt11 = "..."
+try:
+  sdk_services.send_payment(bolt11, 3000)
+except Exception as error:
+  # Handle error
+```
+
+## Sending Spontaneous Lightning Payments
+```python
+let node_id = "..."
+try:
+  sdk_services.send_spontaneous_payment(node_id, 3000)
+except Exception as error:
+  # Handle error
+```
+
+</section>
 </custom-tabs>

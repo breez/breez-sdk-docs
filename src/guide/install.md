@@ -52,3 +52,6 @@ dependencies:
   breez_sdk:
     path: <relative-path-to>/breez-sdk/libs/sdk-flutter
 ```
+## Python
+
+Currently python is not acceable as a package and is needed to build it from soruce. Please visit [sdk-core](https://github.com/breez/breez-sdk/tree/main/libs/sdk-bindings#python) project for instructions.
