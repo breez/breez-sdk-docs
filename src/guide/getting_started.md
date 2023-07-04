@@ -199,6 +199,74 @@ try {
 }
 ```
 </section>
+<div slot="title">Dart</div>
+<section>
+
+The first step is to register a new node. In order to do that a seed is needed.
+## Registering a new node
+```dart
+try {
+    Config config = await defaultConfig(configType: EnvironmentType.Production);
+    Uint8List seed = await mnemonicToSeed(phrase: "<mnemonic words>");
+    String inviteCode = "<your greenlight invite code>";
+
+    // registerNode takes either greenlight credentials (certifate & key) or invite code.
+    // At this example we are using the invite code option.
+    GreenlightCredentials credentials = await registerNode(network: Network.Bitcoin, seed: seed, config: config, inviteCode: inviteCode);
+} catch (error) {
+    // handle error
+}
+```
+
+## Recovering an existing node
+```dart
+    Config config = await defaultConfig(configType: EnvironmentType.Production);
+    Uint8List seed = await mnemonicToSeed("<mnemonics words>");
+    GreenlightCredentials credentials = await recoverNode(network: Network.Bitcoin, seed: seed, config: config);
+```
+
+Once the credentials are retrieved they should be saved in a secured storage.
+The next step is to initialize the SDK and start the node:
+
+## Initializing the SDK
+```dart
+// SDK events listener
+breezEventsStream().listen((event) {
+    print("Received Breez event: $event");
+}
+
+// SDK logs listener
+breezLogStream().listen((log) {
+    print("Received Breez log entry: $log");
+}
+
+// Create the default config
+Config config = await defaultConfig(configType: EnvironmentType.Production);
+
+// Customize the config object according to your needs
+config.apiKey = "your API key";
+config.workingDir = "path to an existing directory";
+
+try {
+    await initServices(config: config, seed: seed, creds: creds);
+    await startNode();
+} catch (error) {
+   // handle error
+}
+```
+
+At any point we can fetch our balance from the Greenlight node:
+
+```dart
+try {
+    NodeState? nodeInfo = await nodeInfo();    
+    int lnBalance = nodeInfo?.channelsBalanceMsat;
+    int onchainBalance = nodeInfo?.onchainBalanceMsat;
+} catch (error) {
+    // handle error
+}
+```
+</section>
 </custom-tabs>
 
 You are now ready to receive a Lightning [payment](payments.md).
