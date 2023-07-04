@@ -121,8 +121,8 @@ of the total costs.
 Fetching the fees also tells you what is the range of amounts you can send:
 
 ```typescript
-console.log(`Minimum amount, in sats: ${current_fees.min}`);
-console.log(`Maximum amount, in sats: ${current_fees.max}`);
+console.log(`Minimum amount, in sats: ${currentFees.min}`);
+console.log(`Maximum amount, in sats: ${currentFees.max}`);
 ```
 
 Once you checked the fees are acceptable, you can start the reverse swap:
@@ -152,6 +152,67 @@ try {
     }
 } catch (error) {
     console.log(error)
+}
+```
+</section>
+<div slot="title">Dart</div>
+<section>
+
+```dart
+try {
+    ReverseSwapPairInfo currentFees = await fetchReverseSwapFees();
+
+    print(`Percentage fee for the reverse swap service: ${currentFees.feesPercentage}`);
+    print(`Estimated miner fees in sats for locking up funds: ${currentFees.feesLockup}`);
+    print(`Estimated miner fees in sats for claiming funds: ${currentFees.feesClaim}`);
+} catch (error) {
+    // handle error
+}
+```
+
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```dart
+print(`Minimum amount, in sats: ${currentFees.min}`);
+print(`Maximum amount, in sats: ${currentFees.max}`);
+```
+
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```dart
+String destinationAddress = "bc1..";
+int amountSat = currentFees.min;
+int satPerVbyte = <fee rate>
+try {
+    ReverseSwapInfo reverseSwapInfo = await sendOnchain(
+        amountSat: amountSat,
+        onchainRecipientAddress: destinationAddress,
+        pairHash: currentFees.feesHash,
+        satPerVbyte: satPerVbyte,
+    );
+} catch (error) {
+    // handle error
+}
+```
+
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```dart
+try {
+    List<ReverseSwapInfo> swaps = await inProgressReverseSwaps();
+    for (swap in swaps) {
+        print(`Reverse swap ${swap.id} in progress, status is ${swap.status}`);
+    }
+} catch (error) {
+    // handle error
 }
 ```
 </section>

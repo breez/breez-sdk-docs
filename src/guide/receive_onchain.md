@@ -29,7 +29,7 @@ In order to execute a refund, you need to supply an on-chain address to where th
 let refundables = sdk.list_refundables().await?
 ```
 
-Once you have a refundable swap in hand, use the follwing code to execute a refund:
+Once you have a refundable swap in hand, use the following code to execute a refund:
 
 ```rust,no_run
 let destination_address = "...".into()
@@ -76,7 +76,7 @@ do {
 }
 ```
 
-Once you have a refundable swap in hand, use the follwing code to execute a refund:
+Once you have a refundable swap in hand, use the following code to execute a refund:
 
 ```swift
 let destinationAddress = "..."
@@ -131,7 +131,7 @@ try {
 }
 ```
 
-Once you have a refundable swap in hand, use the follwing code to execute a refund:
+Once you have a refundable swap in hand, use the following code to execute a refund:
 
 ```typescript
 const destinationAddress = "..."
@@ -140,6 +140,61 @@ try {
     const result = await refund(refundable.bitcoinAddress, destinationAddress, satPerVbyte)
 } catch (error) {
     console.log(error)
+}
+```
+</section>
+<div slot="title">Dart</div>
+<section>x
+
+```dart
+try {
+    SwapInfo swapInfo = await receiveOnchain();
+
+    // Send your funds to the below bitcoin address
+    String address = swapInfo.bitcoinAddress;
+} catch (error) {
+    // handle error
+}
+```
+
+Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
+
+```dart
+try {
+    SwapInfo? swapInfo = await inProgressSwap()
+} catch (error) {
+    // handle error
+}
+```
+
+The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
+
+1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
+2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
+
+In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
+
+```dart
+try {
+    List<SwapInfo> refundables = await listRefundables()
+} catch (error) {
+     // handle error
+}
+```
+
+Once you have a refundable swap in hand, use the following code to execute a refund:
+
+```dart
+String destinationAddress = "..."
+int satPerVbyte = <refund tx fee rate>
+try {
+    String result = await refund(
+        swapAddress: refundable.bitcoinAddress,
+        toAddress: destinationAddress,
+        satPerVbyte: satPerVbyte,
+     );
+} catch (error) {
+     // handle error
 }
 ```
 </section>
