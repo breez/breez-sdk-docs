@@ -51,9 +51,9 @@ do {
 let lnurlPayUrl = "lightning@address.com";
 
 try {
-    const input = await parseInput(lnurlAuthUrl)
+    const input = await parseInput(lnurlPayUrl)
     if (input.type === InputType.LNURL_PAY) {
-        const amountSats = input.minSendable;
+        const amountSats = input.data.minSendable;
         const result = await payLnurl(input.data, amountSats, "comment")
     }    
 } catch (error) {
