@@ -224,6 +224,8 @@ try {
     Uint8List seed = await mnemonicToSeed("<mnemonics words>");
     GreenlightCredentials credentials = await recoverNode(network: Network.Bitcoin, seed: seed, config: config);
 ```
+Once the credentials are retrieved they should be saved in a secured storage.
+The next step is to initialize the SDK and start the node:
 ## Initializing the SDK
 ```dart
 // SDK events listener

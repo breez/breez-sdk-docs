@@ -96,7 +96,7 @@ try:
   parsed_input = parse_input(lnurl_withdraw_url)
   if isinstance(parsed_input, breez_sdk.InputType.LN_URL_WITHDRAW):
     amount_sats = parsed_input.data.min_withdrawable
-    result = sdk_service.withdraw_lnurl(parsed_input.data, amount_sats, "comment")
+    result = sdk_services.withdraw_lnurl(parsed_input.data, amount_sats, "comment")
 except Exception as error:
       # Handle error
 ```
