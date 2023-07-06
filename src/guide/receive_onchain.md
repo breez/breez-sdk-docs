@@ -144,7 +144,7 @@ try {
 ```
 </section>
 <div slot="title">Dart</div>
-<section>x
+<section>
 
 ```dart
 try {
@@ -156,7 +156,6 @@ try {
     // handle error
 }
 ```
-
 Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
 
 ```dart
@@ -166,7 +165,6 @@ try {
     // handle error
 }
 ```
-
 The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
 
 1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
@@ -196,6 +194,56 @@ try {
 } catch (error) {
      // handle error
 }
+```
+</section>
+<div slot="title">Python</div>
+<section>
+
+```python
+try: 
+    swap_info = sdk_services.receive_onchain()
+    # Send your funds to the below bitcoin address
+    address = sdk_services.swap_info.bitcoin_address
+except Exception as error:
+    # Handle error
+```
+
+Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
+
+```python
+try:
+    swap_info = sdk_services.in_progress_swap()
+except Exception as error:
+    # Handle error
+```
+
+The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
+
+1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
+2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
+
+In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
+
+
+Once you have a refundable swap in hand, use the following code to execute a refund:
+
+```python
+try:
+    refundables = sdk_services.list_refundables()
+except Exception as error:
+    # Handle error
+```
+
+Once you have a refundable swap in hand, use the follwing code to execute a refund:
+
+```python
+destination_address = "..."
+sat_per_vbyte = <refund tx fee rate>
+
+try:
+    sdk_services.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte)
+except Exception as error:
+    # Handle error
 ```
 </section>
 </custom-tabs>

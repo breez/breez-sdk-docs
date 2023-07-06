@@ -71,7 +71,7 @@ if let Some(node_state) = sdk.node_info()? {
 <div slot="title">Swift</div>
 <section>
 
-The first step is to register a new node
+The first step is to register a new node. In order to do that a seed is needed.
 ## Registering a new node
 ```swift
 do {
@@ -113,8 +113,8 @@ class SDKListener: EventListener {
 var config = defaultConfig(envType: EnvironmentType.production)
 
 // Customize the config object according to your needs
-config.apiKey = "your API key";
-config.workingDir = "path to an existing directory";
+config.apiKey = "your API key"
+config.workingDir = "path to an existing directory"
 
 do { 
   let sdk = try initServices(config: config, seed: seed, creds: credentials, listener: SDKListener());
@@ -140,7 +140,7 @@ do {
 <div slot="title">React Native</div>
 <section>
 
-The first step is to register a new node
+The first step is to register a new node. In order to do that a seed is needed.
 ## Registering a new node
 ```typescript
 try {
@@ -224,10 +224,8 @@ try {
     Uint8List seed = await mnemonicToSeed("<mnemonics words>");
     GreenlightCredentials credentials = await recoverNode(network: Network.Bitcoin, seed: seed, config: config);
 ```
-
 Once the credentials are retrieved they should be saved in a secured storage.
 The next step is to initialize the SDK and start the node:
-
 ## Initializing the SDK
 ```dart
 // SDK events listener
@@ -254,7 +252,6 @@ try {
    // handle error
 }
 ```
-
 At any point we can fetch our balance from the Greenlight node:
 
 ```dart
@@ -265,6 +262,65 @@ try {
 } catch (error) {
     // handle error
 }
+```
+</section>
+<div slot="title">Python</div>
+<section>
+
+The first step is to register a new node. In order to do that a seed is needed.
+
+## Registering a new node
+```python
+try :
+    seed = mnemonic_to_seed("<mnemonics words>")
+    invite_code = "<your greenlight invite code>"
+
+    # register_node takes either greenlight credentials (certifate & key) or invite code. 
+    # At this example we are using the invite code option.
+    credentials = register_node(Network.BITCOIN, seed, inviteCode)
+except Exception as error:
+    # Handle error
+```
+
+## Recovering an existing node
+```python
+seed = mnemonic_to_seed("<mnemonics words>")
+credentials = recover_node(Network.BITCOIN, seed)
+```
+
+Once the credentials are retrieved they should be saved in a secured storage.
+The next step is to initialize the SDK and start the node:
+
+## Initializing the SDK
+```python
+# SDK events listener
+class SDKListener(breez_sdk.EventListener):
+   def on_event(self, event):
+      print(event)
+
+# Create the default config
+config = default_config(EnvironmentType.PRODUCTION)
+
+# Customize the config object according to your needs
+config.api_key = "your API key"
+config.working_dir = "path to an existing directory"
+
+try:
+    sdk_services = init_services(config,seed,creds,SDKListener())
+    sdk_services.start()
+except Exception as error:
+    # Handle error
+```
+
+At any point we can fetch our balance from the Greenlight node:
+
+```python
+try: 
+    node_info = node_info()
+    ln_balance = node_info.channels_balance_msat
+    onchain_balance = node_info.onchain_balance_msat
+except Exception as error:
+    # Handle error
 ```
 </section>
 </custom-tabs>

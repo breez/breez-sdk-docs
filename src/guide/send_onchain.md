@@ -169,7 +169,6 @@ try {
     // handle error
 }
 ```
-
 The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
 automatically once the process is started, but the last two values above are these estimates to help you get a picture
 of the total costs.
@@ -180,7 +179,6 @@ Fetching the fees also tells you what is the range of amounts you can send:
 print(`Minimum amount, in sats: ${currentFees.min}`);
 print(`Maximum amount, in sats: ${currentFees.max}`);
 ```
-
 Once you checked the fees are acceptable, you can start the reverse swap:
 
 ```dart
@@ -198,7 +196,6 @@ try {
     // handle error
 }
 ```
-
 Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
 This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
 is either settled or cancelled. This will happen automatically at the end of the reverse swap.
@@ -214,6 +211,57 @@ try {
 } catch (error) {
     // handle error
 }
+```
+</section>
+<div slot="title">Python</div>
+<section>
+
+```python
+try: 
+  current_fees = sdk_services.fetch_reverse_swap_fees()
+  print("Percentage fee for the reverse swap service: ", current_fees.fees_percentage)
+  print("Estimated miner fees in sats for locking up funds: ", current_fees.fees_lockup)
+  print("Estimated miner fees in sats for claiming funds: ", current_fees.fees_claim)
+except Exception as error:
+    # Handle error
+```
+
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```python
+print("Minimum amount, in sats: ", current_fees.min)
+print("Maximum amount, in sats: ", current_fees.max)
+```
+
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```python
+destination_address = "bc1.."
+amount_sat = current_fees.min
+
+try:
+  sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash)
+except Exception as error:
+  # Handle erorr
+```
+
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```python
+try: 
+  reverse_swaps = sdk_services.in_progress_reverse_swaps()
+  for rs in reverse_swaps:
+    print("Reverse swap ",rs.id , " in progress, status is ", rs.status)
+except Exception as error:
+  # Handle erorr
 ```
 </section>
 </custom-tabs>
