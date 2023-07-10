@@ -113,14 +113,11 @@ addEventListener((type, data) => {
 const seed = await mnemonicToSeed("<mnemonics words>");
 const inviteCode = "<your greenlight invite code>";
 const nodeConfig : NodeConfig = {
-    type: "greenlight",
+    type: NodeConfigType.GREENLIGHT,
     config: {
-        partnerCredentials: {
-            deviceKey: null,
-            deviceCert: null
-        }
+        inviteCode: "your invite code"        
     }
-};
+}
 let config = defaultConfig(EnvironmentType.PRODUCTION, "api key", nodeConfig);
 
 // Customize the config object according to your needs
@@ -164,7 +161,7 @@ breezLogStream().listen((log) {
 // Create the default config
 Uint8List seed = await mnemonicToSeed(phrase: "<mnemonic words>");
 String inviteCode = "<your greenlight invite code>";
-NodeConfg nodeConfig = NodeConfig.Greenlight(config: GreenlightNodeConfig(partnerCredentials: null, inviteCode: inviteCode));
+NodeConfg nodeConfig = NodeConfig.greenlight(config: GreenlightNodeConfig(partnerCredentials: null, inviteCode: inviteCode));
 Config config = await defaultConfig(configType: EnvironmentType.Production, apiKey: "", nodeConfig: nodeConfig);
 
 // Customize the config object according to your needs
