@@ -290,26 +290,43 @@ result, err := sdkServices.Refund(refundable.BitcoinAddress, destinationAddress,
 <div slot="title">Dart</div>
 <section>
 
+To calculate fees, you'll need to detect if channel opening fees are needed first and then calculate the fee for the amount you'll be receiving.
+
 ```dart
-int calculateChannelOpeningFee(int amountSats) {
+int calculateChannelOpeningFee(int amountSats) async {
+    bool isChannelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountSats);
+    return isChannelOpeningFeeNeeded ? calculateFeesForAmount(amountSats) : 0;
+} 
+```
+
+How to detect if open channel fees are needed.
+
+```dart
+bool isChannelOpeningFeeNeeded(int amountSats) async {
     NodeState? nodeState = await getNodeState();
     int liquidity = nodeState.inboundLiquidityMsats ~/ 1000;
     // Check if we need to open channel
-    if(amountSats >= liquidity) {
-        // We need to open channel so we are calculating the fees for the LSP
-        String? lspId = await getLspId();
-        LSPInformation? lspInformation = await fetchLspInfo(lspId!);
-        
-        // setupFee is the proportional fee charged based on the amount
-        int setupFee = (lspInformation.channelFeePermyriad / 100);
-        // minFee is the minimum fee required by the LSP to open a channeş
-        int minFee = lspInfo.channelMinimumFeeMsat ~/ 1000;
-        // A setup fee of {setupFee}% with a minimum of {minFee} will be applied for sending more than {liquidity}.
+    return amountSats >= liquidity;
+}
+```
 
-        int channelFeesMsat = (amountSats * setupFee ~/ 100);
-        // If the proportional fee is smaller than minimum fees, minimum fees is selected.
-        return max(channelFeesMsat, minFee);
-    }
+How to calculate the fee for a specific amount.
+
+```dart
+int calculateFeesForAmount(int amountSats) async {
+    // We need to open channel so we are calculating the fees for the LSP
+    String? lspId = await getLspId();
+    LSPInformation? lspInformation = await fetchLspInfo(lspId!);
+
+    // setupFee is the proportional fee charged based on the amount
+    int setupFee = (lspInformation.channelFeePermyriad / 100);
+    // minFee is the minimum fee required by the LSP to open a channeş
+    int minFee = lspInfo.channelMinimumFeeMsat ~/ 1000;
+    // A setup fee of {setupFee}% with a minimum of {minFee} will be applied for sending more than {liquidity}.
+
+    int channelFeesMsat = (amountSats * setupFee ~/ 100);
+    // If the proportional fee is smaller than minimum fees, minimum fees is selected.
+    return max(channelFeesMsat, minFee);
 }
 ```
 </section>
