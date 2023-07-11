@@ -61,6 +61,48 @@ try {
 }
 ```
 </section>
+<div slot="title">Dart</div>
+<section>
+
+```dart
+// Endpoint can also be of the form:
+// lnurlp://domain.com/lnurl-pay?key=val
+// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
+String lnurlPayUrl = "lightning@address.com";
+
+try {
+    InputType inputType = await parseInput(s: lnurlPayUrl);
+    if (inputType is InputType_LnUrlPay) {
+        int amountSats = inputType.data.minSendable;
+        LnUrlCallbackStatus result = await lnurlPay(
+            reqData: inputType.data,
+            userAmountSat: amountSats, 
+            comment: "comment",
+        );
+    }
+} catch (error) {
+    // handle error
+}
+```
+</section>
+<div slot="title">Python</div>
+<section>
+
+```python
+# Endpoint can also be of the form:
+# lnurlp://domain.com/lnurl-pay?key=val
+# lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
+lnurl_pay_url = "lightning@address.com"
+
+try: 
+  parsed_input = breez_sdk.parse_input(lnurl_pay_url)
+  if isinstance(parsed_input, breez_sdk.InputType.LN_URL_PAY):
+    amount_sats = parsed_input.data.min_sendable
+    result = sdk_service.pay_lnurl(parsed_input.data, amount_sats, "comment")
+except Exception as error:
+      # Handle error
+```
+</section>
 <div slot="title">Go</div>
 <section>
 
@@ -83,7 +125,6 @@ if input, err := breez_sdk.ParseInput(lnurlPayUrl); err != nil {
 </custom-tab>
 
 ## Supported Specs
-
 - [LUD-01](https://github.com/lnurl/luds/blob/luds/01.md) LNURL bech32 encoding
 - [LUD-06](https://github.com/lnurl/luds/blob/luds/06.md) `payRequest` spec
 - [LUD-16](https://github.com/lnurl/luds/blob/luds/16.md) LN Address
