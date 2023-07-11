@@ -283,3 +283,34 @@ result, err := sdkServices.Refund(refundable.BitcoinAddress, destinationAddress,
 ```
 </section>
 </custom-tabs>
+
+# Calculating fees
+
+<custom-tabs category="lang">
+<div slot="title">Dart</div>
+<section>
+
+```dart
+int calculateChannelOpeningFee(int amountSats) {
+    NodeState? nodeState = await getNodeState();
+    int liquidity = nodeState.inboundLiquidityMsats ~/ 1000;
+    // Check if we need to open channel
+    if(amountSats >= liquidity) {
+        // We need to open channel so we are calculating the fees for the LSP
+        String? lspId = await getLspId();
+        LSPInformation? lspInformation = await fetchLspInfo(lspId!);
+        
+        // setupFee is the proportional fee charged based on the amount
+        int setupFee = (lspInformation.channelFeePermyriad / 100);
+        // minFee is the minimum fee required by the LSP to open a channeş
+        int minFee = lspInfo.channelMinimumFeeMsat ~/ 1000;
+        // A setup fee of {setupFee}% with a minimum of {minFee} will be applied for sending more than {liquidity}.
+
+        int channelFeesMsat = (amountSats * setupFee ~/ 100);
+        // If the proportional fee is smaller than minimum fees, minimum fees is selected.
+        return max(channelFeesMsat, minFee);
+    }
+}
+```
+</section>
+</custom-tabs>

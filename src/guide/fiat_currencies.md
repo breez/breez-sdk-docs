@@ -1,6 +1,31 @@
 # Supporting fiat currencies
 
 <custom-tabs category="lang">
+<div slot="title">Dart</div>
+<section>
+
+
+In order to list the availiable fiat currencies.
+```dart
+try {
+    List<FiatCurrency> fiatCurrencyList = await listFiatCurrencies();
+} catch(e) {
+     // Handle error
+}
+```
+
+To get the current BTC rate for the currencies.
+
+```dart
+try {
+    Map<String, Rate> fiatRatesMap =  fetchFiatRates();
+    // print your desired rate 
+    print(fiatRatesMap["USD"]?.value);
+} catch(e) {
+     // Handle error
+}
+```
+</section>
 <div slot="title">python</div>
 <section>
 
@@ -14,7 +39,7 @@ except Exception as error:
     #Handle error
 ```
 
-To get the current btc rate for the currencies.
+To get the current BTC rate for the currencies.
 
 ```python
 try:
