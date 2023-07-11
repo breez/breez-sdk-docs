@@ -162,7 +162,7 @@ breezLogStream().listen((log) {
 Uint8List seed = await mnemonicToSeed(phrase: "<mnemonic words>");
 String inviteCode = "<your greenlight invite code>";
 NodeConfg nodeConfig = NodeConfig.greenlight(config: GreenlightNodeConfig(partnerCredentials: null, inviteCode: inviteCode));
-Config config = await defaultConfig(configType: EnvironmentType.Production, apiKey: "", nodeConfig: nodeConfig);
+Config config = await defaultConfig(configType: EnvironmentType.Production, apiKey: "<your API key>", nodeConfig: nodeConfig);
 
 // Customize the config object according to your needs
 config.workingDir = "path to an existing directory";
