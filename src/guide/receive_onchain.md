@@ -337,28 +337,42 @@ int calculateFeesForAmount(int amountSats) async {
 
 ```python
 def calculate_channel_opening_fees(amount_sats):
-    liqudity = sdk_services.node_info().inbound_liquidity_msats // 1000
+    is_channel_opening_fee_needed = is_channel_opening_fee_needed()
 
-    if amount_sats >= liqudity:
-        lsp_id = sdk_services.lsp_id()
-        lsp_info = sdk_services.fetch_lsp_info()
-
-        # setup_fee is the proportional fee charged based on the amount
-        setup_fee = lsp_info.channel_fee_permyriad / 100
-
-        # min_fee is the minimum fee required by the LSP to open a channels
-        min_fee = lsp_info.channel_minimum_fee_msat // 1000
-
-        # A setup fee of {setup_fee}% with a minimum of {min_fee} will be applied for sending more than {liquidity}.
-        channel_fee_msat = amount_sats * setup_fee // 1000
-
-        return max(channel_fee_msat, min_fee)
+    if is_channel_opening_fee_needed:
+        return calculate_fees_for_amount(amount_sats)
     else: 
-        # Handle exception
-        
-
-
+        return None
 ```
+
+How to detect if open channel fees are needed.
+
+```python
+def is_channel_opening_fee_needed(amount_sats):
+    liqudity = sdk_services.node_info().inbound_liquidity_msats // 1000
+    return amount_sats >= liqudity
+```
+
+How to calculate the fee for a specific amount.
+
+```python
+def calculate_fees_for_amount(amount_sats):
+    # We need to open channel so we are calculating the fees for the LSP
+    lsp_id = sdk_services.lsp_id()
+    lsp_info = sdk_services.fetch_lsp_info()
+
+    # setup_fee is the proportional fee charged based on the amount
+    setup_fee = lsp_info.channel_fee_permyriad / 100
+
+    # min_fee is the minimum fee required by the LSP to open a channels
+    min_fee = lsp_info.channel_minimum_fee_msat // 1000
+
+    # A setup fee of {setup_fee} with a minimum of {min_fee} will be applied for sending more than {liquidity}.
+    channel_fee_msat = amount_sats * setup_fee // 1000
+
+    return max(channel_fee_msat, min_fee)
+```
+
 </section>
 
 </custom-tabs>
