@@ -313,4 +313,35 @@ int calculateChannelOpeningFee(int amountSats) {
 }
 ```
 </section>
+
+
+<div slot="title">Python</div>
+<section>
+
+```python
+def calculate_channel_opening_fees(amount_sats):
+    liqudity = sdk_services.node_info().inbound_liquidity_msats // 1000
+
+    if amount_sats >= liqudity:
+        lsp_id = sdk_services.lsp_id()
+        lsp_info = sdk_services.fetch_lsp_info()
+
+        # setup_fee is the proportional fee charged based on the amount
+        setup_fee = lsp_info.channel_fee_permyriad / 100
+
+        # min_fee is the minimum fee required by the LSP to open a channels
+        min_fee = lsp_info.channel_minimum_fee_msat // 1000
+
+        # A setup fee of {setup_fee}% with a minimum of {min_fee} will be applied for sending more than {liquidity}.
+        channel_fee_msat = amount_sats * setup_fee // 1000
+
+        return max(channel_fee_msat, min_fee)
+    else: 
+        # Handle exception
+        
+
+
+```
+</section>
+
 </custom-tabs>
