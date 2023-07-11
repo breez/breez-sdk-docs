@@ -103,6 +103,25 @@ except Exception as error:
       # Handle error
 ```
 </section>
+<div slot="title">Go</div>
+<section>
+
+```go
+// Endpoint can also be of the form:
+// lnurlp://domain.com/lnurl-pay?key=val
+// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
+lnurlPayUrl := "lightning@address.com"
+
+if input, err := breez_sdk.ParseInput(lnurlPayUrl); err != nil {
+    switch inputType := input.(type) {
+    case breez_sdk.InputTypeLnUrlPay:
+        amountsSats := inputType.Data.MinSendable
+        comment := "comment"
+        result, err := sdkServices.PayLnurl(inputType.Data, amountsSats, &comment)
+    }
+}
+```
+</section>
 </custom-tab>
 
 ## Supported Specs

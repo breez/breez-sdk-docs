@@ -223,6 +223,46 @@ except Exception as error:
     # Handle error
 ```
 </section>
+<div slot="title">Go</div>
+<section>
+
+## Connecting
+```go
+// SDK events listener
+type BreezListener struct{}
+
+func (BreezListener) OnEvent(e breez_sdk.BreezEvent) {
+    log.Printf("received event %#v", e)
+}
+
+// Create the default config
+apiKey := "<your breez api key>"
+inviteCode := "<your greenlight invite code>"
+nodeConfig := breez_sdk.NodeConfigGreenlight{
+    Config: breez_sdk.GreenlightNodeConfig{
+        PartnerCredentials: nil, 
+        InviteCode:         &inviteCode,
+    },
+}
+
+config := breez_sdk.DefaultConfig(breez_sdk.EnvironmentTypeProduction, apiKey, nodeConfig)
+
+// Customize the config object according to your needs
+config.workingDir = "path to an existing directory"
+
+if sdkServices, err := breez_sdk.Connect(config, seed, BreezListener{}); err != nil {
+    sdkServices.Start()
+}
+```
+At any point we can fetch our balance from the Greenlight node:
+
+```go
+if nodeInfo, err := sdkServices.NodeInfo(); err != nil {
+    lnBalance := nodeInfo.ChannelsBalanceMsat
+    onchainBalance := nodeInfo.OnchainBalanceMsat
+}
+```
+</section>
 </custom-tabs>
 
 You are now ready to receive a Lightning [payment](payments.md).
