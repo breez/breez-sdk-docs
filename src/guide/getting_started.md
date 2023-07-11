@@ -245,13 +245,19 @@ nodeConfig := breez_sdk.NodeConfigGreenlight{
     },
 }
 
-config := breez_sdk.DefaultConfig(breez_sdk.EnvironmentTypeProduction, apiKey, nodeConfig)
+config, err := breez_sdk.DefaultConfig(breez_sdk.EnvironmentTypeProduction, apiKey, nodeConfig)
+
+if err != nil {
+	log.Fatalf("DefaultConfig failed: %#v", err)
+}
 
 // Customize the config object according to your needs
 config.workingDir = "path to an existing directory"
 
-if sdkServices, err := breez_sdk.Connect(config, seed, BreezListener{}); err != nil {
-    sdkServices.Start()
+sdkServices, err := breez_sdk.Connect(config, seed, BreezListener{})
+
+if err != nil {
+	log.Fatalf("Connect failed: %#v", err)
 }
 ```
 At any point we can fetch our balance from the Greenlight node:
