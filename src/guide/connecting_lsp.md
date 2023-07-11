@@ -26,3 +26,4 @@ except Exception as error:
 ```
 
 </section>
+</custom-tabs>
