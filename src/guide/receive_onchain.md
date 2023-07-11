@@ -290,7 +290,9 @@ result, err := sdkServices.Refund(refundable.BitcoinAddress, destinationAddress,
 <div slot="title">Dart</div>
 <section>
 
-To calculate fees, you'll need to detect if channel opening fees are needed first and then calculate the fee for the amount you'll be receiving.
+When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
+
+To calculate the fees for a channel being opened by the LSP:
 
 ```dart
 int calculateChannelOpeningFee(int amountSats) async {
@@ -310,7 +312,9 @@ bool isChannelOpeningFeeNeeded(int amountSats) async {
 }
 ```
 
-How to calculate the fee for a specific amount.
+LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
+
+This information can be retrieved for each LSP and then calculated:
 
 ```dart
 int calculateFeesForAmount(int amountSats) async {
@@ -335,6 +339,10 @@ int calculateFeesForAmount(int amountSats) async {
 <div slot="title">Python</div>
 <section>
 
+When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
+
+To calculate the fees for a channel being opened by the LSP:
+
 ```python
 def calculate_channel_opening_fees(amount_sats):
     is_channel_opening_fee_needed = is_channel_opening_fee_needed()
@@ -353,7 +361,9 @@ def is_channel_opening_fee_needed(amount_sats):
     return amount_sats >= liqudity
 ```
 
-How to calculate the fee for a specific amount.
+LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
+
+This information can be retrieved for each LSP and then calculated:
 
 ```python
 def calculate_fees_for_amount(amount_sats):
@@ -372,7 +382,6 @@ def calculate_fees_for_amount(amount_sats):
 
     return max(channel_fee_msat, min_fee)
 ```
-
 </section>
 
 </custom-tabs>
