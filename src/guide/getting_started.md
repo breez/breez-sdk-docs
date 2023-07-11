@@ -101,7 +101,7 @@ do {
 <div slot="title">React Native</div>
 <section>
 
-## Initializing the SDK
+## Connecting
 ```typescript
 
 // SDK events listener
@@ -125,7 +125,7 @@ config.workingDir = "path to an existing directory";
 
 try {
     // Connect to the Breez SDK make it ready for use
-    const sdkServices = await connect(config seed);
+    const sdkServices = await connect(config, seed);
 } catch (error) {
     console.log(error);
 }
@@ -199,7 +199,7 @@ class SDKListener(breez_sdk.EventListener):
 # Create the default config
 seed = mnemonic_to_seed("<mnemonics words>")
 invite_code = "<your greenlight invite code>"
-config = breez_sdk.default_config(breez_sdk.EnvironmentType.PRODUCTION, "code",  
+config = breez_sdk.default_config(breez_sdk.EnvironmentType.PRODUCTION, "api key",  
     breez_sdk.NodeConfig.GREENLIGHT(breez_sdk.GreenlightNodeConfig(None, invite_code)))
 
 # Customize the config object according to your needs
