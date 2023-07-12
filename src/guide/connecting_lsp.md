@@ -58,7 +58,7 @@ Based on the API key provided to the Breez SDK, a default LSP is selected for yo
 
 ```python 
 try: 
-    lsp_id = self.sdk_services.lsp_id()
+    lsp_id = sdk_services.lsp_id()
     lsp_info = sdk_services.fetch_lsp_info(lsp_id)
    
 except Exception as error:
@@ -75,4 +75,31 @@ except Exception as error:
 ```
 
 </section>
+<div slot="title">Go</div>
+<section>
+
+Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
+
+
+```go
+lspId, err := sdkServices.LspId()
+if err != nil {
+    // Handle error
+}
+lspInfo, err := sdkServices.FetchLspInfo(*lspId)
+if err != nil {
+    // Handle error
+}
+ ```
+
+ When you have selected an LSP you may then connect to it.
+
+ ```go
+err = sdkServices.ConnectLsp(*lspId)
+if err != nil {
+    // Handle error
+}
+ 
+ ```
+
 </custom-tabs>

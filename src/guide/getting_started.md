@@ -236,6 +236,11 @@ func (BreezListener) OnEvent(e breez_sdk.BreezEvent) {
 }
 
 // Create the default config
+seed, err := breez_sdk.MnemonicToSeed("<mnemonics words>")
+if err != nil {
+	log.Fatalf("MnemonicToSeed failed: %#v", err)
+}
+
 apiKey := "<your breez api key>"
 inviteCode := "<your greenlight invite code>"
 nodeConfig := breez_sdk.NodeConfigGreenlight{
@@ -255,9 +260,8 @@ if err != nil {
 config.workingDir = "path to an existing directory"
 
 sdkServices, err := breez_sdk.Connect(config, seed, BreezListener{})
-
 if err != nil {
-	log.Fatalf("Connect failed: %#v", err)
+    log.Fatalf("Connect failed: %#v", err)
 }
 ```
 At any point we can fetch our balance from the Greenlight node:
