@@ -283,3 +283,105 @@ result, err := sdkServices.Refund(refundable.BitcoinAddress, destinationAddress,
 ```
 </section>
 </custom-tabs>
+
+# Calculating fees
+
+<custom-tabs category="lang">
+<div slot="title">Dart</div>
+<section>
+
+When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
+
+To calculate the fees for a channel being opened by the LSP:
+
+```dart
+int calculateChannelOpeningFee(int amountSats) async {
+    bool isChannelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountSats);
+    return isChannelOpeningFeeNeeded ? calculateFeesForAmount(amountSats) : 0;
+} 
+```
+
+How to detect if open channel fees are needed.
+
+```dart
+bool isChannelOpeningFeeNeeded(int amountSats) async {
+    NodeState? nodeState = await getNodeState();
+    int liquidity = nodeState.inboundLiquidityMsats ~/ 1000;
+    // Check if we need to open channel
+    return amountSats >= liquidity;
+}
+```
+
+LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
+
+This information can be retrieved for each LSP and then calculated:
+
+```dart
+int calculateFeesForAmount(int amountSats) async {
+    // We need to open channel so we are calculating the fees for the LSP
+    String? lspId = await getLspId();
+    LSPInformation? lspInformation = await fetchLspInfo(lspId!);
+
+    // setupFee is the proportional fee charged based on the amount
+    int setupFee = (lspInformation.channelFeePermyriad / 100);
+    // minFee is the minimum fee required by the LSP to open a channeş
+    int minFee = lspInfo.channelMinimumFeeMsat ~/ 1000;
+    // A setup fee of {setupFee}% with a minimum of {minFee} will be applied for sending more than {liquidity}.
+
+    int channelFeesMsat = (amountSats * setupFee ~/ 100);
+    // If the proportional fee is smaller than minimum fees, minimum fees is selected.
+    return max(channelFeesMsat, minFee);
+}
+```
+</section>
+
+
+<div slot="title">Python</div>
+<section>
+
+When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
+
+To calculate the fees for a channel being opened by the LSP:
+
+```python
+def calculate_channel_opening_fees(amount_sats):
+    is_channel_opening_fee_needed = is_channel_opening_fee_needed()
+
+    if is_channel_opening_fee_needed:
+        return calculate_fees_for_amount(amount_sats)
+    else: 
+        return None
+```
+
+How to detect if open channel fees are needed.
+
+```python
+def is_channel_opening_fee_needed(amount_sats):
+    liqudity = sdk_services.node_info().inbound_liquidity_msats // 1000
+    return amount_sats >= liqudity
+```
+
+LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
+
+This information can be retrieved for each LSP and then calculated:
+
+```python
+def calculate_fees_for_amount(amount_sats):
+    # We need to open channel so we are calculating the fees for the LSP
+    lsp_id = sdk_services.lsp_id()
+    lsp_info = sdk_services.fetch_lsp_info()
+
+    # setup_fee is the proportional fee charged based on the amount
+    setup_fee = lsp_info.channel_fee_permyriad / 100
+
+    # min_fee is the minimum fee required by the LSP to open a channels
+    min_fee = lsp_info.channel_minimum_fee_msat // 1000
+
+    # A setup fee of {setup_fee} with a minimum of {min_fee} will be applied for sending more than {liquidity}.
+    channel_fee_msat = amount_sats * setup_fee // 1000
+
+    return max(channel_fee_msat, min_fee)
+```
+</section>
+
+</custom-tabs>
