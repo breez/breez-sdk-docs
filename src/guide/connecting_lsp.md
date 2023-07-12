@@ -99,7 +99,6 @@ err = sdkServices.ConnectLsp(*lspId)
 if err != nil {
     // Handle error
 }
- 
  ```
 
 </custom-tabs>
