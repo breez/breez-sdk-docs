@@ -410,20 +410,19 @@ When the amount to be received exceeds the inbound liquidity of the node, a new 
 To calculate the fees for a channel being opened by the LSP:
 
 ```dart
-int calculateChannelOpeningFee(int amountSats) async {
-    bool isChannelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountSats);
-    return isChannelOpeningFeeNeeded ? calculateFeesForAmount(amountSats) : 0;
+int calculateChannelOpeningFee(int amountMsat) async {
+    bool isChannelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountMsat);
+    return isChannelOpeningFeeNeeded ? calculateFeesForAmount(amountMsat) : 0;
 } 
 ```
 
 How to detect if open channel fees are needed:
 
 ```dart
-bool isChannelOpeningFeeNeeded(int amountSats) async {
+// Assumes nodeState isn't empty
+bool isChannelOpeningFeeNeeded(int amountMsat) async {
     NodeState? nodeState = await getNodeState();
-    int liquidity = nodeState.inboundLiquidityMsats ~/ 1000;
-    // Check if we need to open channel.
-    return amountSats >= liquidity;
+    return amountMsat >=  nodeState.inboundLiquidityMsats;
 }
 ```
 
@@ -432,20 +431,14 @@ LSP fees are calculated in two ways, either by a minimum fee set by the LSP or b
 This information can be retrieved for each LSP and then calculated:
 
 ```dart
-int calculateFeesForAmount(int amountSats) async {
-    // We need to open channel so we are calculating the fees for the LSP.
+// Assumes lspId & lspInformation isn't empty
+int calculateFeesForAmount(int amountMsat) async {
     String? lspId = await getLspId();
-    LSPInformation? lspInformation = await fetchLspInfo(lspId!);
+    LSPInformation? lspInformation = await fetchLspInfo(lspId);
 
-    // setupFee is the proportional fee charged based on the amount.
-    int setupFee = (lspInformation.channelFeePermyriad / 100);
-    // minFee is the minimum fee required by the LSP to open a channel.
-    int minFee = lspInfo.channelMinimumFeeMsat ~/ 1000;
-    // A setup fee of {setupFee}% with a minimum of {minFee} will be applied for sending more than {liquidity}.
-
-    int channelFeesMsat = (amountSats * setupFee ~/ 100);
-    // If the proportional fee is smaller than minimum fees, minimum fees is selected.
-    return max(channelFeesMsat, minFee);
+    // We calculate the dynamic fees in millisatoshis rounded to satoshis.
+    int channelFeesMsat = (amountMsat * lspInformation.channelFeePermyriad / 10000 / 1000 * 1000);
+    return max(channelFeesMsat, lspInformation.channelMinimumFeeMsat);
 }
 ```
 </section>
