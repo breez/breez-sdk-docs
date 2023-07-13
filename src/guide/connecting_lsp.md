@@ -3,12 +3,13 @@
 <custom-tabs category="lang">
 <div slot="title">Swift</div>
 <section>
+
 Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
 
 ```swift
 do {
-    let lspId = let lspId = try sdk.lspId() 
-    let lspInfo = try sdk.fetchLspInfo(lspId: lspID!)
+    let lspId = try sdk.lspId() 
+    let lspInfo = try sdk.fetchLspInfo(lspId: lspId!)
 } catch {
     // Handle error
 }
@@ -18,7 +19,7 @@ When you have selected an LSP you may then connect to it.
 
 ```swift
 do {
-    try sdk.connectLsp(lspId: lspID!)
+    try sdk.connectLsp(lspId: lspId!)
 } catch {
     // Handle error
 }
