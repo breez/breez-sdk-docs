@@ -396,6 +396,60 @@ func calculateFeesForAmount(amountMsats: Int64) -> Int64? {
 
 </section>
 
+<div slot="title">React Native</div>
+<section>
+
+When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
+
+To calculate the fees for a channel being opened by the LSP:
+
+```typescript 
+const calculateChannelOpeningFee = async (amountMsats: number): number => {
+    const channelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountMsats)
+    if (channelOpeningFeeNeeded) {
+        return calculateFeesForAmount(amountMsats)
+    }
+    return 0
+}
+```
+
+How to detect if open channel fees are needed:
+```typescript
+const isChannelOpeningFeeNeeded = async (amountMsats: number): boolean => {
+    try {
+        const nodeInfo = await nodeInfo()
+        return nodeInfo.inboundLiquidityMsats <= amountMsats            
+    } catch (error) {
+        // handle error
+    }
+    return false
+}
+```
+
+LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
+
+This information can be retrieved for each LSP and then calculated:
+
+```typescript 
+const calculateFeesForAmount = async (amountMsats: number): number => {
+    try {
+        const id = await lspId()
+        const lspInfo = await fetchLspInfo(id)
+                
+        // We calculate the dynamic fees in millisatoshis rounded to satoshis.
+        const channelDynamicFeeMsat = amountMsats * lspInfo.channelFeePermyriad / 10000 / 1000 * 1000
+        const feeSat = Math.max(lspInfo.channelMinimumFeeMsat, channelDynamicFeeMsat) / 1000
+                
+        return feeSat
+    } catch (error) {
+        // handle error
+    }
+    return 0
+}
+```
+
+</section>
+
 <div slot="title">Dart</div>
 <section>
 

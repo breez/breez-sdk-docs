@@ -26,7 +26,31 @@ do {
 ```
 
 </section>
+<div slot="title">React Native</div>
+<section>
 
+Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
+
+```typescript
+try {
+    const lspId = await lspId() 
+    const lspInfo = await fetchLspInfo(lspId)
+} catch (error) {
+    console.log(error)
+}
+```
+
+When you have selected an LSP you may then connect to it.
+
+```typescript
+try {
+    await connectLsp(lspId)
+} catch (error) {
+    console.log(error)
+}
+```
+
+</section>
 <div slot="title">Dart</div>
 <section>
 
