@@ -331,7 +331,7 @@ async fn calculate_fees_for_amount(amount_msat: u64) -> Result<u64> {
     let fee_sat = max(
         lsp_info.channel_minimum_fee_msat as u64,
         channel_dynamic_fee_msat,
-    );
+    ) / 1000;
     Ok(fee_sat)
 }
 ```
@@ -383,12 +383,12 @@ func calculateFeesForAmount(amountMsats: Int64) -> Int64? {
                 
             // We calculate the dynamic fees in millisatoshis rounded to satoshis.
             let channelDynamicFeeMsat = amountMsats * lspInfo!.channelFeePermyriad / 10_000 / 1000 * 1000
-            let feeSat = max(lspInfo!.channelMinimumFeeMsat,channelDynamicFeeMsat)
+            let feeSat = max(lspInfo!.channelMinimumFeeMsat, channelDynamicFeeMsat) / 1000
                 
             return feeSat
         }
     } catch {
-            // Handle error
+        // Handle error
     }
     return nil
 }
@@ -432,7 +432,7 @@ int calculateFeesForAmount(int amountMsat) async {
 
     // We calculate the dynamic fees in millisatoshis rounded to satoshis.
     int channelFeesMsat = (amountMsat * lspInformation.channelFeePermyriad / 10000 / 1000 * 1000);
-    return max(channelFeesMsat, lspInformation.channelMinimumFeeMsat);
+    return max(channelFeesMsat, lspInformation.channelMinimumFeeMsat) / 1000;
 }
 ```
 </section>
@@ -475,7 +475,7 @@ def calculate_fees_for_amount(amount_msats):
     # We calculate the dynamic fees in millisatoshis rounded to satoshis.
     channel_dynamic_fee = amount_msats * lsp_info.channel_minimum_fee_msat * lsp_info.channel_fee_permyriad / 10000 // 10000 * 10000
 
-    fee_sat = max(lsp_info.channel_minimum_fee_msat, channel_dynamic_fee)
+    fee_sat = max(lsp_info.channel_minimum_fee_msat, channel_dynamic_fee) / 1000
 
     return fee_sat
 ```
@@ -515,24 +515,26 @@ This information can be retrieved for each LSP and then calculated:
 
 ```go
 func calculateFeesForAmount(amountMsats uint64) uint64 {
-	lspId, err := sdkServices.LspId()
-	if err != nil {
-		log.Printf("received error %#v", err)
-	}
-	lspInfo, err := sdkServices.FetchLspInfo(*lspId)
-	if err != nil {
-		log.Printf("received error %#v", err)
-	}
-	// We calculate the dynamic fees in millisatoshis rounded to satoshis
-	channelDynamicFeeMSat := amountMsats * uint64(lspInfo.ChannelFeePermyriad) / 10000 / 1000 * 1000
+    lspId, err := sdkServices.LspId()
+    if err != nil {
+        // Handle error
+    }
 
-	var feeSat uint64
-	if channelDynamicFeeMSat >= uint64(lspInfo.ChannelMinimumFeeMsat) {
-		feeSat = channelDynamicFeeMSat
-	} else {
-		feeSat = uint64(lspInfo.ChannelMinimumFeeMsat)
-	}
-	return uint64(feeSat)
+    lspInfo, err := sdkServices.FetchLspInfo(*lspId)
+    if err != nil {
+        // Handle error
+    }
+
+    // We calculate the dynamic fees in millisatoshis rounded to satoshis
+    channelDynamicFeeMsats := amountMsats * uint64(lspInfo.ChannelFeePermyriad) / 10000 / 1000 * 1000
+    feeMsats := uint64(lspInfo.ChannelMinimumFeeMsat)
+
+    if channelDynamicFeeMsats >= feeMsats {
+        feeMsats = channelDynamicFeeMsats
+    }
+
+    // Fee sats
+    return feeMsats / 1000
 }
 ```
 
