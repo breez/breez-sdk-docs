@@ -305,7 +305,7 @@ async fn calculate_channel_opening_fee(amount_msat: u64) -> Result<u64> {
 }
 ```
 
-How to detect if open channel fees are needed.
+How to detect if open channel fees are needed:
 ```rust,ignore
 fn is_channel_opening_fee_needed(amount_msats: u64) -> Result<bool> {
     let node_info = sdk.node_info()?.ok_or(anyhow!("No node info found"))?;
@@ -355,7 +355,7 @@ func calculateChannelOpeningFee(amountStats: Int64) -> Int64? {
     }
 ```
 
-How to detect if open channel fees are needed.
+How to detect if open channel fees are needed:
 ```swift 
 func isChannelOpeningFeeNeeded(amountStats: Int64) -> Bool {
         do {
@@ -416,7 +416,7 @@ int calculateChannelOpeningFee(int amountSats) async {
 } 
 ```
 
-How to detect if open channel fees are needed.
+How to detect if open channel fees are needed:
 
 ```dart
 bool isChannelOpeningFeeNeeded(int amountSats) async {
@@ -468,7 +468,7 @@ def calculate_channel_opening_fees(amount_sats):
         return None
 ```
 
-How to detect if open channel fees are needed.
+How to detect if open channel fees are needed:
 
 ```python
 def is_channel_opening_fee_needed(amount_sats):
@@ -516,7 +516,7 @@ func CalculateChannelOpeningFee(amountSats uint64) (uint64, error) {
 }
 ```
 
-How to detect if open channel fees are needed.
+How to detect if open channel fees are needed:
 ```go
 func isChannelOpeningFeeNeeded(amountSats uint64) bool {
 	nodeInfo, err := sdkServices.NodeInfo()
