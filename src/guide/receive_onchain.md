@@ -287,6 +287,57 @@ result, err := sdkServices.Refund(refundable.BitcoinAddress, destinationAddress,
 # Calculating fees
 
 <custom-tabs category="lang">
+
+<div slot="title">Rust</div>
+<section>
+
+When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
+
+To calculate the fees for a channel being opened by the LSP:
+
+```rust 
+async fn calculate_channel_opening_fee(amount_msat: u64) -> Result<u64> {
+    let channel_opening_fee_needed = is_channel_opening_fee_needed(amount_msat, sdk.clone())?;
+    match channel_opening_fee_needed {
+        true => calculate_fees_for_amount(amount_msat).await,
+        false => Ok(0),
+    }
+}
+```
+
+How to detect if open channel fees are needed.
+```rust 
+fn is_channel_opening_fee_needed(amount_msats: u64) -> Result<bool> {
+    let node_info = sdk.node_info()?.ok_or(anyhow!("No node info found"))?;
+    Ok(node_info.inbound_liquidity_msats <= amount_msats)
+}
+```
+
+LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
+
+This information can be retrieved for each LSP and then calculated:
+
+```rust 
+async fn calculate_fees_for_amount(amount_msat: u64) -> Result<u64> {
+    let lsp_id = sdk.lsp_id().await?.ok_or(anyhow!("No lsp id found"))?;
+    let lsp_info = sdk
+        .fetch_lsp_info(lsp_id)
+        .await?
+        .ok_or(anyhow!("No lsp id found"))?;
+
+    // We calculate the dynamic fees in millisatoshis rounded to satoshis.
+    let channel_dynamic_fee_msat =
+        amount_msat * lsp_info.channel_fee_permyriad as u64 / 10_000 / 1000 * 1000;
+    let fee_sat = max(
+        lsp_info.channel_minimum_fee_msat as u64,
+        channel_dynamic_fee_msat,
+    );
+    Ok(fee_sat)
+}
+```
+
+</section>
+
 <div slot="title">Swift</div>
 <section>
 
