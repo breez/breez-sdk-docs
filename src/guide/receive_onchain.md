@@ -5,7 +5,7 @@ There are cases when you have funds in some bitcoin address and you would like t
 <div slot="title">Rust</div>
 <section>
 
-```rust,no_run
+```rust,ignore
 let swap_info = sdk.receive_onchain().await?;
 
 // Send your funds to the below bitcoin address
@@ -14,7 +14,7 @@ let address = swap_info.bitcoin_address;
 
 Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
 
-```rust,no_run
+```rust,ignore
 let swap_info = sdk.in_progress_swap().await?
 ```
 
@@ -25,13 +25,13 @@ The process of receiving funds via an on-chain address is trustless and uses a s
 
 In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
 
-```rust,no_run
+```rust,ignore
 let refundables = sdk.list_refundables().await?
 ```
 
 Once you have a refundable swap in hand, use the following code to execute a refund:
 
-```rust,no_run
+```rust,ignore
 let destination_address = "...".into()
 let sat_per_vbyte = <refund tx fee rate>
 sdk.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte).await?
@@ -295,7 +295,7 @@ When the amount to be received exceeds the inbound liquidity of the node, a new 
 
 To calculate the fees for a channel being opened by the LSP:
 
-```rust 
+```rust,ignore
 async fn calculate_channel_opening_fee(amount_msat: u64) -> Result<u64> {
     let channel_opening_fee_needed = is_channel_opening_fee_needed(amount_msat, sdk.clone())?;
     match channel_opening_fee_needed {
@@ -306,7 +306,7 @@ async fn calculate_channel_opening_fee(amount_msat: u64) -> Result<u64> {
 ```
 
 How to detect if open channel fees are needed.
-```rust 
+```rust,ignore
 fn is_channel_opening_fee_needed(amount_msats: u64) -> Result<bool> {
     let node_info = sdk.node_info()?.ok_or(anyhow!("No node info found"))?;
     Ok(node_info.inbound_liquidity_msats <= amount_msats)
@@ -317,7 +317,7 @@ LSP fees are calculated in two ways, either by a minimum fee set by the LSP or b
 
 This information can be retrieved for each LSP and then calculated:
 
-```rust 
+```rust,ignore
 async fn calculate_fees_for_amount(amount_msat: u64) -> Result<u64> {
     let lsp_id = sdk.lsp_id().await?.ok_or(anyhow!("No lsp id found"))?;
     let lsp_info = sdk
