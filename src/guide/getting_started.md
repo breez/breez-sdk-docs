@@ -127,7 +127,7 @@ try {
     // Connect to the Breez SDK make it ready for use
     const sdkServices = await connect(config, seed);
 } catch (error) {
-    console.log(error);
+    console.log(error)
 }
 ```
 
@@ -139,7 +139,7 @@ try {
     const lnBalance = nodeInfo.channelsBalanceMsat;
     const onchainBalance = nodeInfo.onchainBalanceMsat;
 } catch (error) {
-    console.log(error);
+    console.log(error)
 }
 ```
 </section>

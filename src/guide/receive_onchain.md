@@ -97,7 +97,7 @@ do {
 
 ```typescript
 try {
-    const swapInfo = await receiveOnchain();
+    const swapInfo = await receiveOnchain()
 
     // Send your funds to the below bitcoin address
     const address = swapInfo.bitcoinAddress;
@@ -328,11 +328,11 @@ async fn calculate_fees_for_amount(amount_msat: u64) -> Result<u64> {
     // We calculate the dynamic fees in millisatoshis rounded to satoshis.
     let channel_dynamic_fee_msat =
         amount_msat * lsp_info.channel_fee_permyriad as u64 / 10_000 / 1000 * 1000;
-    let fee_sat = max(
+    let fee_msat = max(
         lsp_info.channel_minimum_fee_msat as u64,
         channel_dynamic_fee_msat,
-    );
-    Ok(fee_sat)
+    )
+    Ok(fee_msat)
 }
 ```
 
@@ -347,29 +347,28 @@ To calculate the fees for a channel being opened by the LSP:
 
 ```swift 
 func calculateChannelOpeningFee(amountMsats: Int64) -> Int64? {
-        var  channelOpeningFeeNeeded =  isChannelOpeningFeeNeeded(amountMsats: amountMsats)
-        if channelOpeningFeeNeeded {
-            return calculateFeesForAmount(amountMsats: amountMsats)
-        }
-        return nil
+    var channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats: amountMsats)
+    if channelOpeningFeeNeeded {
+        return calculateFeesForAmount(amountMsats: amountMsats)
     }
+    return nil
+}
 ```
 
 How to detect if open channel fees are needed:
 ```swift 
 func isChannelOpeningFeeNeeded(amountMsats: Int64) -> Bool {
-        do {
-            let nodeInfo = try sdk.nodeInfo()
+    do {
+        let nodeInfo = try sdk.nodeInfo()
 
-            if let inboundLiquidityMsats = nodeInfo?.inboundLiquidityMsats {
-                return inboundLiquidityMsats <= amountMsats
-            }
-            
-        } catch {
-            // Handle error
-        }
-        return false
+        if let inboundLiquidityMsats = nodeInfo?.inboundLiquidityMsats {
+            return inboundLiquidityMsats <= amountMsats
+        }   
+    } catch {
+        // Handle error
     }
+    return false
+}
 ```
 
 LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
@@ -384,14 +383,68 @@ func calculateFeesForAmount(amountMsats: Int64) -> Int64? {
                 
             // We calculate the dynamic fees in millisatoshis rounded to satoshis.
             let channelDynamicFeeMsat = amountMsats * lspInfo!.channelFeePermyriad / 10_000 / 1000 * 1000
-            let feeSat = max(lspInfo!.channelMinimumFeeMsat,channelDynamicFeeMsat)
+            let feeMsat = max(lspInfo!.channelMinimumFeeMsat, channelDynamicFeeMsat)
                 
-            return feeSat
+            return feeMsat
         }
     } catch {
-            // Handle error
+        // Handle error
     }
     return nil
+}
+```
+
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
+
+To calculate the fees for a channel being opened by the LSP:
+
+```typescript 
+const calculateChannelOpeningFee = async (amountMsats: number): number => {
+    const channelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountMsats)
+    if (channelOpeningFeeNeeded) {
+        return calculateFeesForAmount(amountMsats)
+    }
+    return 0
+}
+```
+
+How to detect if open channel fees are needed:
+```typescript
+const isChannelOpeningFeeNeeded = async (amountMsats: number): boolean => {
+    try {
+        const nodeInfo = await nodeInfo()
+        return nodeInfo.inboundLiquidityMsats <= amountMsats            
+    } catch (error) {
+        // handle error
+    }
+    return false
+}
+```
+
+LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
+
+This information can be retrieved for each LSP and then calculated:
+
+```typescript 
+const calculateFeesForAmount = async (amountMsats: number): number => {
+    try {
+        const id = await lspId()
+        const lspInfo = await fetchLspInfo(id)
+                
+        // We calculate the dynamic fees in millisatoshis rounded to satoshis.
+        const channelDynamicFeeMsat = amountMsats * lspInfo.channelFeePermyriad / 10000 / 1000 * 1000
+        const feeMsat = Math.max(lspInfo.channelMinimumFeeMsat, channelDynamicFeeMsat)
+                
+        return feeMsat
+    } catch (error) {
+        // handle error
+    }
+    return 0
 }
 ```
 
@@ -417,7 +470,7 @@ How to detect if open channel fees are needed:
 // Assumes nodeState isn't empty
 bool isChannelOpeningFeeNeeded(int amountMsat) async {
     NodeState? nodeState = await getNodeState();
-    return amountMsat >=  nodeState.inboundLiquidityMsats;
+    return amountMsat >= nodeState.inboundLiquidityMsats;
 }
 ```
 
@@ -476,9 +529,9 @@ def calculate_fees_for_amount(amount_msats):
     # We calculate the dynamic fees in millisatoshis rounded to satoshis.
     channel_dynamic_fee = amount_msats * lsp_info.channel_minimum_fee_msat * lsp_info.channel_fee_permyriad / 10000 // 10000 * 10000
 
-    fee_sat = max(lsp_info.channel_minimum_fee_msat, channel_dynamic_fee)
+    fee_msat = max(lsp_info.channel_minimum_fee_msat, channel_dynamic_fee)
 
-    return fee_sat
+    return fee_msat
 ```
 </section>
 
@@ -493,7 +546,7 @@ To calculate the fees for a channel being opened by the LSP:
 func CalculateChannelOpeningFee(amountMsats uint64) (uint64, error) {
 	isChannelOpeningFeeNeeded := isChannelOpeningFeeNeeded(amountMsats)
 	if !isChannelOpeningFeeNeeded {
-		return 0, fmt.Errorf("Channel not needed")
+        return 0, fmt.Errorf("Channel not needed")
 	}
 	return calculateFeesForAmount(amountMsats), nil
 }
@@ -504,7 +557,7 @@ How to detect if open channel fees are needed:
 func isChannelOpeningFeeNeeded(amountMsats uint64) bool {
 	nodeInfo, err := sdkServices.NodeInfo()
 	if err != nil {
-		// Handle error
+        // Handle error
 	}
 	return nodeInfo.InboundLiquidityMsats <= amountMsats 
 }
@@ -516,24 +569,25 @@ This information can be retrieved for each LSP and then calculated:
 
 ```go
 func calculateFeesForAmount(amountMsats uint64) uint64 {
-	lspId, err := sdkServices.LspId()
-	if err != nil {
-		log.Printf("received error %#v", err)
-	}
-	lspInfo, err := sdkServices.FetchLspInfo(*lspId)
-	if err != nil {
-		log.Printf("received error %#v", err)
-	}
-	// We calculate the dynamic fees in millisatoshis rounded to satoshis
-	channelDynamicFeeMSat := amountMsats * uint64(lspInfo.ChannelFeePermyriad) / 10000 / 1000 * 1000
+    lspId, err := sdkServices.LspId()
+    if err != nil {
+        // Handle error
+    }
 
-	var feeSat uint64
-	if channelDynamicFeeMSat >= uint64(lspInfo.ChannelMinimumFeeMsat) {
-		feeSat = channelDynamicFeeMSat
-	} else {
-		feeSat = uint64(lspInfo.ChannelMinimumFeeMsat)
-	}
-	return uint64(feeSat)
+    lspInfo, err := sdkServices.FetchLspInfo(*lspId)
+    if err != nil {
+        // Handle error
+    }
+
+    // We calculate the dynamic fees in millisatoshis rounded to satoshis
+    channelDynamicFeeMsats := amountMsats * uint64(lspInfo.ChannelFeePermyriad) / 10000 / 1000 * 1000
+    feeMsats := uint64(lspInfo.ChannelMinimumFeeMsat)
+
+    if channelDynamicFeeMsats >= feeMsats {
+        feeMsats = channelDynamicFeeMsats
+    }
+
+    return feeMsats
 }
 ```
 
