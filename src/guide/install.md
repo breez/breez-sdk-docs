@@ -29,11 +29,11 @@ We recommend using our official Swift package: [breez/breez-sdk-swift](https://g
 We recommmend using the official npm package:
 
 ```console
-$ npm install @breeztech/react-native-breez-sdk
+$ npm install https://github.com/breez/breez-sdk-react-native/releases/download/0.1.2/breeztech-react-native-breez-sdk-0.1.2.tgz
 ```
 or
 ```console
-$ yarn add @breeztech/react-native-breez-sdk
+$ yarn add https://github.com/breez/breez-sdk-react-native/releases/download/0.1.2/breeztech-react-native-breez-sdk-0.1.2.tgz
 ```
 
 ## Go
