@@ -328,11 +328,11 @@ async fn calculate_fees_for_amount(amount_msat: u64) -> Result<u64> {
     // We calculate the dynamic fees in millisatoshis rounded to satoshis.
     let channel_dynamic_fee_msat =
         amount_msat * lsp_info.channel_fee_permyriad as u64 / 10_000 / 1000 * 1000;
-    let fee_sat = max(
+    let fee_msat = max(
         lsp_info.channel_minimum_fee_msat as u64,
         channel_dynamic_fee_msat,
-    ) / 1000;
-    Ok(fee_sat)
+    )
+    Ok(fee_msat)
 }
 ```
 
@@ -383,9 +383,9 @@ func calculateFeesForAmount(amountMsats: Int64) -> Int64? {
                 
             // We calculate the dynamic fees in millisatoshis rounded to satoshis.
             let channelDynamicFeeMsat = amountMsats * lspInfo!.channelFeePermyriad / 10_000 / 1000 * 1000
-            let feeSat = max(lspInfo!.channelMinimumFeeMsat, channelDynamicFeeMsat) / 1000
+            let feeMsat = max(lspInfo!.channelMinimumFeeMsat, channelDynamicFeeMsat)
                 
-            return feeSat
+            return feeMsat
         }
     } catch {
         // Handle error
@@ -438,9 +438,9 @@ const calculateFeesForAmount = async (amountMsats: number): number => {
                 
         // We calculate the dynamic fees in millisatoshis rounded to satoshis.
         const channelDynamicFeeMsat = amountMsats * lspInfo.channelFeePermyriad / 10000 / 1000 * 1000
-        const feeSat = Math.max(lspInfo.channelMinimumFeeMsat, channelDynamicFeeMsat) / 1000
+        const feeMsat = Math.max(lspInfo.channelMinimumFeeMsat, channelDynamicFeeMsat)
                 
-        return feeSat
+        return feeMsat
     } catch (error) {
         // handle error
     }
@@ -486,7 +486,7 @@ int calculateFeesForAmount(int amountMsat) async {
 
     // We calculate the dynamic fees in millisatoshis rounded to satoshis.
     int channelFeesMsat = (amountMsat * lspInformation.channelFeePermyriad / 10000 / 1000 * 1000);
-    return max(channelFeesMsat, lspInformation.channelMinimumFeeMsat) / 1000;
+    return max(channelFeesMsat, lspInformation.channelMinimumFeeMsat);
 }
 ```
 </section>
@@ -529,9 +529,9 @@ def calculate_fees_for_amount(amount_msats):
     # We calculate the dynamic fees in millisatoshis rounded to satoshis.
     channel_dynamic_fee = amount_msats * lsp_info.channel_minimum_fee_msat * lsp_info.channel_fee_permyriad / 10000 // 10000 * 10000
 
-    fee_sat = max(lsp_info.channel_minimum_fee_msat, channel_dynamic_fee) / 1000
+    fee_msat = max(lsp_info.channel_minimum_fee_msat, channel_dynamic_fee)
 
-    return fee_sat
+    return fee_msat
 ```
 </section>
 
@@ -587,8 +587,7 @@ func calculateFeesForAmount(amountMsats uint64) uint64 {
         feeMsats = channelDynamicFeeMsats
     }
 
-    // Fee sats
-    return feeMsats / 1000
+    return feeMsats
 }
 ```
 
