@@ -310,6 +310,70 @@ if swaps, err := sdkServices.InProgressReverseSwaps(); err != nil {
 }
 ```
 </section>
+<div slot="title">C#</div>
+<section>
+
+```cs
+try
+{
+    var currentFees = sdk.FetchReverseSwapFees();
+    Console.WriteLine($"Percentage fee for the reverse swap service: {currentFees.feesPercentage}");
+    Console.WriteLine($"Estimated miner fees in sats for locking up funds: {currentFees.feesLockup}");
+    Console.WriteLine($"Estimated miner fees in sats for claiming funds: {currentFees.feesClaim}");
+}
+catch (Exception)
+{
+    // Handle error
+}
+```
+
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```cs
+Console.WriteLine($"Minimum amount, in sats: {currentFees.min}");
+Console.WriteLine($"Maximum amount, in sats: {currentFees.max}");
+```
+
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```cs
+var destinationAddress = "bc1..";
+var amountSat = currentFees.min;
+var satPerVbyte = <fee rate>;
+try 
+{
+    var reverseSwapInfo = sdk.SendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte);
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```cs
+try 
+{
+    var swaps = sdk.InProgressReverseSwaps();
+    foreach (var swap in swaps) {
+        Console.WriteLine($"Reverse swap {swap.id} in progress, status is {swap.status}`");
+    }
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+</section>
 </custom-tabs>
 If the reverse swap is successful, you'll get the on-chain payment on your destination address and the HODL invoice will
 change from pending to settled.

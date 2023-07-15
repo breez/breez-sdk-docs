@@ -273,6 +273,63 @@ if nodeInfo, err := sdkServices.NodeInfo(); err != nil {
 }
 ```
 </section>
+<div slot="title">C#</div>
+<section>
+
+## Connecting
+```cs
+using Breez.Sdk;
+
+// Create the default config
+var seed = BreezSdkMethods.MnemonicToSeed("<mnemonics words>");
+var inviteCode = "<invite code>";
+var apiKey = "<api key>";
+var nodeConfig = new NodeConfig.Greenlight(
+    new GreenlightNodeConfig(null, inviteCode)
+);
+var config = BreezSdkMethods.DefaultConfig(
+    EnvironmentType.PRODUCTION, 
+    apiKey, 
+    nodeConfig
+) with {
+    // Customize the config object according to your needs
+    workingDir = "path to an existing directory"
+};
+
+BlockingBreezServices sdk;
+try 
+{
+    // Connect to the Breez SDK make it ready for use
+    sdk = BreezSdkMethods.Connect(config, seed, new SdkListener());  
+} catch (Exception) 
+{
+   // Handle error
+}
+
+// SDK event listener
+class SdkListener : EventListener
+{
+    public void OnEvent(BreezEvent e)
+    {
+        Console.WriteLine($"Received Breez event type {e.GetType().Name}");
+    }
+}
+```
+At any point we can fetch our balance from the Greenlight node:
+
+```cs
+try 
+{
+    var nodeInfo = sdk.NodeInfo();    
+    var lnBalance = nodeInfo?.channelsBalanceMsat;
+    var onchainBalance = nodeInfo?.onchainBalanceMsat;
+} 
+catch (Exception) {
+    // Handle error
+}
+
+```
+</section>
 </custom-tabs>
 
 You are now ready to receive a Lightning [payment](payments.md).

@@ -62,4 +62,4 @@ dependencies:
 ```
 ## Python
 
-Currently python is not acceable as a package and is needed to build it from soruce. Please visit [sdk-core](https://github.com/breez/breez-sdk/tree/main/libs/sdk-bindings#python) project for instructions.
+Currently python is not acceable as a package and is needed to build it from source. Please visit [sdk-core](https://github.com/breez/breez-sdk/tree/main/libs/sdk-bindings#python) project for instructions.

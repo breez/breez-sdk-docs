@@ -126,4 +126,35 @@ if err != nil {
 }
  ```
 
+</section>
+<div slot="title">C#</div>
+<section>
+
+Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
+
+```cs
+try 
+{
+    var lspId = sdk.LspId();
+    var lspInfo = sdk.FetchLspInfo(lspId!);
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+
+When you have selected an LSP you may then connect to it.
+
+```cs
+try 
+{
+    sdk.ConnectLsp(lspId!);
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+</section>
 </custom-tabs>

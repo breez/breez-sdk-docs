@@ -194,4 +194,48 @@ payment, err := sdkServices.SendSpontaneousPayment(nodeId, 3000)
 ```
 
 </section>
+<div slot="title">C#</div>
+<section>
+
+## Receiving Lightning Payments
+Breez SDK doesn't require you to open a channel and set up your inbound liquidity.
+Breez SDK automatically connects your node to the LSP peer and you can now receive payments:
+
+```cs
+try 
+{
+    var invoice = sdk.ReceivePayment(3000, "Invoice for 3000 sats");
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+
+## Sending Lightning Payments
+```cs
+const bolt11 = "...";
+try 
+{
+    var payment = sdk.SendPayment(bolt11, 3000);
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+
+## Sending Spontaneous Lightning Payments
+```cs
+const nodeId = "...";
+try 
+{
+    var payment = sdk.SendSpontaneousPayment(nodeId, 3000);
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+</section>
 </custom-tabs>

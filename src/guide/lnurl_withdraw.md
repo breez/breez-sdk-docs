@@ -119,6 +119,30 @@ if input, err := breez_sdk.ParseInput(lnurlWithdrawUrl); err != nil {
 }
 ```
 </section>
+<div slot="title">C#</div>
+<section>
+
+```cs
+// Endpoint can also be of the form:
+// lnurlw://domain.com/lnurl-withdraw?key=val
+var lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk";
+
+try 
+{
+    var lnurlWithdrawUrl = "";
+    var input = BreezSdkMethods.ParseInput(lnurlWithdrawUrl);
+    if (input is InputType.LnUrlWithdraw lnurlw) 
+    {
+        var amountSats = lnurlw.data.minWithdrawable;
+        var result = sdk.WithdrawLnurl(lnurlw.data, amountSats, "comment");
+    }
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+</section>
 </custom-tab>
 
 ## Supported Specs

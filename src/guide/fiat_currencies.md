@@ -83,4 +83,32 @@ To get the current BTC rate for the currencies.
 fiatRates, err := sdkServices.FetchFiatRates()
 ```
 </section>
+<div slot="title">C#</div>
+<section>
+In order to list the availiable fiat currencies.
+
+```cs
+try 
+{
+    var fiatCurrencies = sdk.ListFiatCurrencies();
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+
+To get the current BTC rate for the currencies.
+
+```cs
+try 
+{
+    var fiatRates = sdk.FetchFiatRates();
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+</section>
 </custom-tabs>
