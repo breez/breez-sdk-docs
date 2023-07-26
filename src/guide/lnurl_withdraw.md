@@ -42,6 +42,27 @@ do {
 
 ```
 </section>
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+// Endpoint can also be of the form:
+// lnurlw://domain.com/lnurl-withdraw?key=val
+// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7…
+val lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7…"
+try {
+    val inputType = parseInput(lnurlPayUrl)
+    if (inputType is InputType.LnUrlWithdraw) {
+        val requestData = inputType.data
+        val amountSats = requestData.minWithdrawable
+        val comment = "Any comment"
+        sdk.withdrawLnurl(requestData, amountSats, comment)
+    }
+} catch (e: Exception) {
+    // handle error
+}
+```
+</section>
 <div slot="title">React Native</div>
 <section>
 

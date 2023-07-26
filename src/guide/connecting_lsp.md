@@ -26,6 +26,35 @@ do {
 ```
 
 </section>
+<div slot="title">Adroid</div>
+<section>
+
+Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
+
+```kotlin
+try {
+    val lspId = sdk.lspId()
+    if (lspId != null) {
+        val lspInfo = sdk.fetchLspInfo(lspId)
+    } else {
+        // Handle no lsp id scenario
+    }
+} catch (e: Exception) {
+    // Handle error
+}
+```
+
+When you have selected an LSP you may then connect to it.
+
+```kotlin
+try {
+    sdk.connectLsp(lspId)
+} catch (e: Exception) {
+    // Handle error
+}
+```
+
+</section>
 <div slot="title">React Native</div>
 <section>
 

@@ -41,6 +41,27 @@ do {
 }
 ```
 </section>
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+// Endpoint can also be of the form:
+// lnurlp://domain.com/lnurl-pay?key=val
+// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7…
+val lnurlPayUrl = "lightning@address.com";
+try {
+    val inputType = parseInput(lnurlPayUrl)
+    if (inputType is InputType.LnUrlPay) {
+        val requestData = inputType.data
+        val amountSats = requestData.minSendable
+        val comment = "Any comment"
+        sdk.payLnurl(requestData, amountSats, comment)
+    }
+} catch (e: Exception) {
+    // handle error
+}
+```
+</section>
 <div slot="title">React Native</div>
 <section>
 
