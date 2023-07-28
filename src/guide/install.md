@@ -29,11 +29,11 @@ We recommend using our official Swift package: [breez/breez-sdk-swift](https://g
 We recommmend using the official npm package:
 
 ```console
-$ npm install https://github.com/breez/breez-sdk-react-native/releases/download/0.1.4/breeztech-react-native-breez-sdk-0.1.4.tgz
+npm install https://github.com/breez/breez-sdk-react-native/releases/download/0.1.4/breeztech-react-native-breez-sdk-0.1.4.tgz
 ```
 or
 ```console
-$ yarn add https://github.com/breez/breez-sdk-react-native/releases/download/0.1.4/breeztech-react-native-breez-sdk-0.1.4.tgz
+yarn add https://github.com/breez/breez-sdk-react-native/releases/download/0.1.4/breeztech-react-native-breez-sdk-0.1.4.tgz
 ```
 
 ## Go
@@ -41,12 +41,16 @@ $ yarn add https://github.com/breez/breez-sdk-react-native/releases/download/0.1
 We recommend using our official Go package: [breez/breez-sdk-go](https://github.com/breez/breez-sdk-go).
 
 ```console
-$ go get github.com/breez/breez-sdk-go
+go get github.com/breez/breez-sdk-go
 ```
 
 ## C#
 
-Currently c# is built from source only. Please visit the [sdk-bindings](https://github.com/breez/breez-sdk/tree/main/libs/sdk-bindings#c) project for instructions.
+We recommend using our official C# package: [Breez.Sdk](https://www.nuget.org/packages/Breez.Sdk).
+
+```console
+dotnet add package Breez.Sdk
+```
 
 ## rust
 
