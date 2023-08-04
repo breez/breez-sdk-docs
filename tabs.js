@@ -86,13 +86,14 @@
             this._boundOnTitleClick = this._onTitleClick.bind(this);
 
             tabsSlot.addEventListener('click', this._boundOnTitleClick);
-
+            document.addEventListener('mdbook-category-changed', this._onSiblingCategoryChanged.bind(this));
             this.selected = this._findFirstSelectedTab() || this._findStoredSelectedTab() || 0;
         }
 
         disconnectedCallback() {
             const tabsSlot = this.shadowRoot.querySelector('#tabsSlot');
             tabsSlot.removeEventListener('click', this._boundOnTitleClick);
+            document.removeEventListener('mdbook-category-changed', this._onSiblingCategoryChanged.bind(this));
         }
 
         _onTitleClick(e) {
@@ -130,18 +131,33 @@
             return selectedIdx;
         }
 
-        _selectTab(idx = null) {
+        _selectTab(idx = null, propagate = true) {
+            let category = this.getAttribute("category");
             for (let i = 0, tab; tab = this.tabs[i]; ++i) {
                 let select = i === idx;
                 tab.setAttribute('tabindex', select ? 0 : -1);
                 tab.setAttribute('aria-selected', select);
                 this.panels[i].setAttribute('aria-hidden', !select);
-                if (select && this.getAttribute("category") && tab.textContent) {
-                    try { localStorage.setItem('mdbook-tabs-' + this.getAttribute("category"), tab.textContent); } catch (e) { }
+                if (select && category && tab.textContent) {
+                    try { localStorage.setItem('mdbook-tabs-' + category, tab.textContent); } catch (e) { }
                 }
+            }
+
+            if (propagate) {
+              document.dispatchEvent(new CustomEvent(
+                'mdbook-category-changed', 
+                { detail: { category: category, idx: idx }}
+              ));
             }
         }
 
+        _onSiblingCategoryChanged(e) {
+            let category = this.getAttribute("category")
+            if (category === e.detail.category) {
+              this._selectTab(e.detail.idx, false);
+              this.setAttribute('selected', e.detail.idx);
+            }
+        }
     });
 
 })();
