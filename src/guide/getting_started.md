@@ -20,7 +20,7 @@ Breez SDK is available in several platforms. Follow the [Installing](install.md)
 <section>
 
 ## Connecting
-```rust,no_run
+```rust,ignore
 let mnemonic = Mnemonic::generate_in(Language::English, 12)?;
 let seed = mnemonic.to_seed("");
 let invite_code = Some("...".into());
@@ -51,7 +51,7 @@ let sdk = BreezServices::connect(
 
 At any point we can fetch our balance from the Greenlight node:
 
-```rust,no_run
+```rust,ignore
 if let Some(node_state) = sdk.node_info()? {
     let balance_ln = node_state.channels_balance_msat;
     let balance_onchain = node_state.onchain_balance_msat;

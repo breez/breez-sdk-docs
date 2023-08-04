@@ -8,7 +8,7 @@ First, fetch the current reverse swap fees:
 <div slot="title">Rust</div>
 <section>
 
-```rust,no_run
+```rust,ignore
 let current_fees = sdk.fetch_reverse_swap_fees().await?;
 
 info!("Percentage fee for the reverse swap service: {}", current_fees.fees_percentage);
@@ -22,14 +22,14 @@ of the total costs.
 
 Fetching the fees also tells you what is the range of amounts you can send:
 
-```rust,no_run
+```rust,ignore
 info!("Minimum amount, in sats: {}", current_fees.min);
 info!("Maximum amount, in sats: {}", current_fees.max);
 ```
 
 Once you checked the fees are acceptable, you can start the reverse swap:
 
-```rust,no_run
+```rust,ignore
 let destination_address = String::from("bc1..");
 let amount_sat = current_fees.min;
 
@@ -42,7 +42,7 @@ is either settled or cancelled. This will happen automatically at the end of the
 
 You can check its status with:
 
-```rust,no_run
+```rust,ignore
 for rs in sdk.in_progress_reverse_swaps().await? {
     info!("Reverse swap {} in progress, status is {}", rs.id, rs.status);
 }
