@@ -21,14 +21,18 @@ Breez SDK is available in several platforms. Follow the [Installing](install.md)
 
 ## Connecting
 ```rust,no_run
+let mnemonic = Mnemonic::generate_in(Language::English, 12)?;
+let seed = mnemonic.to_seed("");
+let invite_code = Some("...".into());
+
 // Create the default config
-let config = BreezServices::default_config(
+let mut config = BreezServices::default_config(
     EnvironmentType::Production,
     "your API key".into(),
     breez_sdk_core::NodeConfig::Greenlight {
         config: GreenlightNodeConfig {
             partner_credentials: None,
-            invite_code: None,
+            invite_code
         },
     },
 );
