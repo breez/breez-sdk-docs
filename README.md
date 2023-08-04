@@ -14,5 +14,5 @@ To locally serve the docs run:
 ```bash
 cargo install mdbook
 mdbook build
-mdbook serve
+mdbook serve --open
 ```
