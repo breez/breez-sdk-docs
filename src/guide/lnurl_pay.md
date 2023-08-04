@@ -145,7 +145,7 @@ catch (Exception)
 }
 ```
 </section>
-</custom-tab>
+</custom-tabs>
 
 ## Supported Specs
 - [LUD-01](https://github.com/lnurl/luds/blob/luds/01.md) LNURL bech32 encoding

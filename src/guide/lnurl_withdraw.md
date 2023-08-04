@@ -143,7 +143,7 @@ catch (Exception)
 }
 ```
 </section>
-</custom-tab>
+</custom-tabs>
 
 ## Supported Specs
 
