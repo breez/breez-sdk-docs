@@ -1,12 +1,17 @@
 # Receiving an on-chain transaction (swap-in)
 There are cases when you have funds in some bitcoin address and you would like to send those to your lightning node.
 
+In such cases, the SDK might have to open a new channel, for which case you can specify an optional user-selected dynamic fee.
+
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
 <section>
 
 ```rust,ignore
-let swap_info = sdk.receive_onchain().await?;
+// Optional user-selected dynamic fees
+let opening_fee_params = sdk.lsp_info().await?.opening_fee_params_list.values.get(0).cloned();
+
+let swap_info = sdk.receive_onchain( ReceiveOnchainRequest { opening_fee_params } ).await?;
 
 // Send your funds to the below bitcoin address
 let address = swap_info.bitcoin_address;
@@ -18,7 +23,12 @@ let address = swap_info.bitcoin_address;
 
 ```swift
 do {
-  let swapInfo = try sdk.receiveOnchain()
+  // Optional user-selected dynamic fees
+  let lsp_info = try sdk.lsp_info();
+  let opening_fee_params = lsp_info?.opening_fee_params_list.values.first();
+  let request = ReceiveOnchainRequest(opening_fee_params: opening_fee_params);
+
+  let swapInfo = try sdk.receiveOnchain(req: request)
 
   // Send your funds to the bellow bitcoin address
   let address = swapInfo.bitcoinAddress;
@@ -47,7 +57,13 @@ try {
 
 ```typescript
 try {
-    const swapInfo = await receiveOnchain()
+    // Optional user-selected dynamic fees
+    const id = await lspId()
+    const lspInfo = await fetchLspInfo(id)
+    const openingFeeParams = lspInfo.openingFeeParamsList.values[0]
+    const request = {openingFeeParams: openingFeeParams}
+
+    const swapInfo = await receiveOnchain(request)
 
     // Send your funds to the below bitcoin address
     const address = swapInfo.bitcoinAddress;
@@ -62,7 +78,12 @@ try {
 
 ```dart
 try {
-    SwapInfo swapInfo = await receiveOnchain();
+    // Optional user-selected dynamic fees
+    LspInformation lspInfo = await lspInfo();
+    OpeningFeeParams? openingFeeParams = lspInfo.opening_fee_params_list.values.first;
+    ReceiveOnchainRequest request = new ReceiveOnchainRequest(openingFeeParams);
+    
+    SwapInfo swapInfo = await receiveOnchain(request);
 
     // Send your funds to the below bitcoin address
     String address = swapInfo.bitcoinAddress;
@@ -77,7 +98,13 @@ try {
 
 ```python
 try: 
-    swap_info = sdk_services.receive_onchain()
+    # Optional user-selected dynamic fees
+    lsp_info = sdk_services.lsp_info()
+    opening_fee_params = lsp_info.opening_fee_params_list.values[0]
+    request = ReceiveOnchainRequest(opening_fee_params=opening_fee_params)
+
+    swap_info = sdk_services.receive_onchain(req=request)
+    
     # Send your funds to the below bitcoin address
     address = sdk_services.swap_info.bitcoin_address
 except Exception as error:
@@ -89,7 +116,13 @@ except Exception as error:
 <section>
 
 ```go
-if swapInfo, err := sdkServices.ReceiveOnchain(); err != nil {
+// Optional user-selected dynamic fees
+lspInfo, err := sdkServices.LspInfo()
+request := breez_sdk.ReceiveOnchainRequest{
+    OpeningFeeParams: &lspInfo.openingFeeParamsList.values[0],
+}
+
+if swapInfo, err := sdkServices.ReceiveOnchain(request); err != nil {
     // Send your funds to the below bitcoin address
     address := swapInfo.BitcoinAddress
 }
@@ -102,7 +135,12 @@ if swapInfo, err := sdkServices.ReceiveOnchain(); err != nil {
 ```cs
 try 
 {
-    var swapInfo = sdk.ReceiveOnchain();
+    // Optional user-selected dynamic fees
+    var lspInfo = sdk.LspInfo();
+    var openingFeeParams = lspInfo.openingFeeParamsList.values[0];
+    var request = new ReceiveOnchainRequest(openingFeeParams);
+
+    var swapInfo = sdk.ReceiveOnchain(request);
 
     // Send your funds to the below bitcoin address
     var address = swapInfo.bitcoinAddress;
