@@ -1,1 +1,382 @@
 # Sending an on-chain transaction (swap-out)
+
+You can send funds from the Breez SDK wallet to an on-chain address as follows.
+
+First, fetch the current reverse swap fees:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+let current_fees = sdk.fetch_reverse_swap_fees().await?;
+
+info!("Percentage fee for the reverse swap service: {}", current_fees.fees_percentage);
+info!("Estimated miner fees in sats for locking up funds: {}", current_fees.fees_lockup);
+info!("Estimated miner fees in sats for claiming funds: {}", current_fees.fees_claim);
+```
+
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```rust,ignore
+info!("Minimum amount, in sats: {}", current_fees.min);
+info!("Maximum amount, in sats: {}", current_fees.max);
+```
+
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```rust,ignore
+let destination_address = String::from("bc1..");
+let amount_sat = current_fees.min;
+
+sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash).await?;
+```
+
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```rust,ignore
+for rs in sdk.in_progress_reverse_swaps().await? {
+    info!("Reverse swap {} in progress, status is {}", rs.id, rs.status);
+}
+```
+</section>
+<div slot="title">Swift</div>
+<section>
+
+```swift
+try {
+  let currentFees = try sdk.fetchReverseSwapFees()
+
+  println("Percentage fee for the reverse swap service: \(currentFees.feesPercentage)")
+  println("Estimated miner fees in sats for locking up funds: \(currentFees.feesLockup)")
+  println("Estimated miner fees in sats for claiming funds: \(currentFees.feesClaim)")
+} catch {
+    // handle error
+}
+```
+
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```swift
+println("Minimum amount, in sats: \(current_fees.min)")
+println("Maximum amount, in sats: \(current_fees.max)")
+```
+
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```swift
+let destinationAddress = "bc1.."
+let amountSat = currentFees.min
+let satPerVbyte = <fee rate>
+try {
+  try sdk.sendOnchain(amountSat: amountSat, onchainRecipientAddress: destinationAddress, pairHash: currentFees.feesHash, satPerVbyte: satPerVbyte)
+} catch {
+    // handle error
+}
+```
+
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```swift
+for rs in sdk.inProgressReverseSwaps() {
+  println("Reverse swap \(rs.id) in progress, status is \(rs.status)")
+}
+```
+</section>
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+try {
+    const currentFees = await fetchReverseSwapFees()
+
+    console.log(`Percentage fee for the reverse swap service: ${currentFees.feesPercentage}`);
+    console.log(`Estimated miner fees in sats for locking up funds: ${currentFees.feesLockup}`);
+    console.log(`Estimated miner fees in sats for claiming funds: ${currentFees.feesClaim}`);
+} catch (error) {
+    console.log(error)
+}
+```
+
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```typescript
+console.log(`Minimum amount, in sats: ${currentFees.min}`);
+console.log(`Maximum amount, in sats: ${currentFees.max}`);
+```
+
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```typescript
+const destinationAddress = "bc1..";
+const amountSat = currentFees.min;
+const satPerVbyte = <fee rate>
+try {
+    const reverseSwapInfo = sendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte)
+} catch (error) {
+    console.log(error)
+}
+```
+
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```typescript
+try {
+    const swaps = await inProgressReverseSwaps()
+    for (const swap in swaps) {
+        println(`Reverse swap ${swap.id} in progress, status is ${swap.status}`);
+    }
+} catch (error) {
+    console.log(error)
+}
+```
+</section>
+<div slot="title">Dart</div>
+<section>
+
+```dart
+try {
+    ReverseSwapPairInfo currentFees = await fetchReverseSwapFees();
+
+    print(`Percentage fee for the reverse swap service: ${currentFees.feesPercentage}`);
+    print(`Estimated miner fees in sats for locking up funds: ${currentFees.feesLockup}`);
+    print(`Estimated miner fees in sats for claiming funds: ${currentFees.feesClaim}`);
+} catch (error) {
+    // handle error
+}
+```
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```dart
+print(`Minimum amount, in sats: ${currentFees.min}`);
+print(`Maximum amount, in sats: ${currentFees.max}`);
+```
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```dart
+String destinationAddress = "bc1..";
+int amountSat = currentFees.min;
+int satPerVbyte = <fee rate>
+try {
+    ReverseSwapInfo reverseSwapInfo = await sendOnchain(
+        amountSat: amountSat,
+        onchainRecipientAddress: destinationAddress,
+        pairHash: currentFees.feesHash,
+        satPerVbyte: satPerVbyte,
+    );
+} catch (error) {
+    // handle error
+}
+```
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```dart
+try {
+    List<ReverseSwapInfo> swaps = await inProgressReverseSwaps();
+    for (swap in swaps) {
+        print(`Reverse swap ${swap.id} in progress, status is ${swap.status}`);
+    }
+} catch (error) {
+    // handle error
+}
+```
+</section>
+<div slot="title">Python</div>
+<section>
+
+```python
+try: 
+  current_fees = sdk_services.fetch_reverse_swap_fees()
+  print("Percentage fee for the reverse swap service: ", current_fees.fees_percentage)
+  print("Estimated miner fees in sats for locking up funds: ", current_fees.fees_lockup)
+  print("Estimated miner fees in sats for claiming funds: ", current_fees.fees_claim)
+except Exception as error:
+    # Handle error
+```
+
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```python
+print("Minimum amount, in sats: ", current_fees.min)
+print("Maximum amount, in sats: ", current_fees.max)
+```
+
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```python
+destination_address = "bc1.."
+amount_sat = current_fees.min
+
+try:
+  sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash)
+except Exception as error:
+  # Handle erorr
+```
+
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```python
+try: 
+  reverse_swaps = sdk_services.in_progress_reverse_swaps()
+  for rs in reverse_swaps:
+    print("Reverse swap ",rs.id , " in progress, status is ", rs.status)
+except Exception as error:
+  # Handle erorr
+```
+</section>
+<div slot="title">Go</div>
+<section>
+
+```go
+if currentFees, err := sdkServices.FetchReverseSwapFees(); err != nil {
+    log.Printf("Percentage fee for the reverse swap service: %v", currentFees.FeesPercentage)
+    log.Printf("Estimated miner fees in sats for locking up funds: %v", currentFees.FeesLockup)
+    log.Printf("Estimated miner fees in sats for claiming funds: %v", currentFees.FeesClaim)
+}
+```
+
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```go
+log.Printf("Minimum amount, in sats: %v", currentFees.Min)
+log.Printf("Maximum amount, in sats: %v", currentFees.Max)
+```
+
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```go
+destinationAddress := "bc1.."
+amountSat := currentFees.Min
+satPerVbyte := <fee rate>
+
+reverseSwapInfo, err := sdkServices.SendOnchain(amountSat, destinationAddress, currentFees.FeesHash, satPerVbyte)
+```
+
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```go
+if swaps, err := sdkServices.InProgressReverseSwaps(); err != nil {
+    for _, swap := range swaps {
+        log.Printf("Reverse swap %v in progress, status is %v", swap.Id, swap.Status)
+    }
+}
+```
+</section>
+<div slot="title">C#</div>
+<section>
+
+```cs
+try
+{
+    var currentFees = sdk.FetchReverseSwapFees();
+    Console.WriteLine($"Percentage fee for the reverse swap service: {currentFees.feesPercentage}");
+    Console.WriteLine($"Estimated miner fees in sats for locking up funds: {currentFees.feesLockup}");
+    Console.WriteLine($"Estimated miner fees in sats for claiming funds: {currentFees.feesClaim}");
+}
+catch (Exception)
+{
+    // Handle error
+}
+```
+
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```cs
+Console.WriteLine($"Minimum amount, in sats: {currentFees.min}");
+Console.WriteLine($"Maximum amount, in sats: {currentFees.max}");
+```
+
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```cs
+var destinationAddress = "bc1..";
+var amountSat = currentFees.min;
+var satPerVbyte = <fee rate>;
+try 
+{
+    var reverseSwapInfo = sdk.SendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte);
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```cs
+try 
+{
+    var swaps = sdk.InProgressReverseSwaps();
+    foreach (var swap in swaps) {
+        Console.WriteLine($"Reverse swap {swap.id} in progress, status is {swap.status}`");
+    }
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+</section>
+</custom-tabs>
+If the reverse swap is successful, you'll get the on-chain payment on your destination address and the HODL invoice will
+change from pending to settled.
+
+If however something goes wrong at any point in the process, the initial HODL payment will be cancelled and the funds in
+your Breez SDK wallet will be unlocked.

@@ -1,8 +1,11 @@
 # LNURL-Auth
 
 ## Usage
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
 
-```rust,no_run
+```rust,ignore
 // Endpoint can also be of the form:
 // keyauth://domain.com/auth?key=val
 let lnurl_auth_url = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu";
@@ -21,7 +24,150 @@ if let Ok(LnUrlAuth{data: ad}) = parse(lnurl_auth_url).await {
     }
 }
 ```
+</section>
+<div slot="title">Swift</div>
+<section>
 
+```swift
+// Endpoint can also be of the form:
+// keyauth://domain.com/auth?key=val
+let lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu"
+
+do {
+ let inputType = try parseInput(s: lnurlAuthUrl)
+ if case .lnUrlAuth(let data) = inputType {
+   let result = try sdk.lnurlAuth(reqData: data)
+   switch result {
+   case .ok:
+     print("Successfully authenticated")
+   case .errorStatus(let data):
+     print("Failed to authenticate")
+   }
+ }
+} catch {
+    // handle error
+}
+```
+
+</section>
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+// Endpoint can also be of the form:
+// keyauth://domain.com/auth?key=val
+let lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu";
+
+try {
+    const input = await parseInput(lnurlAuthUrl)
+    if (input.type === InputType.LNURL_AUTH) {
+        const result = await lnurlAuth(input.data)
+        if (result.status === "ok") {
+            print("Successfully authenticated")
+        } else {
+            print("Failed to authenticate")
+        }
+    }    
+} catch (error) {
+    console.log(error)
+}
+```
+
+</section>
+<div slot="title">Dart</div>
+<section>
+
+```dart
+// Endpoint can also be of the form:
+// keyauth://domain.com/auth?key=val
+String lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu";
+
+try {
+    InputType inputType = await parse(s: lnurlAuthUrl);
+    if (inputType is InputType_LnUrlAuth) {
+        LnUrlCallbackStatus result = await lnurlAuth(reqData: inputType.data);
+        if (result is LnUrlCallbackStatus_Ok) {
+            print("Successfully authenticated");
+        } else {
+            print("Failed to authenticate");
+        }
+    }
+} catch (error) {
+    // handle error
+}
+```
+
+</section>
+<div slot="title">Python</div>
+<section>
+
+```python
+# Endpoint can also be of the form:
+# keyauth://domain.com/auth?key=val
+lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu"
+
+try:
+    parsed_input = breez_sdk.parse_input(lnurl_auth_url)     
+    if isinstance(parsed_input, breez_sdk.InputType.LN_URL_AUTH):         
+        result = sdk_services.lnurl_auth(parsed_input.data)        
+        if result.is_ok():
+            print("Successfully authenticated")
+        else:
+            print("Failed to authenticate")
+except Exception as error:
+    # Handle error
+```
+
+</section>
+<div slot="title">Go</div>
+<section>
+
+```go
+// Endpoint can also be of the form:
+// keyauth://domain.com/auth?key=val
+lnurlAuthUrl := "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu"
+
+if input, err := breez_sdk.ParseInput(lnurlAuthUrl); err != nil {
+    switch inputType := input.(type) {
+    case breez_sdk.InputTypeLnUrlAuth:
+        if result, err := sdkServices.LnurlAuth(inputType.Data); err != nil {
+            if (result.Status === "ok") {
+                log.Printf("Successfully authenticated")
+            } else {
+                log.Printf("Failed to authenticate")
+            }
+        }
+    }
+```
+</section>
+<div slot="title">C#</div>
+<section>
+
+```cs
+// Endpoint can also be of the form:
+// keyauth://domain.com/auth?key=val
+var lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu";
+
+try 
+{
+    var input = BreezSdkMethods.ParseInput(lnurlAuthUrl);
+    if (input is InputType.LnUrlAuth lnurla) {
+        var result = sdk.LnurlAuth(lnurla.data);
+        if (result is LnUrlCallbackStatus.Ok) {
+            Console.WriteLine("Successfully authenticated");
+        } else {
+            Console.WriteLine("Failed to authenticate");
+        }
+    }    
+} 
+catch (Exception) 
+{
+    // Handle error
+}
+```
+
+</section>
+</custom-tabs>
 
 ## Supported Specs
 
