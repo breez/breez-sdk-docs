@@ -22,7 +22,39 @@ dependencies {
 
 ## iOS
 
-We recommend using our official Swift package: [breez/breez-sdk-swift](https://github.com/breez/breez-sdk-swift).
+We support integration via the [Swift Package Manager](https://www.swift.org/package-manager/) and via [CocoaPods](https://cocoapods.org/).
+See [breez/breez-sdk-swift](https://github.com/breez/breez-sdk-swift) for more information.
+
+### Swift Package Manager
+
+#### Installation via Xcode
+
+Via `File > Add Packages...`, add
+
+```
+https://github.com/breez/breez-sdk-swift.git
+```
+
+as a package dependency in Xcode.
+
+#### Installation via Swift Package Manifest
+
+Add the following to the dependencies array of your `Package.swift`:
+
+``` swift
+.package(url: "https://github.com/breez/breez-sdk-swift.git", from: "<version>"),
+```
+
+### CocoaPods
+
+Add the Breez SDK to your `Podfile` like so:
+
+``` ruby
+target '<YourApp' do
+  use_frameworks!
+  pod 'BreezSDK'
+end
+```
 
 ## React Native
 
