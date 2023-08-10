@@ -11,6 +11,12 @@ The Breez SDK provides the following services:
 
 Connecting to a node requires a seed (your master key). The seed is a bip39 mnemonic.
 
+## API Key and Invite Code
+
+Before you start, you will need an API Key to use the SDK, as well as an Invite Code when you create a new node.
+
+To get both of them, please contact Breez via email at <contact@breez.technology> or at <https://breez.technology/#contact-us-form>
+
 ## Installing
 
 Breez SDK is available in several platforms. Follow the [Installing](install.md) page for instructions on how to install on your platform.
