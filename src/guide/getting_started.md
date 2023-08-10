@@ -21,11 +21,12 @@ To get both of them, please contact Breez via email at <contact@breez.technology
 
 Breez SDK is available in several platforms. Follow the [Installing](install.md) page for instructions on how to install on your platform.
 
+## Connecting
+
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
 <section>
 
-## Connecting
 ```rust,ignore
 let mnemonic = Mnemonic::generate_in(Language::English, 12)?;
 let seed = mnemonic.to_seed("");
@@ -55,21 +56,12 @@ let sdk = BreezServices::connect(
     .await?;
 ```
 
-At any point we can fetch our balance from the Greenlight node:
-
-```rust,ignore
-if let Some(node_state) = sdk.node_info()? {
-    let balance_ln = node_state.channels_balance_msat;
-    let balance_onchain = node_state.onchain_balance_msat;
-}
-```
 </section>
+
 <div slot="title">Swift</div>
 <section>
 
-## Connecting
 ```swift
-
 // SDK events listener
 class SDKListener: EventListener {
   func onEvent(e: BreezEvent) {
@@ -95,25 +87,12 @@ do {
 }
 ```
 
-At any point we can fetch our balance from the Greenlight node:
-
-```swift
-do {
-  let nodeInfo = try sdk.nodeInfo()
-  let lnBalance = nodeInfo?.channelsBalanceMsat
-  let onchainBalance = nodeInfo?.onchainBalanceMsat
-} catch {
-  // handle error
-}
-```
-
 </section>
+
 <div slot="title">React Native</div>
 <section>
 
-## Connecting
 ```typescript
-
 // SDK events listener
 addEventListener((type, data) => {
     console.log(`received event ${type}`);
@@ -141,22 +120,11 @@ try {
 }
 ```
 
-At any point we can fetch our balance from the Greenlight node:
-
-```typescript
-try {
-    const nodeInfo = await nodeInfo();
-    const lnBalance = nodeInfo.channelsBalanceMsat;
-    const onchainBalance = nodeInfo.onchainBalanceMsat;
-} catch (error) {
-    console.log(error)
-}
-```
 </section>
+
 <div slot="title">Dart</div>
 <section>
 
-## Connecting
 ```dart
 // SDK events listener
 breezEventsStream().listen((event) {
@@ -184,22 +152,11 @@ try {
    // handle error
 }
 ```
-At any point we can fetch our balance from the Greenlight node:
-
-```dart
-try {
-    NodeState? nodeInfo = await nodeInfo();    
-    int lnBalance = nodeInfo?.channelsBalanceMsat;
-    int onchainBalance = nodeInfo?.onchainBalanceMsat;
-} catch (error) {
-    // handle error
-}
-```
 </section>
+
 <div slot="title">Python</div>
 <section>
 
-## Connecting
 ```python
 # SDK events listener
 class SDKListener(breez_sdk.EventListener):
@@ -221,22 +178,11 @@ try:
 except Exception as error:
     # Handle error
 ```
-
-At any point we can fetch our balance from the Greenlight node:
-
-```python
-try: 
-    node_info = node_info()
-    ln_balance = node_info.channels_balance_msat
-    onchain_balance = node_info.onchain_balance_msat
-except Exception as error:
-    # Handle error
-```
 </section>
+
 <div slot="title">Go</div>
 <section>
 
-## Connecting
 ```go
 // SDK events listener
 type BreezListener struct{}
@@ -274,19 +220,11 @@ if err != nil {
     log.Fatalf("Connect failed: %#v", err)
 }
 ```
-At any point we can fetch our balance from the Greenlight node:
-
-```go
-if nodeInfo, err := sdkServices.NodeInfo(); err != nil {
-    lnBalance := nodeInfo.ChannelsBalanceMsat
-    onchainBalance := nodeInfo.OnchainBalanceMsat
-}
-```
 </section>
+
 <div slot="title">C#</div>
 <section>
 
-## Connecting
 ```cs
 using Breez.Sdk;
 
@@ -325,7 +263,91 @@ class SdkListener : EventListener
     }
 }
 ```
+</section>
+</custom-tabs>
+
 At any point we can fetch our balance from the Greenlight node:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+if let Some(node_state) = sdk.node_info()? {
+    let balance_ln = node_state.channels_balance_msat;
+    let balance_onchain = node_state.onchain_balance_msat;
+}
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift
+do {
+  let nodeInfo = try sdk.nodeInfo()
+  let lnBalance = nodeInfo?.channelsBalanceMsat
+  let onchainBalance = nodeInfo?.onchainBalanceMsat
+} catch {
+  // handle error
+}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+try {
+    const nodeInfo = await nodeInfo();
+    const lnBalance = nodeInfo.channelsBalanceMsat;
+    const onchainBalance = nodeInfo.onchainBalanceMsat;
+} catch (error) {
+    console.log(error)
+}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart
+try {
+    NodeState? nodeInfo = await nodeInfo();    
+    int lnBalance = nodeInfo?.channelsBalanceMsat;
+    int onchainBalance = nodeInfo?.onchainBalanceMsat;
+} catch (error) {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python
+try: 
+    node_info = node_info()
+    ln_balance = node_info.channels_balance_msat
+    onchain_balance = node_info.onchain_balance_msat
+except Exception as error:
+    # Handle error
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go
+if nodeInfo, err := sdkServices.NodeInfo(); err != nil {
+    lnBalance := nodeInfo.ChannelsBalanceMsat
+    onchainBalance := nodeInfo.OnchainBalanceMsat
+}
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
 
 ```cs
 try 
@@ -337,7 +359,6 @@ try
 catch (Exception) {
     // Handle error
 }
-
 ```
 </section>
 </custom-tabs>
