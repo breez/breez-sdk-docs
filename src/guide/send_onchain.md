@@ -99,6 +99,56 @@ for rs in sdk.inProgressReverseSwaps() {
 }
 ```
 </section>
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+try {
+    val fees = sdk.fetchReverseSwapFees()
+    Log.v("Breez", "Percentage fee for the reverse swap service: ${fees.feesPercentage}")
+    Log.v("Breez", "Estimated miner fees in sats for locking up funds: ${fees.feesLockup}")
+    Log.v("Breez", "Estimated miner fees in sats for claiming funds: ${fees.feesClaim}")
+} catch (e: Exception) {
+    // handle error
+}
+```
+
+The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
+automatically once the process is started, but the last two values above are these estimates to help you get a picture
+of the total costs.
+
+Fetching the fees also tells you what is the range of amounts you can send:
+
+```kotlin
+Log.v("Breez", "Minimum amount, in sats: ${fees.min}")
+Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
+```
+
+Once you checked the fees are acceptable, you can start the reverse swap:
+
+```kotlin
+val address = "bc1.."
+val amountSat = 123L.toULong()
+val satPerVbyte = 1L.toULong()
+try {
+    sdk.sendOnchain(amountSat, address, fees.feesHash, satPerVbyte)
+} catch (e: Exception) {
+    // handle error
+}
+```
+
+Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
+is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+You can check its status with:
+
+```kotlin
+for (rs in sdk.inProgressReverseSwaps()) {
+    Log.v("Breez", "Reverse swap ${rs.id} in progress, status is ${rs.status}")
+}
+```
+</section>
 <div slot="title">React Native</div>
 <section>
 

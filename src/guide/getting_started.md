@@ -89,6 +89,41 @@ do {
 
 </section>
 
+<div slot="title">Android</div>
+<section>
+
+## Connecting
+```kotlin
+// SDK events listener
+class SDKListener : EventListener {
+    override fun onEvent(e: BreezEvent) {
+        Log.v("SDKListener", "Received event $e")
+    }
+}
+
+// Select your seed, invite code and eviroment
+val seed = mnemonicToSeed("<mnemonics words>")
+val inviteCode = "your invite code"
+val environmentType = EnvironmentType.PRODUCTION
+
+// Create the default config
+val greenlightNodeConfig = GreenlightNodeConfig(null, inviteCode)
+val nodeConfig = NodeConfig.Greenlight(greenlightNodeConfig)
+val config = defaultConfig(environmentType, inviteCode, nodeConfig)
+
+// Customize the config object according to your needs
+config.workingDir = "path to an existing directory"
+
+try {
+    // Connect to the Breez SDK make it ready for use
+    val sdk = connect(config, seed, SDKListener())
+} catch (e: Exception) {
+    // handle error
+}
+```
+
+</section>
+
 <div slot="title">React Native</div>
 <section>
 
@@ -290,6 +325,20 @@ do {
   let onchainBalance = nodeInfo?.onchainBalanceMsat
 } catch {
   // handle error
+}
+```
+</section>
+
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+try {
+    val nodeInfo = sdk.nodeInfo()
+    val lnBalance = nodeInfo?.channelsBalanceMsat
+    val onchainBalance = nodeInfo?.onchainBalanceMsat
+} catch (e: Exception) {
+    // handle error
 }
 ```
 </section>

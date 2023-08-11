@@ -1,9 +1,59 @@
 # Supporting fiat currencies
 
 <custom-tabs category="lang">
+<div slot="title">Android</div>
+<section>
+In order to list the available fiat currencies.
+
+```kotlin
+try {
+    val fiatCurrencyList = sdk.listFiatCurrencies()
+} catch (e: Exception) {
+    // handle error
+}
+```
+
+To get the current BTC rate for the currencies.
+
+```kotlin
+try {
+    val fiatRatesMap = sdk.fetchFiatRates()
+} catch (e: Exception) {
+    // handle error
+}
+```
+
+At the example project you can see these methods combined
+
+```kotlin
+fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
+    val fiatCurrencies = sdk.listFiatCurrencies()
+    val fiatRates = sdk.fetchFiatRates()
+
+    val ratesMap = mutableMapOf<String, Rate>()
+    for (rate in fiatRates) {
+        ratesMap[rate.coin.lowercase()] = rate
+    }
+
+    val sorted = fiatCurrencies.sortedBy { it.info.name }
+    val result = LinkedHashMap<FiatCurrency, Rate>()
+    for (currency in sorted) {
+        val rate = ratesMap[currency.id.lowercase()]
+        if (rate != null) {
+            result[currency] = rate
+        }
+    }
+
+    result
+} catch (e: Throwable) {
+    // Handle error
+    emptyMap()
+}
+```
+</section>
 <div slot="title">React Native</div>
 <section>
-In order to list the availiable fiat currencies.
+In order to list the available fiat currencies.
 
 ```typescript
 try {
@@ -25,7 +75,7 @@ try {
 </section>
 <div slot="title">Dart</div>
 <section>
-In order to list the availiable fiat currencies.
+In order to list the available fiat currencies.
 
 ```dart
 try {
@@ -49,7 +99,7 @@ try {
 </section>
 <div slot="title">Python</div>
 <section>
-In order to list the availiable fiat currencies.
+In order to list the available fiat currencies.
 
 ```python
 try: 
@@ -71,7 +121,7 @@ except Exception as error:
 </section>
 <div slot="title">Go</div>
 <section>
-In order to list the availiable fiat currencies.
+In order to list the available fiat currencies.
 
 ```go
 fiatCurrencies, err := sdkServices.ListFiatCurrencies()
@@ -85,7 +135,7 @@ fiatRates, err := sdkServices.FetchFiatRates()
 </section>
 <div slot="title">C#</div>
 <section>
-In order to list the availiable fiat currencies.
+In order to list the available fiat currencies.
 
 ```cs
 try 

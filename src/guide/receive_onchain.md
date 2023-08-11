@@ -92,6 +92,57 @@ do {
 }
 ```
 </section>
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+try {
+    val swapInfo = sdk.receiveOnchain()
+    // Send your funds to the bellow bitcoin address
+    val address = swapInfo.bitcoinAddress
+} catch (e: Exception) {
+    // handle error
+}
+```
+
+Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
+
+```kotlin
+try {
+    val swapInfo = sdk.inProgressSwap()
+} catch (e: Exception) {
+    // handle error
+}
+```
+
+The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
+
+1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
+2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
+
+In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
+
+```kotlin
+try {
+    val refundables = sdk.listRefundables()
+} catch (e: Exception) {
+    // handle error
+}
+```
+
+Once you have a refundable swap in hand, use the following code to execute a refund:
+
+```kotlin
+val swapAddress = "..."
+val destinationAddress = "..."
+val satPerVbyte = 1.toUInt()
+try {
+    sdk.refund(swapAddress, destinationAddress, satPerVbyte)
+} catch (e: Exception) {
+    // handle error
+}
+```
+</section>
 <div slot="title">React Native</div>
 <section>
 
@@ -458,7 +509,59 @@ func calculateFeesForAmount(amountMsats: Int64) -> Int64? {
 ```
 
 </section>
+<div slot="title">Android</div>
+<section>
 
+When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
+
+To calculate the fees for a channel being opened by the LSP:
+
+```kotlin
+fun calculateChannelOpeningFee(amountMsats: Long): Long? {
+    val channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats)
+    if (channelOpeningFeeNeeded) {
+        return calculateFeesForAmount(amountMsats)
+    }
+    return null
+}
+```
+
+How to detect if open channel fees are needed:
+```kotlin
+fun isChannelOpeningFeeNeeded(amountMsats: Long): Boolean {
+    try {
+        val nodeInfo = sdk.nodeInfo()
+        val inboundLiquidityMsats = nodeInfo?.inboundLiquidityMsats?.toLong()
+        if (inboundLiquidityMsats != null) {
+            return inboundLiquidityMsats <= amountMsats
+        }
+    } catch (e: Exception) {
+        // Handle error
+    }
+    return false
+}
+```
+
+LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
+
+This information can be retrieved for each LSP and then calculated:
+
+```kotlin
+fun calculateFeesForAmount(amountMsats: Long): Long? {
+    try {
+        val lspId = sdk.lspId() ?: return null
+        val lspInfo = sdk.fetchLspInfo(lspId) ?: return null
+        // We calculate the dynamic fees in millisatoshis rounded to satoshis.
+        val channelDynamicFeeMsat = amountMsats * lspInfo.channelFeePermyriad / 1000
+        return lspInfo.channelMinimumFeeMsat.coerceAtLeast(channelDynamicFeeMsat)
+    } catch (e: Exception) {
+        // Handle error
+    }
+    return null
+}
+```
+
+</section>
 <div slot="title">React Native</div>
 <section>
 

@@ -2,24 +2,6 @@
 
 The Breez SDK is available in the following platforms:
 
-## Android
-
-We recommend integrating the Breez SDK as Gradle dependency from [our Maven repository](https://mvn.breez.technology/releases).
-
-To do so, add the following to your Gradle dependencies:
-
-```gradle
-repositories {
-  maven {
-      url("https://mvn.breez.technology/releases")
-  }
-}
-
-dependencies {
-  implementation("breez_sdk:bindings-android:<version>")
-}
-```
-
 ## iOS
 
 We support integration via the [Swift Package Manager](https://www.swift.org/package-manager/) and via [CocoaPods](https://cocoapods.org/).
@@ -55,6 +37,26 @@ target '<YourApp' do
   pod 'BreezSDK'
 end
 ```
+
+## Android
+
+We recommend integrating the Breez SDK as Gradle dependency from [our Maven repository](https://mvn.breez.technology/#/releases).
+
+To do so, add the following to your Gradle dependencies:
+
+```gradle
+repositories {
+  maven {
+      url("https://mvn.breez.technology/releases")
+  }
+}
+
+dependencies {
+  implementation("breez_sdk:bindings-android:<version>")
+}
+```
+
+See [the example](https://github.com/breez/breez-sdk/tree/main/libs/sdk-bindings/bindings-android/example) for more details
 
 ## React Native
 

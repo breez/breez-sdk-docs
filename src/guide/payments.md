@@ -60,6 +60,41 @@ do {
 }
 ```
 </section>
+<div slot="title">Android</div>
+<section>
+
+## Receiving Lightning Payments
+Breez SDK doesn't require you to open a channel and set up your inbound liquidity.
+Breez SDK automatically connects your node to the LSP peer and you can now receive payments:
+
+```kotlin
+try {
+    val invoice = sdk.receivePayment(3000L.toULong(), "Invoice for 3000 sats")
+} catch (e: Exception) {
+    // handle error
+}
+```
+
+## Sending Lightning Payments
+```kotlin
+val bolt11 = "..."
+try {
+    val payment = sdk.sendPayment(bolt11, 3000L.toULong())
+} catch (e: Exception) {
+    // handle error
+}
+```
+
+## Sending Spontaneous Lightning Payments
+```kotlin
+val nodeId = "..."
+try {
+    val payment = sdk.sendSpontaneousPayment(nodeId, 3000L.toULong())
+} catch (e: Exception) {
+    // handle error
+}
+```
+</section>
 <div slot="title">React Native</div>
 <section>
 
