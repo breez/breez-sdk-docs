@@ -20,8 +20,8 @@ if let Ok(LnUrlPay{data: pd}) = parse(lnurl_pay_url).await {
     sdk.lnurl_pay(amount_msat, Some(comment), pd).await?;
 }
 ```
-
 </section>
+
 <div slot="title">Swift</div>
 <section>
 
@@ -41,13 +41,14 @@ do {
 }
 ```
 </section>
+
 <div slot="title">Android</div>
 <section>
 
 ```kotlin
 // Endpoint can also be of the form:
 // lnurlp://domain.com/lnurl-pay?key=val
-// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7…
+// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
 val lnurlPayUrl = "lightning@address.com";
 try {
     val inputType = parseInput(lnurlPayUrl)
@@ -62,6 +63,7 @@ try {
 }
 ```
 </section>
+
 <div slot="title">React Native</div>
 <section>
 
@@ -82,6 +84,7 @@ try {
 }
 ```
 </section>
+
 <div slot="title">Dart</div>
 <section>
 
@@ -106,6 +109,7 @@ try {
 }
 ```
 </section>
+
 <div slot="title">Python</div>
 <section>
 
@@ -124,6 +128,7 @@ except Exception as error:
       # Handle error
 ```
 </section>
+
 <div slot="title">Go</div>
 <section>
 
@@ -143,6 +148,7 @@ if input, err := breez_sdk.ParseInput(lnurlPayUrl); err != nil {
 }
 ```
 </section>
+
 <div slot="title">C#</div>
 <section>
 

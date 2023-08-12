@@ -11,32 +11,8 @@ let swap_info = sdk.receive_onchain().await?;
 // Send your funds to the below bitcoin address
 let address = swap_info.bitcoin_address;
 ```
-
-Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
-
-```rust,ignore
-let swap_info = sdk.in_progress_swap().await?
-```
-
-The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
-
-1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
-2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
-
-In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
-
-```rust,ignore
-let refundables = sdk.list_refundables().await?
-```
-
-Once you have a refundable swap in hand, use the following code to execute a refund:
-
-```rust,ignore
-let destination_address = "...".into()
-let sat_per_vbyte = <refund tx fee rate>
-sdk.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte).await?
-```
 </section>
+
 <div slot="title">Swift</div>
 <section>
 
@@ -50,48 +26,8 @@ do {
     // handle error
 }
 ```
-
-Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
-
-```swift
-do {
-  let swapInfo = try sdk.inProgressSwap()
-} catch {
-    // handle error
-}
-```
-
-The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
-
-1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
-2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
-
-In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
-
-```swift
-do {
-  let refundables = try sdk.listRefundables()
-} catch {
-    // handle error
-}
-```
-
-Once you have a refundable swap in hand, use the following code to execute a refund:
-
-```swift
-let destinationAddress = "..."
-let satPerVbyte = <refund tx fee rate>
-
-do {
-  try sdk.refund(
-   swapAddress: "",
-   toAddress: destinationAddress,
-   satPerVbyte: satPerVbyte)
-} catch {
-    // handle error
-}
-```
 </section>
+
 <div slot="title">Android</div>
 <section>
 
@@ -104,45 +40,8 @@ try {
     // handle error
 }
 ```
-
-Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
-
-```kotlin
-try {
-    val swapInfo = sdk.inProgressSwap()
-} catch (e: Exception) {
-    // handle error
-}
-```
-
-The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
-
-1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
-2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
-
-In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
-
-```kotlin
-try {
-    val refundables = sdk.listRefundables()
-} catch (e: Exception) {
-    // handle error
-}
-```
-
-Once you have a refundable swap in hand, use the following code to execute a refund:
-
-```kotlin
-val swapAddress = "..."
-val destinationAddress = "..."
-val satPerVbyte = 1.toUInt()
-try {
-    sdk.refund(swapAddress, destinationAddress, satPerVbyte)
-} catch (e: Exception) {
-    // handle error
-}
-```
 </section>
+
 <div slot="title">React Native</div>
 <section>
 
@@ -156,44 +55,8 @@ try {
     console.log(error)
 }
 ```
-
-Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
-
-```typescript
-try {
-    const swapInfo = await inProgressSwap()
-} catch (error) {
-    console.log(error)
-}
-```
-
-The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
-
-1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
-2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
-
-In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
-
-```typescript
-try {
-    const refundables = await listRefundables()
-} catch (error) {
-    console.log(error)
-}
-```
-
-Once you have a refundable swap in hand, use the following code to execute a refund:
-
-```typescript
-const destinationAddress = "..."
-const satPerVbyte = <refund tx fee rate>
-try {
-    const result = await refund(refundable.bitcoinAddress, destinationAddress, satPerVbyte)
-} catch (error) {
-    console.log(error)
-}
-```
 </section>
+
 <div slot="title">Dart</div>
 <section>
 
@@ -207,46 +70,8 @@ try {
     // handle error
 }
 ```
-Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
-
-```dart
-try {
-    SwapInfo? swapInfo = await inProgressSwap()
-} catch (error) {
-    // handle error
-}
-```
-The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
-
-1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
-2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
-
-In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
-
-```dart
-try {
-    List<SwapInfo> refundables = await listRefundables()
-} catch (error) {
-     // handle error
-}
-```
-
-Once you have a refundable swap in hand, use the following code to execute a refund:
-
-```dart
-String destinationAddress = "..."
-int satPerVbyte = <refund tx fee rate>
-try {
-    String result = await refund(
-        swapAddress: refundable.bitcoinAddress,
-        toAddress: destinationAddress,
-        satPerVbyte: satPerVbyte,
-     );
-} catch (error) {
-     // handle error
-}
-```
 </section>
+
 <div slot="title">Python</div>
 <section>
 
@@ -258,45 +83,8 @@ try:
 except Exception as error:
     # Handle error
 ```
-
-Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
-
-```python
-try:
-    swap_info = sdk_services.in_progress_swap()
-except Exception as error:
-    # Handle error
-```
-
-The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
-
-1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
-2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
-
-In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
-
-
-Once you have a refundable swap in hand, use the following code to execute a refund:
-
-```python
-try:
-    refundables = sdk_services.list_refundables()
-except Exception as error:
-    # Handle error
-```
-
-Once you have a refundable swap in hand, use the follwing code to execute a refund:
-
-```python
-destination_address = "..."
-sat_per_vbyte = <refund tx fee rate>
-
-try:
-    sdk_services.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte)
-except Exception as error:
-    # Handle error
-```
 </section>
+
 <div slot="title">Go</div>
 <section>
 
@@ -306,33 +94,8 @@ if swapInfo, err := sdkServices.ReceiveOnchain(); err != nil {
     address := swapInfo.BitcoinAddress
 }
 ```
-
-Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
-
-```go
-swapInfo, err := sdkServices.InProgressSwap()
-```
-
-The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
-
-1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
-2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
-
-In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
-
-```go
-refundables, err := sdkServices.ListRefundables()
-```
-
-Once you have a refundable swap in hand, use the follwing code to execute a refund:
-
-```go
-destinationAddress := "..."
-satPerVbyte := <refund tx fee rate>
-
-result, err := sdkServices.Refund(refundable.BitcoinAddress, destinationAddress, satPerVbyte)
-```
 </section>
+
 <div slot="title">C#</div>
 <section>
 
@@ -349,8 +112,89 @@ catch (Exception)
     // Handle error
 }
 ```
+</section>
+</custom-tabs>
 
 Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+let swap_info = sdk.in_progress_swap().await?
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift
+do {
+  let swapInfo = try sdk.inProgressSwap()
+} catch {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+try {
+    val swapInfo = sdk.inProgressSwap()
+} catch (e: Exception) {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+try {
+    const swapInfo = await inProgressSwap()
+} catch (error) {
+    console.log(error)
+}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart
+try {
+    SwapInfo? swapInfo = await inProgressSwap()
+} catch (error) {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python
+try:
+    swap_info = sdk_services.in_progress_swap()
+except Exception as error:
+    # Handle error
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go
+swapInfo, err := sdkServices.InProgressSwap()
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
 
 ```cs
 try 
@@ -362,6 +206,8 @@ catch (Exception)
     // Handle error
 }
 ```
+</section>
+</custom-tabs>
 
 The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
 
@@ -369,6 +215,85 @@ The process of receiving funds via an on-chain address is trustless and uses a s
 2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
 
 In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+let refundables = sdk.list_refundables().await?
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift
+do {
+  let refundables = try sdk.listRefundables()
+} catch {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+try {
+    val refundables = sdk.listRefundables()
+} catch (e: Exception) {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+try {
+    const refundables = await listRefundables()
+} catch (error) {
+    console.log(error)
+}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart
+try {
+    List<SwapInfo> refundables = await listRefundables()
+} catch (error) {
+     // handle error
+}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python
+try:
+    refundables = sdk_services.list_refundables()
+except Exception as error:
+    # Handle error
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go
+refundables, err := sdkServices.ListRefundables()
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
 
 ```cs
 try 
@@ -380,8 +305,114 @@ catch (Exception)
     // Handle error
 }
 ```
+</section>
+</custom-tabs>
 
 Once you have a refundable swap in hand, use the following code to execute a refund:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+let destination_address = "...".into()
+let sat_per_vbyte = <refund tx fee rate>
+sdk.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte).await?
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift
+let destinationAddress = "..."
+let satPerVbyte = <refund tx fee rate>
+
+do {
+  try sdk.refund(
+   swapAddress: "",
+   toAddress: destinationAddress,
+   satPerVbyte: satPerVbyte)
+} catch {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+val swapAddress = "..."
+val destinationAddress = "..."
+val satPerVbyte = 1.toUInt()
+try {
+    sdk.refund(swapAddress, destinationAddress, satPerVbyte)
+} catch (e: Exception) {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+const destinationAddress = "..."
+const satPerVbyte = <refund tx fee rate>
+try {
+    const result = await refund(refundable.bitcoinAddress, destinationAddress, satPerVbyte)
+} catch (error) {
+    console.log(error)
+}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart
+String destinationAddress = "..."
+int satPerVbyte = <refund tx fee rate>
+try {
+    String result = await refund(
+        swapAddress: refundable.bitcoinAddress,
+        toAddress: destinationAddress,
+        satPerVbyte: satPerVbyte,
+     );
+} catch (error) {
+     // handle error
+}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python
+destination_address = "..."
+sat_per_vbyte = <refund tx fee rate>
+
+try:
+    sdk_services.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte)
+except Exception as error:
+    # Handle error
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go
+destinationAddress := "..."
+satPerVbyte := <refund tx fee rate>
+
+result, err := sdkServices.Refund(refundable.BitcoinAddress, destinationAddress, satPerVbyte)
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
 
 ```cs
 var destinationAddress = "...";
@@ -400,14 +431,13 @@ catch (Exception)
 
 # Calculating fees
 
-<custom-tabs category="lang">
-
-<div slot="title">Rust</div>
-<section>
-
 When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
 
 To calculate the fees for a channel being opened by the LSP:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
 
 ```rust,ignore
 async fn calculate_channel_opening_fee(amount_msat: u64) -> Result<u64> {
@@ -418,18 +448,238 @@ async fn calculate_channel_opening_fee(amount_msat: u64) -> Result<u64> {
     }
 }
 ```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift 
+func calculateChannelOpeningFee(amountMsats: Int64) -> Int64? {
+    var channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats: amountMsats)
+    if channelOpeningFeeNeeded {
+        return calculateFeesForAmount(amountMsats: amountMsats)
+    }
+    return nil
+}
+```
+</section>
+
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+fun calculateChannelOpeningFee(amountMsats: Long): Long? {
+    val channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats)
+    if (channelOpeningFeeNeeded) {
+        return calculateFeesForAmount(amountMsats)
+    }
+    return null
+}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript 
+const calculateChannelOpeningFee = async (amountMsats: number): number => {
+    const channelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountMsats)
+    if (channelOpeningFeeNeeded) {
+        return calculateFeesForAmount(amountMsats)
+    }
+    return 0
+}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart
+int calculateChannelOpeningFee(int amountMsat) async {
+    bool isChannelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountMsat);
+    return isChannelOpeningFeeNeeded ? calculateFeesForAmount(amountMsat) : 0;
+} 
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python
+def calculate_channel_opening_fees(amount_msats):
+    is_channel_opening_fee_needed = is_channel_opening_fee_needed()
+
+    if is_channel_opening_fee_needed:
+        return calculate_fees_for_amount(amount_msats)
+    else: 
+        return None
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go
+func CalculateChannelOpeningFee(amountMsats uint64) (uint64, error) {
+	isChannelOpeningFeeNeeded := isChannelOpeningFeeNeeded(amountMsats)
+	if !isChannelOpeningFeeNeeded {
+        return 0, fmt.Errorf("Channel not needed")
+	}
+	return calculateFeesForAmount(amountMsats), nil
+}
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
+
+```cs 
+ulong calculateChannelOpeningFee(ulong amountMsats) 
+{
+    var channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats);
+    if (channelOpeningFeeNeeded) 
+    {
+        return calculateFeesForAmount(amountMsats);
+    }
+    return 0;
+}
+```
+</section>
+</custom-tabs>
 
 How to detect if open channel fees are needed:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
 ```rust,ignore
 fn is_channel_opening_fee_needed(amount_msats: u64) -> Result<bool> {
     let node_info = sdk.node_info()?.ok_or(anyhow!("No node info found"))?;
     Ok(node_info.inbound_liquidity_msats <= amount_msats)
 }
 ```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift 
+func isChannelOpeningFeeNeeded(amountMsats: Int64) -> Bool {
+    do {
+        let nodeInfo = try sdk.nodeInfo()
+
+        if let inboundLiquidityMsats = nodeInfo?.inboundLiquidityMsats {
+            return inboundLiquidityMsats <= amountMsats
+        }   
+    } catch {
+        // Handle error
+    }
+    return false
+}
+```
+</section>
+
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+fun isChannelOpeningFeeNeeded(amountMsats: Long): Boolean {
+    try {
+        val nodeInfo = sdk.nodeInfo()
+        val inboundLiquidityMsats = nodeInfo?.inboundLiquidityMsats?.toLong()
+        if (inboundLiquidityMsats != null) {
+            return inboundLiquidityMsats <= amountMsats
+        }
+    } catch (e: Exception) {
+        // Handle error
+    }
+    return false
+}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+const isChannelOpeningFeeNeeded = async (amountMsats: number): boolean => {
+    try {
+        const nodeInfo = await nodeInfo()
+        return nodeInfo.inboundLiquidityMsats <= amountMsats            
+    } catch (error) {
+        // handle error
+    }
+    return false
+}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart
+// Assumes nodeState isn't empty
+bool isChannelOpeningFeeNeeded(int amountMsat) async {
+    NodeState? nodeState = await getNodeState();
+    return amountMsat >= nodeState.inboundLiquidityMsats;
+}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python
+def is_channel_opening_fee_needed(amount_msats):
+    return sdk_services.node_info().inbound_liquidity_msats <= amount_msats
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go
+func isChannelOpeningFeeNeeded(amountMsats uint64) bool {
+	nodeInfo, err := sdkServices.NodeInfo()
+	if err != nil {
+        // Handle error
+	}
+	return nodeInfo.InboundLiquidityMsats <= amountMsats 
+}
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
+
+```cs
+bool isChannelOpeningFeeNeeded(ulong amountMsats) 
+{
+    try 
+    {
+        var nodeInfo = sdk.NodeInfo();
+        return nodeInfo.inboundLiquidityMsats <= amountMsats;         
+    } 
+    catch (Exception) 
+    {
+        // handle error
+    }
+
+    return false;
+}
+```
+</section>
+</custom-tabs>
 
 LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
 
 This information can be retrieved for each LSP and then calculated:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
 
 ```rust,ignore
 async fn calculate_fees_for_amount(amount_msat: u64) -> Result<u64> {
@@ -449,45 +699,10 @@ async fn calculate_fees_for_amount(amount_msat: u64) -> Result<u64> {
     Ok(fee_msat)
 }
 ```
-
 </section>
 
 <div slot="title">Swift</div>
 <section>
-
-When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
-
-To calculate the fees for a channel being opened by the LSP:
-
-```swift 
-func calculateChannelOpeningFee(amountMsats: Int64) -> Int64? {
-    var channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats: amountMsats)
-    if channelOpeningFeeNeeded {
-        return calculateFeesForAmount(amountMsats: amountMsats)
-    }
-    return nil
-}
-```
-
-How to detect if open channel fees are needed:
-```swift 
-func isChannelOpeningFeeNeeded(amountMsats: Int64) -> Bool {
-    do {
-        let nodeInfo = try sdk.nodeInfo()
-
-        if let inboundLiquidityMsats = nodeInfo?.inboundLiquidityMsats {
-            return inboundLiquidityMsats <= amountMsats
-        }   
-    } catch {
-        // Handle error
-    }
-    return false
-}
-```
-
-LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
-
-This information can be retrieved for each LSP and then calculated:
 
 ```swift 
 func calculateFeesForAmount(amountMsats: Int64) -> Int64? {
@@ -507,44 +722,10 @@ func calculateFeesForAmount(amountMsats: Int64) -> Int64? {
     return nil
 }
 ```
-
 </section>
+
 <div slot="title">Android</div>
 <section>
-
-When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
-
-To calculate the fees for a channel being opened by the LSP:
-
-```kotlin
-fun calculateChannelOpeningFee(amountMsats: Long): Long? {
-    val channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats)
-    if (channelOpeningFeeNeeded) {
-        return calculateFeesForAmount(amountMsats)
-    }
-    return null
-}
-```
-
-How to detect if open channel fees are needed:
-```kotlin
-fun isChannelOpeningFeeNeeded(amountMsats: Long): Boolean {
-    try {
-        val nodeInfo = sdk.nodeInfo()
-        val inboundLiquidityMsats = nodeInfo?.inboundLiquidityMsats?.toLong()
-        if (inboundLiquidityMsats != null) {
-            return inboundLiquidityMsats <= amountMsats
-        }
-    } catch (e: Exception) {
-        // Handle error
-    }
-    return false
-}
-```
-
-LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
-
-This information can be retrieved for each LSP and then calculated:
 
 ```kotlin
 fun calculateFeesForAmount(amountMsats: Long): Long? {
@@ -560,41 +741,10 @@ fun calculateFeesForAmount(amountMsats: Long): Long? {
     return null
 }
 ```
-
 </section>
+
 <div slot="title">React Native</div>
 <section>
-
-When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
-
-To calculate the fees for a channel being opened by the LSP:
-
-```typescript 
-const calculateChannelOpeningFee = async (amountMsats: number): number => {
-    const channelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountMsats)
-    if (channelOpeningFeeNeeded) {
-        return calculateFeesForAmount(amountMsats)
-    }
-    return 0
-}
-```
-
-How to detect if open channel fees are needed:
-```typescript
-const isChannelOpeningFeeNeeded = async (amountMsats: number): boolean => {
-    try {
-        const nodeInfo = await nodeInfo()
-        return nodeInfo.inboundLiquidityMsats <= amountMsats            
-    } catch (error) {
-        // handle error
-    }
-    return false
-}
-```
-
-LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
-
-This information can be retrieved for each LSP and then calculated:
 
 ```typescript 
 const calculateFeesForAmount = async (amountMsats: number): number => {
@@ -613,36 +763,10 @@ const calculateFeesForAmount = async (amountMsats: number): number => {
     return 0
 }
 ```
-
 </section>
 
 <div slot="title">Dart</div>
 <section>
-
-When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
-
-To calculate the fees for a channel being opened by the LSP:
-
-```dart
-int calculateChannelOpeningFee(int amountMsat) async {
-    bool isChannelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountMsat);
-    return isChannelOpeningFeeNeeded ? calculateFeesForAmount(amountMsat) : 0;
-} 
-```
-
-How to detect if open channel fees are needed:
-
-```dart
-// Assumes nodeState isn't empty
-bool isChannelOpeningFeeNeeded(int amountMsat) async {
-    NodeState? nodeState = await getNodeState();
-    return amountMsat >= nodeState.inboundLiquidityMsats;
-}
-```
-
-LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
-
-This information can be retrieved for each LSP and then calculated:
 
 ```dart
 // Assumes lspId & lspInformation isn't empty
@@ -657,34 +781,8 @@ int calculateFeesForAmount(int amountMsat) async {
 ```
 </section>
 
-
 <div slot="title">Python</div>
 <section>
-
-When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
-
-To calculate the fees for a channel being opened by the LSP:
-
-```python
-def calculate_channel_opening_fees(amount_msats):
-    is_channel_opening_fee_needed = is_channel_opening_fee_needed()
-
-    if is_channel_opening_fee_needed:
-        return calculate_fees_for_amount(amount_msats)
-    else: 
-        return None
-```
-
-How to detect if open channel fees are needed:
-
-```python
-def is_channel_opening_fee_needed(amount_msats):
-    return sdk_services.node_info().inbound_liquidity_msats <= amount_msats
-```
-
-LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
-
-This information can be retrieved for each LSP and then calculated:
 
 ```python
 def calculate_fees_for_amount(amount_msats):
@@ -703,35 +801,6 @@ def calculate_fees_for_amount(amount_msats):
 
 <div slot="title">Go</div>
 <section>
-
-When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
-
-To calculate the fees for a channel being opened by the LSP:
-
-```go
-func CalculateChannelOpeningFee(amountMsats uint64) (uint64, error) {
-	isChannelOpeningFeeNeeded := isChannelOpeningFeeNeeded(amountMsats)
-	if !isChannelOpeningFeeNeeded {
-        return 0, fmt.Errorf("Channel not needed")
-	}
-	return calculateFeesForAmount(amountMsats), nil
-}
-```
-
-How to detect if open channel fees are needed:
-```go
-func isChannelOpeningFeeNeeded(amountMsats uint64) bool {
-	nodeInfo, err := sdkServices.NodeInfo()
-	if err != nil {
-        // Handle error
-	}
-	return nodeInfo.InboundLiquidityMsats <= amountMsats 
-}
-```
-
-LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
-
-This information can be retrieved for each LSP and then calculated:
 
 ```go
 func calculateFeesForAmount(amountMsats uint64) uint64 {
@@ -756,50 +825,12 @@ func calculateFeesForAmount(amountMsats uint64) uint64 {
     return feeMsats
 }
 ```
-
 </section>
+
 <div slot="title">C#</div>
 <section>
 
-When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
-
-To calculate the fees for a channel being opened by the LSP:
-
 ```cs 
-ulong calculateChannelOpeningFee(ulong amountMsats) 
-{
-    var channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats);
-    if (channelOpeningFeeNeeded) 
-    {
-        return calculateFeesForAmount(amountMsats);
-    }
-    return 0;
-}
-```
-
-How to detect if open channel fees are needed:
-```typescript
-bool isChannelOpeningFeeNeeded(ulong amountMsats) 
-{
-    try 
-    {
-        var nodeInfo = sdk.NodeInfo();
-        return nodeInfo.inboundLiquidityMsats <= amountMsats;         
-    } 
-    catch (Exception) 
-    {
-        // handle error
-    }
-
-    return false;
-}
-```
-
-LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
-
-This information can be retrieved for each LSP and then calculated:
-
-```typescript 
 ulong calculateFeesForAmount(ulong amountMsats)
 {
     try 
@@ -821,6 +852,5 @@ ulong calculateFeesForAmount(ulong amountMsats)
     return 0;
 }
 ```
-
 </section>
 </custom-tabs>

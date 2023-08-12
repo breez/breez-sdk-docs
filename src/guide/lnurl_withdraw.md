@@ -13,7 +13,6 @@
 let lnurl_withdraw_url = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk";
 
 if let Ok(LnUrlWithdraw{data: wd}) = parse(lnurl_withdraw_url).await {
-    // TODO Determine withdraw amount
     let amount_msat = wd.min_withdrawable;
     let description = "Test withdraw".to_string();
     
@@ -21,6 +20,7 @@ if let Ok(LnUrlWithdraw{data: wd}) = parse(lnurl_withdraw_url).await {
 }
 ```
 </section>
+
 <div slot="title">Swift</div>
 <section>
 
@@ -39,9 +39,9 @@ do {
 } catch {
     // handle error
 }
-
 ```
 </section>
+
 <div slot="title">Android</div>
 <section>
 
@@ -63,6 +63,7 @@ try {
 }
 ```
 </section>
+
 <div slot="title">React Native</div>
 <section>
 
@@ -82,6 +83,7 @@ try {
 }
 ```
 </section>
+
 <div slot="title">Dart</div>
 <section>
 
@@ -105,6 +107,7 @@ try {
 }
 ```
 </section>
+
 <div slot="title">Python</div>
 <section>
 
@@ -122,6 +125,7 @@ except Exception as error:
       # Handle error
 ```
 </section>
+
 <div slot="title">Go</div>
 <section>
 
@@ -140,6 +144,7 @@ if input, err := breez_sdk.ParseInput(lnurlWithdrawUrl); err != nil {
 }
 ```
 </section>
+
 <div slot="title">C#</div>
 <section>
 

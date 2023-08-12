@@ -15,39 +15,8 @@ info!("Percentage fee for the reverse swap service: {}", current_fees.fees_perce
 info!("Estimated miner fees in sats for locking up funds: {}", current_fees.fees_lockup);
 info!("Estimated miner fees in sats for claiming funds: {}", current_fees.fees_claim);
 ```
-
-The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
-automatically once the process is started, but the last two values above are these estimates to help you get a picture
-of the total costs.
-
-Fetching the fees also tells you what is the range of amounts you can send:
-
-```rust,ignore
-info!("Minimum amount, in sats: {}", current_fees.min);
-info!("Maximum amount, in sats: {}", current_fees.max);
-```
-
-Once you checked the fees are acceptable, you can start the reverse swap:
-
-```rust,ignore
-let destination_address = String::from("bc1..");
-let amount_sat = current_fees.min;
-
-sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash).await?;
-```
-
-Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
-This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
-is either settled or cancelled. This will happen automatically at the end of the reverse swap.
-
-You can check its status with:
-
-```rust,ignore
-for rs in sdk.in_progress_reverse_swaps().await? {
-    info!("Reverse swap {} in progress, status is {}", rs.id, rs.status);
-}
-```
 </section>
+
 <div slot="title">Swift</div>
 <section>
 
@@ -62,43 +31,8 @@ try {
     // handle error
 }
 ```
-
-The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
-automatically once the process is started, but the last two values above are these estimates to help you get a picture
-of the total costs.
-
-Fetching the fees also tells you what is the range of amounts you can send:
-
-```swift
-println("Minimum amount, in sats: \(current_fees.min)")
-println("Maximum amount, in sats: \(current_fees.max)")
-```
-
-Once you checked the fees are acceptable, you can start the reverse swap:
-
-```swift
-let destinationAddress = "bc1.."
-let amountSat = currentFees.min
-let satPerVbyte = <fee rate>
-try {
-  try sdk.sendOnchain(amountSat: amountSat, onchainRecipientAddress: destinationAddress, pairHash: currentFees.feesHash, satPerVbyte: satPerVbyte)
-} catch {
-    // handle error
-}
-```
-
-Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
-This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
-is either settled or cancelled. This will happen automatically at the end of the reverse swap.
-
-You can check its status with:
-
-```swift
-for rs in sdk.inProgressReverseSwaps() {
-  println("Reverse swap \(rs.id) in progress, status is \(rs.status)")
-}
-```
 </section>
+
 <div slot="title">Android</div>
 <section>
 
@@ -112,43 +46,8 @@ try {
     // handle error
 }
 ```
-
-The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
-automatically once the process is started, but the last two values above are these estimates to help you get a picture
-of the total costs.
-
-Fetching the fees also tells you what is the range of amounts you can send:
-
-```kotlin
-Log.v("Breez", "Minimum amount, in sats: ${fees.min}")
-Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
-```
-
-Once you checked the fees are acceptable, you can start the reverse swap:
-
-```kotlin
-val address = "bc1.."
-val amountSat = 123L.toULong()
-val satPerVbyte = 1L.toULong()
-try {
-    sdk.sendOnchain(amountSat, address, fees.feesHash, satPerVbyte)
-} catch (e: Exception) {
-    // handle error
-}
-```
-
-Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
-This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
-is either settled or cancelled. This will happen automatically at the end of the reverse swap.
-
-You can check its status with:
-
-```kotlin
-for (rs in sdk.inProgressReverseSwaps()) {
-    Log.v("Breez", "Reverse swap ${rs.id} in progress, status is ${rs.status}")
-}
-```
 </section>
+
 <div slot="title">React Native</div>
 <section>
 
@@ -163,48 +62,8 @@ try {
     console.log(error)
 }
 ```
-
-The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
-automatically once the process is started, but the last two values above are these estimates to help you get a picture
-of the total costs.
-
-Fetching the fees also tells you what is the range of amounts you can send:
-
-```typescript
-console.log(`Minimum amount, in sats: ${currentFees.min}`);
-console.log(`Maximum amount, in sats: ${currentFees.max}`);
-```
-
-Once you checked the fees are acceptable, you can start the reverse swap:
-
-```typescript
-const destinationAddress = "bc1..";
-const amountSat = currentFees.min;
-const satPerVbyte = <fee rate>
-try {
-    const reverseSwapInfo = sendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte)
-} catch (error) {
-    console.log(error)
-}
-```
-
-Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
-This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
-is either settled or cancelled. This will happen automatically at the end of the reverse swap.
-
-You can check its status with:
-
-```typescript
-try {
-    const swaps = await inProgressReverseSwaps()
-    for (const swap in swaps) {
-        println(`Reverse swap ${swap.id} in progress, status is ${swap.status}`);
-    }
-} catch (error) {
-    console.log(error)
-}
-```
 </section>
+
 <div slot="title">Dart</div>
 <section>
 
@@ -219,50 +78,8 @@ try {
     // handle error
 }
 ```
-The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
-automatically once the process is started, but the last two values above are these estimates to help you get a picture
-of the total costs.
-
-Fetching the fees also tells you what is the range of amounts you can send:
-
-```dart
-print(`Minimum amount, in sats: ${currentFees.min}`);
-print(`Maximum amount, in sats: ${currentFees.max}`);
-```
-Once you checked the fees are acceptable, you can start the reverse swap:
-
-```dart
-String destinationAddress = "bc1..";
-int amountSat = currentFees.min;
-int satPerVbyte = <fee rate>
-try {
-    ReverseSwapInfo reverseSwapInfo = await sendOnchain(
-        amountSat: amountSat,
-        onchainRecipientAddress: destinationAddress,
-        pairHash: currentFees.feesHash,
-        satPerVbyte: satPerVbyte,
-    );
-} catch (error) {
-    // handle error
-}
-```
-Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
-This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
-is either settled or cancelled. This will happen automatically at the end of the reverse swap.
-
-You can check its status with:
-
-```dart
-try {
-    List<ReverseSwapInfo> swaps = await inProgressReverseSwaps();
-    for (swap in swaps) {
-        print(`Reverse swap ${swap.id} in progress, status is ${swap.status}`);
-    }
-} catch (error) {
-    // handle error
-}
-```
 </section>
+
 <div slot="title">Python</div>
 <section>
 
@@ -275,45 +92,8 @@ try:
 except Exception as error:
     # Handle error
 ```
-
-The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
-automatically once the process is started, but the last two values above are these estimates to help you get a picture
-of the total costs.
-
-Fetching the fees also tells you what is the range of amounts you can send:
-
-```python
-print("Minimum amount, in sats: ", current_fees.min)
-print("Maximum amount, in sats: ", current_fees.max)
-```
-
-Once you checked the fees are acceptable, you can start the reverse swap:
-
-```python
-destination_address = "bc1.."
-amount_sat = current_fees.min
-
-try:
-  sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash)
-except Exception as error:
-  # Handle erorr
-```
-
-Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
-This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
-is either settled or cancelled. This will happen automatically at the end of the reverse swap.
-
-You can check its status with:
-
-```python
-try: 
-  reverse_swaps = sdk_services.in_progress_reverse_swaps()
-  for rs in reverse_swaps:
-    print("Reverse swap ",rs.id , " in progress, status is ", rs.status)
-except Exception as error:
-  # Handle erorr
-```
 </section>
+
 <div slot="title">Go</div>
 <section>
 
@@ -324,42 +104,8 @@ if currentFees, err := sdkServices.FetchReverseSwapFees(); err != nil {
     log.Printf("Estimated miner fees in sats for claiming funds: %v", currentFees.FeesClaim)
 }
 ```
-
-The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
-automatically once the process is started, but the last two values above are these estimates to help you get a picture
-of the total costs.
-
-Fetching the fees also tells you what is the range of amounts you can send:
-
-```go
-log.Printf("Minimum amount, in sats: %v", currentFees.Min)
-log.Printf("Maximum amount, in sats: %v", currentFees.Max)
-```
-
-Once you checked the fees are acceptable, you can start the reverse swap:
-
-```go
-destinationAddress := "bc1.."
-amountSat := currentFees.Min
-satPerVbyte := <fee rate>
-
-reverseSwapInfo, err := sdkServices.SendOnchain(amountSat, destinationAddress, currentFees.FeesHash, satPerVbyte)
-```
-
-Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
-This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
-is either settled or cancelled. This will happen automatically at the end of the reverse swap.
-
-You can check its status with:
-
-```go
-if swaps, err := sdkServices.InProgressReverseSwaps(); err != nil {
-    for _, swap := range swaps {
-        log.Printf("Reverse swap %v in progress, status is %v", swap.Id, swap.Status)
-    }
-}
-```
 </section>
+
 <div slot="title">C#</div>
 <section>
 
@@ -376,6 +122,8 @@ catch (Exception)
     // Handle error
 }
 ```
+</section>
+</custom-tabs>
 
 The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
 automatically once the process is started, but the last two values above are these estimates to help you get a picture
@@ -383,12 +131,187 @@ of the total costs.
 
 Fetching the fees also tells you what is the range of amounts you can send:
 
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+info!("Minimum amount, in sats: {}", current_fees.min);
+info!("Maximum amount, in sats: {}", current_fees.max);
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift
+println("Minimum amount, in sats: \(current_fees.min)")
+println("Maximum amount, in sats: \(current_fees.max)")
+```
+</section>
+
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+Log.v("Breez", "Minimum amount, in sats: ${fees.min}")
+Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+console.log(`Minimum amount, in sats: ${currentFees.min}`);
+console.log(`Maximum amount, in sats: ${currentFees.max}`);
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart
+print(`Minimum amount, in sats: ${currentFees.min}`);
+print(`Maximum amount, in sats: ${currentFees.max}`);
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python
+print("Minimum amount, in sats: ", current_fees.min)
+print("Maximum amount, in sats: ", current_fees.max)
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go
+log.Printf("Minimum amount, in sats: %v", currentFees.Min)
+log.Printf("Maximum amount, in sats: %v", currentFees.Max)
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
+
 ```cs
 Console.WriteLine($"Minimum amount, in sats: {currentFees.min}");
 Console.WriteLine($"Maximum amount, in sats: {currentFees.max}");
 ```
+</section>
+</custom-tabs>
 
 Once you checked the fees are acceptable, you can start the reverse swap:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+let destination_address = String::from("bc1..");
+let amount_sat = current_fees.min;
+
+sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash).await?;
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift
+let destinationAddress = "bc1.."
+let amountSat = currentFees.min
+let satPerVbyte = <fee rate>
+try {
+  try sdk.sendOnchain(amountSat: amountSat, onchainRecipientAddress: destinationAddress, pairHash: currentFees.feesHash, satPerVbyte: satPerVbyte)
+} catch {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+val address = "bc1.."
+val amountSat = 123L.toULong()
+val satPerVbyte = 1L.toULong()
+try {
+    sdk.sendOnchain(amountSat, address, fees.feesHash, satPerVbyte)
+} catch (e: Exception) {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+const destinationAddress = "bc1..";
+const amountSat = currentFees.min;
+const satPerVbyte = <fee rate>
+try {
+    const reverseSwapInfo = sendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte)
+} catch (error) {
+    console.log(error)
+}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart
+String destinationAddress = "bc1..";
+int amountSat = currentFees.min;
+int satPerVbyte = <fee rate>
+try {
+    ReverseSwapInfo reverseSwapInfo = await sendOnchain(
+        amountSat: amountSat,
+        onchainRecipientAddress: destinationAddress,
+        pairHash: currentFees.feesHash,
+        satPerVbyte: satPerVbyte,
+    );
+} catch (error) {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python
+destination_address = "bc1.."
+amount_sat = current_fees.min
+
+try:
+  sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash)
+except Exception as error:
+  # Handle erorr
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go
+destinationAddress := "bc1.."
+amountSat := currentFees.Min
+satPerVbyte := <fee rate>
+
+reverseSwapInfo, err := sdkServices.SendOnchain(amountSat, destinationAddress, currentFees.FeesHash, satPerVbyte)
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
 
 ```cs
 var destinationAddress = "bc1..";
@@ -403,12 +326,103 @@ catch (Exception)
     // Handle error
 }
 ```
+</section>
+</custom-tabs>
 
 Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
 This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
 is either settled or cancelled. This will happen automatically at the end of the reverse swap.
 
 You can check its status with:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+for rs in sdk.in_progress_reverse_swaps().await? {
+    info!("Reverse swap {} in progress, status is {}", rs.id, rs.status);
+}
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift
+for rs in sdk.inProgressReverseSwaps() {
+  println("Reverse swap \(rs.id) in progress, status is \(rs.status)")
+}
+```
+</section>
+
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+for (rs in sdk.inProgressReverseSwaps()) {
+    Log.v("Breez", "Reverse swap ${rs.id} in progress, status is ${rs.status}")
+}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+try {
+    const swaps = await inProgressReverseSwaps()
+    for (const swap in swaps) {
+        println(`Reverse swap ${swap.id} in progress, status is ${swap.status}`);
+    }
+} catch (error) {
+    console.log(error)
+}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart
+try {
+    List<ReverseSwapInfo> swaps = await inProgressReverseSwaps();
+    for (swap in swaps) {
+        print(`Reverse swap ${swap.id} in progress, status is ${swap.status}`);
+    }
+} catch (error) {
+    // handle error
+}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python
+try: 
+  reverse_swaps = sdk_services.in_progress_reverse_swaps()
+  for rs in reverse_swaps:
+    print("Reverse swap ",rs.id , " in progress, status is ", rs.status)
+except Exception as error:
+  # Handle erorr
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go
+if swaps, err := sdkServices.InProgressReverseSwaps(); err != nil {
+    for _, swap := range swaps {
+        log.Printf("Reverse swap %v in progress, status is %v", swap.Id, swap.Status)
+    }
+}
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
 
 ```cs
 try 
@@ -425,6 +439,7 @@ catch (Exception)
 ```
 </section>
 </custom-tabs>
+
 If the reverse swap is successful, you'll get the on-chain payment on your destination address and the HODL invoice will
 change from pending to settled.
 

@@ -25,6 +25,7 @@ if let Ok(LnUrlAuth{data: ad}) = parse(lnurl_auth_url).await {
 }
 ```
 </section>
+
 <div slot="title">Swift</div>
 <section>
 
@@ -48,8 +49,8 @@ do {
     // handle error
 }
 ```
-
 </section>
+
 <div slot="title">Android</div>
 <section>
 
@@ -70,8 +71,8 @@ try {
     // handle error
 }
 ```
-
 </section>
+
 <div slot="title">React Native</div>
 <section>
 
@@ -94,8 +95,8 @@ try {
     console.log(error)
 }
 ```
-
 </section>
+
 <div slot="title">Dart</div>
 <section>
 
@@ -118,8 +119,8 @@ try {
     // handle error
 }
 ```
-
 </section>
+
 <div slot="title">Python</div>
 <section>
 
@@ -139,8 +140,8 @@ try:
 except Exception as error:
     # Handle error
 ```
-
 </section>
+
 <div slot="title">Go</div>
 <section>
 
@@ -162,6 +163,7 @@ if input, err := breez_sdk.ParseInput(lnurlAuthUrl); err != nil {
     }
 ```
 </section>
+
 <div slot="title">C#</div>
 <section>
 
@@ -187,7 +189,6 @@ catch (Exception)
     // Handle error
 }
 ```
-
 </section>
 </custom-tabs>
 
