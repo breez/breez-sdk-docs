@@ -1,10 +1,10 @@
 # Connecting to an LSP
 
+Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
+
 <custom-tabs category="lang">
 <div slot="title">Swift</div>
 <section>
-
-Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
 
 ```swift
 do {
@@ -14,22 +14,10 @@ do {
     // Handle error
 }
 ```
-
-When you have selected an LSP you may then connect to it.
-
-```swift
-do {
-    try sdk.connectLsp(lspId: lspId!)
-} catch {
-    // Handle error
-}
-```
-
 </section>
-<div slot="title">Adroid</div>
-<section>
 
-Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
+<div slot="title">Android</div>
+<section>
 
 ```kotlin
 try {
@@ -43,22 +31,10 @@ try {
     // Handle error
 }
 ```
-
-When you have selected an LSP you may then connect to it.
-
-```kotlin
-try {
-    sdk.connectLsp(lspId)
-} catch (e: Exception) {
-    // Handle error
-}
-```
-
 </section>
+
 <div slot="title">React Native</div>
 <section>
-
-Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
 
 ```typescript
 try {
@@ -68,22 +44,10 @@ try {
     console.log(error)
 }
 ```
-
-When you have selected an LSP you may then connect to it.
-
-```typescript
-try {
-    await connectLsp(lspId)
-} catch (error) {
-    console.log(error)
-}
-```
-
 </section>
+
 <div slot="title">Dart</div>
 <section>
-
-Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
 
 ```dart
 try {
@@ -93,22 +57,10 @@ try {
     // Handle error
 }
 ```
-
-When you have selected an LSP you may then connect to it.
-
-```dart
-try {
-    String lspId = await lspId();
-    await connectLSP(lspId);
-} catch (e) {
-    // Handle error
-}
-```
 </section>
+
 <div slot="title">Python</div>
 <section>
-
-Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
 
 ```python 
 try: 
@@ -118,22 +70,10 @@ try:
 except Exception as error:
     # Handle error
 ```
-
-When you have selected an LSP you may then connect to it.
-
-```python
-try: 
-    sdk_services.connect_lsp(lsp_id)
-except Exception as error:
-    # Handle error
-```
-
 </section>
+
 <div slot="title">Go</div>
 <section>
-
-Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
-
 
 ```go
 lspId, err := sdkServices.LspId()
@@ -145,21 +85,10 @@ if err != nil {
     // Handle error
 }
  ```
-
- When you have selected an LSP you may then connect to it.
-
- ```go
-err = sdkServices.ConnectLsp(*lspId)
-if err != nil {
-    // Handle error
-}
- ```
-
 </section>
+
 <div slot="title">C#</div>
 <section>
-
-Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
 
 ```cs
 try 
@@ -172,8 +101,85 @@ catch (Exception)
     // Handle error
 }
 ```
+</section>
+</custom-tabs>
 
 When you have selected an LSP you may then connect to it.
+
+<custom-tabs category="lang">
+<div slot="title">Swift</div>
+<section>
+
+```swift
+do {
+    try sdk.connectLsp(lspId: lspId!)
+} catch {
+    // Handle error
+}
+```
+</section>
+
+<div slot="title">Android</div>
+<section>
+
+```kotlin
+try {
+    sdk.connectLsp(lspId)
+} catch (e: Exception) {
+    // Handle error
+}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+try {
+    await connectLsp(lspId)
+} catch (error) {
+    console.log(error)
+}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart
+try {
+    String lspId = await lspId();
+    await connectLSP(lspId);
+} catch (e) {
+    // Handle error
+}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python
+try: 
+    sdk_services.connect_lsp(lsp_id)
+except Exception as error:
+    # Handle error
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+ ```go
+err = sdkServices.ConnectLsp(*lspId)
+if err != nil {
+    // Handle error
+}
+ ```
+</section>
+
+<div slot="title">C#</div>
+<section>
 
 ```cs
 try 

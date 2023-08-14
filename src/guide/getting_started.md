@@ -92,7 +92,6 @@ do {
 <div slot="title">Android</div>
 <section>
 
-## Connecting
 ```kotlin
 // SDK events listener
 class SDKListener : EventListener {
