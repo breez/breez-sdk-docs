@@ -184,4 +184,44 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 }
 ```
 </section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+// TODO
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart
+// TODO
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python
+# TODO
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go
+// TODO
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
+
+```cs
+// TODO
+```
+</section>
 </custom-tabs>
