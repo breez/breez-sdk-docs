@@ -1,14 +1,15 @@
 # Receiving an on-chain transaction (swap-in)
 There are cases when you have funds in some bitcoin address and you would like to send those to your lightning node.
 
-In such cases, the SDK might have to open a new channel, for which case you can specify an optional user-selected dynamic fee.
+In such cases, the SDK might have to open a new channel, for which case you can specify an optional user-selected
+channel opening fee[^1]. For simplicity, the examples below use the cheapest fee available.
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
 <section>
 
 ```rust,ignore
-// Optional user-selected dynamic fees
+// Optional user-selected dynamic fees (here: first in list, which is the cheapest)
 let opening_fee_params = sdk.lsp_info().await?.opening_fee_params_list.values.get(0).cloned();
 
 let swap_info = sdk.receive_onchain( ReceiveOnchainRequest { opening_fee_params } ).await?;
@@ -23,7 +24,7 @@ let address = swap_info.bitcoin_address;
 
 ```swift
 do {
-  // Optional user-selected dynamic fees
+  // Optional user-selected dynamic fees (here: first in list, which is the cheapest)
   let lsp_info = try sdk.lsp_info();
   let opening_fee_params = lsp_info?.opening_fee_params_list.values.first();
   let request = ReceiveOnchainRequest(opening_fee_params: opening_fee_params);
@@ -57,7 +58,7 @@ try {
 
 ```typescript
 try {
-    // Optional user-selected dynamic fees
+    // Optional user-selected dynamic fees (here: first in list, which is the cheapest)
     const id = await lspId()
     const lspInfo = await fetchLspInfo(id)
     const openingFeeParams = lspInfo.openingFeeParamsList.values[0]
@@ -78,7 +79,7 @@ try {
 
 ```dart
 try {
-    // Optional user-selected dynamic fees
+    // Optional user-selected dynamic fees (here: first in list, which is the cheapest)
     LspInformation lspInfo = await lspInfo();
     OpeningFeeParams? openingFeeParams = lspInfo.opening_fee_params_list.values.first;
     ReceiveOnchainRequest request = new ReceiveOnchainRequest(openingFeeParams);
@@ -98,7 +99,7 @@ try {
 
 ```python
 try: 
-    # Optional user-selected dynamic fees
+    # Optional user-selected dynamic fees (here: first in list, which is the cheapest)
     lsp_info = sdk_services.lsp_info()
     opening_fee_params = lsp_info.opening_fee_params_list.values[0]
     request = ReceiveOnchainRequest(opening_fee_params=opening_fee_params)
@@ -116,7 +117,7 @@ except Exception as error:
 <section>
 
 ```go
-// Optional user-selected dynamic fees
+// Optional user-selected dynamic fees (here: first in list, which is the cheapest)
 lspInfo, err := sdkServices.LspInfo()
 request := breez_sdk.ReceiveOnchainRequest{
     OpeningFeeParams: &lspInfo.openingFeeParamsList.values[0],
@@ -135,7 +136,7 @@ if swapInfo, err := sdkServices.ReceiveOnchain(request); err != nil {
 ```cs
 try 
 {
-    // Optional user-selected dynamic fees
+    // Optional user-selected dynamic fees (here: first in list, which is the cheapest)
     var lspInfo = sdk.LspInfo();
     var openingFeeParams = lspInfo.openingFeeParamsList.values[0];
     var request = new ReceiveOnchainRequest(openingFeeParams);
@@ -892,3 +893,6 @@ ulong calculateFeesForAmount(ulong amountMsats)
 ```
 </section>
 </custom-tabs>
+
+
+[^1]: For more details on these fees, see [Channel Opening Fees](connecting_lsp.md#channel-opening-fees)
