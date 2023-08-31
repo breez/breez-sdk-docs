@@ -21,12 +21,14 @@ info!("Estimated miner fees in sats for claiming funds: {}", current_fees.fees_c
 <section>
 
 ```swift
+let sendAmountSat:UInt64 = 1_000_000
 try {
-  let currentFees = try sdk.fetchReverseSwapFees()
-
-  println("Percentage fee for the reverse swap service: \(currentFees.feesPercentage)")
-  println("Estimated miner fees in sats for locking up funds: \(currentFees.feesLockup)")
-  println("Estimated miner fees in sats for claiming funds: \(currentFees.feesClaim)")
+ let currentFees = try sdk.fetchReverseSwapFees(
+      req: ReverseSwapFeesRequest(sendAmountSat: sendAmountSat))
+  print("Percentage fee for the reverse swap service: \(currentFees.feesPercentage)")
+  print("Estimated miner fees in sats for locking up funds: \(currentFees.feesLockup)")
+  print("Estimated miner fees in sats for claiming funds: \(currentFees.feesClaim)")
+  print("In order to verify that the fetched fee hasn't changed we pass the fee hash: \(currentFees.feesHash)")
 } catch {
     // handle error
 }
@@ -84,11 +86,13 @@ try {
 <section>
 
 ```python
+send_amount_sat = 1000000
 try: 
-  current_fees = sdk_services.fetch_reverse_swap_fees()
-  print("Percentage fee for the reverse swap service: ", current_fees.fees_percentage)
-  print("Estimated miner fees in sats for locking up funds: ", current_fees.fees_lockup)
-  print("Estimated miner fees in sats for claiming funds: ", current_fees.fees_claim)
+  current_fees = sdk_services.fetch_reverse_swap_fees(breez_sdk.ReverseSwapFeesRequest(send_amount_sat=send_amount_sat))
+  print("Percentage fee for the reverse swap service:", current_fees.fees_percentage)
+  print("Estimated miner fees in sats for locking up funds:", current_fees.fees_lockup)
+  print("Estimated miner fees in sats for claiming funds:", current_fees.fees_claim)
+  print("In order to verify that the fetched fee hasn't changed we pass the" ,current_fees.fee_hash)
 except Exception as error:
     # Handle error
 ```
@@ -290,9 +294,10 @@ try {
 ```python
 destination_address = "bc1.."
 amount_sat = current_fees.min
+fee_hash = current_fees.fee_hash
 
 try:
-  sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash)
+  sdk_services.send_onchain(amount_sat=amount_msats, onchain_recipient_address="...", pair_hash=fee_hash)
 except Exception as error:
   # Handle erorr
 ```

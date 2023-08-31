@@ -18,8 +18,9 @@ let invoice = sdk.receive_payment(3000, "Invoice for 3000 sats".into()).await?;
 <section>
 
 ```swift
+let reqData = ReceivePaymentRequest(amountSats: 3000, description: "Invoice for 3000 sats")
 do {
-  let invoice = try sdk.receivePayment(amountSats: 3000, description: "Invoice for 3000 sats")
+  let invoice = try sdk.receivePayment(reqData: reqData )
 } catch {
     // handle error
 }
@@ -68,7 +69,8 @@ try {
 
 ```python
 try:
-  invoice = sdk_services.receive_payment(3000, "Invoice for 3000 sats")
+  req_data = breez_sdk.ReceivePaymentRequest(amount_sats=3000, description="Invoice for 3000 sats")
+  receive_payment_response = sdk_services.receive_payment(req_data=req_data)
 except Exception as error:
   # Handle error
 ```
@@ -116,7 +118,9 @@ sdk.send_payment(bolt11.into(), Some(3000)).await?;
 ```swift
 let bolt11 = "...";
 do {
-  let payment = try sdk.sendPayment(bolt11: bolt11, amountSats: 3000)
+  // The `amountSats` param is optional so nil can be passed if the 
+  // bolt11 invoice spesifies an amount.
+  let payment = try sdk.sendPayment(bolt11:  bolt11, amountSats: 3000)
 } catch {
     // handle error
 }
@@ -171,7 +175,7 @@ try {
 ```python
 bolt11 = "..."
 try:
-  sdk_services.send_payment(bolt11, 3000)
+  sdk_services.send_payment(bolt11=bolt11, amount_sats=3000)
 except Exception as error:
   # Handle error
 ```
@@ -274,9 +278,9 @@ try {
 <section>
 
 ```python
-let node_id = "..."
+node_id = "..."
 try:
-  sdk_services.send_spontaneous_payment(node_id, 3000)
+  sdk_services.send_spontaneous_payment(node_id=node_id, amount_sats=3000)
 except Exception as error:
   # Handle error
 ```

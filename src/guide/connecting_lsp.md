@@ -9,7 +9,7 @@ Based on the API key provided to the Breez SDK, a default LSP is selected for yo
 ```swift
 do {
     let lspId = try sdk.lspId() 
-    let lspInfo = try sdk.fetchLspInfo(lspId: lspId!)
+    let lspInfo = try sdk.lspInfo()
 } catch {
     // Handle error
 }
@@ -65,7 +65,7 @@ try {
 ```python 
 try: 
     lsp_id = sdk_services.lsp_id()
-    lsp_info = sdk_services.fetch_lsp_info(lsp_id)
+    lsp_info = sdk_services.lsp_info()
    
 except Exception as error:
     # Handle error
