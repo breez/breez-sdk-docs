@@ -1,44 +1,84 @@
 # Buy Bitcoin
 
+This section of the Breez SDK documentation provides an example on purchasing Bitcoin using Moonpay as the provider. The example code snippet demonstrates how to initiate a Bitcoin purchase transaction using the Breez SDK.
+
 <custom-tabs category="lang">
 
 <div slot="title">Rust</div>
 <section>
-TODO add docs
+
+```rust
+// TODO add docs
+```
+
 </section>
 
 <div slot="title">Swift</div>
 <section>
-TODO add docs
+
+```swift
+do {
+  let buyBitcoinResponse = try sdk.buyBitcoin(
+    req: BuyBitcoinRequest(provider: .moonpay))
+} catch {
+  // handle error
+}
+    
+```
 </section>
 
 <div slot="title">Android</div>
 <section>
-TODO add docs
+
+```kotlin
+// TODO add docs
+```
 </section>
 
 <div slot="title">React Native</div>
 <section>
-TODO add docs
+
+```typescript
+// TODO add docs
+```
+
 </section>
 
 <div slot="title">Dart</div>
 <section>
-TODO add docs
+
+```dart
+// TODO add docs
+```
 </section>
 
 <div slot="title">Python</div>
 <section>
-TODO add docs
+
+```python
+try:
+    buy_bitcoin_resp = sdk_services.buy_bitcoin(
+        breez_sdk.BuyBitcoinRequest(
+            breez_sdk.BuyBitcoinProvider.MOONPAY))
+except Exception as error:
+    # Handle error
+```
 </section>
 
 <div slot="title">Go</div>
 <section>
-TODO add docs
+
+```go
+// TODO add docs
+```
+
 </section>
 
 <div slot="title">C#</div>
 
 <section>
-TODO add docs
+
+```cs
+// TODO add docs
+```
 </section>

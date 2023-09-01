@@ -25,9 +25,7 @@ let address = swap_info.bitcoin_address;
 
 ```swift
 do {
-  let openingFeeParams:OpeningFeeParams? = nil
-  let req = ReceiveOnchainRequest(openingFeeParams: openingFeeParams)
-  let swapInfo = try sdk.receiveOnchain(req: req)
+  let swapInfo = try sdk.receiveOnchain(req: ReceiveOnchainRequest())
 
   // Send your funds to the bellow bitcoin address
   let address = swapInfo.bitcoinAddress;
@@ -94,9 +92,8 @@ try {
 
 ```python
 try: 
-    opening_fee_param = lsp_info.opening_fee_params_list.values[0]
-    
-    swap_info = sdk_services.receive_onchain(opening_fee_params=opening_fee_param)
+    swap_info = sdk_services.receive_onchain(breez_sdk.ReceiveOnchainRequest())
+
     # Send your funds to the below bitcoin address
     address = sdk_services.swap_info.bitcoin_address
 except Exception as error:
@@ -422,7 +419,10 @@ destination_address = "..."
 sat_per_vbyte = <refund tx fee rate>
 
 try:
-    result = sdk_services.refund(swap_address=refundable.bitcoin_address, to_address=to_address, sat_per_vbyte=sat_per_vbyte)
+    result = sdk_services.refund(
+        swap_address=refundable.bitcoin_address,
+        to_address=to_address,
+        sat_per_vbyte=sat_per_vbyte)
 except Exception as error:
     # Handle error
 ```

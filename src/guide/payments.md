@@ -18,9 +18,11 @@ let invoice = sdk.receive_payment(3000, "Invoice for 3000 sats".into()).await?;
 <section>
 
 ```swift
-let reqData = ReceivePaymentRequest(amountSats: 3000, description: "Invoice for 3000 sats")
 do {
-  let invoice = try sdk.receivePayment(reqData: reqData )
+  let invoice = try sdk.receivePayment(
+    reqData: ReceivePaymentRequest(
+        amountSats: 3000, 
+        description: "Invoice for 3000 sats"))
 } catch {
     // handle error
 }
@@ -69,8 +71,10 @@ try {
 
 ```python
 try:
-  req_data = breez_sdk.ReceivePaymentRequest(amount_sats=3000, description="Invoice for 3000 sats")
-  receive_payment_response = sdk_services.receive_payment(req_data=req_data)
+  receive_payment_response = sdk_services.receive_payment(
+    breez_sdk.ReceivePaymentRequest(
+        amount_sats=3000,
+        description="Invoice for 3000 sats"))
 except Exception as error:
   # Handle error
 ```
@@ -175,7 +179,9 @@ try {
 ```python
 bolt11 = "..."
 try:
-  sdk_services.send_payment(bolt11=bolt11, amount_sats=3000)
+  # The `amountSats` param is optional so None can be passed if the 
+  # bolt11 invoice spesifies an amount.
+  sdk_services.send_payment(bolt11=bolt11, amount_sats=None)
 except Exception as error:
   # Handle error
 ```

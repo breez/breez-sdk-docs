@@ -11,9 +11,8 @@ First, fetch the current reverse swap fees:
 ```rust,ignore
 let current_fees = sdk.fetch_reverse_swap_fees().await?;
 
-info!("Percentage fee for the reverse swap service: {}", current_fees.fees_percentage);
-info!("Estimated miner fees in sats for locking up funds: {}", current_fees.fees_lockup);
-info!("Estimated miner fees in sats for claiming funds: {}", current_fees.fees_claim);
+info!("Total estimated fees for reverse swap: {}", current_fees.total_estimated_fees);
+
 ```
 </section>
 
@@ -21,14 +20,13 @@ info!("Estimated miner fees in sats for claiming funds: {}", current_fees.fees_c
 <section>
 
 ```swift
-let sendAmountSat:UInt64 = 1_000_000
+// Optional parameter.      
+let sendAmountSat:UInt64? = nil
 try {
  let currentFees = try sdk.fetchReverseSwapFees(
       req: ReverseSwapFeesRequest(sendAmountSat: sendAmountSat))
-  print("Percentage fee for the reverse swap service: \(currentFees.feesPercentage)")
-  print("Estimated miner fees in sats for locking up funds: \(currentFees.feesLockup)")
-  print("Estimated miner fees in sats for claiming funds: \(currentFees.feesClaim)")
-  print("In order to verify that the fetched fee hasn't changed we pass the fee hash: \(currentFees.feesHash)")
+  print("Total estimated fees for reverse swap: \(currentFees.totalEstimatedFees)")
+  
 } catch {
     // handle error
 }
@@ -41,9 +39,7 @@ try {
 ```kotlin
 try {
     val fees = sdk.fetchReverseSwapFees()
-    Log.v("Breez", "Percentage fee for the reverse swap service: ${fees.feesPercentage}")
-    Log.v("Breez", "Estimated miner fees in sats for locking up funds: ${fees.feesLockup}")
-    Log.v("Breez", "Estimated miner fees in sats for claiming funds: ${fees.feesClaim}")
+    Log.v("Breez", "Total estimated fees for reverse swap: ${fees.totalEstimatedFees}")
 } catch (e: Exception) {
     // handle error
 }
@@ -57,9 +53,8 @@ try {
 try {
     const currentFees = await fetchReverseSwapFees()
 
-    console.log(`Percentage fee for the reverse swap service: ${currentFees.feesPercentage}`);
-    console.log(`Estimated miner fees in sats for locking up funds: ${currentFees.feesLockup}`);
-    console.log(`Estimated miner fees in sats for claiming funds: ${currentFees.feesClaim}`);
+    console.log(`Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`);
+    
 } catch (error) {
     console.log(error)
 }
@@ -73,9 +68,8 @@ try {
 try {
     ReverseSwapPairInfo currentFees = await fetchReverseSwapFees();
 
-    print(`Percentage fee for the reverse swap service: ${currentFees.feesPercentage}`);
-    print(`Estimated miner fees in sats for locking up funds: ${currentFees.feesLockup}`);
-    print(`Estimated miner fees in sats for claiming funds: ${currentFees.feesClaim}`);
+    print(`Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`);
+    
 } catch (error) {
     // handle error
 }
@@ -86,13 +80,11 @@ try {
 <section>
 
 ```python
-send_amount_sat = 1000000
 try: 
-  current_fees = sdk_services.fetch_reverse_swap_fees(breez_sdk.ReverseSwapFeesRequest(send_amount_sat=send_amount_sat))
-  print("Percentage fee for the reverse swap service:", current_fees.fees_percentage)
-  print("Estimated miner fees in sats for locking up funds:", current_fees.fees_lockup)
-  print("Estimated miner fees in sats for claiming funds:", current_fees.fees_claim)
-  print("In order to verify that the fetched fee hasn't changed we pass the" ,current_fees.fee_hash)
+  current_fees = sdk_services.fetch_reverse_swap_fees(
+    breez_sdk.ReverseSwapFeesRequest(
+        send_amount_sat=None))
+  print("Total estimated fees for reverse swap:", current_fees.total_estimated_fees)
 except Exception as error:
     # Handle error
 ```
@@ -103,9 +95,8 @@ except Exception as error:
 
 ```go
 if currentFees, err := sdkServices.FetchReverseSwapFees(); err != nil {
-    log.Printf("Percentage fee for the reverse swap service: %v", currentFees.FeesPercentage)
-    log.Printf("Estimated miner fees in sats for locking up funds: %v", currentFees.FeesLockup)
-    log.Printf("Estimated miner fees in sats for claiming funds: %v", currentFees.FeesClaim)
+    log.Printf("Total estimated fees for reverse swap: %v", currentFees.TotalEstimatedFees)
+    
 }
 ```
 </section>
@@ -117,9 +108,8 @@ if currentFees, err := sdkServices.FetchReverseSwapFees(); err != nil {
 try
 {
     var currentFees = sdk.FetchReverseSwapFees();
-    Console.WriteLine($"Percentage fee for the reverse swap service: {currentFees.feesPercentage}");
-    Console.WriteLine($"Estimated miner fees in sats for locking up funds: {currentFees.feesLockup}");
-    Console.WriteLine($"Estimated miner fees in sats for claiming funds: {currentFees.feesClaim}");
+    Console.WriteLine($"Total estimated fees for reverse swap: {currentFees.totalEstimatedFees}");
+    
 }
 catch (Exception)
 {
@@ -231,7 +221,11 @@ let destinationAddress = "bc1.."
 let amountSat = currentFees.min
 let satPerVbyte = <fee rate>
 try {
-  try sdk.sendOnchain(amountSat: amountSat, onchainRecipientAddress: destinationAddress, pairHash: currentFees.feesHash, satPerVbyte: satPerVbyte)
+  try sdk.sendOnchain(
+    amountSat: amountSat,
+    onchainRecipientAddress: destinationAddress, 
+    pairHash: currentFees.feesHash,
+    satPerVbyte: satPerVbyte)
 } catch {
     // handle error
 }
@@ -295,9 +289,14 @@ try {
 destination_address = "bc1.."
 amount_sat = current_fees.min
 fee_hash = current_fees.fee_hash
+sat_per_vbyte = <fee rate>
 
 try:
-  sdk_services.send_onchain(amount_sat=amount_msats, onchain_recipient_address="...", pair_hash=fee_hash)
+  sdk_services.send_onchain(
+    amount_sat=amount_msats,
+    onchain_recipient_address="...",
+    pair_hash=current_fees.fee_hash,
+    sat_per_vbyte=sat_per_vbyte)
 except Exception as error:
   # Handle erorr
 ```
