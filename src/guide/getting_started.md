@@ -17,6 +17,10 @@ Before you start, you will need an API Key to use the SDK, as well as an Invite 
 
 To get both of them, please contact Breez via email at <contact@breez.technology> or at <https://breez.technology/#contact-us-form>
 
+## Support
+
+Join this [telegram group](https://t.me/breezsdk).
+
 ## Installing
 
 Breez SDK is available in several platforms. Follow the [Installing](install.md) page for instructions on how to install on your platform.
