@@ -9,8 +9,8 @@ channel opening fee[^1]. For simplicity, the examples below use the cheapest fee
 <section>
 
 ```rust,ignore
-// Optional user-selected dynamic fees (here: first in list, which is the cheapest)
-let opening_fee_params = sdk.lsp_info().await?.opening_fee_params_list.values.get(0).cloned();
+// Optional user-selected dynamic fees (see Connecting to LSP section for details)
+let opening_fee_params = None;
 
 let swap_info = sdk.receive_onchain( ReceiveOnchainRequest { opening_fee_params } ).await?;
 
@@ -24,9 +24,8 @@ let address = swap_info.bitcoin_address;
 
 ```swift
 do {
-  // Optional user-selected dynamic fees (here: first in list, which is the cheapest)
-  let lsp_info = try sdk.lsp_info();
-  let opening_fee_params = lsp_info?.opening_fee_params_list.values.first();
+  // Optional user-selected dynamic fees (see Connecting to LSP section for details)
+  let opening_fee_params = nil;
   let request = ReceiveOnchainRequest(opening_fee_params: opening_fee_params);
 
   let swapInfo = try sdk.receiveOnchain(req: request)
@@ -58,10 +57,8 @@ try {
 
 ```typescript
 try {
-    // Optional user-selected dynamic fees (here: first in list, which is the cheapest)
-    const id = await lspId()
-    const lspInfo = await fetchLspInfo(id)
-    const openingFeeParams = lspInfo.openingFeeParamsList.values[0]
+    // Optional user-selected dynamic fees (see Connecting to LSP section for details)
+    const openingFeeParams = null
     const request = {openingFeeParams: openingFeeParams}
 
     const swapInfo = await receiveOnchain(request)
@@ -79,9 +76,8 @@ try {
 
 ```dart
 try {
-    // Optional user-selected dynamic fees (here: first in list, which is the cheapest)
-    LspInformation lspInfo = await lspInfo();
-    OpeningFeeParams? openingFeeParams = lspInfo.opening_fee_params_list.values.first;
+    // Optional user-selected dynamic fees (see Connecting to LSP section for details)
+    OpeningFeeParams? openingFeeParams = null;
     ReceiveOnchainRequest request = new ReceiveOnchainRequest(openingFeeParams);
     
     SwapInfo swapInfo = await receiveOnchain(request);
@@ -99,9 +95,8 @@ try {
 
 ```python
 try: 
-    # Optional user-selected dynamic fees (here: first in list, which is the cheapest)
-    lsp_info = sdk_services.lsp_info()
-    opening_fee_params = lsp_info.opening_fee_params_list.values[0]
+    # Optional user-selected dynamic fees (see Connecting to LSP section for details)
+    opening_fee_params = None
     request = ReceiveOnchainRequest(opening_fee_params=opening_fee_params)
 
     swap_info = sdk_services.receive_onchain(req=request)
@@ -117,10 +112,9 @@ except Exception as error:
 <section>
 
 ```go
-// Optional user-selected dynamic fees (here: first in list, which is the cheapest)
-lspInfo, err := sdkServices.LspInfo()
+// Optional user-selected dynamic fees (see Connecting to LSP section for details)
 request := breez_sdk.ReceiveOnchainRequest{
-    OpeningFeeParams: &lspInfo.openingFeeParamsList.values[0],
+    OpeningFeeParams: nil,
 }
 
 if swapInfo, err := sdkServices.ReceiveOnchain(request); err != nil {
@@ -136,9 +130,8 @@ if swapInfo, err := sdkServices.ReceiveOnchain(request); err != nil {
 ```cs
 try 
 {
-    // Optional user-selected dynamic fees (here: first in list, which is the cheapest)
-    var lspInfo = sdk.LspInfo();
-    var openingFeeParams = lspInfo.openingFeeParamsList.values[0];
+    // Optional user-selected dynamic fees (see Connecting to LSP section for details)
+    var openingFeeParams = null;
     var request = new ReceiveOnchainRequest(openingFeeParams);
 
     var swapInfo = sdk.ReceiveOnchain(request);
