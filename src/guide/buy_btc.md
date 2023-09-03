@@ -39,9 +39,12 @@ do {
 <section>
 
 ```typescript
-// TODO add docs
+try {
+    let buyBitcoinResponse = await buyBitcoin({provider: BuyBitcoinProvider.MOONPAY})
+} catch (error) {
+    console.log(error)
+}
 ```
-
 </section>
 
 <div slot="title">Dart</div>
@@ -69,9 +72,10 @@ except Exception as error:
 <section>
 
 ```go
-// TODO add docs
+buyBitcoinResponse, err := sdkService.BuyBitcoin(breez_sdk.BuyBitcoinRequest{
+		Provider: breez_sdk.BuyBitcoinProviderMoonpay,
+})
 ```
-
 </section>
 
 <div slot="title">C#</div>

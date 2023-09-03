@@ -54,11 +54,7 @@ try {
 
 ```typescript
 try {
-    // Optional user-selected dynamic fees (see Connecting to LSP section for details)
-    const openingFeeParams = null
-    const request = {openingFeeParams: openingFeeParams}
-
-    const swapInfo = await receiveOnchain(request)
+    const swapInfo = await receiveOnchain({})
 
     // Send your funds to the below bitcoin address
     const address = swapInfo.bitcoinAddress;
@@ -105,12 +101,7 @@ except Exception as error:
 <section>
 
 ```go
-// Optional user-selected dynamic fees (see Connecting to LSP section for details)
-request := breez_sdk.ReceiveOnchainRequest{
-    OpeningFeeParams: nil,
-}
-
-if swapInfo, err := sdkServices.ReceiveOnchain(request); err != nil {
+if swapInfo, err := sdkServices.ReceiveOnchain(breez_sdk.ReceiveOnchainRequest{}); err != nil {
     // Send your funds to the below bitcoin address
     address := swapInfo.BitcoinAddress
 }
