@@ -9,7 +9,11 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```rust,ignore
-let current_fees = sdk.fetch_reverse_swap_fees().await?;
+let current_fees = sdk.fetch_reverse_swap_fees(
+    ReverseSwapFeesRequest {
+        send_amount_sat: Some(50000),
+    })
+    .await?;
 
 info!("Total estimated fees for reverse swap: {}", current_fees.total_estimated_fees);
 ```
@@ -19,8 +23,7 @@ info!("Total estimated fees for reverse swap: {}", current_fees.total_estimated_
 <section>
 
 ```swift
-// Optional parameter.      
-let sendAmountSat:UInt64? = nil
+let sendAmountSat:UInt64? = 50000
 try {
   let currentFees = try sdk.fetchReverseSwapFees(
       req: ReverseSwapFeesRequest(sendAmountSat: sendAmountSat))
@@ -34,9 +37,9 @@ try {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
-    val fees = sdk.fetchReverseSwapFees()
+    val fees = sdk.fetchReverseSwapFees(ReverseSwapFeesRequest(50000))
     Log.v("Breez", "Total estimated fees for reverse swap: ${fees.totalEstimatedFees}")
 } catch (e: Exception) {
     // handle error
@@ -49,7 +52,7 @@ try {
 
 ```typescript
 try {
-    const currentFees = await fetchReverseSwapFees()
+    const currentFees = await fetchReverseSwapFees(ReverseSwapFeesRequest(50000))
 
     console.log(`Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`);
 } catch (error) {
@@ -63,7 +66,7 @@ try {
 
 ```dart
 try {
-    ReverseSwapPairInfo currentFees = await fetchReverseSwapFees();
+    ReverseSwapPairInfo currentFees = await fetchReverseSwapFees(ReverseSwapFeesRequest(50000));
 
     print("Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}");
 } catch (error) {
@@ -79,7 +82,7 @@ try {
 try: 
   current_fees = sdk_services.fetch_reverse_swap_fees(
     breez_sdk.ReverseSwapFeesRequest(
-        send_amount_sat=None))
+        send_amount_sat=50000))
   print("Total estimated fees for reverse swap:", current_fees.total_estimated_fees)
 except Exception as error:
     # Handle error
@@ -90,7 +93,7 @@ except Exception as error:
 <section>
 
 ```go
-if currentFees, err := sdkServices.FetchReverseSwapFees(); err != nil {
+if currentFees, err := sdkServices.FetchReverseSwapFees(ReverseSwapFeesRequest(50000)); err != nil {
     log.Printf("Total estimated fees for reverse swap: %v", currentFees.TotalEstimatedFees)
 }
 ```
@@ -102,7 +105,7 @@ if currentFees, err := sdkServices.FetchReverseSwapFees(); err != nil {
 ```cs
 try
 {
-    var currentFees = sdk.FetchReverseSwapFees();
+    var currentFees = sdk.FetchReverseSwapFees(ReverseSwapFeesRequest(50000));
     Console.WriteLine($"Total estimated fees for reverse swap: {currentFees.totalEstimatedFees}");
 }
 catch (Exception)
@@ -141,7 +144,7 @@ println("Maximum amount, in sats: \(current_fees.max)")
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 Log.v("Breez", "Minimum amount, in sats: ${fees.min}")
 Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
 ```
@@ -230,7 +233,7 @@ try {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 val address = "bc1.."
 val amountSat = 123L.toULong()
 val satPerVbyte = 1L.toULong()
@@ -358,7 +361,7 @@ for rs in sdk.inProgressReverseSwaps() {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 for (rs in sdk.inProgressReverseSwaps()) {
     Log.v("Breez", "Reverse swap ${rs.id} in progress, status is ${rs.status}")
 }
