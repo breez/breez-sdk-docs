@@ -3,6 +3,7 @@ There are cases when you have funds in some bitcoin address and you would like t
 
 In such cases, the SDK might have to open a new channel, for which case you can specify an optional user-selected
 channel opening fee[^1]. For simplicity, the examples below use the cheapest fee available.
+In order to receive funds you first have to be connected to an [LSP](connecting_lsp.md).
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
@@ -24,11 +25,7 @@ let address = swap_info.bitcoin_address;
 
 ```swift
 do {
-  // Optional user-selected dynamic fees (see Connecting to LSP section for details)
-  let opening_fee_params = nil;
-  let request = ReceiveOnchainRequest(opening_fee_params: opening_fee_params);
-
-  let swapInfo = try sdk.receiveOnchain(req: request)
+  let swapInfo = try sdk.receiveOnchain(req: ReceiveOnchainRequest())
 
   // Send your funds to the bellow bitcoin address
   let address = swapInfo.bitcoinAddress;
@@ -57,11 +54,7 @@ try {
 
 ```typescript
 try {
-    // Optional user-selected dynamic fees (see Connecting to LSP section for details)
-    const openingFeeParams = null
-    const request = {openingFeeParams: openingFeeParams}
-
-    const swapInfo = await receiveOnchain(request)
+    const swapInfo = await receiveOnchain({})
 
     // Send your funds to the below bitcoin address
     const address = swapInfo.bitcoinAddress;
@@ -76,11 +69,7 @@ try {
 
 ```dart
 try {
-    // Optional user-selected dynamic fees (see Connecting to LSP section for details)
-    OpeningFeeParams? openingFeeParams = null;
-    ReceiveOnchainRequest request = new ReceiveOnchainRequest(openingFeeParams);
-    
-    SwapInfo swapInfo = await receiveOnchain(request);
+    SwapInfo swapInfo = await receiveOnchain(ReceiveOnchainRequest());
 
     // Send your funds to the below bitcoin address
     String address = swapInfo.bitcoinAddress;
@@ -95,12 +84,8 @@ try {
 
 ```python
 try: 
-    # Optional user-selected dynamic fees (see Connecting to LSP section for details)
-    opening_fee_params = None
-    request = ReceiveOnchainRequest(opening_fee_params=opening_fee_params)
+    swap_info = sdk_services.receive_onchain(breez_sdk.ReceiveOnchainRequest())
 
-    swap_info = sdk_services.receive_onchain(req=request)
-    
     # Send your funds to the below bitcoin address
     address = sdk_services.swap_info.bitcoin_address
 except Exception as error:
@@ -112,12 +97,7 @@ except Exception as error:
 <section>
 
 ```go
-// Optional user-selected dynamic fees (see Connecting to LSP section for details)
-request := breez_sdk.ReceiveOnchainRequest{
-    OpeningFeeParams: nil,
-}
-
-if swapInfo, err := sdkServices.ReceiveOnchain(request); err != nil {
+if swapInfo, err := sdkServices.ReceiveOnchain(breez_sdk.ReceiveOnchainRequest{}); err != nil {
     // Send your funds to the below bitcoin address
     address := swapInfo.BitcoinAddress
 }
@@ -362,9 +342,9 @@ let satPerVbyte = <refund tx fee rate>
 
 do {
   try sdk.refund(
-   swapAddress: "",
-   toAddress: destinationAddress,
-   satPerVbyte: satPerVbyte)
+      swapAddress: refundable?.bitcoinAddress, 
+      toAddress: "...", 
+      satPerVbyte: satPerVbyte)
 } catch {
     // handle error
 }
@@ -426,7 +406,10 @@ destination_address = "..."
 sat_per_vbyte = <refund tx fee rate>
 
 try:
-    sdk_services.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte)
+    result = sdk_services.refund(
+        swap_address=refundable.bitcoin_address,
+        to_address=to_address,
+        sat_per_vbyte=sat_per_vbyte)
 except Exception as error:
     # Handle error
 ```

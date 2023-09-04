@@ -9,7 +9,7 @@ Based on the API key provided to the Breez SDK, a default LSP is selected for yo
 ```swift
 do {
     let lspId = try sdk.lspId() 
-    let lspInfo = try sdk.fetchLspInfo(lspId: lspId!)
+    let lspInfo = try sdk.lspInfo()
 } catch {
     // Handle error
 }
@@ -23,7 +23,7 @@ do {
 try {
     val lspId = sdk.lspId()
     if (lspId != null) {
-        val lspInfo = sdk.fetchLspInfo(lspId)
+        val lspInfo = sdk.lspInfo()
     } else {
         // Handle no lsp id scenario
     }
@@ -39,7 +39,7 @@ try {
 ```typescript
 try {
     const lspId = await lspId() 
-    const lspInfo = await fetchLspInfo(lspId)
+    const lspInfo = await lspInfo()
 } catch (error) {
     console.log(error)
 }
@@ -65,7 +65,7 @@ try {
 ```python 
 try: 
     lsp_id = sdk_services.lsp_id()
-    lsp_info = sdk_services.fetch_lsp_info(lsp_id)
+    lsp_info = sdk_services.lsp_info()
    
 except Exception as error:
     # Handle error
@@ -80,7 +80,7 @@ lspId, err := sdkServices.LspId()
 if err != nil {
     // Handle error
 }
-lspInfo, err := sdkServices.FetchLspInfo(*lspId)
+lspInfo, err := sdkServices.LspInfo()
 if err != nil {
     // Handle error
 }
@@ -94,7 +94,7 @@ if err != nil {
 try 
 {
     var lspId = sdk.LspId();
-    var lspInfo = sdk.FetchLspInfo(lspId!);
+    var lspInfo = sdk.LspInfo();
 } 
 catch (Exception) 
 {
@@ -202,7 +202,7 @@ which describes how these channel opening fees are handled.
 
 For the client, the key points are:
 
-* The `LsInformation` can be fetched at any point and includes a list of channel opening fees and the duration for which
+* The `LspInformation` can be fetched at any point and includes a list of channel opening fees and the duration for which
   they are valid. The fees are sorted from cheapest to most expensive. The higher fees are typically also valid for longer.
 * Depending on the application and use-case, the client may choose an appropriate fee and give it as an argument in the
   relevant Breez SDK method. If this fee argument is not provided, Breez SDK will choose an appropriate one instead.

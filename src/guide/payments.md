@@ -19,7 +19,10 @@ let invoice = sdk.receive_payment(3000, "Invoice for 3000 sats".into()).await?;
 
 ```swift
 do {
-  let invoice = try sdk.receivePayment(amountSats: 3000, description: "Invoice for 3000 sats")
+  let invoice = try sdk.receivePayment(
+    reqData: ReceivePaymentRequest(
+        amountSats: 3000, 
+        description: "Invoice for 3000 sats"))
 } catch {
     // handle error
 }
@@ -43,7 +46,10 @@ try {
 
 ```typescript
 try {
-    const invoice = await receivePayment(3000, "Invoice for 3000 sats")
+    const invoice = await receivePayment({
+        amountSats: 3000, 
+        description: "Invoice for 3000 sats"
+    })
 } catch (error) {
     console.log(error)
 }
@@ -55,8 +61,12 @@ try {
 
 ```dart
 try {
-    ReceivePaymentRequestData requestData = ReceivePaymentRequestData(amountSats: 3000, description: "Invoice for 3000 sats");
-    ReceivePaymentResponse invoice = await receivePayment(reqData: requestData);
+    ReceivePaymentResponse invoice = await receivePayment(
+        reqData: ReceivePaymentRequestData(
+            amountSats: 3000, 
+            description: "Invoice for 3000 sats",
+            ),
+        );
 } catch (error) {
     // handle error
 }
@@ -68,7 +78,10 @@ try {
 
 ```python
 try:
-  invoice = sdk_services.receive_payment(3000, "Invoice for 3000 sats")
+  receive_payment_response = sdk_services.receive_payment(
+    breez_sdk.ReceivePaymentRequest(
+        amount_sats=3000,
+        description="Invoice for 3000 sats"))
 except Exception as error:
   # Handle error
 ```
@@ -78,7 +91,10 @@ except Exception as error:
 <section>
 
 ```go
-invoice, err := sdkServices.ReceivePayment(3000, "Invoice for 3000 sats")
+invoice, err := sdkService.ReceivePayment(breez_sdk.ReceivePaymentRequest{
+	AmountSats:  3000,
+	Description: "Invoice for 3000 sats",
+})
 ```
 </section>
 
@@ -116,7 +132,9 @@ sdk.send_payment(bolt11.into(), Some(3000)).await?;
 ```swift
 let bolt11 = "...";
 do {
-  let payment = try sdk.sendPayment(bolt11: bolt11, amountSats: 3000)
+  // The `amountSats` param is optional so nil can be passed if the 
+  // bolt11 invoice spesifies an amount.
+  let payment = try sdk.sendPayment(bolt11:  bolt11, amountSats: 3000)
 } catch {
     // handle error
 }
@@ -171,7 +189,9 @@ try {
 ```python
 bolt11 = "..."
 try:
-  sdk_services.send_payment(bolt11, 3000)
+  # The `amountSats` param is optional so None can be passed if the 
+  # bolt11 invoice spesifies an amount.
+  sdk_services.send_payment(bolt11=bolt11, amount_sats=None)
 except Exception as error:
   # Handle error
 ```
@@ -274,9 +294,9 @@ try {
 <section>
 
 ```python
-let node_id = "..."
+node_id = "..."
 try:
-  sdk_services.send_spontaneous_payment(node_id, 3000)
+  sdk_services.send_spontaneous_payment(node_id=node_id, amount_sats=3000)
 except Exception as error:
   # Handle error
 ```
