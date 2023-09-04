@@ -52,7 +52,7 @@ try {
 
 ```typescript
 try {
-    const currentFees = await fetchReverseSwapFees(ReverseSwapFeesRequest(50000))
+    const currentFees = await fetchReverseSwapFees({sendAmountSat: 50000})
 
     console.log(`Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`);
 } catch (error) {
@@ -93,7 +93,11 @@ except Exception as error:
 <section>
 
 ```go
-if currentFees, err := sdkServices.FetchReverseSwapFees(ReverseSwapFeesRequest(50000)); err != nil {
+sendAmountSat := uint64(50000)
+reverseSwapFeesRequest := breez_sdk.ReverseSwapFeesRequest{
+    SendAmountSat: &sendAmountSat,
+}
+if currentFees, err := sdkService.FetchReverseSwapFees(reverseSwapFeesRequest); err != nil {
     log.Printf("Total estimated fees for reverse swap: %v", currentFees.TotalEstimatedFees)
 }
 ```
