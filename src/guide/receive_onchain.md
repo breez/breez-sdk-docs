@@ -450,7 +450,10 @@ To calculate the fees for a channel being opened by the LSP:
 <section>
 
 ```rust,ignore
-// TODO add example for open_channel_fee
+let amount_msat = <amount msat>;
+let channel_fees = sdk.open_channel_fee(
+    OpenChannelFeeRequest { amount_msat, expiry: None })
+    .await?;
 ```
 </section>
 
