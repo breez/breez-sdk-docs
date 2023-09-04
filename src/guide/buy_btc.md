@@ -92,7 +92,15 @@ buyBitcoinResponse, err := sdkService.BuyBitcoin(breez_sdk.BuyBitcoinRequest{
 <section>
 
 ```cs
-// TODO add docs
+try
+{
+    var buyBitcoinResponse = sdk.BuyBitcoin(
+        new BuyBitcoinRequest(BuyBitcoinProvider.MOONPAY));
+}
+catch (Exception)
+{
+    // Handle error
+}
 ```
 </section>
 </custom-tabs>

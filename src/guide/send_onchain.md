@@ -105,7 +105,8 @@ if currentFees, err := sdkServices.FetchReverseSwapFees(ReverseSwapFeesRequest(5
 ```cs
 try
 {
-    var currentFees = sdk.FetchReverseSwapFees(ReverseSwapFeesRequest(50000));
+    var currentFees = sdk.FetchReverseSwapFees(
+        new ReverseSwapFeesRequest(50000));
     Console.WriteLine($"Total estimated fees for reverse swap: {currentFees.totalEstimatedFees}");
 }
 catch (Exception)
@@ -321,7 +322,8 @@ var amountSat = currentFees.min;
 var satPerVbyte = <fee rate>;
 try 
 {
-    var reverseSwapInfo = sdk.SendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte);
+    var reverseSwapInfo = sdk.SendOnchain(
+        amountSat, destinationAddress, currentFees.feesHash, satPerVbyte);
 } 
 catch (Exception) 
 {
@@ -437,7 +439,7 @@ try
 catch (Exception) 
 {
     // Handle error
-}
+}   
 ```
 </section>
 </custom-tabs>

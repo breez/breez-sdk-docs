@@ -114,7 +114,8 @@ invoice, err := sdkService.ReceivePayment(breez_sdk.ReceivePaymentRequest{
 ```cs
 try 
 {
-    var invoice = sdk.ReceivePayment(3000, "Invoice for 3000 sats");
+    var invoice = sdk.ReceivePayment(
+        new ReceivePaymentRequest(3000, "Invoice for 3000 sats"));
 } 
 catch (Exception) 
 {
@@ -220,7 +221,7 @@ payment, err := sdkServices.SendPayment(bolt11, 3000)
 <section>
 
 ```cs
-const bolt11 = "...";
+var bolt11 = "...";
 try 
 {
     var payment = sdk.SendPayment(bolt11, 3000);
@@ -325,7 +326,7 @@ payment, err := sdkServices.SendSpontaneousPayment(nodeId, 3000)
 <section>
 
 ```cs
-const nodeId = "...";
+var nodeId = "...";
 try 
 {
     var payment = sdk.SendSpontaneousPayment(nodeId, 3000);

@@ -109,11 +109,7 @@ if swapInfo, err := sdkServices.ReceiveOnchain(breez_sdk.ReceiveOnchainRequest{}
 ```cs
 try 
 {
-    // Optional user-selected dynamic fees (see Connecting to LSP section for details)
-    var openingFeeParams = null;
-    var request = new ReceiveOnchainRequest(openingFeeParams);
-
-    var swapInfo = sdk.ReceiveOnchain(request);
+    var swapInfo = sdk.ReceiveOnchain(new ReceiveOnchainRequest());
 
     // Send your funds to the below bitcoin address
     var address = swapInfo.bitcoinAddress;
