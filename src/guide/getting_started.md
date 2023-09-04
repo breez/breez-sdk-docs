@@ -145,7 +145,7 @@ const nodeConfig : NodeConfig = {
         inviteCode: "your invite code"        
     }
 }
-let config = defaultConfig(EnvironmentType.PRODUCTION, "api key", nodeConfig);
+let config = await defaultConfig(EnvironmentType.PRODUCTION, "api key", nodeConfig);
 
 // Customize the config object according to your needs
 config.workingDir = "path to an existing directory";
