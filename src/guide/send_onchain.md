@@ -23,10 +23,9 @@ info!("Total estimated fees for reverse swap: {}", current_fees.total_estimated_
 // Optional parameter.      
 let sendAmountSat:UInt64? = nil
 try {
- let currentFees = try sdk.fetchReverseSwapFees(
+  let currentFees = try sdk.fetchReverseSwapFees(
       req: ReverseSwapFeesRequest(sendAmountSat: sendAmountSat))
   print("Total estimated fees for reverse swap: \(currentFees.totalEstimatedFees)")
-  
 } catch {
     // handle error
 }
@@ -54,7 +53,6 @@ try {
     const currentFees = await fetchReverseSwapFees()
 
     console.log(`Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`);
-    
 } catch (error) {
     console.log(error)
 }
@@ -69,7 +67,6 @@ try {
     ReverseSwapPairInfo currentFees = await fetchReverseSwapFees();
 
     print(`Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`);
-    
 } catch (error) {
     // handle error
 }
@@ -96,7 +93,6 @@ except Exception as error:
 ```go
 if currentFees, err := sdkServices.FetchReverseSwapFees(); err != nil {
     log.Printf("Total estimated fees for reverse swap: %v", currentFees.TotalEstimatedFees)
-    
 }
 ```
 </section>
@@ -109,7 +105,6 @@ try
 {
     var currentFees = sdk.FetchReverseSwapFees();
     Console.WriteLine($"Total estimated fees for reverse swap: {currentFees.totalEstimatedFees}");
-    
 }
 catch (Exception)
 {

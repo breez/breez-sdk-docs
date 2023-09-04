@@ -46,7 +46,10 @@ try {
 
 ```typescript
 try {
-    const invoice = await receivePayment(3000, "Invoice for 3000 sats")
+    const invoice = await receivePayment({
+        amountSats: 3000, 
+        description: "Invoice for 3000 sats"
+    })
 } catch (error) {
     console.log(error)
 }
@@ -84,7 +87,10 @@ except Exception as error:
 <section>
 
 ```go
-invoice, err := sdkServices.ReceivePayment(3000, "Invoice for 3000 sats")
+invoice, err := sdkService.ReceivePayment(breez_sdk.ReceivePaymentRequest{
+	AmountSats:  3000,
+	Description: "Invoice for 3000 sats",
+})
 ```
 </section>
 
