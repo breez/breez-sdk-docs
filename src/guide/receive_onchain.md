@@ -37,7 +37,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val swapInfo = sdk.receiveOnchain()
     // Send your funds to the bellow bitcoin address
@@ -152,7 +152,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val swapInfo = sdk.inProgressSwap()
 } catch (e: Exception) {
@@ -251,7 +251,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val refundables = sdk.listRefundables()
 } catch (e: Exception) {
@@ -353,7 +353,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 val swapAddress = "..."
 val destinationAddress = "..."
 val satPerVbyte = 1.toUInt()
@@ -481,7 +481,7 @@ func calculateChannelOpeningFee(amountMsats: Int64) -> Int64? {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 fun calculateChannelOpeningFee(amountMsats: Long): Long? {
     val channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats)
     if (channelOpeningFeeNeeded) {
@@ -598,7 +598,7 @@ func isChannelOpeningFeeNeeded(amountMsats: Int64) -> Bool {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 fun isChannelOpeningFeeNeeded(amountMsats: Long): Boolean {
     try {
         val nodeInfo = sdk.nodeInfo()
@@ -741,7 +741,7 @@ func calculateFeesForAmount(amountMsats: Int64) -> Int64? {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 fun calculateFeesForAmount(amountMsats: Long): Long? {
     try {
         val lspId = sdk.lspId() ?: return null

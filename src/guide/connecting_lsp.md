@@ -28,7 +28,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val lspId = sdk.lspId()
     if (lspId != null) {
@@ -139,7 +139,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     sdk.connectLsp(lspId)
 } catch (e: Exception) {

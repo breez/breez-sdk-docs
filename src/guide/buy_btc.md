@@ -32,7 +32,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 // TODO add docs
 ```
 </section>

@@ -42,7 +42,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val invoice = sdk.receivePayment(3000L.toULong(), "Invoice for 3000 sats")
 } catch (e: Exception) {
@@ -154,7 +154,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 val bolt11 = "..."
 try {
     val payment = sdk.sendPayment(bolt11, 3000L.toULong())
@@ -261,7 +261,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 val nodeId = "..."
 try {
     val payment = sdk.sendSpontaneousPayment(nodeId, 3000L.toULong())
