@@ -66,7 +66,11 @@ try {
 
 ```dart
 try {
-    ReverseSwapPairInfo currentFees = await fetchReverseSwapFees(ReverseSwapFeesRequest(50000));
+    ReverseSwapPairInfo currentFees = await fetchReverseSwapFees(
+        req: ReverseSwapFeesRequest(
+            sendAmountSat: 50000, 
+            ),
+        );
 
     print("Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}");
 } catch (error) {
@@ -80,10 +84,9 @@ try {
 
 ```python
 try: 
-  current_fees = sdk_services.fetch_reverse_swap_fees(
-    breez_sdk.ReverseSwapFeesRequest(
-        send_amount_sat=50000))
-  print("Total estimated fees for reverse swap:", current_fees.total_estimated_fees)
+    current_fees = sdk_services.fetch_reverse_swap_fees(
+        breez_sdk.ReverseSwapFeesRequest(send_amount_sat=50000))
+    print("Total estimated fees for reverseswap:", current_fees.total_estimated_fees)
 except Exception as error:
     # Handle error
 ```
