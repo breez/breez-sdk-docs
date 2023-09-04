@@ -480,7 +480,12 @@ do {
 <section>
 
 ```typescript 
-// TODO add example for openChannelFee
+const amountMsat = <amount msat>
+try {
+    const channelFees = await openChannelFee({amountMsat: amountMsat})
+} catch (error) {
+    // handle error
+}
 ```
 </section>
 
@@ -519,7 +524,7 @@ except Exception as error:
 
 ```go
 amountMsat := <amount msat>
-channelFees, err := sdkServices.OpenChannelFee(breez_sdk.OpenChannelFeeRequest(amountMsat))
+channelFees, err := sdkServices.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{AmountMsat: amountMsat})
 ```
 </section>
 
