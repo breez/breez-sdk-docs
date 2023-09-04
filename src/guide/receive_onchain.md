@@ -474,7 +474,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin, ignore
+```kotlin,ignore
 // TODO add example for openChannelFee
 ```
 </section>
