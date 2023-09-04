@@ -66,7 +66,7 @@ try {
 try {
     ReverseSwapPairInfo currentFees = await fetchReverseSwapFees();
 
-    print(`Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`);
+    print("Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}");
 } catch (error) {
     // handle error
 }
@@ -161,8 +161,8 @@ console.log(`Maximum amount, in sats: ${currentFees.max}`);
 <section>
 
 ```dart
-print(`Minimum amount, in sats: ${currentFees.min}`);
-print(`Maximum amount, in sats: ${currentFees.max}`);
+print("Minimum amount, in sats: ${currentFees.min}");
+print("Maximum amount, in sats: ${currentFees.max}");
 ```
 </section>
 
@@ -262,7 +262,7 @@ try {
 
 ```dart
 String destinationAddress = "bc1..";
-int amountSat = currentFees.min;
+int amountSat = <amount>;
 int satPerVbyte = <fee rate>
 try {
     ReverseSwapInfo reverseSwapInfo = await sendOnchain(

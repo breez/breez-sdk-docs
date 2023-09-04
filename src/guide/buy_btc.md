@@ -51,7 +51,15 @@ try {
 <section>
 
 ```dart
-// TODO add docs
+try {
+    BuyBitcoinResponse buyBitcoinResponse = buyBitcoin(
+        reqData: BuyBitcoinRequest(provider: BuyBitcoinProvider.Moonpay,
+        ),
+    ); 
+} catch {
+    // Handle error
+}
+
 ```
 </section>
 

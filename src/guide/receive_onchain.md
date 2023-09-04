@@ -69,11 +69,7 @@ try {
 
 ```dart
 try {
-    // Optional user-selected dynamic fees (see Connecting to LSP section for details)
-    OpeningFeeParams? openingFeeParams = null;
-    ReceiveOnchainRequest request = new ReceiveOnchainRequest(openingFeeParams);
-    
-    SwapInfo swapInfo = await receiveOnchain(request);
+    SwapInfo swapInfo = await receiveOnchain(ReceiveOnchainRequest());
 
     // Send your funds to the below bitcoin address
     String address = swapInfo.bitcoinAddress;
