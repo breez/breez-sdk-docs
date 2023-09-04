@@ -6,7 +6,7 @@ In order to list the available fiat currencies:
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val fiatCurrencyList = sdk.listFiatCurrencies()
 } catch (e: Exception) {
@@ -81,7 +81,7 @@ To get the current BTC rate for the currencies:
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val fiatRatesMap = sdk.fetchFiatRates()
 } catch (e: Exception) {
@@ -158,7 +158,7 @@ At the example project you can see these methods combined:
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
     val fiatCurrencies = sdk.listFiatCurrencies()
     val fiatRates = sdk.fetchFiatRates()

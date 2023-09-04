@@ -1,12 +1,18 @@
 # Receiving an on-chain transaction (swap-in)
 There are cases when you have funds in some bitcoin address and you would like to send those to your lightning node.
 
+In such cases, the SDK might have to open a new channel, for which case you can specify an optional user-selected
+channel opening fee[^1]. For simplicity, the examples below use the cheapest fee available.
+In order to receive funds you first have to be connected to an [LSP](connecting_lsp.md).
+
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
 <section>
 
 ```rust,ignore
-let swap_info = sdk.receive_onchain().await?;
+let swap_info = sdk.receive_onchain( 
+    ReceiveOnchainRequest { opening_fee_params: None } )
+    .await?;
 
 // Send your funds to the below bitcoin address
 let address = swap_info.bitcoin_address;
@@ -18,7 +24,7 @@ let address = swap_info.bitcoin_address;
 
 ```swift
 do {
-  let swapInfo = try sdk.receiveOnchain()
+  let swapInfo = try sdk.receiveOnchain(req: ReceiveOnchainRequest())
 
   // Send your funds to the bellow bitcoin address
   let address = swapInfo.bitcoinAddress;
@@ -31,7 +37,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val swapInfo = sdk.receiveOnchain()
     // Send your funds to the bellow bitcoin address
@@ -47,7 +53,7 @@ try {
 
 ```typescript
 try {
-    const swapInfo = await receiveOnchain()
+    const swapInfo = await receiveOnchain({})
 
     // Send your funds to the below bitcoin address
     const address = swapInfo.bitcoinAddress;
@@ -62,7 +68,7 @@ try {
 
 ```dart
 try {
-    SwapInfo swapInfo = await receiveOnchain();
+    SwapInfo swapInfo = await receiveOnchain(ReceiveOnchainRequest());
 
     // Send your funds to the below bitcoin address
     String address = swapInfo.bitcoinAddress;
@@ -77,7 +83,8 @@ try {
 
 ```python
 try: 
-    swap_info = sdk_services.receive_onchain()
+    swap_info = sdk_services.receive_onchain(breez_sdk.ReceiveOnchainRequest())
+
     # Send your funds to the below bitcoin address
     address = sdk_services.swap_info.bitcoin_address
 except Exception as error:
@@ -89,7 +96,7 @@ except Exception as error:
 <section>
 
 ```go
-if swapInfo, err := sdkServices.ReceiveOnchain(); err != nil {
+if swapInfo, err := sdkServices.ReceiveOnchain(breez_sdk.ReceiveOnchainRequest{}); err != nil {
     // Send your funds to the below bitcoin address
     address := swapInfo.BitcoinAddress
 }
@@ -102,7 +109,7 @@ if swapInfo, err := sdkServices.ReceiveOnchain(); err != nil {
 ```cs
 try 
 {
-    var swapInfo = sdk.ReceiveOnchain();
+    var swapInfo = sdk.ReceiveOnchain(new ReceiveOnchainRequest());
 
     // Send your funds to the below bitcoin address
     var address = swapInfo.bitcoinAddress;
@@ -141,7 +148,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val swapInfo = sdk.inProgressSwap()
 } catch (e: Exception) {
@@ -240,7 +247,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val refundables = sdk.listRefundables()
 } catch (e: Exception) {
@@ -330,9 +337,9 @@ let satPerVbyte = <refund tx fee rate>
 
 do {
   try sdk.refund(
-   swapAddress: "",
-   toAddress: destinationAddress,
-   satPerVbyte: satPerVbyte)
+      swapAddress: refundable?.bitcoinAddress, 
+      toAddress: "...", 
+      satPerVbyte: satPerVbyte)
 } catch {
     // handle error
 }
@@ -342,7 +349,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 val swapAddress = "..."
 val destinationAddress = "..."
 val satPerVbyte = 1.toUInt()
@@ -394,7 +401,10 @@ destination_address = "..."
 sat_per_vbyte = <refund tx fee rate>
 
 try:
-    sdk_services.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte)
+    result = sdk_services.refund(
+        swap_address=refundable.bitcoin_address,
+        to_address=to_address,
+        sat_per_vbyte=sat_per_vbyte)
 except Exception as error:
     # Handle error
 ```
@@ -440,13 +450,10 @@ To calculate the fees for a channel being opened by the LSP:
 <section>
 
 ```rust,ignore
-async fn calculate_channel_opening_fee(amount_msat: u64) -> Result<u64> {
-    let channel_opening_fee_needed = is_channel_opening_fee_needed(amount_msat, sdk.clone())?;
-    match channel_opening_fee_needed {
-        true => calculate_fees_for_amount(amount_msat).await,
-        false => Ok(0),
-    }
-}
+let amount_msat = <amount msat>;
+let channel_fees = sdk.open_channel_fee(
+    OpenChannelFeeRequest { amount_msat, expiry: None })
+    .await?;
 ```
 </section>
 
@@ -454,12 +461,12 @@ async fn calculate_channel_opening_fee(amount_msat: u64) -> Result<u64> {
 <section>
 
 ```swift 
-func calculateChannelOpeningFee(amountMsats: Int64) -> Int64? {
-    var channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats: amountMsats)
-    if channelOpeningFeeNeeded {
-        return calculateFeesForAmount(amountMsats: amountMsats)
-    }
-    return nil
+let amountMsat = <amount msat>
+do {
+    let channelFees = try sdk.openChannelFee(
+        req: OpenChannelFeeRequest(amountMsat: amountMsat))
+} catch {
+    // Handle error 
 }
 ```
 </section>
@@ -467,14 +474,8 @@ func calculateChannelOpeningFee(amountMsats: Int64) -> Int64? {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
-fun calculateChannelOpeningFee(amountMsats: Long): Long? {
-    val channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats)
-    if (channelOpeningFeeNeeded) {
-        return calculateFeesForAmount(amountMsats)
-    }
-    return null
-}
+```kotlin,ignore
+// TODO add example for openChannelFee
 ```
 </section>
 
@@ -482,12 +483,11 @@ fun calculateChannelOpeningFee(amountMsats: Long): Long? {
 <section>
 
 ```typescript 
-const calculateChannelOpeningFee = async (amountMsats: number): number => {
-    const channelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountMsats)
-    if (channelOpeningFeeNeeded) {
-        return calculateFeesForAmount(amountMsats)
-    }
-    return 0
+const amountMsat = <amount msat>
+try {
+    const channelFees = await openChannelFee({amountMsat: amountMsat})
+} catch (error) {
+    // handle error
 }
 ```
 </section>
@@ -496,10 +496,15 @@ const calculateChannelOpeningFee = async (amountMsats: number): number => {
 <section>
 
 ```dart
-int calculateChannelOpeningFee(int amountMsat) async {
-    bool isChannelOpeningFeeNeeded = await isChannelOpeningFeeNeeded(amountMsat);
-    return isChannelOpeningFeeNeeded ? calculateFeesForAmount(amountMsat) : 0;
-} 
+int amountMsats = <amount msats>
+try {
+    int channelFees = openChannelFee(OpenChannelFeeRequest(
+        amountMsats: amountMsats,
+        ),
+    );
+} catch {
+    // Handle error 
+}
 ```
 </section>
 
@@ -507,13 +512,13 @@ int calculateChannelOpeningFee(int amountMsat) async {
 <section>
 
 ```python
-def calculate_channel_opening_fees(amount_msats):
-    is_channel_opening_fee_needed = is_channel_opening_fee_needed()
-
-    if is_channel_opening_fee_needed:
-        return calculate_fees_for_amount(amount_msats)
-    else: 
-        return None
+amount_msat = <amount msats>
+try:
+    channel_fees = sdk_services.open_channel_fee(
+        breez_sdk.OpenChannelFeeRequest(
+            amount_msat=amount_msat))
+except Exception as error:
+    # Handle error
 ```
 </section>
 
@@ -521,13 +526,8 @@ def calculate_channel_opening_fees(amount_msats):
 <section>
 
 ```go
-func CalculateChannelOpeningFee(amountMsats uint64) (uint64, error) {
-	isChannelOpeningFeeNeeded := isChannelOpeningFeeNeeded(amountMsats)
-	if !isChannelOpeningFeeNeeded {
-        return 0, fmt.Errorf("Channel not needed")
-	}
-	return calculateFeesForAmount(amountMsats), nil
-}
+amountMsat := <amount msat>
+channelFees, err := sdkServices.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{AmountMsat: amountMsat})
 ```
 </section>
 
@@ -535,322 +535,14 @@ func CalculateChannelOpeningFee(amountMsats uint64) (uint64, error) {
 <section>
 
 ```cs 
-ulong calculateChannelOpeningFee(ulong amountMsats) 
-{
-    var channelOpeningFeeNeeded = isChannelOpeningFeeNeeded(amountMsats);
-    if (channelOpeningFeeNeeded) 
-    {
-        return calculateFeesForAmount(amountMsats);
-    }
-    return 0;
-}
+ulong amountMsat = <amount msat>;
+var channelFees = sdk.OpenChannelFee(new OpenChannelFeeRequest(amountMsat));
 ```
 </section>
 </custom-tabs>
 
-How to detect if open channel fees are needed:
 
-<custom-tabs category="lang">
-<div slot="title">Rust</div>
-<section>
-
-```rust,ignore
-fn is_channel_opening_fee_needed(amount_msats: u64) -> Result<bool> {
-    let node_info = sdk.node_info()?.ok_or(anyhow!("No node info found"))?;
-    Ok(node_info.inbound_liquidity_msats <= amount_msats)
-}
-```
-</section>
-
-<div slot="title">Swift</div>
-<section>
-
-```swift 
-func isChannelOpeningFeeNeeded(amountMsats: Int64) -> Bool {
-    do {
-        let nodeInfo = try sdk.nodeInfo()
-
-        if let inboundLiquidityMsats = nodeInfo?.inboundLiquidityMsats {
-            return inboundLiquidityMsats <= amountMsats
-        }   
-    } catch {
-        // Handle error
-    }
-    return false
-}
-```
-</section>
-
-<div slot="title">Android</div>
-<section>
-
-```kotlin
-fun isChannelOpeningFeeNeeded(amountMsats: Long): Boolean {
-    try {
-        val nodeInfo = sdk.nodeInfo()
-        val inboundLiquidityMsats = nodeInfo?.inboundLiquidityMsats?.toLong()
-        if (inboundLiquidityMsats != null) {
-            return inboundLiquidityMsats <= amountMsats
-        }
-    } catch (e: Exception) {
-        // Handle error
-    }
-    return false
-}
-```
-</section>
-
-<div slot="title">React Native</div>
-<section>
-
-```typescript
-const isChannelOpeningFeeNeeded = async (amountMsats: number): boolean => {
-    try {
-        const nodeInfo = await nodeInfo()
-        return nodeInfo.inboundLiquidityMsats <= amountMsats            
-    } catch (error) {
-        // handle error
-    }
-    return false
-}
-```
-</section>
-
-<div slot="title">Dart</div>
-<section>
-
-```dart
-// Assumes nodeState isn't empty
-bool isChannelOpeningFeeNeeded(int amountMsat) async {
-    NodeState? nodeState = await getNodeState();
-    return amountMsat >= nodeState.inboundLiquidityMsats;
-}
-```
-</section>
-
-<div slot="title">Python</div>
-<section>
-
-```python
-def is_channel_opening_fee_needed(amount_msats):
-    return sdk_services.node_info().inbound_liquidity_msats <= amount_msats
-```
-</section>
-
-<div slot="title">Go</div>
-<section>
-
-```go
-func isChannelOpeningFeeNeeded(amountMsats uint64) bool {
-	nodeInfo, err := sdkServices.NodeInfo()
-	if err != nil {
-        // Handle error
-	}
-	return nodeInfo.InboundLiquidityMsats <= amountMsats 
-}
-```
-</section>
-
-<div slot="title">C#</div>
-<section>
-
-```cs
-bool isChannelOpeningFeeNeeded(ulong amountMsats) 
-{
-    try 
-    {
-        var nodeInfo = sdk.NodeInfo();
-        return nodeInfo.inboundLiquidityMsats <= amountMsats;         
-    } 
-    catch (Exception) 
-    {
-        // handle error
-    }
-
-    return false;
-}
-```
-</section>
 </custom-tabs>
 
-LSP fees are calculated in two ways, either by a minimum fee set by the LSP or by a fee per myriad calculated based on the amount being received. If the fee calculated from the fee per myriad is less than the minimum fee, the minimum fee is used.
 
-This information can be retrieved for each LSP and then calculated:
-
-<custom-tabs category="lang">
-<div slot="title">Rust</div>
-<section>
-
-```rust,ignore
-async fn calculate_fees_for_amount(amount_msat: u64) -> Result<u64> {
-    let lsp_id = sdk.lsp_id().await?.ok_or(anyhow!("No lsp id found"))?;
-    let lsp_info = sdk
-        .fetch_lsp_info(lsp_id)
-        .await?
-        .ok_or(anyhow!("No lsp id found"))?;
-
-    // We calculate the dynamic fees in millisatoshis rounded to satoshis.
-    let channel_dynamic_fee_msat =
-        amount_msat * lsp_info.channel_fee_permyriad as u64 / 10_000 / 1000 * 1000;
-    let fee_msat = max(
-        lsp_info.channel_minimum_fee_msat as u64,
-        channel_dynamic_fee_msat,
-    )
-    Ok(fee_msat)
-}
-```
-</section>
-
-<div slot="title">Swift</div>
-<section>
-
-```swift 
-func calculateFeesForAmount(amountMsats: Int64) -> Int64? {
-    do {
-        if let lspId = try sdk.lspId() {
-            let lspInfo = try sdk.fetchLspInfo(lspId: lspId)
-                
-            // We calculate the dynamic fees in millisatoshis rounded to satoshis.
-            let channelDynamicFeeMsat = amountMsats * lspInfo!.channelFeePermyriad / 10_000 / 1000 * 1000
-            let feeMsat = max(lspInfo!.channelMinimumFeeMsat, channelDynamicFeeMsat)
-                
-            return feeMsat
-        }
-    } catch {
-        // Handle error
-    }
-    return nil
-}
-```
-</section>
-
-<div slot="title">Android</div>
-<section>
-
-```kotlin
-fun calculateFeesForAmount(amountMsats: Long): Long? {
-    try {
-        val lspId = sdk.lspId() ?: return null
-        val lspInfo = sdk.fetchLspInfo(lspId) ?: return null
-        // We calculate the dynamic fees in millisatoshis rounded to satoshis.
-        val channelDynamicFeeMsat = amountMsats * lspInfo.channelFeePermyriad / 1000
-        return lspInfo.channelMinimumFeeMsat.coerceAtLeast(channelDynamicFeeMsat)
-    } catch (e: Exception) {
-        // Handle error
-    }
-    return null
-}
-```
-</section>
-
-<div slot="title">React Native</div>
-<section>
-
-```typescript 
-const calculateFeesForAmount = async (amountMsats: number): number => {
-    try {
-        const id = await lspId()
-        const lspInfo = await fetchLspInfo(id)
-                
-        // We calculate the dynamic fees in millisatoshis rounded to satoshis.
-        const channelDynamicFeeMsat = amountMsats * lspInfo.channelFeePermyriad / 10000 / 1000 * 1000
-        const feeMsat = Math.max(lspInfo.channelMinimumFeeMsat, channelDynamicFeeMsat)
-                
-        return feeMsat
-    } catch (error) {
-        // handle error
-    }
-    return 0
-}
-```
-</section>
-
-<div slot="title">Dart</div>
-<section>
-
-```dart
-// Assumes lspId & lspInformation isn't empty
-int calculateFeesForAmount(int amountMsat) async {
-    String? lspId = await getLspId();
-    LSPInformation? lspInformation = await fetchLspInfo(lspId);
-
-    // We calculate the dynamic fees in millisatoshis rounded to satoshis.
-    int channelFeesMsat = (amountMsat * lspInformation.channelFeePermyriad / 10000 / 1000 * 1000);
-    return max(channelFeesMsat, lspInformation.channelMinimumFeeMsat);
-}
-```
-</section>
-
-<div slot="title">Python</div>
-<section>
-
-```python
-def calculate_fees_for_amount(amount_msats):
-    # We need to open channel so we are calculating the fees for the LSP.
-    lsp_id = sdk_services.lsp_id()
-    lsp_info = sdk_services.fetch_lsp_info()
-
-    # We calculate the dynamic fees in millisatoshis rounded to satoshis.
-    channel_dynamic_fee = amount_msats * lsp_info.channel_minimum_fee_msat * lsp_info.channel_fee_permyriad / 10000 // 10000 * 10000
-
-    fee_msat = max(lsp_info.channel_minimum_fee_msat, channel_dynamic_fee)
-
-    return fee_msat
-```
-</section>
-
-<div slot="title">Go</div>
-<section>
-
-```go
-func calculateFeesForAmount(amountMsats uint64) uint64 {
-    lspId, err := sdkServices.LspId()
-    if err != nil {
-        // Handle error
-    }
-
-    lspInfo, err := sdkServices.FetchLspInfo(*lspId)
-    if err != nil {
-        // Handle error
-    }
-
-    // We calculate the dynamic fees in millisatoshis rounded to satoshis
-    channelDynamicFeeMsats := amountMsats * uint64(lspInfo.ChannelFeePermyriad) / 10000 / 1000 * 1000
-    feeMsats := uint64(lspInfo.ChannelMinimumFeeMsat)
-
-    if channelDynamicFeeMsats >= feeMsats {
-        feeMsats = channelDynamicFeeMsats
-    }
-
-    return feeMsats
-}
-```
-</section>
-
-<div slot="title">C#</div>
-<section>
-
-```cs 
-ulong calculateFeesForAmount(ulong amountMsats)
-{
-    try 
-    {
-        var id = sdk.LspId();
-        var lspInfo = sdk.FetchLspInfo(id);
-                
-        // We calculate the dynamic fees in millisatoshis rounded to satoshis.
-        var channelDynamicFeeMsat = amountMsats * (ulong)lspInfo.channelFeePermyriad / 10000 / 1000 * 1000;
-        var feeMsat = Math.Max((ulong)lspInfo.channelMinimumFeeMsat, channelDynamicFeeMsat);
-                
-        return feeMsat;
-    } 
-    catch (Exception) 
-    {
-        // Handle error
-    }
-
-    return 0;
-}
-```
-</section>
-</custom-tabs>
+[^1]: For more details on these fees, see [Channel Opening Fees](connecting_lsp.md#channel-opening-fees)

@@ -10,7 +10,17 @@ Breez SDK automatically connects your node to the LSP peer and you can now recei
 <section>
 
 ```rust,ignore
-let invoice = sdk.receive_payment(3000, "Invoice for 3000 sats".into()).await?;
+let res = sdk.receive_payment(
+    ReceivePaymentRequest {
+        amount_sats: 3000,
+        description: "Invoice for 3000 sats".into(),
+        cltv: None,
+        expiry: None,
+        opening_fee_params: None,
+        preimage: None,
+        use_description_hash: None
+    })
+    .await?;
 ```
 </section>
 
@@ -19,7 +29,10 @@ let invoice = sdk.receive_payment(3000, "Invoice for 3000 sats".into()).await?;
 
 ```swift
 do {
-  let invoice = try sdk.receivePayment(amountSats: 3000, description: "Invoice for 3000 sats")
+  let invoice = try sdk.receivePayment(
+    reqData: ReceivePaymentRequest(
+        amountSats: 3000, 
+        description: "Invoice for 3000 sats"))
 } catch {
     // handle error
 }
@@ -29,7 +42,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val invoice = sdk.receivePayment(3000L.toULong(), "Invoice for 3000 sats")
 } catch (e: Exception) {
@@ -43,7 +56,10 @@ try {
 
 ```typescript
 try {
-    const invoice = await receivePayment(3000, "Invoice for 3000 sats")
+    const invoice = await receivePayment({
+        amountSats: 3000, 
+        description: "Invoice for 3000 sats"
+    })
 } catch (error) {
     console.log(error)
 }
@@ -55,8 +71,12 @@ try {
 
 ```dart
 try {
-    ReceivePaymentRequestData requestData = ReceivePaymentRequestData(amountSats: 3000, description: "Invoice for 3000 sats");
-    ReceivePaymentResponse invoice = await receivePayment(reqData: requestData);
+    ReceivePaymentResponse invoice = await receivePayment(
+        reqData: ReceivePaymentRequestData(
+            amountSats: 3000, 
+            description: "Invoice for 3000 sats",
+            ),
+        );
 } catch (error) {
     // handle error
 }
@@ -68,7 +88,10 @@ try {
 
 ```python
 try:
-  invoice = sdk_services.receive_payment(3000, "Invoice for 3000 sats")
+  receive_payment_response = sdk_services.receive_payment(
+    breez_sdk.ReceivePaymentRequest(
+        amount_sats=3000,
+        description="Invoice for 3000 sats"))
 except Exception as error:
   # Handle error
 ```
@@ -78,7 +101,10 @@ except Exception as error:
 <section>
 
 ```go
-invoice, err := sdkServices.ReceivePayment(3000, "Invoice for 3000 sats")
+invoice, err := sdkService.ReceivePayment(breez_sdk.ReceivePaymentRequest{
+	AmountSats:  3000,
+	Description: "Invoice for 3000 sats",
+})
 ```
 </section>
 
@@ -88,7 +114,8 @@ invoice, err := sdkServices.ReceivePayment(3000, "Invoice for 3000 sats")
 ```cs
 try 
 {
-    var invoice = sdk.ReceivePayment(3000, "Invoice for 3000 sats");
+    var invoice = sdk.ReceivePayment(
+        new ReceivePaymentRequest(3000, "Invoice for 3000 sats"));
 } 
 catch (Exception) 
 {
@@ -106,7 +133,7 @@ catch (Exception)
 
 ```rust,ignore
 let bolt11 = "...";
-sdk.send_payment(bolt11.into(), Some(3000)).await?;
+sdk.send_payment(bolt11.into(), None).await?;
 ```
 </section>
 
@@ -116,7 +143,9 @@ sdk.send_payment(bolt11.into(), Some(3000)).await?;
 ```swift
 let bolt11 = "...";
 do {
-  let payment = try sdk.sendPayment(bolt11: bolt11, amountSats: 3000)
+  // The `amountSats` param is optional so nil can be passed if the 
+  // bolt11 invoice spesifies an amount.
+  let payment = try sdk.sendPayment(bolt11:  bolt11, amountSats: 3000)
 } catch {
     // handle error
 }
@@ -126,7 +155,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 val bolt11 = "..."
 try {
     val payment = sdk.sendPayment(bolt11, 3000L.toULong())
@@ -171,7 +200,9 @@ try {
 ```python
 bolt11 = "..."
 try:
-  sdk_services.send_payment(bolt11, 3000)
+  # The `amountSats` param is optional so None can be passed if the 
+  # bolt11 invoice spesifies an amount.
+  sdk_services.send_payment(bolt11=bolt11, amount_sats=None)
 except Exception as error:
   # Handle error
 ```
@@ -190,7 +221,7 @@ payment, err := sdkServices.SendPayment(bolt11, 3000)
 <section>
 
 ```cs
-const bolt11 = "...";
+var bolt11 = "...";
 try 
 {
     var payment = sdk.SendPayment(bolt11, 3000);
@@ -231,7 +262,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 val nodeId = "..."
 try {
     val payment = sdk.sendSpontaneousPayment(nodeId, 3000L.toULong())
@@ -274,9 +305,9 @@ try {
 <section>
 
 ```python
-let node_id = "..."
+node_id = "..."
 try:
-  sdk_services.send_spontaneous_payment(node_id, 3000)
+  sdk_services.send_spontaneous_payment(node_id=node_id, amount_sats=3000)
 except Exception as error:
   # Handle error
 ```
@@ -295,7 +326,7 @@ payment, err := sdkServices.SendSpontaneousPayment(nodeId, 3000)
 <section>
 
 ```cs
-const nodeId = "...";
+var nodeId = "...";
 try 
 {
     var payment = sdk.SendSpontaneousPayment(nodeId, 3000);

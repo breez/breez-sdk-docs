@@ -54,7 +54,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 // Endpoint can also be of the form:
 // keyauth://domain.com/auth?key=val
 // lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7…

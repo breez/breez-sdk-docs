@@ -45,7 +45,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 // Endpoint can also be of the form:
 // lnurlw://domain.com/lnurl-withdraw?key=val
 // lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7…
@@ -155,7 +155,6 @@ var lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9
 
 try 
 {
-    var lnurlWithdrawUrl = "";
     var input = BreezSdkMethods.ParseInput(lnurlWithdrawUrl);
     if (input is InputType.LnUrlWithdraw lnurlw) 
     {

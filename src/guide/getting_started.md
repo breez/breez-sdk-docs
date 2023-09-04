@@ -96,7 +96,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 // SDK events listener
 class SDKListener : EventListener {
     override fun onEvent(e: BreezEvent) {
@@ -335,7 +335,7 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     val nodeInfo = sdk.nodeInfo()
     val lnBalance = nodeInfo?.channelsBalanceMsat
