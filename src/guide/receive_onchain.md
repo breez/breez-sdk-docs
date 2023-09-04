@@ -535,7 +535,8 @@ channelFees, err := sdkServices.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{A
 <section>
 
 ```cs 
-// TODO add example for openChannelFee
+ulong amountMsat = <amount msat>;
+var channelFees = sdk.OpenChannelFee(new OpenChannelFeeRequest(amountMsat));
 ```
 </section>
 </custom-tabs>
