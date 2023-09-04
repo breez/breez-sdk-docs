@@ -12,7 +12,6 @@ First, fetch the current reverse swap fees:
 let current_fees = sdk.fetch_reverse_swap_fees().await?;
 
 info!("Total estimated fees for reverse swap: {}", current_fees.total_estimated_fees);
-
 ```
 </section>
 
@@ -203,8 +202,9 @@ Once you checked the fees are acceptable, you can start the reverse swap:
 ```rust,ignore
 let destination_address = String::from("bc1..");
 let amount_sat = current_fees.min;
+let satPerVbyte = <fee rate>;
 
-sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash).await?;
+sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash, satPerVbyte).await?;
 ```
 </section>
 

@@ -10,7 +10,17 @@ Breez SDK automatically connects your node to the LSP peer and you can now recei
 <section>
 
 ```rust,ignore
-let invoice = sdk.receive_payment(3000, "Invoice for 3000 sats".into()).await?;
+let res = sdk.receive_payment(
+    ReceivePaymentRequest {
+        amount_sats: 3000,
+        description: "Invoice for 3000 sats".into(),
+        cltv: None,
+        expiry: None,
+        opening_fee_params: None,
+        preimage: None,
+        use_description_hash: None
+    })
+    .await?;
 ```
 </section>
 
@@ -122,7 +132,7 @@ catch (Exception)
 
 ```rust,ignore
 let bolt11 = "...";
-sdk.send_payment(bolt11.into(), Some(3000)).await?;
+sdk.send_payment(bolt11.into(), None).await?;
 ```
 </section>
 

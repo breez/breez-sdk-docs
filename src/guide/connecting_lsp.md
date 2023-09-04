@@ -3,6 +3,15 @@
 Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
 
 <custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+let lsp_id = sdk.lsp_id().await?;
+let lsp_info = sdk.lsp_info().await?;
+```
+</section>
+
 <div slot="title">Swift</div>
 <section>
 
@@ -107,6 +116,14 @@ catch (Exception)
 When you have selected an LSP you may then connect to it.
 
 <custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+sdk.connect_lsp(lsp_id).await?;
+```
+</section>
+
 <div slot="title">Swift</div>
 <section>
 

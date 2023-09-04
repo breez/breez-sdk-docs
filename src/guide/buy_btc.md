@@ -7,10 +7,13 @@ This section of the Breez SDK documentation provides an example on purchasing Bi
 <div slot="title">Rust</div>
 <section>
 
-```rust
-// TODO add docs
+```rust,ignore
+let res = sdk.buy_bitcoin(
+    BuyBitcoinRequest {
+        provider: BuyBitcoinProvider::Moonpay,
+        opening_fee_params: None})
+    .await?;
 ```
-
 </section>
 
 <div slot="title">Swift</div>
@@ -23,7 +26,6 @@ do {
 } catch {
   // handle error
 }
-    
 ```
 </section>
 
@@ -59,7 +61,6 @@ try {
 } catch {
     // Handle error
 }
-
 ```
 </section>
 
@@ -94,3 +95,4 @@ buyBitcoinResponse, err := sdkService.BuyBitcoin(breez_sdk.BuyBitcoinRequest{
 // TODO add docs
 ```
 </section>
+</custom-tabs>

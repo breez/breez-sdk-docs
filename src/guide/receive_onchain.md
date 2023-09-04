@@ -10,10 +10,9 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 <section>
 
 ```rust,ignore
-// Optional user-selected dynamic fees (see Connecting to LSP section for details)
-let opening_fee_params = None;
-
-let swap_info = sdk.receive_onchain( ReceiveOnchainRequest { opening_fee_params } ).await?;
+let swap_info = sdk.receive_onchain( 
+    ReceiveOnchainRequest { opening_fee_params: None } )
+    .await?;
 
 // Send your funds to the below bitcoin address
 let address = swap_info.bitcoin_address;
