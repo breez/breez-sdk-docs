@@ -63,11 +63,11 @@ See [the example](https://github.com/breez/breez-sdk/tree/main/libs/sdk-bindings
 We recommmend using the official npm package:
 
 ```console
-npm install https://github.com/breez/breez-sdk-react-native/releases/download/0.1.4/breeztech-react-native-breez-sdk-0.1.4.tgz
+npm install @breeztech/react-native-breez-sdk
 ```
 or
 ```console
-yarn add https://github.com/breez/breez-sdk-react-native/releases/download/0.1.4/breeztech-react-native-breez-sdk-0.1.4.tgz
+yarn add @breeztech/react-native-breez-sdk
 ```
 
 ## Go

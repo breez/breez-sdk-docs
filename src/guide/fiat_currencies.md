@@ -95,7 +95,7 @@ try {
 
 ```typescript
 try {
-    const fiatRatesMap = fetchFiatRates()
+    const fiatRatesMap = await fetchFiatRates()
 } catch (error) {
     console.log(error)
 }

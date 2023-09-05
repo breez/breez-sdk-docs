@@ -261,7 +261,7 @@ const destinationAddress = "bc1..";
 const amountSat = currentFees.min;
 const satPerVbyte = <fee rate>
 try {
-    const reverseSwapInfo = sendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte)
+    const reverseSwapInfo = await sendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte)
 } catch (error) {
     console.log(error)
 }
