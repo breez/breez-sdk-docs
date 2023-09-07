@@ -15,3 +15,4 @@
   - [LNURL-Auth](guide/lnurl_auth.md)
 - [Supporting fiat currencies](guide/fiat_currencies.md)
 - [Buy Bitcoin](guide/buy_btc.md)
+- [Moving to production](guide/production.md)
