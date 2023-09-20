@@ -44,7 +44,10 @@ do {
 
 ```kotlin,ignore
 try {
-    val invoice = sdk.receivePayment(3000L.toULong(), "Invoice for 3000 sats")
+    val invoice = sdk.receivePayment(ReceivePaymentRequest(
+        3000L.toULong(),
+        "Invoice for 3000 sats",
+    ))
 } catch (e: Exception) {
     // handle error
 }

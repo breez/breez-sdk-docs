@@ -56,7 +56,7 @@ dependencies {
 }
 ```
 
-See [the example](https://github.com/breez/breez-sdk/tree/main/libs/sdk-bindings/bindings-android/example) for more details
+See [the example](https://github.com/breez/breez-sdk-examples/tree/main/Android) for more details
 
 ## React Native
 
