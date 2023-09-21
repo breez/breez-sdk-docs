@@ -2,7 +2,7 @@
 
 This section of the Breez SDK documentation provides an example on purchasing Bitcoin using Moonpay as the provider. The example code snippet demonstrates how to initiate a Bitcoin purchase transaction using the Breez SDK.
 
-The SDK will generate a Bitcoin address and prepare an URL using the specified provider. The user needs to open the URL and proceed with the provider flow to buy the Bitcoin.
+The SDK will generate a Bitcoin address and prepare a URL using the specified provider. The user needs to open the URL and proceed with the provider flow to buy the Bitcoin.
 
 Once the acquisition is completed, the provider will transfer the Bitcoin to the generated address and Breez SDK will add the received Bitcoin to the Lightning balance.
 
