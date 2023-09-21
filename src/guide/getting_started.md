@@ -132,8 +132,8 @@ try {
 
 ```typescript
 // SDK events listener
-addEventListener((type, data) => {
-    console.log(`received event ${type}`);
+const onBreezEvent = (event: BreezEvent) => {
+    console.log(`received event ${event.type}`)
 })
 
 // Create the default config
@@ -152,7 +152,7 @@ config.workingDir = "path to an existing directory";
 
 try {
     // Connect to the Breez SDK make it ready for use
-    const sdkServices = await connect(config, seed);
+    const sdkServices = await connect(config, seed, onBreezEvent)
 } catch (error) {
     console.log(error)
 }
