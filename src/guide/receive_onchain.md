@@ -39,7 +39,7 @@ do {
 
 ```kotlin,ignore
 try {
-    val swapInfo = sdk.receiveOnchain()
+    val swapInfo = sdk.receiveOnchain(ReceiveOnchainRequest())
     // Send your funds to the bellow bitcoin address
     val address = swapInfo.bitcoinAddress
 } catch (e: Exception) {

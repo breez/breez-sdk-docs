@@ -2,6 +2,10 @@
 
 This section of the Breez SDK documentation provides an example on purchasing Bitcoin using Moonpay as the provider. The example code snippet demonstrates how to initiate a Bitcoin purchase transaction using the Breez SDK.
 
+The SDK will generate a Bitcoin address and prepare a URL using the specified provider. The user needs to open the URL and proceed with the provider flow to buy the Bitcoin.
+
+Once the buy is completed, the provider will transfer the Bitcoin to the generated address and Breez SDK will add the received Bitcoin to the Lightning balance.
+
 <custom-tabs category="lang">
 
 <div slot="title">Rust</div>
@@ -32,8 +36,17 @@ do {
 <div slot="title">Android</div>
 <section>
 
-```kotlin,ignore
-// TODO add docs
+```kotlin
+try {
+    // Choose your provider
+    val provider = BuyBitcoinProvider.MOONPAY
+    // request the url to proceed with the Bitcoin acquisition
+    val url = sdk.buyBitcoin(BuyBitcoinRequest(provider)).url
+    // Opens the url in the browser to buy on provider's site
+    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+} catch (e: Exception) {
+    // Handle error
+}
 ```
 </section>
 
