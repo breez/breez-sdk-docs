@@ -169,7 +169,7 @@ try {
 <section>
 
 ```typescript
-const bolt11 = "...";
+const bolt11 = "..."
 try {
     const payment = await sendPayment(bolt11, 3000)
 } catch (error) {
@@ -276,7 +276,7 @@ try {
 <section>
 
 ```typescript
-const nodeId = "...";
+const nodeId = "..."
 try {
     const payment = await sendSpontaneousPayment(nodeId, 3000)
 } catch (error) {

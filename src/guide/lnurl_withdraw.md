@@ -70,12 +70,12 @@ try {
 ```typescript
 // Endpoint can also be of the form:
 // lnurlw://domain.com/lnurl-withdraw?key=val
-let lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk";
+let lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk"
 
 try {
     const input = await parseInput(lnurlWithdrawUrl)
     if (input.type === InputType.LNURL_WITHDRAW) {
-        const amountSats = input.data.minWithdrawable;
+        const amountSats = input.data.minWithdrawable
         const result = await withdrawLnurl(input.data, amountSats, "comment")
     }    
 } catch (error) {
