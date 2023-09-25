@@ -3,7 +3,9 @@
 A static channel backup is automatically saved by the Breez SDK in the background. More specifically, the static backup is updated
 each time a new channel is opened.
 
-If the Greenlight node is not available, you can retrieve the static channel backup from the SDK's working directory as follows:
+The static channel backup can be used as a last resort to recover funds in case the Greenlight node becomes inaccessible. Recovering the funds is currently not part of the Breez SDK. In order to recover the funds, the user can initialize a new core lightning node with its seed, and trigger a channel recovery through [the recoverchannel method](https://docs.corelightning.org/reference/lightning-recoverchannel) provided by CLN.
+
+In order to use the recoverchannel method, the user needs to provide the static channel backup file. It can be retrieved from the SDK's working directory as follows:
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
