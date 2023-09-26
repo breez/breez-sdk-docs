@@ -24,7 +24,7 @@ let backup_data = BreezServices::static_backup(StaticBackupRequest {
 
 ```swift
 do {
-    let backupData = breez_sdk.staticBackup(workingDir: "<working directory>");    
+    let backupData = breez_sdk.staticBackup(request: StaticBackupRequest(workingDir: "<working directory>"));
 } catch{
     // handle error
 }
@@ -37,7 +37,7 @@ do {
 
 ```kotlin,ignore
 try {
-    val backupData = staticBackup("<working directory>")
+    val backupData = staticBackup(StaticBackupRequest("<working directory>"))
 } catch (e: Exception) {
     // handle error
 }
@@ -50,7 +50,7 @@ try {
 
 ```typescript
 try {
-    let backupData = await staticBackup("<working directory>");
+    let backupData = await staticBackup({workingDir: "<working directory>"})
 } catch (error) {
     console.log(error)
 }
@@ -63,7 +63,7 @@ try {
 
 ```dart
 try {
-    StaticBackupResponse backupData = await staticBackup(workingDir: "<working directory>");
+    StaticBackupResponse backupData = await staticBackup(request: StaticBackupRequest(workingDir: "<working directory>"));
 } catch (error) {
    // handle error
 }
@@ -75,7 +75,7 @@ try {
 
 ```python
 try:
-    backup_data = breez_sdk.static_backup("<working directory>")    
+    backup_data = breez_sdk.static_backup(breez_sdk.StaticBackupRequest(working_dir="<working directory>"))
 except Exception as error:
     # Handle error
 ```
@@ -85,7 +85,9 @@ except Exception as error:
 <section>
 
 ```go
-backupData, err := breez_sdk.StaticBackup("<working directory>")
+backupData, err := breez_sdk.StaticBackup(breez_sdk.StaticBackupRequest{
+    WorkingDir: "<working directory>",
+})
 if err != nil {
     log.Fatalf("Failed to retrieve static backup data: %#v", err)
 }
@@ -98,10 +100,9 @@ if err != nil {
 ```cs
 using Breez.Sdk;
 
-StaticBackupResponse backupData;
 try 
 {
-    backupData = BreezSdkMethods.StaticBackup("<working directory>");  
+    var backupData = BreezSdkMethods.StaticBackup(new StaticBackupRequest("<working directory>"));  
 } catch (Exception) 
 {
    // Handle error
