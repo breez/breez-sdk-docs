@@ -85,13 +85,11 @@ except Exception as error:
 <section>
 
 ```go
-lspId, err := sdkServices.LspId()
-if err != nil {
-    // Handle error
+if lspId, err := sdk.LspId(); lspId != nil && err == nil {
+    log.Printf("%#v", *lspId)
 }
-lspInfo, err := sdkServices.LspInfo()
-if err != nil {
-    // Handle error
+if lspInfo, err := sdk.LspInfo(); err == nil {
+    log.Printf("%#v", lspInfo)
 }
  ```
 </section>
@@ -188,11 +186,11 @@ except Exception as error:
 <section>
 
  ```go
-err = sdkServices.ConnectLsp(*lspId)
-if err != nil {
-    // Handle error
+lspId := "your selected lsp id"
+if err := sdk.ConnectLsp(lspId); err != nil {
+    log.Printf("%#v", err)
 }
- ```
+```
 </section>
 
 <div slot="title">C#</div>

@@ -55,7 +55,9 @@ except Exception as error:
 <section>
 
 ```go
-fiatCurrencies, err := sdkServices.ListFiatCurrencies()
+if fiatCurrencies, err := sdk.ListFiatCurrencies(); err == nil {
+    log.Printf("%#v", fiatCurrencies)
+}
 ```
 </section>
 
@@ -132,7 +134,9 @@ except Exception as error:
 <section>
 
 ```go
-fiatRates, err := sdkServices.FetchFiatRates()
+if fiatRates, err := sdk.FetchFiatRates(); err == nil {
+    log.Printf("%#v", fiatRates)
+}
 ```
 </section>
 

@@ -85,11 +85,9 @@ except Exception as error:
 <section>
 
 ```go
-backupData, err := breez_sdk.StaticBackup(breez_sdk.StaticBackupRequest{
-    WorkingDir: "<working directory>",
-})
-if err != nil {
-    log.Fatalf("Failed to retrieve static backup data: %#v", err)
+workingDir := "<working directory>"
+if staticBackupResponse, err := breez_sdk.StaticBackup(breez_sdk.StaticBackupRequest{WorkingDir: workingDir}); err == nil {
+    log.Printf("%#v", staticBackupResponse)
 }
 ```
 </section>

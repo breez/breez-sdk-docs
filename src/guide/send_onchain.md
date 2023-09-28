@@ -100,7 +100,7 @@ sendAmountSat := uint64(50000)
 reverseSwapFeesRequest := breez_sdk.ReverseSwapFeesRequest{
     SendAmountSat: &sendAmountSat,
 }
-if currentFees, err := sdkService.FetchReverseSwapFees(reverseSwapFeesRequest); err != nil {
+if currentFees, err := sdk.FetchReverseSwapFees(reverseSwapFeesRequest); err == nil {
     log.Printf("Total estimated fees for reverse swap: %v", currentFees.TotalEstimatedFees)
 }
 ```
@@ -313,10 +313,13 @@ except Exception as error:
 
 ```go
 destinationAddress := "bc1.."
-amountSat := currentFees.Min
-satPerVbyte := <fee rate>
-
-reverseSwapInfo, err := sdkServices.SendOnchain(amountSat, destinationAddress, currentFees.FeesHash, satPerVbyte)
+sendAmountSat := uint64(50000)
+satPerVbyte := uint64(5)
+if currentFees, err := sdk.FetchReverseSwapFees(breez_sdk.ReverseSwapFeesRequest{SendAmountSat: &sendAmountSat}); err == nil {
+    if reverseSwapInfo, err := sdk.SendOnchain(sendAmountSat, destinationAddress, currentFees.FeesHash, satPerVbyte); err == nil {
+        log.Printf("%#v", reverseSwapInfo)
+    }
+}
 ```
 </section>
 
@@ -424,7 +427,7 @@ except Exception as error:
 <section>
 
 ```go
-if swaps, err := sdkServices.InProgressReverseSwaps(); err != nil {
+if swaps, err := sdk.InProgressReverseSwaps(); err == nil {
     for _, swap := range swaps {
         log.Printf("Reverse swap %v in progress, status is %v", swap.Id, swap.Status)
     }

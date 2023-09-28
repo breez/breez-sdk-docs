@@ -143,7 +143,14 @@ if input, err := breez_sdk.ParseInput(lnurlPayUrl); err != nil {
     case breez_sdk.InputTypeLnUrlPay:
         amountsSats := inputType.Data.MinSendable
         comment := "comment"
-        result, err := sdkServices.PayLnurl(inputType.Data, amountsSats, &comment)
+        if result, err := sdk.PayLnurl(inputType.Data, amountsSats, &comment); err != nil {
+            switch result.(type) {
+            case breez_sdk.LnUrlPayResultEndpointSuccess:
+                log.Printf("Successfully paid")
+            default:
+                log.Printf("Failed to pay")
+            }
+        }
     }
 }
 ```
