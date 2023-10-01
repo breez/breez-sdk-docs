@@ -139,7 +139,14 @@ if input, err := breez_sdk.ParseInput(lnurlWithdrawUrl); err != nil {
     case breez_sdk.InputTypeLnUrlWithdraw:
         amountsSats := inputType.Data.MinWithdrawable
         description := "comment"
-        result, err := sdkServices.WithdrawLnurl(inputType.Data, amountsSats, &description)
+        if result, err := sdk.WithdrawLnurl(inputType.Data, amountsSats, &description); err != nil {
+            switch result.(type) {
+            case breez_sdk.LnUrlCallbackStatusOk:
+                log.Printf("Successfully withdrawn")
+            default:
+                log.Printf("Failed to withdraw")
+            }
+        }
     }
 }
 ```

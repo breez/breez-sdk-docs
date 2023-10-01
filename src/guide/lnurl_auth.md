@@ -153,10 +153,11 @@ lnurlAuthUrl := "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvd
 if input, err := breez_sdk.ParseInput(lnurlAuthUrl); err != nil {
     switch inputType := input.(type) {
     case breez_sdk.InputTypeLnUrlAuth:
-        if result, err := sdkServices.LnurlAuth(inputType.Data); err != nil {
-            if (result.Status === "ok") {
+        if result, err := sdk.LnurlAuth(inputType.Data); err != nil {
+            switch result.(type) {
+            case breez_sdk.LnUrlCallbackStatusOk:
                 log.Printf("Successfully authenticated")
-            } else {
+            default:
                 log.Printf("Failed to authenticate")
             }
         }

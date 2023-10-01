@@ -96,9 +96,10 @@ except Exception as error:
 <section>
 
 ```go
-if swapInfo, err := sdkServices.ReceiveOnchain(breez_sdk.ReceiveOnchainRequest{}); err != nil {
+if swapInfo, err := sdk.ReceiveOnchain(breez_sdk.ReceiveOnchainRequest{}); err != nil {
     // Send your funds to the below bitcoin address
     address := swapInfo.BitcoinAddress
+    log.Printf("%v", address)
 }
 ```
 </section>
@@ -196,7 +197,9 @@ except Exception as error:
 <section>
 
 ```go
-swapInfo, err := sdkServices.InProgressSwap()
+if swapInfo, err := sdk.InProgressSwap(); err == nil {
+    log.Printf("%#v", swapInfo)
+}
 ```
 </section>
 
@@ -295,7 +298,9 @@ except Exception as error:
 <section>
 
 ```go
-refundables, err := sdkServices.ListRefundables()
+if refundables, err := sdk.ListRefundables(); err == nil {
+    log.Printf("%#v", refundables)
+}
 ```
 </section>
 
@@ -414,10 +419,14 @@ except Exception as error:
 <section>
 
 ```go
-destinationAddress := "..."
-satPerVbyte := <refund tx fee rate>
-
-result, err := sdkServices.Refund(refundable.BitcoinAddress, destinationAddress, satPerVbyte)
+if refundables, err := sdk.ListRefundables(); err == nil {
+    destinationAddress := "..."
+    satPerVbyte := uint32(5)
+    
+    if result, err := sdk.Refund(refundables[0].BitcoinAddress, destinationAddress, satPerVbyte); err == nil {
+        log.Printf("%v", result)
+    }
+}
 ```
 </section>
 
@@ -526,8 +535,10 @@ except Exception as error:
 <section>
 
 ```go
-amountMsat := <amount msat>
-channelFees, err := sdkServices.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{AmountMsat: amountMsat})
+amountMsat := uint64(10000)
+if channelFees, err := sdk.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{AmountMsat: amountMsat}); err == nil {
+    log.Printf("%#v", channelFees)
+}
 ```
 </section>
 

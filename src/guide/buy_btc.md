@@ -94,9 +94,12 @@ except Exception as error:
 <section>
 
 ```go
-buyBitcoinResponse, err := sdkService.BuyBitcoin(breez_sdk.BuyBitcoinRequest{
-		Provider: breez_sdk.BuyBitcoinProviderMoonpay,
-})
+buyBitcoinRequest := breez_sdk.BuyBitcoinRequest{
+	Provider: breez_sdk.BuyBitcoinProviderMoonpay,
+}
+if buyBitcoinResponse, err := sdk.BuyBitcoin(buyBitcoinRequest); err == nil {
+    log.Printf("%#v", buyBitcoinResponse)
+}
 ```
 </section>
 

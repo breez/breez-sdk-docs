@@ -104,10 +104,13 @@ except Exception as error:
 <section>
 
 ```go
-invoice, err := sdkService.ReceivePayment(breez_sdk.ReceivePaymentRequest{
-	AmountSats:  3000,
-	Description: "Invoice for 3000 sats",
-})
+receivePaymentRequest := breez_sdk.ReceivePaymentRequest{
+    AmountSats:  3000,
+    Description: "Invoice for 3000 sats",
+}
+if receivePaymentResponse, err := sdk.ReceivePayment(receivePaymentRequest); err == nil {
+    log.Printf("%#v", receivePaymentResponse)
+}
 ```
 </section>
 
@@ -215,8 +218,11 @@ except Exception as error:
 <section>
 
 ```go
-const bolt11 = "...";
-payment, err := sdkServices.SendPayment(bolt11, 3000)
+bolt11 := "bolt11 invoice"
+amountSats := uint64(3000)
+if payment, err := sdk.SendPayment(bolt11, &amountSats); err == nil {
+    log.Printf("%#v", payment)
+}
 ```
 </section>
 
@@ -320,8 +326,10 @@ except Exception as error:
 <section>
 
 ```go
-const nodeId = "...";
-payment, err := sdkServices.SendSpontaneousPayment(nodeId, 3000)
+nodeId := "node id"
+if payment, err := sdk.SendSpontaneousPayment(nodeId, 3000); err == nil {
+    log.Printf("%#v", payment)
+}
 ```
 </section>
 
