@@ -383,8 +383,8 @@ for (rs in sdk.inProgressReverseSwaps()) {
 ```typescript
 try {
     const swaps = await inProgressReverseSwaps()
-    for (const swap in swaps) {
-        println(`Reverse swap ${swap.id} in progress, status is ${swap.status}`)
+    for (const swap of swaps) {
+        console.log(`Reverse swap ${swap.id} in progress, status is ${swap.status}`)
     }
 } catch (error) {
     console.log(error)

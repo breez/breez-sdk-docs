@@ -74,7 +74,7 @@ let lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9
 
 try {
     const input = await parseInput(lnurlWithdrawUrl)
-    if (input.type === InputType.LNURL_WITHDRAW) {
+    if (input.type === InputTypeVariant.LN_URL_WITHDRAW) {
         const amountSats = input.data.minWithdrawable
         const result = await withdrawLnurl(input.data, amountSats, "comment")
     }    

@@ -83,12 +83,12 @@ let lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0
 
 try {
     const input = await parseInput(lnurlAuthUrl)
-    if (input.type === InputType.LNURL_AUTH) {
+    if (input.type === InputTypeVariant.LN_URL_AUTH) {
         const result = await lnurlAuth(input.data)
-        if (result.status === "ok") {
-            print("Successfully authenticated")
+        if (result.type === LnUrlCallbackStatusVariant.OK) {
+            console.log("Successfully authanticated")
         } else {
-            print("Failed to authenticate")
+            console.log("Failed to authenticate")
         }
     }    
 } catch (error) {
