@@ -75,11 +75,11 @@ try {
 ```dart
 try {
     ReceivePaymentResponse invoice = await receivePayment(
-        reqData: ReceivePaymentRequestData(
+        reqData: ReceivePaymentRequest(
             amountSats: 3000, 
             description: "Invoice for 3000 sats",
-            ),
-        );
+        ),
+    );
 } catch (error) {
     // handle error
 }
