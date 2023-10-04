@@ -25,6 +25,7 @@
             #tabs {
               border-bottom: 1px solid var(--quote-border);
               background-color: var(--sidebar-bg);
+              overflow-x: auto;
             }
             #tabs slot {
               display: inline-flex; /* Safari bug. Treats <slot> as a parent */
