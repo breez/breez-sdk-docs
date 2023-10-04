@@ -109,7 +109,7 @@ try {
 
 ```dart
 try {
-    Map<String, Rate> fiatRatesMap = fetchFiatRates();
+    Map<String, Rate> fiatRatesMap = await fetchFiatRates();
     // print your desired rate 
     print(fiatRatesMap["USD"]?.value);
 } catch(e) {
@@ -201,7 +201,31 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 <section>
 
 ```dart
-// TODO
+Future<Map<FiatCurrency, Rate>> fiatCurrenciesAndRate() async {
+    try {
+      List<FiatCurrency> fiatCurrencies = await _breezLib.listFiatCurrencies();
+      Map<String, Rate> fiatRates = await _breezLib.fetchFiatRates();
+
+      var sorted = fiatCurrencies.toList();
+      sorted.sort((f1, f2) {
+        return f1.id.compareTo(f2.id);
+      });
+
+      Map<FiatCurrency, Rate> result = {};
+      for (var currency in sorted) {
+        var rate = fiatRates[currency.id];
+        if (rate != null) {
+          result[currency] = rate;
+        }
+      }
+
+      return result;
+    } catch (e) {
+      // Handle error
+      return {};
+    }
+}
+
 ```
 </section>
 

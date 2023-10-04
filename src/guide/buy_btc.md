@@ -68,7 +68,8 @@ try {
 ```dart
 try {
     BuyBitcoinResponse buyBitcoinResponse = buyBitcoin(
-        reqData: BuyBitcoinRequest(provider: BuyBitcoinProvider.Moonpay,
+        reqData: BuyBitcoinRequest(
+            provider: BuyBitcoinProvider.Moonpay,
         ),
     ); 
 } catch {

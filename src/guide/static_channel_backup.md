@@ -63,7 +63,11 @@ try {
 
 ```dart
 try {
-    StaticBackupResponse backupData = await staticBackup(request: StaticBackupRequest(workingDir: "<working directory>"));
+    StaticBackupResponse backupData = await staticBackup(
+        request: StaticBackupRequest
+            workingDir: "<working directory>",
+        ),
+    );
 } catch (error) {
    // handle error
 }

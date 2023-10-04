@@ -68,7 +68,9 @@ try {
 
 ```dart
 try {
-    SwapInfo swapInfo = await receiveOnchain(ReceiveOnchainRequest());
+    SwapInfo swapInfo = await receiveOnchain(
+        reqData: ReceiveOnchainRequest(),
+    );
 
     // Send your funds to the below bitcoin address
     String address = swapInfo.bitcoinAddress;
@@ -175,7 +177,7 @@ try {
 
 ```dart
 try {
-    SwapInfo? swapInfo = await inProgressSwap()
+    SwapInfo? swapInfo = await inProgressSwap();
 } catch (error) {
     // handle error
 }
@@ -391,7 +393,7 @@ try {
         swapAddress: refundable.bitcoinAddress,
         toAddress: destinationAddress,
         satPerVbyte: satPerVbyte,
-     );
+    );
 } catch (error) {
      // handle error
 }
@@ -507,8 +509,9 @@ try {
 ```dart
 int amountMsats = <amount msats>
 try {
-    int channelFees = openChannelFee(OpenChannelFeeRequest(
-        amountMsats: amountMsats,
+    int channelFees = openChannelFee(
+        req: OpenChannelFeeRequest(
+            amountMsats: amountMsats,
         ),
     );
 } catch {

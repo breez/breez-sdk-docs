@@ -68,9 +68,9 @@ try {
 try {
     ReverseSwapPairInfo currentFees = await fetchReverseSwapFees(
         req: ReverseSwapFeesRequest(
-            sendAmountSat: 50000, 
-            ),
-        );
+            sendAmountSat: 50000,
+        ),
+    );
 
     print("Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}");
 } catch (error) {
@@ -275,6 +275,7 @@ try {
 String destinationAddress = "bc1..";
 int amountSat = <amount>;
 int satPerVbyte = <fee rate>
+ReverseSwapPairInfo currentFees = <current reverse swap fees>
 try {
     ReverseSwapInfo reverseSwapInfo = await sendOnchain(
         amountSat: amountSat,
