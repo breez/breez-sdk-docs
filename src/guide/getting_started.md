@@ -27,6 +27,12 @@ Breez SDK is available in several platforms. Follow the [Installing](install.md)
 
 ## Connecting
 
+The first step is to construct the SDK configuration. In it the environment and Greenlight node configuration is defined, whether you are using an invite code or partner credentials.
+
+The SDK uses the config working directory to store the state of the SDK instance. Once a connection has been established with a node, the working directory can only be used for that node. When handling multiple instances of the SDK, one per node, each needs to have a different working directory defined.
+
+Now your SDK is ready to be used.
+
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
 <section>
