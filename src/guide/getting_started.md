@@ -132,27 +132,27 @@ try {
 
 ```typescript
 // SDK events listener
-addEventListener((type, data) => {
-    console.log(`received event ${type}`);
+const onBreezEvent = (event: BreezEvent) => {
+    console.log(`received event ${event.type}`)
 })
 
 // Create the default config
-const seed = await mnemonicToSeed("<mnemonics words>");
-const inviteCode = "<your greenlight invite code>";
+const seed = await mnemonicToSeed("<mnemonics words>")
+const inviteCode = "<your greenlight invite code>"
 const nodeConfig : NodeConfig = {
     type: NodeConfigType.GREENLIGHT,
     config: {
         inviteCode: "your invite code"        
     }
 }
-let config = await defaultConfig(EnvironmentType.PRODUCTION, "api key", nodeConfig);
+let config = await defaultConfig(EnvironmentType.PRODUCTION, "api key", nodeConfig)
 
 // Customize the config object according to your needs
-config.workingDir = "path to an existing directory";
+config.workingDir = "path to an existing directory"
 
 try {
     // Connect to the Breez SDK make it ready for use
-    const sdkServices = await connect(config, seed);
+    const sdkServices = await connect(config, seed, onBreezEvent)
 } catch (error) {
     console.log(error)
 }

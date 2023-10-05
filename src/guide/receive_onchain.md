@@ -56,7 +56,7 @@ try {
     const swapInfo = await receiveOnchain({})
 
     // Send your funds to the below bitcoin address
-    const address = swapInfo.bitcoinAddress;
+    const address = swapInfo.bitcoinAddress
 } catch (error) {
     console.log(error)
 }

@@ -54,7 +54,7 @@ try {
 try {
     const currentFees = await fetchReverseSwapFees({sendAmountSat: 50000})
 
-    console.log(`Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`);
+    console.log(`Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`)
 } catch (error) {
     console.log(error)
 }
@@ -162,8 +162,8 @@ Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
 <section>
 
 ```typescript
-console.log(`Minimum amount, in sats: ${currentFees.min}`);
-console.log(`Maximum amount, in sats: ${currentFees.max}`);
+console.log(`Minimum amount, in sats: ${currentFees.min}`)
+console.log(`Maximum amount, in sats: ${currentFees.max}`)
 ```
 </section>
 
@@ -257,8 +257,8 @@ try {
 <section>
 
 ```typescript
-const destinationAddress = "bc1..";
-const amountSat = currentFees.min;
+const destinationAddress = "bc1.."
+const amountSat = currentFees.min
 const satPerVbyte = <fee rate>
 try {
     const reverseSwapInfo = await sendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte)
@@ -387,8 +387,8 @@ for (rs in sdk.inProgressReverseSwaps()) {
 ```typescript
 try {
     const swaps = await inProgressReverseSwaps()
-    for (const swap in swaps) {
-        println(`Reverse swap ${swap.id} in progress, status is ${swap.status}`);
+    for (const swap of swaps) {
+        console.log(`Reverse swap ${swap.id} in progress, status is ${swap.status}`)
     }
 } catch (error) {
     console.log(error)
