@@ -146,7 +146,7 @@ const onBreezEvent = (event: BreezEvent) => {
 const seed = await mnemonicToSeed("<mnemonics words>")
 const inviteCode = "<your greenlight invite code>"
 const nodeConfig : NodeConfig = {
-    type: NodeConfigType.GREENLIGHT,
+    type: NodeConfigVariant.GREENLIGHT,
     config: {
         inviteCode: "your invite code"        
     }
