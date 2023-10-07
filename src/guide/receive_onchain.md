@@ -88,7 +88,7 @@ try:
     swap_info = sdk_services.receive_onchain(breez_sdk.ReceiveOnchainRequest())
 
     # Send your funds to the below bitcoin address
-    address = sdk_services.swap_info.bitcoin_address
+    address = swap_info.bitcoin_address
 except Exception as error:
     # Handle error
 ```
@@ -405,13 +405,12 @@ try {
 
 ```python
 destination_address = "..."
-sat_per_vbyte = <refund tx fee rate>
+sat_per_vbyte = 5
 
 try:
-    result = sdk_services.refund(
-        swap_address=refundable.bitcoin_address,
-        to_address=to_address,
-        sat_per_vbyte=sat_per_vbyte)
+    result = sdk_services.refund(swap_address=refundable.bitcoin_address,
+                                 to_address=destination_address,
+                                 sat_per_vbyte=sat_per_vbyte)
 except Exception as error:
     # Handle error
 ```
