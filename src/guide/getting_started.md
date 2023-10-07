@@ -40,12 +40,13 @@ Now your SDK is ready to be used.
 ```rust,ignore
 let mnemonic = Mnemonic::generate_in(Language::English, 12)?;
 let seed = mnemonic.to_seed("");
-let invite_code = Some("...".into());
+let invite_code = Some("<invite code>".into());
+let api_key = "<api key>".into()
 
 // Create the default config
 let mut config = BreezServices::default_config(
     EnvironmentType::Production,
-    "your API key".into(),
+    api_key,
     breez_sdk_core::NodeConfig::Greenlight {
         config: GreenlightNodeConfig {
             partner_credentials: None,
@@ -80,11 +81,12 @@ class SDKListener: EventListener {
 }
 
 // Create the default config
-let seed = try mnemonicToSeed(phrase: "<mnemonics words>")
-let inviteCode = "your invite code"
-let config = breez_sdk.defaultConfig(envType: EnvironmentType.production, apiKey: "", 
+let seed = try mnemonicToSeed(phrase: "<mnemonic words>")
+let inviteCode = "<invite code>"
+let apiKey = "<api key>"
+let config = breez_sdk.defaultConfig(envType: EnvironmentType.production, apiKey: apiKey, 
     nodeConfig: NodeConfig.greenlight(
-        config: GreenlightNodeConfig(partnerCredentials: nil,inviteCode:  inviteCode)));    
+        config: GreenlightNodeConfig(partnerCredentials: nil, inviteCode: inviteCode)));    
 
 // Customize the config object according to your needs
 config.workingDir = "path to an existing directory"
@@ -111,14 +113,14 @@ class SDKListener : EventListener {
 }
 
 // Select your seed, invite code and eviroment
-val seed = mnemonicToSeed("<mnemonics words>")
-val inviteCode = "your invite code"
-val environmentType = EnvironmentType.PRODUCTION
+val seed = mnemonicToSeed("<mnemonic words>")
+val inviteCode = "<invite code>"
+val apiKey = "<api key>"
 
 // Create the default config
 val greenlightNodeConfig = GreenlightNodeConfig(null, inviteCode)
 val nodeConfig = NodeConfig.Greenlight(greenlightNodeConfig)
-val config = defaultConfig(environmentType, inviteCode, nodeConfig)
+val config = defaultConfig(EnvironmentType.PRODUCTION, apiKey, nodeConfig)
 
 // Customize the config object according to your needs
 config.workingDir = "path to an existing directory"
@@ -143,15 +145,16 @@ const onBreezEvent = (event: BreezEvent) => {
 })
 
 // Create the default config
-const seed = await mnemonicToSeed("<mnemonics words>")
-const inviteCode = "<your greenlight invite code>"
+const seed = await mnemonicToSeed("<mnemonic words>")
+const inviteCode = "<invite code>"
+const apiKey = "<api key>"
 const nodeConfig : NodeConfig = {
     type: NodeConfigVariant.GREENLIGHT,
     config: {
-        inviteCode: "your invite code"        
+        inviteCode: inviteCode        
     }
 }
-let config = await defaultConfig(EnvironmentType.PRODUCTION, "api key", nodeConfig)
+let config = await defaultConfig(EnvironmentType.PRODUCTION, apiKey, nodeConfig)
 
 // Customize the config object according to your needs
 config.workingDir = "path to an existing directory"
@@ -182,9 +185,10 @@ breezLogStream().listen((log) {
 
 // Create the default config
 Uint8List seed = await mnemonicToSeed(phrase: "<mnemonic words>");
-String inviteCode = "<your greenlight invite code>";
+String inviteCode = "<invite code>";
+String apiKey = "<api key>"
 NodeConfg nodeConfig = NodeConfig.greenlight(config: GreenlightNodeConfig(partnerCredentials: null, inviteCode: inviteCode));
-Config config = await defaultConfig(configType: EnvironmentType.Production, apiKey: "<your API key>", nodeConfig: nodeConfig);
+Config config = await defaultConfig(configType: EnvironmentType.Production, apiKey: apiKey, nodeConfig: nodeConfig);
 
 // Customize the config object according to your needs
 config.workingDir = "path to an existing directory";
@@ -208,9 +212,10 @@ class SDKListener(breez_sdk.EventListener):
       print(event)
 
 # Create the default config
-seed = mnemonic_to_seed("<mnemonics words>")
-invite_code = "<your greenlight invite code>"
-config = breez_sdk.default_config(breez_sdk.EnvironmentType.PRODUCTION, "api key",  
+seed = mnemonic_to_seed("<mnemonic words>")
+invite_code = "<invite code>"
+api_key = "<api key>"
+config = breez_sdk.default_config(breez_sdk.EnvironmentType.PRODUCTION, apiKey,  
     breez_sdk.NodeConfig.GREENLIGHT(breez_sdk.GreenlightNodeConfig(None, invite_code)))
 
 # Customize the config object according to your needs
@@ -236,13 +241,13 @@ func (BreezListener) OnEvent(e breez_sdk.BreezEvent) {
 }
 
 // Create the default config
-seed, err := breez_sdk.MnemonicToSeed("<mnemonics words>")
+seed, err := breez_sdk.MnemonicToSeed("<mnemonic words>")
 if err != nil {
 	log.Fatalf("MnemonicToSeed failed: %#v", err)
 }
 
-apiKey := "<your breez api key>"
-inviteCode := "<your greenlight invite code>"
+inviteCode := "<invite code>"
+apiKey := "<api key>"
 nodeConfig := breez_sdk.NodeConfigGreenlight{
     Config: breez_sdk.GreenlightNodeConfig{
         PartnerCredentials: nil, 
@@ -273,7 +278,7 @@ if err != nil {
 using Breez.Sdk;
 
 // Create the default config
-var seed = BreezSdkMethods.MnemonicToSeed("<mnemonics words>");
+var seed = BreezSdkMethods.MnemonicToSeed("<mnemonic words>");
 var inviteCode = "<invite code>";
 var apiKey = "<api key>";
 var nodeConfig = new NodeConfig.Greenlight(
