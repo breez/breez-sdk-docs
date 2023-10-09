@@ -86,7 +86,7 @@ try {
 try: 
     current_fees = sdk_services.fetch_reverse_swap_fees(
         breez_sdk.ReverseSwapFeesRequest(send_amount_sat=50000))
-    print("Total estimated fees for reverseswap:", current_fees.total_estimated_fees)
+    print("Total estimated fees for reverseswap: ", current_fees.total_estimated_fees)
 except Exception as error:
     # Handle error
 ```
@@ -294,16 +294,13 @@ try {
 
 ```python
 destination_address = "bc1.."
-amount_sat = current_fees.min
-fee_hash = current_fees.fee_hash
-sat_per_vbyte = <fee rate>
-
+amount_sat = 50000
+sat_per_vbyte = 5
 try:
-  sdk_services.send_onchain(
-    amount_sat=amount_msats,
-    onchain_recipient_address="...",
-    pair_hash=current_fees.fee_hash,
-    sat_per_vbyte=sat_per_vbyte)
+  sdk_services.send_onchain(amount_sat=amount_sat,
+                            onchain_recipient_address=destination_address,
+                            pair_hash=current_fees.fee_hash,
+                            sat_per_vbyte=sat_per_vbyte)
 except Exception as error:
   # Handle erorr
 ```
