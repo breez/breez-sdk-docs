@@ -18,9 +18,9 @@ sdk.send_payment(bolt11.into(), None).await?;
 ```swift
 let bolt11 = "...";
 do {
-  // The `amountSats` param is optional so nil can be passed if the 
-  // bolt11 invoice spesifies an amount.
-  let payment = try sdk.sendPayment(bolt11: bolt11, amountSats: 3000)
+  // The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+  // The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
+  let payment = try sdk.sendPayment(bolt11: bolt11, amount_msat: 3000)
 } catch {
     // handle error
 }
@@ -61,7 +61,7 @@ String bolt11 = "...";
 try {
     Payment payment = await sendPayment(
       bolt11: bolt11,
-      amountSats: 3000,
+      amount_msat: 3000,
     );
 } catch (error) {
     // handle error
@@ -75,9 +75,9 @@ try {
 ```python
 bolt11 = "..."
 try:
-  # The `amountSats` param is optional so None can be passed if the 
-  # bolt11 invoice spesifies an amount.
-  sdk_services.send_payment(bolt11=bolt11, amount_sats=None)
+  # The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+  # The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
+  sdk_services.send_payment(bolt11=bolt11, amount_msat=None)
 except Exception as error:
   # Handle error
 ```
@@ -88,8 +88,8 @@ except Exception as error:
 
 ```go
 bolt11 := "bolt11 invoice"
-amountSats := uint64(3000)
-if payment, err := sdk.SendPayment(bolt11, &amountSats); err == nil {
+amount_msat := uint64(3000)
+if payment, err := sdk.SendPayment(bolt11, &amount_msat); err == nil {
     log.Printf("%#v", payment)
 }
 ```
