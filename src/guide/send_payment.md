@@ -21,9 +21,9 @@ sdk.send_payment(bolt11.into(), amount_msat).await?;
 ```swift
 let bolt11 = "...";
 do {
-  // The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-  // The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
-  let payment = try sdk.sendPayment(bolt11: bolt11, amount_msat: 3000000)
+  // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+  // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
+  let payment = try sdk.sendPayment(bolt11: bolt11, amountMsat: 3000000)
 } catch {
     // handle error
 }
@@ -36,10 +36,10 @@ do {
 ```kotlin,ignore
 val bolt11 = "..."
 try {
-    // The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-    // The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
-    var amount_msat = 3000000L.toULong()
-    val payment = sdk.sendPayment(bolt11, amount_msat)
+    // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+    // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
+    var amountMsat = 3000000L.toULong()
+    val payment = sdk.sendPayment(bolt11, amountMsat)
 } catch (e: Exception) {
     // handle error
 }
@@ -52,10 +52,10 @@ try {
 ```typescript
 const bolt11 = "..."
 try {
-    // The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-    // The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
-    const amount_msat = 3000000
-    const payment = await sendPayment(bolt11, amount_msat)
+    // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+    // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
+    const amountMsat = 3000000
+    const payment = await sendPayment(bolt11, amountMsat)
 } catch (error) {
     console.log(error)
 }
@@ -68,11 +68,11 @@ try {
 ```dart
 String bolt11 = "...";
 try {
-    // The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-    // The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
+    // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+    // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
     Payment payment = await sendPayment(
       bolt11: bolt11,
-      amount_msat: 3000,
+      amountMsat: 3000000,
     );
 } catch (error) {
     // handle error
@@ -99,10 +99,10 @@ except Exception as error:
 
 ```go
 bolt11 := "bolt11 invoice"
-// The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-// The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
-amount_msat := uint64(3000000)
-if payment, err := sdk.SendPayment(bolt11, &amount_msat); err == nil {
+// The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+// The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
+amountMsat := uint64(3000000)
+if payment, err := sdk.SendPayment(bolt11, &amountMsat); err == nil {
     log.Printf("%#v", payment)
 }
 ```
@@ -115,10 +115,10 @@ if payment, err := sdk.SendPayment(bolt11, &amount_msat); err == nil {
 var bolt11 = "...";
 try 
 {
-    // The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-    // The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
-    var amount_msat = 3000000;
-    var payment = sdk.SendPayment(bolt11, amount_msat);
+    // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+    // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
+    var amountMsat = 3000000;
+    var payment = sdk.SendPayment(bolt11, amountMsat);
 } 
 catch (Exception) 
 {
