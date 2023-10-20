@@ -7,11 +7,14 @@ Once you have outbound liquidity you can start sending payments too.
 <section>
 
 ```rust,ignore
-let bolt11 = "...";
 // The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
 // The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
 let amount_msat: Option<u64> = None;
-sdk.send_payment(bolt11.into(), amount_msat).await?;
+let req = SendPaymentRequest {
+    bolt11: "...".into(),
+    amount_msat,
+};
+let response = self.send_payment(req).await?;
 ```
 </section>
 
@@ -19,11 +22,11 @@ sdk.send_payment(bolt11.into(), amount_msat).await?;
 <section>
 
 ```swift
-let bolt11 = "...";
 do {
   // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
   // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
-  let payment = try sdk.sendPayment(bolt11: bolt11, amountMsat: 3000000)
+  let req = SendPaymentRequest(bolt11: "...", amountMsat: 3000000)
+  let response = try sdk.sendSpontaneousPayment(req: req)
 } catch {
     // handle error
 }
@@ -38,8 +41,9 @@ val bolt11 = "..."
 try {
     // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
     // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
-    var amountMsat = 3000000L.toULong()
-    val payment = sdk.sendPayment(bolt11, amountMsat)
+    val amountMsat = 3000000L.toULong()
+    val req = SendPaymentRequest(bolt11, amountMsat)
+    val response = sdk.sendPayment(req)
 } catch (e: Exception) {
     // handle error
 }
@@ -55,7 +59,7 @@ try {
     // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
     // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
     const amountMsat = 3000000
-    const payment = await sendPayment(bolt11, amountMsat)
+    const response = await sendPayment({bolt11, amountMsat})
 } catch (error) {
     console.log(error)
 }
@@ -70,10 +74,11 @@ String bolt11 = "...";
 try {
     // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
     // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
-    Payment payment = await sendPayment(
+    SendPaymentRequest req = SendPaymentRequest(
       bolt11: bolt11,
       amountMsat: 3000000,
     );
+    SendPaymentResponse payment = await sendPayment(req: req);
 } catch (error) {
     // handle error
 }
@@ -88,7 +93,8 @@ bolt11 = "..."
 try:
   # The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
   # The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
-  sdk_services.send_payment(bolt11=bolt11, amount_msat=None)
+  req = SendPaymentRequest(bolt11=bolt11, amount_msat=None)
+  sdk_services.send_payment(req=req)
 except Exception as error:
   # Handle error
 ```
@@ -102,8 +108,12 @@ bolt11 := "bolt11 invoice"
 // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
 // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
 amountMsat := uint64(3000000)
-if payment, err := sdk.SendPayment(bolt11, &amountMsat); err == nil {
-    log.Printf("%#v", payment)
+sendPaymentRequest := breez_sdk.SendPaymentRequest{
+    Bolt11: bolt11,
+    AmountMsat: amountMsat,
+}
+if response, err := sdk.SendPayment(sendPaymentRequest); err == nil {
+    log.Printf("%#v", response)
 }
 ```
 </section>
@@ -113,12 +123,12 @@ if payment, err := sdk.SendPayment(bolt11, &amountMsat); err == nil {
 
 ```cs
 var bolt11 = "...";
+var amountMsat = 3000000;
 try 
 {
     // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
     // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
-    var amountMsat = 3000000;
-    var payment = sdk.SendPayment(bolt11, amountMsat);
+    var response = sdk.SendPayment(new SendPaymentRequest(bolt11, amountMsat));
 } 
 catch (Exception) 
 {
