@@ -1,6 +1,6 @@
 # Receiving Lightning Payments
 
-With the Breez SDK you arn't required to open a channel and set up your inbound liquidity.
+With the Breez SDK you aren't required to open a channel and set up your inbound liquidity.
 The Breez SDK automatically connects your node to the LSP peer and you can now receive payments.
 
 <custom-tabs category="lang">
@@ -10,7 +10,7 @@ The Breez SDK automatically connects your node to the LSP peer and you can now r
 ```rust,ignore
 let res = sdk.receive_payment(
     ReceivePaymentRequest {
-        amount_sats: 3000,
+        amount_msat: 3_000_000,
         description: "Invoice for 3000 sats".into(),
         cltv: None,
         expiry: None,
@@ -28,8 +28,8 @@ let res = sdk.receive_payment(
 ```swift
 do {
   let invoice = try sdk.receivePayment(
-    reqData: ReceivePaymentRequest(
-        amountSats: 3000, 
+    req: ReceivePaymentRequest(
+        amountMsat: 3_000_000, 
         description: "Invoice for 3000 sats"))
 } catch {
     // handle error
@@ -43,7 +43,7 @@ do {
 ```kotlin,ignore
 try {
     val invoice = sdk.receivePayment(ReceivePaymentRequest(
-        3000L.toULong(),
+        3_000_000L.toULong(),
         "Invoice for 3000 sats",
     ))
 } catch (e: Exception) {
@@ -58,7 +58,7 @@ try {
 ```typescript
 try {
     const invoice = await receivePayment({
-        amountSats: 3000, 
+        amountMsat: 3_000_000, 
         description: "Invoice for 3000 sats"
     })
 } catch (error) {
@@ -73,8 +73,8 @@ try {
 ```dart
 try {
     ReceivePaymentResponse invoice = await receivePayment(
-        reqData: ReceivePaymentRequest(
-            amountSats: 3000, 
+        req: ReceivePaymentRequest(
+            amountMsat: 3_000_000, 
             description: "Invoice for 3000 sats",
         ),
     );
@@ -91,7 +91,7 @@ try {
 try:
   receive_payment_response = sdk_services.receive_payment(
     breez_sdk.ReceivePaymentRequest(
-        amount_sats=3000,
+        amount_msat=3_000_000,
         description="Invoice for 3000 sats"))
 except Exception as error:
   # Handle error
@@ -103,7 +103,7 @@ except Exception as error:
 
 ```go
 receivePaymentRequest := breez_sdk.ReceivePaymentRequest{
-    AmountSats:  3000,
+    AmountMsat:  3_000_000,
     Description: "Invoice for 3000 sats",
 }
 if receivePaymentResponse, err := sdk.ReceivePayment(receivePaymentRequest); err == nil {
@@ -119,7 +119,7 @@ if receivePaymentResponse, err := sdk.ReceivePayment(receivePaymentRequest); err
 try 
 {
     var invoice = sdk.ReceivePayment(
-        new ReceivePaymentRequest(3000, "Invoice for 3000 sats"));
+        new ReceivePaymentRequest(3_000_000, "Invoice for 3000 sats"));
 } 
 catch (Exception) 
 {
