@@ -7,8 +7,7 @@ Based on the API key provided to the Breez SDK, a default LSP is selected for yo
 <section>
 
 ```rust,ignore
-let lsp_id = sdk.lsp_id().await?;
-let lsp_info = sdk.lsp_info().await?;
+{{#include ../../snippets/rust/src/connecting_lsp.rs:7:8}}
 ```
 </section>
 
@@ -118,7 +117,7 @@ When you have selected an LSP you may then connect to it.
 <section>
 
 ```rust,ignore
-sdk.connect_lsp(lsp_id).await?;
+{{#include ../../snippets/rust/src/connecting_lsp.rs:14}}
 ```
 </section>
 

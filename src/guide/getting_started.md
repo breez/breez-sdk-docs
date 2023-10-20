@@ -38,33 +38,7 @@ Now your SDK is ready to be used.
 <section>
 
 ```rust,ignore
-let mnemonic = Mnemonic::generate_in(Language::English, 12)?;
-let seed = mnemonic.to_seed("");
-let invite_code = Some("<invite code>".into());
-let api_key = "<api key>".into()
-
-// Create the default config
-let mut config = BreezServices::default_config(
-    EnvironmentType::Production,
-    api_key,
-    breez_sdk_core::NodeConfig::Greenlight {
-        config: GreenlightNodeConfig {
-            partner_credentials: None,
-            invite_code
-        },
-    },
-);
-
-// Customize the config object according to your needs
-config.working_dir = "path to an existing directory".into();
-
-// Connect to the Breez SDK make it ready for use
-let sdk = BreezServices::connect(
-        config,
-        seed.to_vec(),        
-        Box::new(AppEventListener {}),
-    )
-    .await?;
+{{#include ../../snippets/rust/src/getting_started.rs:9:35}}
 ```
 
 </section>
@@ -322,10 +296,7 @@ At any point we can fetch our balance from the Greenlight node:
 <section>
 
 ```rust,ignore
-if let Some(node_state) = sdk.node_info()? {
-    let balance_ln = node_state.channels_balance_msat;
-    let balance_onchain = node_state.onchain_balance_msat;
-}
+{{#include ../../snippets/rust/src/getting_started.rs:41:44}}
 ```
 </section>
 

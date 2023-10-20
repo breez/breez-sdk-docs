@@ -12,11 +12,7 @@ Once the buy is completed, the provider will transfer the Bitcoin to the generat
 <section>
 
 ```rust,ignore
-let res = sdk.buy_bitcoin(
-    BuyBitcoinRequest {
-        provider: BuyBitcoinProvider::Moonpay,
-        opening_fee_params: None})
-    .await?;
+{{#include ../../snippets/rust/src/buy_btc.rs:7:11}}
 ```
 </section>
 

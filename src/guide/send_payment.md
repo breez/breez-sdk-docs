@@ -7,8 +7,7 @@ Once you have outbound liquidity you can start sending payments too.
 <section>
 
 ```rust,ignore
-let bolt11 = "...";
-sdk.send_payment(bolt11.into(), None).await?;
+{{#include ../../snippets/rust/src/send_payment.rs:7:8}}
 ```
 </section>
 

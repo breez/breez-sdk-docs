@@ -12,9 +12,7 @@ In order to use the recoverchannel method, the user needs to provide the static 
 <section>
 
 ```rust,ignore
-let backup_data = BreezServices::static_backup(StaticBackupRequest {
-    working_dir: "<working directory>".into(),
-})?;
+{{#include ../../snippets/rust/src/static_channel_backup.rs:5:7}}
 ```
 
 </section>

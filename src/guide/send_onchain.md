@@ -9,13 +9,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```rust,ignore
-let current_fees = sdk.fetch_reverse_swap_fees(
-    ReverseSwapFeesRequest {
-        send_amount_sat: Some(50000),
-    })
-    .await?;
-
-info!("Total estimated fees for reverse swap: {}", current_fees.total_estimated_fees);
+{{#include ../../snippets/rust/src/send_onchain.rs:8:14}}
 ```
 </section>
 
@@ -135,8 +129,7 @@ Fetching the fees also tells you what is the range of amounts you can send:
 <section>
 
 ```rust,ignore
-info!("Minimum amount, in sats: {}", current_fees.min);
-info!("Maximum amount, in sats: {}", current_fees.max);
+{{#include ../../snippets/rust/src/send_onchain.rs:20:21}}
 ```
 </section>
 
@@ -211,11 +204,7 @@ Once you checked the fees are acceptable, you can start the reverse swap:
 <section>
 
 ```rust,ignore
-let destination_address = String::from("bc1..");
-let amount_sat = current_fees.min;
-let satPerVbyte = <fee rate>;
-
-sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash, satPerVbyte).await?;
+{{#include ../../snippets/rust/src/send_onchain.rs:27:31}}
 ```
 </section>
 
@@ -352,9 +341,7 @@ You can check its status with:
 <section>
 
 ```rust,ignore
-for rs in sdk.in_progress_reverse_swaps().await? {
-    info!("Reverse swap {} in progress, status is {}", rs.id, rs.status);
-}
+{{#include ../../snippets/rust/src/send_onchain.rs:37:40}}
 ```
 </section>
 

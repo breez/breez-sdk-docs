@@ -10,12 +10,7 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 <section>
 
 ```rust,ignore
-let swap_info = sdk.receive_onchain( 
-    ReceiveOnchainRequest { opening_fee_params: None } )
-    .await?;
-
-// Send your funds to the below bitcoin address
-let address = swap_info.bitcoin_address;
+{{#include ../../snippets/rust/src/receive_onchain.rs:7:12}}
 ```
 </section>
 
@@ -132,7 +127,7 @@ Once you've sent the funds to the above address, the SDK will monitor this addre
 <section>
 
 ```rust,ignore
-let swap_info = sdk.in_progress_swap().await?
+{{#include ../../snippets/rust/src/receive_onchain.rs:18}}
 ```
 </section>
 
@@ -233,7 +228,7 @@ In order to execute a refund, you need to supply an on-chain address to where th
 <section>
 
 ```rust,ignore
-let refundables = sdk.list_refundables().await?
+{{#include ../../snippets/rust/src/receive_onchain.rs:24}}
 ```
 </section>
 
@@ -329,9 +324,7 @@ Once you have a refundable swap in hand, use the following code to execute a ref
 <section>
 
 ```rust,ignore
-let destination_address = "...".into()
-let sat_per_vbyte = <refund tx fee rate>
-sdk.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte).await?
+{{#include ../../snippets/rust/src/receive_onchain.rs:30:32}}
 ```
 </section>
 
@@ -460,10 +453,7 @@ To calculate the fees for a channel being opened by the LSP:
 <section>
 
 ```rust,ignore
-let amount_msat = <amount msat>;
-let channel_fees = sdk.open_channel_fee(
-    OpenChannelFeeRequest { amount_msat, expiry: None })
-    .await?;
+{{#include ../../snippets/rust/src/receive_onchain.rs:38:40}}
 ```
 </section>
 

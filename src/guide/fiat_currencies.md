@@ -3,6 +3,14 @@
 In order to list the available fiat currencies:
 
 <custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+{{#include ../../snippets/rust/src/fiat_currencies.rs:8}}
+```
+</section>
+
 <div slot="title">Android</div>
 <section>
 
@@ -80,6 +88,14 @@ catch (Exception)
 To get the current BTC rate for the currencies:
 
 <custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+{{#include ../../snippets/rust/src/fiat_currencies.rs:14}}
+```
+</section>
+
 <div slot="title">Android</div>
 <section>
 
@@ -159,6 +175,14 @@ catch (Exception)
 At the example project you can see these methods combined:
 
 <custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+{{#include ../../snippets/rust/src/fiat_currencies.rs:20:39}}
+```
+</section>
+
 <div slot="title">Android</div>
 <section>
 

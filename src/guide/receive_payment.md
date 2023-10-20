@@ -8,17 +8,7 @@ The Breez SDK automatically connects your node to the LSP peer and you can now r
 <section>
 
 ```rust,ignore
-let res = sdk.receive_payment(
-    ReceivePaymentRequest {
-        amount_sats: 3000,
-        description: "Invoice for 3000 sats".into(),
-        cltv: None,
-        expiry: None,
-        opening_fee_params: None,
-        preimage: None,
-        use_description_hash: None
-    })
-    .await?;
+{{#include ../../snippets/rust/src/receive_payment.rs:7:17}}
 ```
 </section>
 

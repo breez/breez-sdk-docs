@@ -1,3 +1,6 @@
 book
 .DS_Store
 .idea
+
+# Sub-projects with code snippets
+snippets/rust/target

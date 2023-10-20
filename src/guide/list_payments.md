@@ -7,14 +7,7 @@ To view your payment history you can list and filter all the sent and received p
 <section>
 
 ```rust,ignore
-let payments = sdk.list_payments(
-    ListPaymentRequest { 
-        filter: PaymentTypeFilter::All,
-        from_timestamp: None,
-        to_timestamp: None,
-        include_failures: None,
-    }
-).await?;
+{{#include ../../snippets/rust/src/list_payments.rs:7:14}}
 ```
 </section>
 
@@ -112,14 +105,7 @@ You can optionally filter payments by timestamp and include failed payments.
 <section>
 
 ```rust,ignore
-let payments = sdk.list_payments(
-    ListPaymentRequest { 
-        filter: PaymentTypeFilter::Sent,
-        from_timestamp: 1696880000,
-        to_timestamp: None,
-        include_failures: true,
-    }
-).await?;
+{{#include ../../snippets/rust/src/list_payments.rs:20:27}}
 ```
 </section>
 
