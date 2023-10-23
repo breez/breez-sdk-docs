@@ -2,6 +2,7 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use breez_sdk_core::*;
+use breez_sdk_core::InputType::LnUrlWithdraw;
 
 async fn withdraw(sdk: Arc<BreezServices>) -> Result<()> {
     // ANCHOR: lnurl-withdraw
@@ -13,7 +14,11 @@ async fn withdraw(sdk: Arc<BreezServices>) -> Result<()> {
         let amount_msat = wd.min_withdrawable;
         let description = "Test withdraw".to_string();
 
-        sdk.lnurl_withdraw(wd, amount_msat, Some(description)).await?;
+        sdk.lnurl_withdraw(LnUrlWithdrawRequest {
+            data: wd,
+            amount_msat,
+            description: Some(description)
+        }).await?;
     }
     // ANCHOR_END: lnurl-withdraw
 

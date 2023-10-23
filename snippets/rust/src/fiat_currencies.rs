@@ -31,7 +31,7 @@ async fn get_fiat_currencies_and_rates(sdk: Arc<BreezServices>) -> Result<Vec<(F
     }
 
     let mut sorted = supported_fiat_currencies.clone();
-    sorted.sort_by_key(|f| f.info.name);
+    sorted.sort_by_key(|f| f.info.name.clone());
 
     let mut result : Vec<(FiatCurrency, Rate)> = Vec::new();
     for currency in sorted {

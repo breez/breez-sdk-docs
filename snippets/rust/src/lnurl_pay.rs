@@ -12,11 +12,14 @@ async fn pay(sdk: Arc<BreezServices>) -> Result<()> {
     let lnurl_pay_url = "lightning@address.com";
 
     if let Ok(LnUrlPay{data: pd}) = parse(lnurl_pay_url).await {
-        // TODO Show payment details in UI, read user input
         let amount_msat = pd.min_sendable;
         let comment = "Test payment".to_string();
 
-        sdk.lnurl_pay(amount_msat, Some(comment), pd).await?;
+        sdk.lnurl_pay(LnUrlPayRequest {
+            data: pd,
+            amount_msat,
+            comment: Some(comment)
+        }).await?;
     }
     // ANCHOR_END: lnurl-pay
 

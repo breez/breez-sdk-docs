@@ -36,7 +36,12 @@ async fn execute_refund(sdk: Arc<BreezServices>, refund_tx_fee_rate: u32, refund
     // ANCHOR: execute-refund
     let destination_address = "...".into();
     let sat_per_vbyte = refund_tx_fee_rate;
-    sdk.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte).await?;
+
+    sdk.refund(RefundRequest {
+        to_address: destination_address,
+        sat_per_vbyte,
+        swap_address: refundable.bitcoin_address
+    }).await?;
     // ANCHOR_END: execute-refund
 
     Ok(())

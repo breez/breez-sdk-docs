@@ -7,7 +7,7 @@ async fn receive_payment(sdk: Arc<BreezServices>) -> Result<()> {
     // ANCHOR: receive-payment
     let res = sdk.receive_payment(
         ReceivePaymentRequest {
-            amount_sats: 3000,
+            amount_msat: 3_000_000,
             description: "Invoice for 3000 sats".into(),
             cltv: None,
             expiry: None,

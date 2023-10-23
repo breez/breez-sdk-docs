@@ -18,7 +18,7 @@ async fn get_current_fees(sdk: Arc<BreezServices>) -> Result<()> {
     Ok(())
 }
 
-async fn list_current_fees(sdk: Arc<BreezServices>, current_fees: ReverseSwapPairInfo) -> Result<()> {
+async fn list_current_fees(current_fees: ReverseSwapPairInfo) -> Result<()> {
     // ANCHOR: get-current-reverse-swap-min-max
     info!("Minimum amount, in sats: {}", current_fees.min);
     info!("Maximum amount, in sats: {}", current_fees.max);
@@ -27,14 +27,19 @@ async fn list_current_fees(sdk: Arc<BreezServices>, current_fees: ReverseSwapPai
     Ok(())
 }
 
-async fn start_reverse_swap(sdk: Arc<BreezServices>, current_fees: ReverseSwapPairInfo, fee_rate: u64) -> Result<()> {
+async fn start_reverse_swap(sdk: Arc<BreezServices>, current_fees: ReverseSwapPairInfo, fee_rate: u32) -> Result<()> {
     // ANCHOR: start-reverse-swap
     let destination_address = String::from("bc1..");
     let amount_sat = current_fees.min;
-    let satPerVbyte = fee_rate;
-    // ANCHOR_END: start-reverse-swap
+    let sat_per_vbyte = fee_rate;
 
-    sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash, satPerVbyte).await?;
+    sdk.send_onchain(SendOnchainRequest {
+        pair_hash: current_fees.fees_hash,
+        amount_sat,
+        sat_per_vbyte,
+        onchain_recipient_address: destination_address
+    }).await?;
+    // ANCHOR_END: start-reverse-swap
 
     Ok(())
 }
