@@ -38,7 +38,7 @@ Now your SDK is ready to be used.
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/getting_started.rs:9:35}}
+{{#include ../../snippets/rust/src/getting_started.rs:init-sdk}}
 ```
 
 </section>
@@ -296,7 +296,7 @@ At any point we can fetch our balance from the Greenlight node:
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/getting_started.rs:41:44}}
+{{#include ../../snippets/rust/src/getting_started.rs:fetch-balance}}
 ```
 </section>
 

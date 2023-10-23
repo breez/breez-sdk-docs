@@ -8,7 +8,7 @@
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/lnurl_withdraw.rs:7:17}}
+{{#include ../../snippets/rust/src/lnurl_withdraw.rs:lnurl-withdraw}}
 ```
 </section>
 

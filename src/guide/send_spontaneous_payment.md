@@ -7,7 +7,7 @@ They can even be spontaneous payments to a node without a bolt11 invoice.
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/send_spontaneous_payment.rs:7:8}}
+{{#include ../../snippets/rust/src/send_spontaneous_payment.rs:send-spontaneous-payment}}
 ```
 </section>
 

@@ -7,7 +7,7 @@
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/lnurl_pay.rs:8:19}}
+{{#include ../../snippets/rust/src/lnurl_pay.rs:lnurl-pay}}
 ```
 </section>
 

@@ -6,7 +6,7 @@
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/lnurl_auth.rs:9:25}}
+{{#include ../../snippets/rust/src/lnurl_auth.rs:lnurl-auth}}
 ```
 </section>
 

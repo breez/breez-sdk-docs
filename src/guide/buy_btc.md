@@ -12,7 +12,7 @@ Once the buy is completed, the provider will transfer the Bitcoin to the generat
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/buy_btc.rs:7:11}}
+{{#include ../../snippets/rust/src/buy_btc.rs:buy-btc}}
 ```
 </section>
 

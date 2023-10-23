@@ -4,6 +4,7 @@ use anyhow::Result;
 use breez_sdk_core::*;
 
 async fn receive_payment(sdk: Arc<BreezServices>) -> Result<()> {
+    // ANCHOR: receive-payment
     let res = sdk.receive_payment(
         ReceivePaymentRequest {
             amount_sats: 3000,
@@ -15,6 +16,7 @@ async fn receive_payment(sdk: Arc<BreezServices>) -> Result<()> {
             use_description_hash: None
         })
         .await?;
+    // ANCHOR_END: receive-payment
 
     Ok(())
 }

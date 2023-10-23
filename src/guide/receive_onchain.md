@@ -10,7 +10,7 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/receive_onchain.rs:7:12}}
+{{#include ../../snippets/rust/src/receive_onchain.rs:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -127,7 +127,7 @@ Once you've sent the funds to the above address, the SDK will monitor this addre
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/receive_onchain.rs:18}}
+{{#include ../../snippets/rust/src/receive_onchain.rs:in-progress-swap}}
 ```
 </section>
 
@@ -228,7 +228,7 @@ In order to execute a refund, you need to supply an on-chain address to where th
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/receive_onchain.rs:24}}
+{{#include ../../snippets/rust/src/receive_onchain.rs:list-refundables}}
 ```
 </section>
 
@@ -324,7 +324,7 @@ Once you have a refundable swap in hand, use the following code to execute a ref
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/receive_onchain.rs:30:32}}
+{{#include ../../snippets/rust/src/receive_onchain.rs:execute-refund}}
 ```
 </section>
 
@@ -453,7 +453,7 @@ To calculate the fees for a channel being opened by the LSP:
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/receive_onchain.rs:38:40}}
+{{#include ../../snippets/rust/src/receive_onchain.rs:get-channel-opening-fees}}
 ```
 </section>
 

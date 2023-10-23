@@ -12,7 +12,7 @@ In order to use the recoverchannel method, the user needs to provide the static 
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/static_channel_backup.rs:5:7}}
+{{#include ../../snippets/rust/src/static_channel_backup.rs:static-channel-backup}}
 ```
 
 </section>

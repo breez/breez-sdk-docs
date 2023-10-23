@@ -9,7 +9,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/send_onchain.rs:8:14}}
+{{#include ../../snippets/rust/src/send_onchain.rs:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -129,7 +129,7 @@ Fetching the fees also tells you what is the range of amounts you can send:
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/send_onchain.rs:20:21}}
+{{#include ../../snippets/rust/src/send_onchain.rs:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -204,7 +204,7 @@ Once you checked the fees are acceptable, you can start the reverse swap:
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/send_onchain.rs:27:31}}
+{{#include ../../snippets/rust/src/send_onchain.rs:start-reverse-swap}}
 ```
 </section>
 
@@ -341,7 +341,7 @@ You can check its status with:
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/send_onchain.rs:37:40}}
+{{#include ../../snippets/rust/src/send_onchain.rs:check-reverse-swaps-status}}
 ```
 </section>
 

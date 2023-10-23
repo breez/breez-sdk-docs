@@ -7,7 +7,7 @@ To view your payment history you can list and filter all the sent and received p
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/list_payments.rs:7:14}}
+{{#include ../../snippets/rust/src/list_payments.rs:list-payments}}
 ```
 </section>
 
@@ -105,7 +105,7 @@ You can optionally filter payments by timestamp and include failed payments.
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/list_payments.rs:20:27}}
+{{#include ../../snippets/rust/src/list_payments.rs:list-payments-filtered}}
 ```
 </section>
 

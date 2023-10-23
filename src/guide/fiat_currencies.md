@@ -7,7 +7,7 @@ In order to list the available fiat currencies:
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/fiat_currencies.rs:8}}
+{{#include ../../snippets/rust/src/fiat_currencies.rs:list-fiat-currencies}}
 ```
 </section>
 
@@ -92,7 +92,7 @@ To get the current BTC rate for the currencies:
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/fiat_currencies.rs:14}}
+{{#include ../../snippets/rust/src/fiat_currencies.rs:fetch-fiat-rates}}
 ```
 </section>
 
@@ -179,7 +179,7 @@ At the example project you can see these methods combined:
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/fiat_currencies.rs:20:39}}
+{{#include ../../snippets/rust/src/fiat_currencies.rs:get-fiat-currencies-and-rates}}
 ```
 </section>
 

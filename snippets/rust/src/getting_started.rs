@@ -6,6 +6,7 @@ use std::sync::Arc;
 use crate::AppEventListener;
 
 async fn getting_started() -> Result<Arc<BreezServices>> {
+    // ANCHOR: init-sdk
     let mnemonic = Mnemonic::generate_in(Language::English, 12)?;
     let seed = mnemonic.to_seed("");
     let invite_code = Some("<invite code>".into());
@@ -33,15 +34,18 @@ async fn getting_started() -> Result<Arc<BreezServices>> {
         Box::new(AppEventListener {}),
     )
     .await?;
+    // ANCHOR_END: init-sdk
 
     Ok(sdk)
 }
 
 async fn getting_started_node_info(sdk: Arc<BreezServices>) -> Result<()> {
+    // ANCHOR: fetch-balance
     if let Some(node_state) = sdk.node_info()? {
         let balance_ln = node_state.channels_balance_msat;
         let balance_onchain = node_state.onchain_balance_msat;
     }
+    // ANCHOR_END: fetch-balance
 
     Ok(())
 }

@@ -7,7 +7,7 @@ Once you have outbound liquidity you can start sending payments too.
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/send_payment.rs:7:8}}
+{{#include ../../snippets/rust/src/send_payment.rs:send-payment}}
 ```
 </section>
 

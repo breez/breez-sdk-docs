@@ -4,6 +4,7 @@ use anyhow::Result;
 use breez_sdk_core::*;
 
 async fn list_payments(sdk: Arc<BreezServices>) -> Result<Vec<Payment>> {
+    // ANCHOR: list-payments
     let payments = sdk.list_payments(
         ListPaymentRequest {
             filter: PaymentTypeFilter::All,
@@ -12,11 +13,13 @@ async fn list_payments(sdk: Arc<BreezServices>) -> Result<Vec<Payment>> {
             include_failures: None,
         }
     ).await?;
+    // ANCHOR_END: list-payments
 
     Ok(payments)
 }
 
 async fn list_payments_filtered(sdk: Arc<BreezServices>) -> Result<Vec<Payment>> {
+    // ANCHOR: list-payments-filtered
     let payments = sdk.list_payments(
         ListPaymentRequest {
             filter: PaymentTypeFilter::Sent,
@@ -25,6 +28,7 @@ async fn list_payments_filtered(sdk: Arc<BreezServices>) -> Result<Vec<Payment>>
             include_failures: true,
         }
     ).await?;
+    // ANCHOR_END: list-payments-filtered
 
     Ok(payments)
 }
