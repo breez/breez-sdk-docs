@@ -1,0 +1,42 @@
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push events but only for the "main" branch
+  push:
+    branches: [ main ]
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  clippy:
+    name: Clippy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install rust
+        run: |
+          rustup set auto-self-update disable
+          rustup toolchain install stable --profile minimal
+
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v2
+        with:
+          version: "23.4"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: clippy
+        run: |
+          cd snippets/rust
+          # Explicitly allow clippy::dead_code lint because the functions aren't called in the docs snippets
+          # Explicitly allow clippy::unused_variables because snippets might have to demonstrate how to get certain variables without using them afterward
+          cargo clippy -- --allow dead_code --allow unused_variables --deny warnings

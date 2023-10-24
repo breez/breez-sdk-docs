@@ -13,8 +13,6 @@ mod fiat_currencies;
 mod buy_btc;
 mod static_channel_backup;
 
-use std::str::FromStr;
-
 use anyhow::Result;
 use breez_sdk_core::*;
 use log::info;
