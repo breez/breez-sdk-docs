@@ -53,12 +53,7 @@ try {
 <section>
 
 ```dart
-try {
-    List<LspInformation> lspList = await listLsps();
-    // Select your desired LSP 
-} catch (e) {
-    // Handle error
-}
+{{#include ../../snippets/dart_snippets/lib/connecting_lsp.dart:get-lsp-info}}
 ```
 </section>
 
@@ -152,12 +147,7 @@ try {
 <section>
 
 ```dart
-try {
-    String lspId = await lspId();
-    await connectLSP(lspId);
-} catch (e) {
-    // Handle error
-}
+{{#include ../../snippets/dart_snippets/lib/connecting_lsp.dart:connect-lsp}}
 ```
 </section>
 

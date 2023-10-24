@@ -47,13 +47,7 @@ try {
 <section>
 
 ```dart
-try {
-    List<Payment> payments = await listPayments(
-      filter: PaymentTypeFilter.All,
-    );
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/list_payments.dart:list-payments}}
 ```
 </section>
 
@@ -147,15 +141,7 @@ try {
 <section>
 
 ```dart
-try {
-    List<Payment> payments = await listPayments(
-      filter: PaymentTypeFilter.Sent,
-      fromTimestamp: 1696880000,
-      includeFailures: true
-    );
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/list_payments.dart:list-payments-filtered}}
 ```
 </section>
 
