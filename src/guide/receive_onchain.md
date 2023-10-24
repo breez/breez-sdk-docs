@@ -62,16 +62,7 @@ try {
 <section>
 
 ```dart
-try {
-    SwapInfo swapInfo = await receiveOnchain(
-        reqData: ReceiveOnchainRequest(),
-    );
-
-    // Send your funds to the below bitcoin address
-    String address = swapInfo.bitcoinAddress;
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -171,11 +162,7 @@ try {
 <section>
 
 ```dart
-try {
-    SwapInfo? swapInfo = await inProgressSwap();
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:in-progress-swap}}
 ```
 </section>
 
@@ -272,11 +259,7 @@ try {
 <section>
 
 ```dart
-try {
-    List<SwapInfo> refundables = await listRefundables()
-} catch (error) {
-     // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:list-refundables}}
 ```
 </section>
 
@@ -379,17 +362,7 @@ try {
 <section>
 
 ```dart
-String destinationAddress = "..."
-int satPerVbyte = <refund tx fee rate>
-try {
-    String result = await refund(
-        swapAddress: refundable.bitcoinAddress,
-        toAddress: destinationAddress,
-        satPerVbyte: satPerVbyte,
-    );
-} catch (error) {
-     // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:execute-refund}}
 ```
 </section>
 
@@ -496,16 +469,7 @@ try {
 <section>
 
 ```dart
-int amountMsats = <amount msats>
-try {
-    int channelFees = openChannelFee(
-        req: OpenChannelFeeRequest(
-            amountMsats: amountMsats,
-        ),
-    );
-} catch {
-    // Handle error 
-}
+{{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:get-channel-opening-fees}}
 ```
 </section>
 

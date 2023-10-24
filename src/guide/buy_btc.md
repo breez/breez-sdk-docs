@@ -62,15 +62,7 @@ try {
 <section>
 
 ```dart
-try {
-    BuyBitcoinResponse buyBitcoinResponse = buyBitcoin(
-        reqData: BuyBitcoinRequest(
-            provider: BuyBitcoinProvider.Moonpay,
-        ),
-    ); 
-} catch {
-    // Handle error
-}
+{{#include ../../snippets/dart_snippets/lib/buy_btc.dart:buy-btc}}
 ```
 </section>
 

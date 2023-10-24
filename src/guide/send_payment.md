@@ -56,15 +56,7 @@ try {
 <section>
 
 ```dart
-String bolt11 = "...";
-try {
-    Payment payment = await sendPayment(
-      bolt11: bolt11,
-      amountSats: 3000,
-    );
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/send_payment.dart:send-payment}}
 ```
 </section>
 

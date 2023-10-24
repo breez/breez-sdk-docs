@@ -147,32 +147,7 @@ try {
 <section>
 
 ```dart
-// SDK events listener
-breezEventsStream().listen((event) {
-    print("Received Breez event: $event");
-}
-
-// SDK logs listener
-breezLogStream().listen((log) {
-    print("Received Breez log entry: $log");
-}
-
-// Create the default config
-Uint8List seed = await mnemonicToSeed(phrase: "<mnemonic words>");
-String inviteCode = "<invite code>";
-String apiKey = "<api key>"
-NodeConfg nodeConfig = NodeConfig.greenlight(config: GreenlightNodeConfig(partnerCredentials: null, inviteCode: inviteCode));
-Config config = await defaultConfig(configType: EnvironmentType.Production, apiKey: apiKey, nodeConfig: nodeConfig);
-
-// Customize the config object according to your needs
-config.workingDir = "path to an existing directory";
-
-try {
-    // Connect to the Breez SDK make it ready for use
-    await connect(config: config, seed: seed);    
-} catch (error) {
-   // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/getting_started.dart:init-sdk}}
 ```
 </section>
 
@@ -346,13 +321,7 @@ try {
 <section>
 
 ```dart
-try {
-    NodeState? nodeInfo = await nodeInfo();    
-    int lnBalance = nodeInfo?.channelsBalanceMsat;
-    int onchainBalance = nodeInfo?.onchainBalanceMsat;
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/getting_started.dart:fetch-balance}}
 ```
 </section>
 

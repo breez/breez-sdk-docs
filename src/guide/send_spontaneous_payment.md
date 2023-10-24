@@ -54,15 +54,7 @@ try {
 <section>
 
 ```dart
-String nodeId = "...";
-try {
-    Payment payment = await sendSpontaneousPayment(
-      nodeId: nodeId,
-      amountSats: 3000,
-    );
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/send_spontaneous_payment.dart:send-spontaneous-payment}}
 ```
 </section>
 
