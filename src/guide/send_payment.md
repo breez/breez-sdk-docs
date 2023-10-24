@@ -43,12 +43,7 @@ try {
 <section>
 
 ```typescript
-const bolt11 = "..."
-try {
-    const payment = await sendPayment(bolt11, 3000)
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/send_payment.ts:send-payment}}
 ```
 </section>
 

@@ -27,11 +27,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const fiatCurrencyList = await listFiatCurrencies()
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/fiat_currencies.ts:list-fiat-currencies}}
 ```
 </section>
 
@@ -112,11 +108,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const fiatRatesMap = await fetchFiatRates()
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/fiat_currencies.ts:fetch-fiat-rates}}
 ```
 </section>
 
@@ -217,7 +209,7 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 <section>
 
 ```typescript
-// TODO
+{{#include ../../snippets/react-native/fiat_currencies.ts:get-fiat-currencies-and-rates}}
 ```
 </section>
 

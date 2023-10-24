@@ -46,14 +46,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const invoice = await receivePayment({
-        amountSats: 3000, 
-        description: "Invoice for 3000 sats"
-    })
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/receive_payment.ts:receive-payment}}
 ```
 </section>
 

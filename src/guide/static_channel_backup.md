@@ -47,11 +47,7 @@ try {
 <section>
 
 ```typescript
-try {
-    let backupData = await staticBackup({workingDir: "<working directory>"})
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/static_channel_backup.ts:static-channel-backup}}
 ```
 
 </section>
