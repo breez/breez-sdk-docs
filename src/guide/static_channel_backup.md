@@ -56,15 +56,7 @@ try {
 <section>
 
 ```dart
-try {
-    StaticBackupResponse backupData = await staticBackup(
-        request: StaticBackupRequest
-            workingDir: "<working directory>",
-        ),
-    );
-} catch (error) {
-   // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/static_channel_backup.dart:static-channel-backup}}
 ```
 </section>
 

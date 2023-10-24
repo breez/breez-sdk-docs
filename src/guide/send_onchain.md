@@ -53,17 +53,7 @@ try {
 <section>
 
 ```dart
-try {
-    ReverseSwapPairInfo currentFees = await fetchReverseSwapFees(
-        req: ReverseSwapFeesRequest(
-            sendAmountSat: 50000,
-        ),
-    );
-
-    print("Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}");
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -157,8 +147,7 @@ Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
 <section>
 
 ```dart
-print("Minimum amount, in sats: ${currentFees.min}");
-print("Maximum amount, in sats: ${currentFees.max}");
+{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -247,20 +236,7 @@ try {
 <section>
 
 ```dart
-String destinationAddress = "bc1..";
-int amountSat = <amount>;
-int satPerVbyte = <fee rate>
-ReverseSwapPairInfo currentFees = <current reverse swap fees>
-try {
-    ReverseSwapInfo reverseSwapInfo = await sendOnchain(
-        amountSat: amountSat,
-        onchainRecipientAddress: destinationAddress,
-        pairHash: currentFees.feesHash,
-        satPerVbyte: satPerVbyte,
-    );
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:start-reverse-swap}}
 ```
 </section>
 
@@ -363,14 +339,7 @@ for (rs in sdk.inProgressReverseSwaps()) {
 <section>
 
 ```dart
-try {
-    List<ReverseSwapInfo> swaps = await inProgressReverseSwaps();
-    for (swap in swaps) {
-        print(`Reverse swap ${swap.id} in progress, status is ${swap.status}`);
-    }
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:check-reverse-swaps-status}}
 ```
 </section>
 

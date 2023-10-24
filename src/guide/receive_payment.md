@@ -54,16 +54,7 @@ try {
 <section>
 
 ```dart
-try {
-    ReceivePaymentResponse invoice = await receivePayment(
-        reqData: ReceivePaymentRequest(
-            amountSats: 3000, 
-            description: "Invoice for 3000 sats",
-        ),
-    );
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/receive_payment.dart:receive-payment}}
 ```
 </section>
 
