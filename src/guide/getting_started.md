@@ -11,6 +11,10 @@ The Breez SDK provides the following services:
 
 Connecting to a node requires a seed (your master key). The seed is a bip39 mnemonic.
 
+## Pricing
+
+The Breez SDK is free for developers. 
+
 ## API Key and Invite Code
 
 Before you start, you will need an API Key to use the SDK, as well as an Invite Code when you create a new node.
