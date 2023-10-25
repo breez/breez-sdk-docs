@@ -62,14 +62,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
-try: 
-    swap_info = sdk_services.receive_onchain(breez_sdk.ReceiveOnchainRequest())
-
-    # Send your funds to the below bitcoin address
-    address = swap_info.bitcoin_address
-except Exception as error:
-    # Handle error
+```python,ignore
+{{#include ../../snippets/python_snippets/receive_onchain.py:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -148,11 +142,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
-try:
-    swap_info = sdk_services.in_progress_swap()
-except Exception as error:
-    # Handle error
+```python,ignore
+{{#include ../../snippets/python_snippets/receive_onchain.py:in-progress-swap}}
 ```
 </section>
 
@@ -234,11 +225,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
-try:
-    refundables = sdk_services.list_refundables()
-except Exception as error:
-    # Handle error
+```python,ignore
+{{#include ../../snippets/python_snippets/receive_onchain.py:list-refundables}}
 ```
 </section>
 
@@ -324,16 +312,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
-destination_address = "..."
-sat_per_vbyte = 5
-
-try:
-    result = sdk_services.refund(swap_address=refundable.bitcoin_address,
-                                 to_address=destination_address,
-                                 sat_per_vbyte=sat_per_vbyte)
-except Exception as error:
-    # Handle error
+```python,ignore
+{{#include ../../snippets/python_snippets/receive_onchain.py:execute-refund}}
 ```
 </section>
 
@@ -417,14 +397,8 @@ do {
 <div slot="title">Python</div>
 <section>
 
-```python
-amount_msat = <amount msats>
-try:
-    channel_fees = sdk_services.open_channel_fee(
-        breez_sdk.OpenChannelFeeRequest(
-            amount_msat=amount_msat))
-except Exception as error:
-    # Handle error
+```python,ignore
+{{#include ../../snippets/python_snippets/receive_onchain.py:get-channel-opening-fees}}
 ```
 </section>
 

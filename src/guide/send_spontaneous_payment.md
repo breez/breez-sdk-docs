@@ -61,14 +61,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
-try:
-    sdk_services.send_spontaneous_payment(
-        breez_sdk.SendSpontaneousPaymentRequest(
-            node_id="...", 
-            amount_msat=3000000))
-except Exception as error:
-  # Handle error
+```python,ignore
+{{#include ../../snippets/python_snippets/send_spontaneous_payment.py:send-spontaneous-payment}}
 ```
 </section>
 

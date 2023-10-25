@@ -42,12 +42,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
-try: 
-    fiat_currencies = sdk_services.list_fiat_currencies()
-
-except Exception as error:
-    #Handle error
+```python,ignore
+{{#include ../../snippets/python_snippets/fiat_currencies.py:list-fiat-currencies}}
 ```
 </section>
 
@@ -112,7 +108,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try:
     fiat_rates = sdk_services.fetch_fiat_rates()
     # print your desired rate 
@@ -200,7 +196,7 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 # TODO
 ```
 </section>

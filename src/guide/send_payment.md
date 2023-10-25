@@ -62,7 +62,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 bolt11 = "..."
 try:
   # The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.

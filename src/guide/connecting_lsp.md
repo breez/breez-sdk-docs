@@ -60,13 +60,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python 
-try: 
-    lsp_id = sdk_services.lsp_id()
-    lsp_info = sdk_services.lsp_info()
-   
-except Exception as error:
-    # Handle error
+```python,ignore
+{{#include ../../snippets/python_snippets/connecting_lsp.py:get-lsp-info}}
 ```
 </section>
 
@@ -146,11 +141,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
-try: 
-    sdk_services.connect_lsp(lsp_id)
-except Exception as error:
-    # Handle error
+```python,ignore
+{{#include ../../snippets/python_snippets/connecting_lsp.py:connect-lsp}}
 ```
 </section>
 
