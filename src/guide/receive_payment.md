@@ -61,7 +61,7 @@ try {
 <section>
 
 ```dart
-{{#include ../../snippets/dart_snippets/lib/receive_payment.dart:receive_payment}}
+{{#include ../../snippets/dart_snippets/lib/receive_payment.dart:receive-payment}}
 ```
 </section>
 

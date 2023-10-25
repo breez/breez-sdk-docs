@@ -60,7 +60,7 @@ try {
 <section>
 
 ```dart
-{{#include ../../snippets/dart_snippets/lib/static_channel_backup.dart:static_channel_backup}}
+{{#include ../../snippets/dart_snippets/lib/static_channel_backup.dart:static-channel-backup}}
 ```
 </section>
 
