@@ -134,26 +134,7 @@ try {
 <section>
 
 ```python,ignore
-# SDK events listener
-class SDKListener(breez_sdk.EventListener):
-   def on_event(self, event):
-      print(event)
-
-# Create the default config
-seed = mnemonic_to_seed("<mnemonic words>")
-invite_code = "<invite code>"
-api_key = "<api key>"
-config = breez_sdk.default_config(breez_sdk.EnvironmentType.PRODUCTION, apiKey,  
-    breez_sdk.NodeConfig.GREENLIGHT(breez_sdk.GreenlightNodeConfig(None, invite_code)))
-
-# Customize the config object according to your needs
-config.working_dir = "path to an existing directory"
-
-try:
-    # Connect to the Breez SDK make it ready for use
-    sdk_services = breez_sdk.connect(config, seed, SDKListener())    
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python_snippets/getting_started.py:init-sdk}}
 ```
 </section>
 
@@ -233,12 +214,7 @@ try {
 <section>
 
 ```python,ignore
-try: 
-    node_info = node_info()
-    ln_balance = node_info.channels_balance_msat
-    onchain_balance = node_info.onchain_balance_msat
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python_snippets/getting_started.py:fetch-balance}}
 ```
 </section>
 

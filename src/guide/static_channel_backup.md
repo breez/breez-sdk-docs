@@ -64,10 +64,7 @@ try {
 <section>
 
 ```python,ignore
-try:
-    backup_data = breez_sdk.static_backup(breez_sdk.StaticBackupRequest(working_dir="<working directory>"))
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python_snippets/static_channel_backup.py:static-channel-backup}}
 ```
 </section>
 
