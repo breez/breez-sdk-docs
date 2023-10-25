@@ -17,7 +17,10 @@ They can even be spontaneous payments to a node without a bolt11 invoice.
 ```swift
 let nodeId = "...";
 do {
-  let payment = try sdk.sendSpontaneousPayment(nodeId: nodeId, amountSats: 3000)
+    let response = try sdk.sendSpontaneousPayment(
+        req: SendSpontaneousPaymentRequest(
+            nodeId: "...",
+            amountMsat: 3000000))
 } catch {
     // handle error
 }
@@ -29,8 +32,10 @@ do {
 
 ```kotlin,ignore
 val nodeId = "..."
+val amountMsat = 3000000L.toULong()
 try {
-    val payment = sdk.sendSpontaneousPayment(nodeId, 3000L.toULong())
+    val response = sdk.sendSpontaneousPayment(
+        SendSpontaneousPaymentRequest(nodeId, amountMsat))
 } catch (e: Exception) {
     // handle error
 }
@@ -57,9 +62,11 @@ try {
 <section>
 
 ```python
-node_id = "..."
 try:
-  sdk_services.send_spontaneous_payment(node_id=node_id, amount_sats=3000)
+    sdk_services.send_spontaneous_payment(
+        breez_sdk.SendSpontaneousPaymentRequest(
+            node_id="...", 
+            amount_msat=3000000))
 except Exception as error:
   # Handle error
 ```
@@ -69,9 +76,12 @@ except Exception as error:
 <section>
 
 ```go
-nodeId := "node id"
-if payment, err := sdk.SendSpontaneousPayment(nodeId, 3000); err == nil {
-    log.Printf("%#v", payment)
+sendSpontaneousPaymentRequest := breez_sdk.SendSpontaneousPaymentRequest{
+    NodeId:     "...",
+    AmountMsat: uint64(3000000),
+}
+if response, err := sdk.SendSpontaneousPayment(sendSpontaneousPaymentRequest); err == nil {
+    log.Printf("%#v", response)
 }
 ```
 </section>
@@ -81,9 +91,10 @@ if payment, err := sdk.SendSpontaneousPayment(nodeId, 3000); err == nil {
 
 ```cs
 var nodeId = "...";
+var amountMsat = 3000000;
 try 
 {
-    var payment = sdk.SendSpontaneousPayment(nodeId, 3000);
+    var response = sdk.SendSpontaneousPayment(new SendSpontaneousPaymentRequest(nodeId, amountMsat));
 } 
 catch (Exception) 
 {
