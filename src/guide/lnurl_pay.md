@@ -13,11 +13,15 @@
 let lnurl_pay_url = "lightning@address.com";
 
 if let Ok(LnUrlPay{data: pd}) = parse(lnurl_pay_url).await {
-    // TODO Show payment details in UI, read user input
     let amount_msat = pd.min_sendable;
     let comment = "Test payment".to_string();
     
-    sdk.lnurl_pay(amount_msat, Some(comment), pd).await?;
+    sdk.lnurl_pay(LnUrlPayRequest { 
+        data: pd, 
+        amount_msat, 
+        comment: Some(comment) 
+    })
+    .await?;
 }
 ```
 </section>
@@ -31,11 +35,14 @@ if let Ok(LnUrlPay{data: pd}) = parse(lnurl_pay_url).await {
 // lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
 let lnurlPayUrl = "lightning@address.com";
 do {
-  let inputType = try parseInput(s: lnurlPayUrl)
+    let inputType = try parseInput(s: lnurlPayUrl)
     if case .lnUrlPay(let data) = inputType {
-    let amountSats = data.minSendable;
-    try sdk.payLnurl(reqData: data, amountSats: amountSats, comment: "comment")
-  }
+        let amountMsat = data.minSendable;
+        try sdk.payLnurl(req: LnUrlPayRequest(
+            data: data, 
+            amountMsat: amountMsat, 
+            comment: "comment"))
+    }
 } catch {
     // handle error
 }
@@ -54,9 +61,8 @@ try {
     val inputType = parseInput(lnurlPayUrl)
     if (inputType is InputType.LnUrlPay) {
         val requestData = inputType.data
-        val amountSats = requestData.minSendable
-        val comment = "Any comment"
-        sdk.payLnurl(requestData, amountSats, comment)
+        val amountMsat = requestData.minSendable
+        sdk.payLnurl(LnUrlPayRequest(requestData, amountMsat, "comment"))
     }
 } catch (e: Exception) {
     // handle error
@@ -76,8 +82,8 @@ let lnurlPayUrl = "lightning@address.com"
 try {
     const input = await parseInput(lnurlPayUrl)
     if (input.type === InputTypeVariant.LN_URL_PAY) {
-        const amountSats = input.data.minSendable
-        const result = await payLnurl(input.data, amountSats, "comment")
+        const amountMsat = input.data.minSendable
+        const result = await payLnurl({data: input.data, amountMsat, comment: "comment"})
     }    
 } catch (error) {
     console.log(error)
@@ -97,11 +103,13 @@ String lnurlPayUrl = "lightning@address.com";
 try {
     InputType inputType = await parseInput(s: lnurlPayUrl);
     if (inputType is InputType_LnUrlPay) {
-        int amountSats = inputType.data.minSendable;
+        int amountMsat = inputType.data.minSendable;
         LnUrlCallbackStatus result = await lnurlPay(
-            reqData: inputType.data,
-            userAmountSat: amountSats, 
-            comment: "comment",
+            req: LnUrlPayRequest(
+                data: inputType.data,
+                amountMsat: amountMsat, 
+                comment: "comment",
+            ),
         );
     }
 } catch (error) {
@@ -120,10 +128,14 @@ try {
 lnurl_pay_url = "lightning@address.com"
 
 try: 
-  parsed_input = breez_sdk.parse_input(lnurl_pay_url)
-  if isinstance(parsed_input, breez_sdk.InputType.LN_URL_PAY):
-    amount_sats = parsed_input.data.min_sendable
-    result = sdk_service.pay_lnurl(parsed_input.data, amount_sats, "comment")
+    parsed_input = breez_sdk.parse_input(lnurl_pay_url)
+    if isinstance(parsed_input, breez_sdk.InputType.LN_URL_PAY):
+        amount_msat = parsed_input.data.min_sendable
+        result = sdk_service.pay_lnurl(
+            breez_sdk.LnUrlPayRequest(
+                data=parsed_input.data, 
+                amount_msat=amount_msat, 
+                comment="comment"))
 except Exception as error:
       # Handle error
 ```
@@ -141,9 +153,14 @@ lnurlPayUrl := "lightning@address.com"
 if input, err := breez_sdk.ParseInput(lnurlPayUrl); err != nil {
     switch inputType := input.(type) {
     case breez_sdk.InputTypeLnUrlPay:
-        amountsSats := inputType.Data.MinSendable
+        amountMsat := inputType.Data.MinSendable
         comment := "comment"
-        if result, err := sdk.PayLnurl(inputType.Data, amountsSats, &comment); err != nil {
+        lnUrlPayRequest := breez_sdk.LnUrlPayRequest{
+            Data:       inputType.Data,
+            AmountMsat: amountMsat,
+            Comment:    &comment,
+        }
+        if result, err := sdk.PayLnurl(lnUrlPayRequest); err != nil {
             switch result.(type) {
             case breez_sdk.LnUrlPayResultEndpointSuccess:
                 log.Printf("Successfully paid")
@@ -169,8 +186,8 @@ try
 {
     var input = BreezSdkMethods.ParseInput(lnurlPayUrl);
     if (input is InputType.LnUrlPay lnurlp) {
-        var amountSats = lnurlp.data.minSendable;
-        var result = sdk.PayLnurl(lnurlp.data, amountSats, "comment");
+        var amountMsat = lnurlp.data.minSendable;
+        var result = sdk.PayLnurl(new LnUrlPayRequest(lnurlp.data, amountMsat, "comment"));
     }
 } 
 catch (Exception) 
