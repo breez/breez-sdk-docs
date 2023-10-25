@@ -57,20 +57,7 @@ try {
 <section>
 
 ```typescript
-// Endpoint can also be of the form:
-// lnurlp://domain.com/lnurl-pay?key=val
-// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
-let lnurlPayUrl = "lightning@address.com"
-
-try {
-    const input = await parseInput(lnurlPayUrl)
-    if (input.type === InputTypeVariant.LN_URL_PAY) {
-        const amountSats = input.data.minSendable
-        const result = await payLnurl(input.data, amountSats, "comment")
-    }    
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/lnurl_pay.ts:lnurl-pay}}
 ```
 </section>
 

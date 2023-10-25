@@ -39,11 +39,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const payments = await listPayments({filter: PaymentTypeFilter.ALL})
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/list_payments.ts:list-payments}}
 ```
 </section>
 
@@ -143,15 +139,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const payments = await listPayments({
-        filter: PaymentTypeFilter.SENT, 
-        fromTimestamp: 1696880000,
-        includeFailures: true
-    })
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/list_payments.ts:list-payments-filtered}}
 ```
 </section>
 

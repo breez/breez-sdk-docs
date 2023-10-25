@@ -47,14 +47,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const swapInfo = await receiveOnchain({})
-
-    // Send your funds to the below bitcoin address
-    const address = swapInfo.bitcoinAddress
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/receive_onchain.ts:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -159,11 +152,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const swapInfo = await inProgressSwap()
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/receive_onchain.ts:in-progress-swap}}
 ```
 </section>
 
@@ -260,11 +249,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const refundables = await listRefundables()
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/receive_onchain.ts:list-refundables}}
 ```
 </section>
 
@@ -365,13 +350,7 @@ try {
 <section>
 
 ```typescript
-const destinationAddress = "..."
-const satPerVbyte = <refund tx fee rate>
-try {
-    const result = await refund(refundable.bitcoinAddress, destinationAddress, satPerVbyte)
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/receive_onchain.ts:execute-refund}}
 ```
 </section>
 
@@ -483,12 +462,7 @@ do {
 <section>
 
 ```typescript 
-const amountMsat = <amount msat>
-try {
-    const channelFees = await openChannelFee({amountMsat: amountMsat})
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/react-native/receive_onchain.ts:get-channel-opening-fees}}
 ```
 </section>
 

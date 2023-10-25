@@ -50,11 +50,7 @@ try {
 <section>
 
 ```typescript
-try {
-    let buyBitcoinResponse = await buyBitcoin({provider: BuyBitcoinProvider.MOONPAY})
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/buy_btc.ts:buy-btc}}
 ```
 </section>
 

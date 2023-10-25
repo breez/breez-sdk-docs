@@ -3,4 +3,5 @@ book
 .idea
 
 # Sub-projects with code snippets
+snippets/react-native/node_modules
 snippets/rust/target

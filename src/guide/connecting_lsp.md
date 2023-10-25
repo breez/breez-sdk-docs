@@ -45,12 +45,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const lspId = await lspId() 
-    const lspInfo = await lspInfo()
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/connecting_lsp.ts:get-lsp-info}}
 ```
 </section>
 
@@ -149,11 +144,7 @@ try {
 <section>
 
 ```typescript
-try {
-    await connectLsp(lspId)
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/connecting_lsp.ts:connect-lsp}}
 ```
 </section>
 

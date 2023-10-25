@@ -113,32 +113,7 @@ try {
 <section>
 
 ```typescript
-// SDK events listener
-const onBreezEvent = (event: BreezEvent) => {
-    console.log(`received event ${event.type}`)
-})
-
-// Create the default config
-const seed = await mnemonicToSeed("<mnemonic words>")
-const inviteCode = "<invite code>"
-const apiKey = "<api key>"
-const nodeConfig : NodeConfig = {
-    type: NodeConfigVariant.GREENLIGHT,
-    config: {
-        inviteCode: inviteCode        
-    }
-}
-let config = await defaultConfig(EnvironmentType.PRODUCTION, apiKey, nodeConfig)
-
-// Customize the config object according to your needs
-config.workingDir = "path to an existing directory"
-
-try {
-    // Connect to the Breez SDK make it ready for use
-    const sdkServices = await connect(config, seed, onBreezEvent)
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/getting_started.ts:init-sdk}}
 ```
 
 </section>
@@ -332,13 +307,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const nodeInfo = await nodeInfo();
-    const lnBalance = nodeInfo.channelsBalanceMsat;
-    const onchainBalance = nodeInfo.onchainBalanceMsat;
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/getting_started.ts:fetch-balance}}
 ```
 </section>
 

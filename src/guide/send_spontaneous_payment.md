@@ -41,12 +41,7 @@ try {
 <section>
 
 ```typescript
-const nodeId = "..."
-try {
-    const payment = await sendSpontaneousPayment(nodeId, 3000)
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/send_spontaneous_payment.ts:send-spontaneous-payment}}
 ```
 </section>
 
