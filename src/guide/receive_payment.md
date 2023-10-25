@@ -62,13 +62,7 @@ try {
 <section>
 
 ```python,ignore
-try:
-  receive_payment_response = sdk_services.receive_payment(
-    breez_sdk.ReceivePaymentRequest(
-        amount_msat=3_000_000,
-        description="Invoice for 3000 sats"))
-except Exception as error:
-  # Handle error
+{{#include ../../snippets/python_snippets/receive_payment.py:receive-payment}}
 ```
 </section>
 

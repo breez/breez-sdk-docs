@@ -55,10 +55,7 @@ try {
 <section>
 
 ```python,ignore
-try:
-  sdk_services.list_payments(breez_sdk.ListPaymentsRequest(breez_sdk.PaymentTypeFilter.All))
-except Exception as error:
-  # Handle error
+{{#include ../../snippets/python_snippets/list_payments.py:list-payments}}
 ```
 </section>
 
@@ -140,14 +137,7 @@ try {
 <section>
 
 ```python,ignore
-try:
-  sdk_services.list_payments(
-    breez_sdk.ListPaymentsRequest(
-        breez_sdk.PaymentTypeFilter.Sent, 
-        from_timestamp = 1696880000, 
-        include_failures = True))
-except Exception as error:
-  # Handle error
+{{#include ../../snippets/python_snippets/list_payments.py:list-payments-filtered}}
 ```
 </section>
 
