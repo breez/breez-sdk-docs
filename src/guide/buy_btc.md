@@ -65,13 +65,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python,ignore
-try:
-    buy_bitcoin_resp = sdk_services.buy_bitcoin(
-        breez_sdk.BuyBitcoinRequest(
-            breez_sdk.BuyBitcoinProvider.MOONPAY))
-except Exception as error:
-    # Handle error
+```python,ignore 
+{{#include ../../snippets/python_snippets/buy_btc.py:buy-btc}}
 ```
 </section>
 

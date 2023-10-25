@@ -43,11 +43,7 @@ try {
 <section>
 
 ```python,ignore
-try: 
-    fiat_currencies = sdk_services.list_fiat_currencies()
-
-except Exception as error:
-    #Handle error
+{{#include ../../snippets/python_snippets/fiat_currencies.py:list-fiat-currencies}}
 ```
 </section>
 
