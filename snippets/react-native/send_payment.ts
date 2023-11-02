@@ -2,11 +2,9 @@ import { sendPayment } from "@breeztech/react-native-breez-sdk"
 
 const exampleSendLightningPayment = async () => {
     // ANCHOR: send-payment
-    const bolt11 = "..."
-
-    const sendPaymentResponse = await sendPayment({
-        bolt11,
-        amountMsat: 3000000
-    })
+    // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+    // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
+    const amountMsat = 3000000
+    const response = await sendPayment({bolt11, amountMsat})
     // ANCHOR_END: send-payment
 }
