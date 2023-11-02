@@ -2,7 +2,7 @@
 There are cases when you have funds in some bitcoin address and you would like to send those to your lightning node.
 
 In such cases, the SDK might have to open a new channel, for which case you can specify an optional user-selected
-channel opening fee[^1]. For simplicity, the examples below use the cheapest fee available.
+channel opening fee[^1].
 In order to receive funds you first have to be connected to an [LSP](connecting_lsp.md).
 
 <custom-tabs category="lang">

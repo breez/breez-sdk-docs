@@ -15,11 +15,11 @@ Once you have outbound liquidity you can start sending payments too.
 <section>
 
 ```swift
-let bolt11 = "...";
 do {
-  // The `amountSats` param is optional so nil can be passed if the 
-  // bolt11 invoice spesifies an amount.
-  let payment = try sdk.sendPayment(bolt11: bolt11, amountSats: 3000)
+  // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+  // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
+  let req = SendPaymentRequest(bolt11: "...", amountMsat: 3000000)
+  let response = try sdk.sendPayment(req: req)
 } catch {
     // handle error
 }
@@ -32,7 +32,11 @@ do {
 ```kotlin,ignore
 val bolt11 = "..."
 try {
-    val payment = sdk.sendPayment(bolt11, 3000L.toULong())
+    // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+    // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
+    val amountMsat = 3000000L.toULong()
+    val req = SendPaymentRequest(bolt11, amountMsat)
+    val response = sdk.sendPayment(req)
 } catch (e: Exception) {
     // handle error
 }
@@ -61,9 +65,10 @@ try {
 ```python
 bolt11 = "..."
 try:
-  # The `amountSats` param is optional so None can be passed if the 
-  # bolt11 invoice spesifies an amount.
-  sdk_services.send_payment(bolt11=bolt11, amount_sats=None)
+  # The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+  # The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
+  req = breez_sdk.SendPaymentRequest(bolt11=bolt11, amount_msat=3000000)
+  sdk_services.send_payment(req=req)
 except Exception as error:
   # Handle error
 ```
@@ -74,9 +79,15 @@ except Exception as error:
 
 ```go
 bolt11 := "bolt11 invoice"
-amountSats := uint64(3000)
-if payment, err := sdk.SendPayment(bolt11, &amountSats); err == nil {
-    log.Printf("%#v", payment)
+// The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+// The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
+amountMsat := uint64(3000000)
+sendPaymentRequest := breez_sdk.SendPaymentRequest{
+    Bolt11: bolt11,
+    AmountMsat: amountMsat,
+}
+if response, err := sdk.SendPayment(sendPaymentRequest); err == nil {
+    log.Printf("%#v", response)
 }
 ```
 </section>
@@ -86,9 +97,12 @@ if payment, err := sdk.SendPayment(bolt11, &amountSats); err == nil {
 
 ```cs
 var bolt11 = "...";
+var amountMsat = 3000000;
 try 
 {
-    var payment = sdk.SendPayment(bolt11, 3000);
+    // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
+    // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
+    var response = sdk.SendPayment(new SendPaymentRequest(bolt11, amountMsat));
 } 
 catch (Exception) 
 {
