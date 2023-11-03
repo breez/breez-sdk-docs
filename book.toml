@@ -13,3 +13,6 @@ edit-url-template = "https://github.com/breez/breez-sdk-docs/edit/main/{path}"
 
 [output.html.print]
 enable = false
+
+[preprocessor.snippets]
+after = ["links"]
