@@ -11,17 +11,20 @@ Future<List<Payment>> listPayments() async {
 }
 
 Future<List<Payment>> listPaymentsFiltered({
-  DateTime? startDate,
-  DateTime? endDate,
+  int? fromTimestamp,
+  int? toTimestamp,
   bool? includeFailures,
   int? offset,
   int? limit,
 }) async {
   // ANCHOR: list-payments-filtered
+  /// Get the desired epoch timestamp in seconds
+  int fromTimestamp = DateTime.now().subtract(const Duration(minutes: 30)).millisecondsSinceEpoch ~/ 1000;
+
   ListPaymentsRequest req = ListPaymentsRequest(
     filter: PaymentTypeFilter.Sent,
-    fromTimestamp: startDate?.millisecondsSinceEpoch,
-    toTimestamp: endDate?.millisecondsSinceEpoch,
+    fromTimestamp: fromTimestamp,
+    toTimestamp: toTimestamp,
     includeFailures: includeFailures,
     offset: offset,
     limit: limit,
