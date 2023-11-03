@@ -203,42 +203,7 @@ if err != nil {
 <section>
 
 ```cs
-using Breez.Sdk;
-
-// Create the default config
-var seed = BreezSdkMethods.MnemonicToSeed("<mnemonic words>");
-var inviteCode = "<invite code>";
-var apiKey = "<api key>";
-var nodeConfig = new NodeConfig.Greenlight(
-    new GreenlightNodeConfig(null, inviteCode)
-);
-var config = BreezSdkMethods.DefaultConfig(
-    EnvironmentType.PRODUCTION, 
-    apiKey, 
-    nodeConfig
-) with {
-    // Customize the config object according to your needs
-    workingDir = "path to an existing directory"
-};
-
-BlockingBreezServices sdk;
-try 
-{
-    // Connect to the Breez SDK make it ready for use
-    sdk = BreezSdkMethods.Connect(config, seed, new SdkListener());  
-} catch (Exception) 
-{
-   // Handle error
-}
-
-// SDK event listener
-class SdkListener : EventListener
-{
-    public void OnEvent(BreezEvent e)
-    {
-        Console.WriteLine($"Received Breez event type {e.GetType().Name}");
-    }
-}
+{{#include ../../snippets/csharp/GettingStarted.cs:init-sdk}}
 ```
 </section>
 </custom-tabs>
@@ -326,15 +291,7 @@ if nodeInfo, err := sdkServices.NodeInfo(); err != nil {
 <section>
 
 ```cs
-try 
-{
-    var nodeInfo = sdk.NodeInfo();    
-    var lnBalance = nodeInfo?.channelsBalanceMsat;
-    var onchainBalance = nodeInfo?.onchainBalanceMsat;
-} 
-catch (Exception) {
-    // Handle error
-}
+{{#include ../../snippets/csharp/GettingStarted.cs:fetch-balance}}
 ```
 </section>
 </custom-tabs>

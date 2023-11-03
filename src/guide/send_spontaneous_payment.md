@@ -90,16 +90,7 @@ if response, err := sdk.SendSpontaneousPayment(sendSpontaneousPaymentRequest); e
 <section>
 
 ```cs
-var nodeId = "...";
-var amountMsat = 3000000;
-try 
-{
-    var response = sdk.SendSpontaneousPayment(new SendSpontaneousPaymentRequest(nodeId, amountMsat));
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/SendSpontaneousPayment.cs:send-spontaneous-payment}}
 ```
 </section>
 </custom-tabs>

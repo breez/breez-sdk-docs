@@ -93,15 +93,7 @@ if buyBitcoinResponse, err := sdk.BuyBitcoin(buyBitcoinRequest); err == nil {
 <section>
 
 ```cs
-try
-{
-    var buyBitcoinResponse = sdk.BuyBitcoin(
-        new BuyBitcoinRequest(BuyBitcoinProvider.MOONPAY));
-}
-catch (Exception)
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/BuyBtc.cs:buy-btc}}
 ```
 </section>
 </custom-tabs>

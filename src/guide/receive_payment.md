@@ -90,15 +90,7 @@ if receivePaymentResponse, err := sdk.ReceivePayment(receivePaymentRequest); err
 <section>
 
 ```cs
-try 
-{
-    var invoice = sdk.ReceivePayment(
-        new ReceivePaymentRequest(3_000_000, "Invoice for 3000 sats"));
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ReceivePayment.cs:receive-payment}}
 ```
 </section>
 </custom-tabs>

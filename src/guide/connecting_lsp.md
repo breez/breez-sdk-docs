@@ -87,15 +87,7 @@ if lspInfo, err := sdk.LspInfo(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var lspId = sdk.LspId();
-    var lspInfo = sdk.LspInfo();
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ConnectingLsp.cs:get-lsp-info}}
 ```
 </section>
 </custom-tabs>
@@ -177,14 +169,7 @@ if err := sdk.ConnectLsp(lspId); err != nil {
 <section>
 
 ```cs
-try 
-{
-    sdk.ConnectLsp(lspId!);
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ConnectingLsp.cs:connect-lsp}}
 ```
 </section>
 </custom-tabs>

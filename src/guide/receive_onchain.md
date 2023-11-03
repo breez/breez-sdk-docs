@@ -89,17 +89,7 @@ if swapInfo, err := sdk.ReceiveOnchain(breez_sdk.ReceiveOnchainRequest{}); err !
 <section>
 
 ```cs
-try 
-{
-    var swapInfo = sdk.ReceiveOnchain(new ReceiveOnchainRequest());
-
-    // Send your funds to the below bitcoin address
-    var address = swapInfo.bitcoinAddress;
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ReceiveOnchain.cs:generate-receive-onchain-address}}
 ```
 </section>
 </custom-tabs>
@@ -180,14 +170,7 @@ if swapInfo, err := sdk.InProgressSwap(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var swapInfo = sdk.InProgressSwap();
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ReceiveOnchain.cs:in-progress-swap}}
 ```
 </section>
 </custom-tabs>
@@ -273,14 +256,7 @@ if refundables, err := sdk.ListRefundables(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var refundables = sdk.ListRefundables();
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ReceiveOnchain.cs:list-refundables}}
 ```
 </section>
 </custom-tabs>
@@ -380,16 +356,7 @@ if refundables, err := sdk.ListRefundables(); err == nil {
 <section>
 
 ```cs
-var destinationAddress = "...";
-var satPerVbyte = <refund tx fee rate>;
-try 
-{
-    var result = sdk.Refund(refundable.bitcoinAddress, destinationAddress, satPerVbyte);
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ReceiveOnchain.cs:execute-refund}}
 ```
 </section>
 </custom-tabs>
@@ -476,8 +443,7 @@ if channelFees, err := sdk.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{Amount
 <section>
 
 ```cs 
-ulong amountMsat = <amount msat>;
-var channelFees = sdk.OpenChannelFee(new OpenChannelFeeRequest(amountMsat));
+{{#include ../../snippets/csharp/ReceiveOnchain.cs:get-channel-opening-fees}}
 ```
 </section>
 </custom-tabs>
