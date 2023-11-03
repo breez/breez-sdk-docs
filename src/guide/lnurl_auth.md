@@ -77,7 +77,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/lnurl_auth.py:lnurl-auth}}
+{{#include ../../snippets/python_snippets/src/lnurl_auth.py:lnurl-auth}}
 ```
 </section>
 

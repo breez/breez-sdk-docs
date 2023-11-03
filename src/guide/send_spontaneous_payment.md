@@ -62,7 +62,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/send_spontaneous_payment.py:send-spontaneous-payment}}
+{{#include ../../snippets/python_snippets/src/send_spontaneous_payment.py:send-spontaneous-payment}}
 ```
 </section>
 
