@@ -134,7 +134,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/getting_started.py:init-sdk}}
+{{#include ../../snippets/python_snippets/src/getting_started.py:init-sdk}}
 ```
 </section>
 
@@ -214,7 +214,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/getting_started.py:fetch-balance}}
+{{#include ../../snippets/python_snippets/src/getting_started.py:fetch-balance}}
 ```
 </section>
 

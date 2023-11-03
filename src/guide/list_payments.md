@@ -55,7 +55,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/list_payments.py:list-payments}}
+{{#include ../../snippets/python_snippets/src/list_payments.py:list-payments}}
 ```
 </section>
 
@@ -137,7 +137,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/list_payments.py:list-payments-filtered}}
+{{#include ../../snippets/python_snippets/src/list_payments.py:list-payments-filtered}}
 ```
 </section>
 
