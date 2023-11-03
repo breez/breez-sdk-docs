@@ -57,3 +57,19 @@ jobs:
         run: |
           cd snippets/dart_snippets
           dart analyze --fatal-infos
+
+  check-csharp:
+    name: Check C# snippets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Build the csharp project
+        working-directory: snippets/csharp
+        run: dotnet build
