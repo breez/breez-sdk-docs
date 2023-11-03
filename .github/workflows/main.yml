@@ -23,6 +23,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      # Set up Rust environment and run checks
       - name: Install rust
         run: |
           rustup set auto-self-update disable
@@ -40,3 +41,19 @@ jobs:
           # Explicitly allow clippy::dead_code lint because the functions aren't called in the docs snippets
           # Explicitly allow clippy::unused_variables because snippets might have to demonstrate how to get certain variables without using them afterward
           cargo clippy -- --allow dead_code --allow unused_variables --deny warnings
+
+      # Set up the flutter environment and run checks
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.13.9'
+          channel: 'stable'
+
+      - name: pub-get
+        run: |
+          cd snippets/dart_snippets
+          flutter pub get
+
+      - name: dart-analyze
+        run: |
+          cd snippets/dart_snippets
+          dart analyze --fatal-infos
