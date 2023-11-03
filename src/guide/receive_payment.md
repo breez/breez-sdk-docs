@@ -62,7 +62,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/receive_payment.py:receive-payment}}
+{{#include ../../snippets/python_snippets/src/receive_payment.py:receive-payment}}
 ```
 </section>
 

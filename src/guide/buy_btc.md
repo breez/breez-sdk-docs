@@ -66,7 +66,7 @@ try {
 <section>
 
 ```python,ignore 
-{{#include ../../snippets/python_snippets/buy_btc.py:buy-btc}}
+{{#include ../../snippets/python_snippets/src/buy_btc.py:buy-btc}}
 ```
 </section>
 

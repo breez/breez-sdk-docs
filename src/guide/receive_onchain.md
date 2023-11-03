@@ -63,7 +63,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/receive_onchain.py:generate-receive-onchain-address}}
+{{#include ../../snippets/python_snippets/src/receive_onchain.py:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -143,7 +143,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/receive_onchain.py:in-progress-swap}}
+{{#include ../../snippets/python_snippets/src/receive_onchain.py:in-progress-swap}}
 ```
 </section>
 
@@ -226,7 +226,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/receive_onchain.py:list-refundables}}
+{{#include ../../snippets/python_snippets/src/receive_onchain.py:list-refundables}}
 ```
 </section>
 
@@ -313,7 +313,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/receive_onchain.py:execute-refund}}
+{{#include ../../snippets/python_snippets/src/receive_onchain.py:execute-refund}}
 ```
 </section>
 
@@ -398,7 +398,7 @@ do {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/receive_onchain.py:get-channel-opening-fees}}
+{{#include ../../snippets/python_snippets/src/receive_onchain.py:get-channel-opening-fees}}
 ```
 </section>
 

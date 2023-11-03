@@ -61,7 +61,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/connecting_lsp.py:get-lsp-info}}
+{{#include ../../snippets/python_snippets/src/connecting_lsp.py:get-lsp-info}}
 ```
 </section>
 
@@ -142,7 +142,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/connecting_lsp.py:connect-lsp}}
+{{#include ../../snippets/python_snippets/src/connecting_lsp.py:connect-lsp}}
 ```
 </section>
 

@@ -43,7 +43,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/fiat_currencies.py:list-fiat-currencies}}
+{{#include ../../snippets/python_snippets/src/fiat_currencies.py:list-fiat-currencies}}
 ```
 </section>
 

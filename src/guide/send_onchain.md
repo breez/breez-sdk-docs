@@ -61,7 +61,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/send_onchain.py:estimate-current-reverse-swap-total-fees}}
+{{#include ../../snippets/python_snippets/src/send_onchain.py:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -141,7 +141,7 @@ Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/send_onchain.py:get-current-reverse-swap-min-max}}
+{{#include ../../snippets/python_snippets/src/send_onchain.py:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -228,7 +228,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/send_onchain.py:start-reverse-swap}}
+{{#include ../../snippets/python_snippets/src/send_onchain.py:start-reverse-swap}}
 ```
 </section>
 
@@ -311,7 +311,7 @@ for (rs in sdk.inProgressReverseSwaps()) {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/send_onchain.py:check-reverse-swaps-status}}
+{{#include ../../snippets/python_snippets/src/send_onchain.py:check-reverse-swaps-status}}
 ```
 </section>
 

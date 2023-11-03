@@ -79,7 +79,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/lnurl_withdraw.py:lnurl-withdraw}}
+{{#include ../../snippets/python_snippets/src/lnurl_withdraw.py:lnurl-withdraw}}
 ```
 </section>
 
