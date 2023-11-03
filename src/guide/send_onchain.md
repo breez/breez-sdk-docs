@@ -28,7 +28,7 @@ try {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -126,7 +126,7 @@ println("Maximum amount, in sats: \(current_fees.max)")
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -209,7 +209,7 @@ try {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -317,7 +317,7 @@ for rs in sdk.inProgressReverseSwaps() {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore

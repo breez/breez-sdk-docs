@@ -79,7 +79,7 @@ do {
 
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -268,7 +268,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore

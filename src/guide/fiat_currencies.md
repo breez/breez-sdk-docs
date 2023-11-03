@@ -11,7 +11,7 @@ In order to list the available fiat currencies:
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -88,7 +88,7 @@ To get the current BTC rate for the currencies:
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -165,7 +165,7 @@ At the example project you can see these methods combined:
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
