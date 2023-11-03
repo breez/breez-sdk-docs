@@ -1,9 +1,7 @@
 import breez_sdk
-import logging
 
-sdk_services = breez_sdk.BlockingBreezServices
 
-def withdraw():
+def withdraw(sdk_services):
     # ANCHOR: lnurl-withdraw
     # Endpoint can also be of the form:
     # lnurlw://domain.com/lnurl-withdraw?key=val
@@ -17,5 +15,5 @@ def withdraw():
         # ANCHOR_END: lnurl-withdraw
         return result
     except Exception as error:
-        logging.error(error)
+        print(error)
         raise
