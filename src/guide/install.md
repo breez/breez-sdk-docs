@@ -92,12 +92,13 @@ Currently, rust is still not accessible via crates.io and is needed to be built 
 
 ## Dart / Flutter
 
-Currently, Dart is built from source only. Please visit the [sdk-flutter](https://github.com/breez/breez-sdk/tree/main/libs/sdk-flutter#readme) project for instructions. We're planning to publish this package to [pub.dev](https://pub.dev/), until then it needs to be specified as a local directory dependency.
+We recommend to add our official flutter package as a git dependency. 
 
 ```yaml
 dependencies:
   breez_sdk:
-    path: <relative-path-to>/breez-sdk/libs/sdk-flutter
+    git:
+      url: https://github.com/breez/breez-sdk-flutter.git
 ```
 ## Python
 
