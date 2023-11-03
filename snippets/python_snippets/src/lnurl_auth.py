@@ -1,9 +1,7 @@
 import breez_sdk
-import logging
 
-sdk_services = breez_sdk.BlockingBreezServices
 
-def auth():
+def auth(sdk_services):
     # ANCHOR: lnurl-auth
     # Endpoint can also be of the form:
     # keyauth://domain.com/auth?key=val
@@ -15,10 +13,10 @@ def auth():
         req = breez_sdk
         result = sdk_services.lnurl_auth(parsed_input.data)        
       if result.is_ok():
-        logging.info("Successfully authenticated")
+        print("Successfully authenticated")
       else:
-        logging.error("Failed to authenticate")
+        print("Failed to authenticate")
     except Exception as error:
-        logging.error(error)
+        print(error)
         raise
     # ANCHOR_END: lnurl-auth

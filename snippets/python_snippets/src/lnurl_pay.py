@@ -1,9 +1,7 @@
 import breez_sdk
-import logging
 
-sdk_services = breez_sdk.BlockingBreezServices
 
-def pay():
+def pay(sdk_services):
   # ANCHOR: lnurl-pay
   # Endpoint can also be of the form:
   # lnurlp://domain.com/lnurl-pay?key=val
@@ -18,5 +16,5 @@ def pay():
        # ANCHOR_END: lnurl-pay
        return result
   except Exception as error:
-      logging.error(error)
+      print(error)
       raise
