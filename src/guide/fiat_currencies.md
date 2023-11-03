@@ -65,14 +65,7 @@ if fiatCurrencies, err := sdk.ListFiatCurrencies(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var fiatCurrencies = sdk.ListFiatCurrencies();
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/FiatCurrencies.cs:list-fiat-currencies}}
 ```
 </section>
 </custom-tabs>
@@ -142,14 +135,7 @@ if fiatRates, err := sdk.FetchFiatRates(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var fiatRates = sdk.FetchFiatRates();
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/FiatCurrencies.cs:fetch-fiat-rates}}
 ```
 </section>
 </custom-tabs>
@@ -231,7 +217,7 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 <section>
 
 ```cs
-// TODO
+{{#include ../../snippets/csharp/FiatCurrencies.cs:get-fiat-currencies-and-rates}}
 ```
 </section>
 </custom-tabs>

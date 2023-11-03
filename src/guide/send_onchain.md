@@ -88,16 +88,7 @@ if currentFees, err := sdk.FetchReverseSwapFees(reverseSwapFeesRequest); err == 
 <section>
 
 ```cs
-try
-{
-    var currentFees = sdk.FetchReverseSwapFees(
-        new ReverseSwapFeesRequest(50000));
-    Console.WriteLine($"Total estimated fees for reverse swap: {currentFees.totalEstimatedFees}");
-}
-catch (Exception)
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/SendOnchain.cs:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 </custom-tabs>
@@ -173,8 +164,7 @@ log.Printf("Maximum amount, in sats: %v", currentFees.Max)
 <section>
 
 ```cs
-Console.WriteLine($"Minimum amount, in sats: {currentFees.min}");
-Console.WriteLine($"Maximum amount, in sats: {currentFees.max}");
+{{#include ../../snippets/csharp/SendOnchain.cs:get-current-reverse-swap-min-max}}
 ```
 </section>
 </custom-tabs>
@@ -276,18 +266,7 @@ if currentFees, err := sdk.FetchReverseSwapFees(breez_sdk.ReverseSwapFeesRequest
 <section>
 
 ```cs
-var destinationAddress = "bc1..";
-var amountSat = currentFees.min;
-var satPerVbyte = <fee rate>;
-try 
-{
-    var reverseSwapInfo = sdk.SendOnchain(
-        amountSat, destinationAddress, currentFees.feesHash, satPerVbyte);
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/SendOnchain.cs:start-reverse-swap}}
 ```
 </section>
 </custom-tabs>
@@ -372,17 +351,7 @@ if swaps, err := sdk.InProgressReverseSwaps(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var swaps = sdk.InProgressReverseSwaps();
-    foreach (var swap in swaps) {
-        Console.WriteLine($"Reverse swap {swap.id} in progress, status is {swap.status}`");
-    }
-} 
-catch (Exception) 
-{
-    // Handle error
-}   
+{{#include ../../snippets/csharp/SendOnchain.cs:check-reverse-swaps-status}}
 ```
 </section>
 </custom-tabs>

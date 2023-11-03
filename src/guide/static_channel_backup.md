@@ -86,15 +86,7 @@ if staticBackupResponse, err := breez_sdk.StaticBackup(breez_sdk.StaticBackupReq
 <section>
 
 ```cs
-using Breez.Sdk;
-
-try 
-{
-    var backupData = BreezSdkMethods.StaticBackup(new StaticBackupRequest("<working directory>"));  
-} catch (Exception) 
-{
-   // Handle error
-}
+{{#include ../../snippets/csharp/StaticChannelBackup.cs:static-channel-backup}}
 ```
 </section>
 </custom-tabs>

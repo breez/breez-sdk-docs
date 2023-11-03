@@ -76,14 +76,7 @@ if payments, err := sdk.ListPayments(breez_sdk.ListPaymentsRequest{Filter: breez
 <section>
 
 ```cs
-try 
-{
-    var payments = sdk.ListPayments(new ListPaymentsRequest(PaymentTypeFilter.ALL));
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ListPayments.cs:list-payments}}
 ```
 </section>
 </custom-tabs>
@@ -181,14 +174,7 @@ if payments, err := sdk.ListPayments(listPaymentsRequest); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var payments = sdk.ListPayments(new ListPaymentsRequest(PaymentTypeFilter.SENT, fromTimestamp=1696880000, includeFailures=true));
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ListPayments.cs:list-payments-filtered}}
 ```
 </section>
 </custom-tabs>
