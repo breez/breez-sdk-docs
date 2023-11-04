@@ -9,14 +9,40 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      sdk-ref:
+        description: 'sdk commit/tag/branch reference. Defaults to main.'
+        required: false
+        type: string
+        default: main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
+  setup:
+    name: setup
+    runs-on: ubuntu-latest
+    outputs:
+      sdk-ref: ${{ inputs.sdk-ref || '0.2.7' }}
+      package-version: '0.2.7'
+    steps:
+      - run: echo "set pre-setup output variables"
+
+  build-packages:
+    needs: setup
+    name: build packages
+    uses: breez/breez-sdk/.github/workflows/publish-all-platforms.yml@main
+    with:
+      repository: breez/breez-sdk
+      ref: ${{ needs.setup.outputs.sdk-ref }}
+      csharp-package-version: ${{ needs.setup.outputs.package-version }}
+      flutter-package-version: ${{ needs.setup.outputs.package-version }}
+      use-dummy-binaries: true
 
   check-rust:
+    needs: setup
     name: Check rust snippets
     runs-on: ubuntu-latest
     steps:
@@ -39,6 +65,26 @@ jobs:
         with:
           workspaces: snippets/rust -> snippets/rust/target
 
+      - name: temporarily get sdk
+        uses: actions/checkout@v3
+        with:
+          repository: breez/breez-sdk
+          ref: ${{ needs.setup.outputs.sdk-ref }}
+          path: breez-sdk
+
+      - id: rev-parse
+        name: get proper rev
+        working-directory: breez-sdk
+        run: |
+          rev=$(git rev-parse HEAD)
+          echo "$rev"
+          echo "rev=$rev" >> $GITHUB_OUTPUT   
+
+      - name: set sdk version
+        working-directory: snippets/rust
+        run: |
+          cargo add --git https://github.com/breez/breez-sdk.git breez-sdk-core --rev "${{ steps.rev-parse.outputs.rev }}"
+
       - name: clippy
         working-directory: snippets/rust
         run: |
@@ -47,6 +93,9 @@ jobs:
           cargo clippy -- --allow dead_code --allow unused_variables --deny warnings
 
   check-dart:
+    needs: 
+      - setup
+      - build-packages
     name: Check dart snippets
     runs-on: ubuntu-latest
     steps:
@@ -59,17 +108,23 @@ jobs:
           flutter-version: '3.13.9'
           channel: 'stable'
 
+      - uses: actions/download-artifact@v3
+        with:
+          name: breez-sdk-flutter-${{ needs.setup.outputs.package-version }}
+          path: breez-sdk-flutter
+
       - name: pub-get
-        run: |
-          cd snippets/dart_snippets
-          flutter pub get
+        working-directory: snippets/dart_snippets
+        run: flutter pub get
 
       - name: dart-analyze
-        run: |
-          cd snippets/dart_snippets
-          dart analyze --fatal-infos
+        working-directory: snippets/dart_snippets
+        run: dart analyze --fatal-infos
 
   check-csharp:
+    needs: 
+      - setup
+      - build-packages
     name: Check C# snippets
     runs-on: ubuntu-latest
     steps:
@@ -80,6 +135,12 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
+
+      - name: Download archived package
+        uses: actions/download-artifact@v3
+        with:
+          name: Breez.Sdk.${{ needs.setup.outputs.package-version }}.nupkg
+          path: packages
 
       - name: Build the csharp project
         working-directory: snippets/csharp
