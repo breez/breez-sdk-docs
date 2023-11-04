@@ -16,8 +16,8 @@ concurrency:
 
 jobs:
 
-  clippy:
-    name: Clippy
+  check-rust:
+    name: Check rust snippets
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -35,12 +35,23 @@ jobs:
           version: "23.4"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: snippets/rust -> snippets/rust/target
+
       - name: clippy
+        working-directory: snippets/rust
         run: |
-          cd snippets/rust
           # Explicitly allow clippy::dead_code lint because the functions aren't called in the docs snippets
           # Explicitly allow clippy::unused_variables because snippets might have to demonstrate how to get certain variables without using them afterward
           cargo clippy -- --allow dead_code --allow unused_variables --deny warnings
+
+  check-dart:
+    name: Check dart snippets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
       # Set up the flutter environment and run checks
       - uses: subosito/flutter-action@v2
