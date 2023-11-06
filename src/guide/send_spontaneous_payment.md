@@ -76,13 +76,7 @@ except Exception as error:
 <section>
 
 ```go
-sendSpontaneousPaymentRequest := breez_sdk.SendSpontaneousPaymentRequest{
-    NodeId:     "...",
-    AmountMsat: uint64(3000000),
-}
-if response, err := sdk.SendSpontaneousPayment(sendSpontaneousPaymentRequest); err == nil {
-    log.Printf("%#v", response)
-}
+{{#include ../../snippets/go/send_spontaneous_payment.go:send-spontaneous-payment}}
 ```
 </section>
 

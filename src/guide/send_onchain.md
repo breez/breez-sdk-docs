@@ -74,13 +74,7 @@ except Exception as error:
 <section>
 
 ```go
-sendAmountSat := uint64(50000)
-reverseSwapFeesRequest := breez_sdk.ReverseSwapFeesRequest{
-    SendAmountSat: &sendAmountSat,
-}
-if currentFees, err := sdk.FetchReverseSwapFees(reverseSwapFeesRequest); err == nil {
-    log.Printf("Total estimated fees for reverse swap: %v", currentFees.TotalEstimatedFees)
-}
+{{#include ../../snippets/go/send_onchain.go:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -155,8 +149,7 @@ print("Maximum amount, in sats: ", current_fees.max)
 <section>
 
 ```go
-log.Printf("Minimum amount, in sats: %v", currentFees.Min)
-log.Printf("Maximum amount, in sats: %v", currentFees.Max)
+{{#include ../../snippets/go/send_onchain.go:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -251,14 +244,7 @@ except Exception as error:
 <section>
 
 ```go
-destinationAddress := "bc1.."
-sendAmountSat := uint64(50000)
-satPerVbyte := uint64(5)
-if currentFees, err := sdk.FetchReverseSwapFees(breez_sdk.ReverseSwapFeesRequest{SendAmountSat: &sendAmountSat}); err == nil {
-    if reverseSwapInfo, err := sdk.SendOnchain(sendAmountSat, destinationAddress, currentFees.FeesHash, satPerVbyte); err == nil {
-        log.Printf("%#v", reverseSwapInfo)
-    }
-}
+{{#include ../../snippets/go/send_onchain.go:start-reverse-swap}}
 ```
 </section>
 
@@ -339,11 +325,7 @@ except Exception as error:
 <section>
 
 ```go
-if swaps, err := sdk.InProgressReverseSwaps(); err == nil {
-    for _, swap := range swaps {
-        log.Printf("Reverse swap %v in progress, status is %v", swap.Id, swap.Status)
-    }
-}
+{{#include ../../snippets/go/send_onchain.go:check-reverse-swaps-status}}
 ```
 </section>
 

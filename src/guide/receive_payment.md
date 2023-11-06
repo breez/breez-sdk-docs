@@ -76,13 +76,7 @@ except Exception as error:
 <section>
 
 ```go
-receivePaymentRequest := breez_sdk.ReceivePaymentRequest{
-    AmountMsat:  3_000_000,
-    Description: "Invoice for 3000 sats",
-}
-if receivePaymentResponse, err := sdk.ReceivePayment(receivePaymentRequest); err == nil {
-    log.Printf("%#v", receivePaymentResponse)
-}
+{{#include ../../snippets/go/receive_payment.go:receive-payment}}
 ```
 </section>
 

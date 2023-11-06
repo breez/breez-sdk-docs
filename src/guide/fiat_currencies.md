@@ -55,9 +55,7 @@ except Exception as error:
 <section>
 
 ```go
-if fiatCurrencies, err := sdk.ListFiatCurrencies(); err == nil {
-    log.Printf("%#v", fiatCurrencies)
-}
+{{#include ../../snippets/go/fiat_currencies.go:list-fiat-currencies}}
 ```
 </section>
 
@@ -125,9 +123,7 @@ except Exception as error:
 <section>
 
 ```go
-if fiatRates, err := sdk.FetchFiatRates(); err == nil {
-    log.Printf("%#v", fiatRates)
-}
+{{#include ../../snippets/go/fiat_currencies.go:fetch-fiat-rates}}
 ```
 </section>
 
@@ -209,7 +205,7 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 <section>
 
 ```go
-// TODO
+{{#include ../../snippets/go/fiat_currencies.go:get-fiat-currencies-and-rates}}
 ```
 </section>
 

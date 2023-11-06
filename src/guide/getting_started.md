@@ -161,41 +161,8 @@ except Exception as error:
 <section>
 
 ```go
-// SDK events listener
-type BreezListener struct{}
-
-func (BreezListener) OnEvent(e breez_sdk.BreezEvent) {
-    log.Printf("received event %#v", e)
-}
-
-// Create the default config
-seed, err := breez_sdk.MnemonicToSeed("<mnemonic words>")
-if err != nil {
-	log.Fatalf("MnemonicToSeed failed: %#v", err)
-}
-
-inviteCode := "<invite code>"
-apiKey := "<api key>"
-nodeConfig := breez_sdk.NodeConfigGreenlight{
-    Config: breez_sdk.GreenlightNodeConfig{
-        PartnerCredentials: nil, 
-        InviteCode:         &inviteCode,
-    },
-}
-
-config, err := breez_sdk.DefaultConfig(breez_sdk.EnvironmentTypeProduction, apiKey, nodeConfig)
-
-if err != nil {
-	log.Fatalf("DefaultConfig failed: %#v", err)
-}
-
-// Customize the config object according to your needs
-config.workingDir = "path to an existing directory"
-
-sdk, err := breez_sdk.Connect(config, seed, BreezListener{})
-if err != nil {
-    log.Fatalf("Connect failed: %#v", err)
-}
+{{#include ../../snippets/go/getting_started.go:init-sdk-requirements}}
+{{#include ../../snippets/go/getting_started.go:init-sdk}}
 ```
 </section>
 
@@ -280,10 +247,7 @@ except Exception as error:
 <section>
 
 ```go
-if nodeInfo, err := sdkServices.NodeInfo(); err != nil {
-    lnBalance := nodeInfo.ChannelsBalanceMsat
-    onchainBalance := nodeInfo.OnchainBalanceMsat
-}
+{{#include ../../snippets/go/getting_started.go:fetch-balance}}
 ```
 </section>
 

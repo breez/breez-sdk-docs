@@ -75,10 +75,7 @@ except Exception as error:
 <section>
 
 ```go
-workingDir := "<working directory>"
-if staticBackupResponse, err := breez_sdk.StaticBackup(breez_sdk.StaticBackupRequest{WorkingDir: workingDir}); err == nil {
-    log.Printf("%#v", staticBackupResponse)
-}
+{{#include ../../snippets/go/static_channel_backup.go:static-channel-backup}}
 ```
 </section>
 

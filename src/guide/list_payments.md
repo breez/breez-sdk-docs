@@ -66,9 +66,7 @@ except Exception as error:
 <section>
 
 ```go
-if payments, err := sdk.ListPayments(breez_sdk.ListPaymentsRequest{Filter: breez_sdk.PaymentTypeFilterAll}); err == nil {
-    log.Printf("%#v", payments)
-}
+{{#include ../../snippets/go/list_payments.go:list-payments}}
 ```
 </section>
 
@@ -157,16 +155,7 @@ except Exception as error:
 <section>
 
 ```go
-fromTimestamp := int64(1696880000)
-includeFailures := true
-listPaymentsRequest := breez_sdk.ListPaymentsRequest{
-    Filter:          breez_sdk.PaymentTypeFilterSent,
-    FromTimestamp:   &fromTimestamp,
-    IncludeFailures: &includeFailures,
-}
-if payments, err := sdk.ListPayments(listPaymentsRequest); err == nil {
-    log.Printf("%#v", payments)
-}
+{{#include ../../snippets/go/list_payments.go:list-payments-filtered}}
 ```
 </section>
 
