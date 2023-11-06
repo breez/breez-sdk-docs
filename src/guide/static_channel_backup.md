@@ -63,11 +63,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
-try:
-    backup_data = breez_sdk.static_backup(breez_sdk.StaticBackupRequest(working_dir="<working directory>"))
-except Exception as error:
-    # Handle error
+```python,ignore
+{{#include ../../snippets/python_snippets/src/static_channel_backup.py:static-channel-backup}}
 ```
 </section>
 

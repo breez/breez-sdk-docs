@@ -60,13 +60,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
-try: 
-    current_fees = sdk_services.fetch_reverse_swap_fees(
-        breez_sdk.ReverseSwapFeesRequest(send_amount_sat=50000))
-    print("Total estimated fees for reverseswap: ", current_fees.total_estimated_fees)
-except Exception as error:
-    # Handle error
+```python,ignore
+{{#include ../../snippets/python_snippets/src/send_onchain.py:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -145,9 +140,8 @@ Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
 <div slot="title">Python</div>
 <section>
 
-```python
-print("Minimum amount, in sats: ", current_fees.min)
-print("Maximum amount, in sats: ", current_fees.max)
+```python,ignore
+{{#include ../../snippets/python_snippets/src/send_onchain.py:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -233,17 +227,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
-destination_address = "bc1.."
-amount_sat = 50000
-sat_per_vbyte = 5
-try:
-  sdk_services.send_onchain(amount_sat=amount_sat,
-                            onchain_recipient_address=destination_address,
-                            pair_hash=current_fees.fee_hash,
-                            sat_per_vbyte=sat_per_vbyte)
-except Exception as error:
-  # Handle erorr
+```python,ignore
+{{#include ../../snippets/python_snippets/src/send_onchain.py:start-reverse-swap}}
 ```
 </section>
 
@@ -325,13 +310,8 @@ for (rs in sdk.inProgressReverseSwaps()) {
 <div slot="title">Python</div>
 <section>
 
-```python
-try: 
-  reverse_swaps = sdk_services.in_progress_reverse_swaps()
-  for rs in reverse_swaps:
-    print("Reverse swap ",rs.id , " in progress, status is ", rs.status)
-except Exception as error:
-  # Handle erorr
+```python,ignore
+{{#include ../../snippets/python_snippets/src/send_onchain.py:check-reverse-swaps-status}}
 ```
 </section>
 

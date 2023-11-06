@@ -105,3 +105,36 @@ jobs:
         with:
           name: book
           path: book
+  python:
+    name: Python
+    runs-on: ubuntu-latest
+
+    env: 
+      SCHEME: Runner
+      API_KEY: ${{ secrets.API_KEY }}
+      MNEMONIC: ${{ secrets.MNEMONIC }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff
+          # use pypi when published. 
+          pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple breez_sdk
+
+      - name: python-analyse with ruff
+        run: |
+          cd snippets/python_snippets/src
+          ruff --ignore F841 --ignore F401 --output-format=github .
+
+      - name: Test
+        run: |
+          cd snippets/python_snippets
+          python main.py $API_KEY $MNEMONIC
+          
+        continue-on-error: false

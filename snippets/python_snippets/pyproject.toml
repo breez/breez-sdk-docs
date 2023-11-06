@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "breez-sdk examples"
+version = "0.2.7"
+description = ""
+authors = ["ruben beck <ruben.beck@pm.me>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+ruff = "^0.1.4"
+breez-sdk = { git = "https://github.com/cnixbtc/breez-sdk.git", branch = "pypi", subdirectory = "libs/sdk-bindings/bindings-python" }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
