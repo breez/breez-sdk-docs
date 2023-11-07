@@ -74,12 +74,7 @@ except Exception as error:
 <section>
 
 ```go
-if lspId, err := sdk.LspId(); lspId != nil && err == nil {
-    log.Printf("%#v", *lspId)
-}
-if lspInfo, err := sdk.LspInfo(); err == nil {
-    log.Printf("%#v", lspInfo)
-}
+{{#include ../../snippets/go/connecting_lsp.go:get-lsp-info}}
  ```
 </section>
 
@@ -158,10 +153,7 @@ except Exception as error:
 <section>
 
  ```go
-lspId := "your selected lsp id"
-if err := sdk.ConnectLsp(lspId); err != nil {
-    log.Printf("%#v", err)
-}
+{{#include ../../snippets/go/connecting_lsp.go:connect-lsp}}
 ```
 </section>
 

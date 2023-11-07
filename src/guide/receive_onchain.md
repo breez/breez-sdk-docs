@@ -77,11 +77,7 @@ except Exception as error:
 <section>
 
 ```go
-if swapInfo, err := sdk.ReceiveOnchain(breez_sdk.ReceiveOnchainRequest{}); err != nil {
-    // Send your funds to the below bitcoin address
-    address := swapInfo.BitcoinAddress
-    log.Printf("%v", address)
-}
+{{#include ../../snippets/go/receive_onchain.go:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -160,9 +156,8 @@ except Exception as error:
 <section>
 
 ```go
-if swapInfo, err := sdk.InProgressSwap(); err == nil {
-    log.Printf("%#v", swapInfo)
-}
+
+{{#include ../../snippets/go/receive_onchain.go:in-progress-swap}}
 ```
 </section>
 
@@ -246,9 +241,7 @@ except Exception as error:
 <section>
 
 ```go
-if refundables, err := sdk.ListRefundables(); err == nil {
-    log.Printf("%#v", refundables)
-}
+{{#include ../../snippets/go/receive_onchain.go:list-refundables}}
 ```
 </section>
 
@@ -341,14 +334,7 @@ except Exception as error:
 <section>
 
 ```go
-if refundables, err := sdk.ListRefundables(); err == nil {
-    destinationAddress := "..."
-    satPerVbyte := uint32(5)
-    
-    if result, err := sdk.Refund(refundables[0].BitcoinAddress, destinationAddress, satPerVbyte); err == nil {
-        log.Printf("%v", result)
-    }
-}
+{{#include ../../snippets/go/receive_onchain.go:execute-refund}}
 ```
 </section>
 
@@ -432,10 +418,7 @@ except Exception as error:
 <section>
 
 ```go
-amountMsat := uint64(10000)
-if channelFees, err := sdk.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{AmountMsat: amountMsat}); err == nil {
-    log.Printf("%#v", channelFees)
-}
+{{#include ../../snippets/go/receive_onchain.go:get-channel-opening-fees}}
 ```
 </section>
 

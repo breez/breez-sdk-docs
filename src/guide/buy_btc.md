@@ -79,12 +79,7 @@ except Exception as error:
 <section>
 
 ```go
-buyBitcoinRequest := breez_sdk.BuyBitcoinRequest{
-	Provider: breez_sdk.BuyBitcoinProviderMoonpay,
-}
-if buyBitcoinResponse, err := sdk.BuyBitcoin(buyBitcoinRequest); err == nil {
-    log.Printf("%#v", buyBitcoinResponse)
-}
+{{#include ../../snippets/go/buy_btc.go:buy-btc}}
 ```
 </section>
 
