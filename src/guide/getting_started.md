@@ -161,7 +161,6 @@ except Exception as error:
 <section>
 
 ```go
-{{#include ../../snippets/go/getting_started.go:init-sdk-requirements}}
 {{#include ../../snippets/go/getting_started.go:init-sdk}}
 ```
 </section>

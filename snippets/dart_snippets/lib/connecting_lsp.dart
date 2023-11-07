@@ -12,6 +12,6 @@ Future<void> getLspInfo() async {
 
 Future<void> connectLsp(String lspId) async {
   // ANCHOR: connect-lsp
-  return await BreezSDK().connectLSP(lspId);
+  await BreezSDK().connectLSP(lspId);
   // ANCHOR_END: connect-lsp
 }

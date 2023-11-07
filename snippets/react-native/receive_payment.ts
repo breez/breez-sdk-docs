@@ -6,5 +6,5 @@ const exampleReceiveLightningPayment = async () => {
         amountMsat: 3000000,
         description: "Invoice for 3000 sats"
     })
-    // ANCHOR: receive-payment
+    // ANCHOR_END: receive-payment
 }
