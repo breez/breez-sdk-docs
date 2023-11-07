@@ -90,6 +90,11 @@ dotnet add package Breez.Sdk
 
 Currently, rust is still not accessible via crates.io and is needed to be built from source. Please visit the [sdk-core](https://github.com/breez/breez-sdk/tree/main/libs/sdk-core) project for instructions.
 
+```toml
+[dependencies]
+breez-sdk-core = { git = "https://github.com/breez/breez-sdk", tag = "0.2.7" }
+```
+
 ## Dart / Flutter
 
 We recommend to add our official flutter package as a git dependency. 
