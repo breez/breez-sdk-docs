@@ -9,7 +9,7 @@ Future<void> initializeSDK() async {
   // Initialize SDK logs listener
   BreezSDK().initialize();
 
-// Create the default config
+  // Create the default config
   Uint8List seed = await BreezSDK().mnemonicToSeed("<mnemonic words>");
   String inviteCode = "<invite code>";
   String apiKey = "<api key>";

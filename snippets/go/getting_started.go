@@ -6,7 +6,7 @@ import (
 	"github.com/breez/breez-sdk-go/breez_sdk"
 )
 
-// ANCHOR: init-sdk-requirements
+// ANCHOR: init-sdk
 // SDK events listener
 type BreezListener struct{}
 
@@ -14,10 +14,7 @@ func (BreezListener) OnEvent(e breez_sdk.BreezEvent) {
 	log.Printf("received event %#v", e)
 }
 
-// ANCHOR_END: init-sdk-requirements
-
 func GettingStarted() {
-	// ANCHOR: init-sdk
 	// Create the default config
 	seed, err := breez_sdk.MnemonicToSeed("<mnemonic words>")
 	if err != nil {
@@ -41,7 +38,10 @@ func GettingStarted() {
 	if err != nil {
 		log.Fatalf("Connect failed: %#v", err)
 	}
-	// ANCHOR_END: init-sdk
+}
+
+// ANCHOR_END: init-sdk
+func FetchBalance() {
 	// ANCHOR: fetch-balance
 	if nodeInfo, err := sdk.NodeInfo(); err != nil {
 		lnBalance := nodeInfo.ChannelsBalanceMsat

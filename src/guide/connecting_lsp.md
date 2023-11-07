@@ -75,7 +75,7 @@ except Exception as error:
 
 ```go
 {{#include ../../snippets/go/connecting_lsp.go:get-lsp-info}}
- ```
+```
 </section>
 
 <div slot="title">C#</div>
@@ -152,7 +152,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
- ```go
+```go
 {{#include ../../snippets/go/connecting_lsp.go:connect-lsp}}
 ```
 </section>
