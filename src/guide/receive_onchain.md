@@ -10,12 +10,7 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 <section>
 
 ```rust,ignore
-let swap_info = sdk.receive_onchain( 
-    ReceiveOnchainRequest { opening_fee_params: None } )
-    .await?;
-
-// Send your funds to the below bitcoin address
-let address = swap_info.bitcoin_address;
+{{#include ../../snippets/rust/src/receive_onchain.rs:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -34,7 +29,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -52,14 +47,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const swapInfo = await receiveOnchain({})
-
-    // Send your funds to the below bitcoin address
-    const address = swapInfo.bitcoinAddress
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/receive_onchain.ts:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -67,16 +55,7 @@ try {
 <section>
 
 ```dart
-try {
-    SwapInfo swapInfo = await receiveOnchain(
-        reqData: ReceiveOnchainRequest(),
-    );
-
-    // Send your funds to the below bitcoin address
-    String address = swapInfo.bitcoinAddress;
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -98,11 +77,7 @@ except Exception as error:
 <section>
 
 ```go
-if swapInfo, err := sdk.ReceiveOnchain(breez_sdk.ReceiveOnchainRequest{}); err != nil {
-    // Send your funds to the below bitcoin address
-    address := swapInfo.BitcoinAddress
-    log.Printf("%v", address)
-}
+{{#include ../../snippets/go/receive_onchain.go:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -110,17 +85,7 @@ if swapInfo, err := sdk.ReceiveOnchain(breez_sdk.ReceiveOnchainRequest{}); err !
 <section>
 
 ```cs
-try 
-{
-    var swapInfo = sdk.ReceiveOnchain(new ReceiveOnchainRequest());
-
-    // Send your funds to the below bitcoin address
-    var address = swapInfo.bitcoinAddress;
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ReceiveOnchain.cs:generate-receive-onchain-address}}
 ```
 </section>
 </custom-tabs>
@@ -132,7 +97,7 @@ Once you've sent the funds to the above address, the SDK will monitor this addre
 <section>
 
 ```rust,ignore
-let swap_info = sdk.in_progress_swap().await?
+{{#include ../../snippets/rust/src/receive_onchain.rs:in-progress-swap}}
 ```
 </section>
 
@@ -148,7 +113,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -164,11 +129,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const swapInfo = await inProgressSwap()
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/receive_onchain.ts:in-progress-swap}}
 ```
 </section>
 
@@ -176,11 +137,7 @@ try {
 <section>
 
 ```dart
-try {
-    SwapInfo? swapInfo = await inProgressSwap();
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:in-progress-swap}}
 ```
 </section>
 
@@ -199,9 +156,8 @@ except Exception as error:
 <section>
 
 ```go
-if swapInfo, err := sdk.InProgressSwap(); err == nil {
-    log.Printf("%#v", swapInfo)
-}
+
+{{#include ../../snippets/go/receive_onchain.go:in-progress-swap}}
 ```
 </section>
 
@@ -209,14 +165,7 @@ if swapInfo, err := sdk.InProgressSwap(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var swapInfo = sdk.InProgressSwap();
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ReceiveOnchain.cs:in-progress-swap}}
 ```
 </section>
 </custom-tabs>
@@ -233,7 +182,7 @@ In order to execute a refund, you need to supply an on-chain address to where th
 <section>
 
 ```rust,ignore
-let refundables = sdk.list_refundables().await?
+{{#include ../../snippets/rust/src/receive_onchain.rs:list-refundables}}
 ```
 </section>
 
@@ -249,7 +198,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -265,11 +214,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const refundables = await listRefundables()
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/receive_onchain.ts:list-refundables}}
 ```
 </section>
 
@@ -277,11 +222,7 @@ try {
 <section>
 
 ```dart
-try {
-    List<SwapInfo> refundables = await listRefundables()
-} catch (error) {
-     // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:list-refundables}}
 ```
 </section>
 
@@ -300,9 +241,7 @@ except Exception as error:
 <section>
 
 ```go
-if refundables, err := sdk.ListRefundables(); err == nil {
-    log.Printf("%#v", refundables)
-}
+{{#include ../../snippets/go/receive_onchain.go:list-refundables}}
 ```
 </section>
 
@@ -310,14 +249,7 @@ if refundables, err := sdk.ListRefundables(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var refundables = sdk.ListRefundables();
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ReceiveOnchain.cs:list-refundables}}
 ```
 </section>
 </custom-tabs>
@@ -329,9 +261,7 @@ Once you have a refundable swap in hand, use the following code to execute a ref
 <section>
 
 ```rust,ignore
-let destination_address = "...".into()
-let sat_per_vbyte = <refund tx fee rate>
-sdk.refund(refundable.bitcoin_address, destination_address, sat_per_vbyte).await?
+{{#include ../../snippets/rust/src/receive_onchain.rs:execute-refund}}
 ```
 </section>
 
@@ -353,7 +283,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -372,13 +302,7 @@ try {
 <section>
 
 ```typescript
-const destinationAddress = "..."
-const satPerVbyte = <refund tx fee rate>
-try {
-    const result = await refund(refundable.bitcoinAddress, destinationAddress, satPerVbyte)
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/receive_onchain.ts:execute-refund}}
 ```
 </section>
 
@@ -386,17 +310,7 @@ try {
 <section>
 
 ```dart
-String destinationAddress = "..."
-int satPerVbyte = <refund tx fee rate>
-try {
-    String result = await refund(
-        swapAddress: refundable.bitcoinAddress,
-        toAddress: destinationAddress,
-        satPerVbyte: satPerVbyte,
-    );
-} catch (error) {
-     // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:execute-refund}}
 ```
 </section>
 
@@ -420,14 +334,7 @@ except Exception as error:
 <section>
 
 ```go
-if refundables, err := sdk.ListRefundables(); err == nil {
-    destinationAddress := "..."
-    satPerVbyte := uint32(5)
-    
-    if result, err := sdk.Refund(refundables[0].BitcoinAddress, destinationAddress, satPerVbyte); err == nil {
-        log.Printf("%v", result)
-    }
-}
+{{#include ../../snippets/go/receive_onchain.go:execute-refund}}
 ```
 </section>
 
@@ -435,16 +342,7 @@ if refundables, err := sdk.ListRefundables(); err == nil {
 <section>
 
 ```cs
-var destinationAddress = "...";
-var satPerVbyte = <refund tx fee rate>;
-try 
-{
-    var result = sdk.Refund(refundable.bitcoinAddress, destinationAddress, satPerVbyte);
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ReceiveOnchain.cs:execute-refund}}
 ```
 </section>
 </custom-tabs>
@@ -460,10 +358,7 @@ To calculate the fees for a channel being opened by the LSP:
 <section>
 
 ```rust,ignore
-let amount_msat = <amount msat>;
-let channel_fees = sdk.open_channel_fee(
-    OpenChannelFeeRequest { amount_msat, expiry: None })
-    .await?;
+{{#include ../../snippets/rust/src/receive_onchain.rs:get-channel-opening-fees}}
 ```
 </section>
 
@@ -481,7 +376,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -493,12 +388,7 @@ do {
 <section>
 
 ```typescript 
-const amountMsat = <amount msat>
-try {
-    const channelFees = await openChannelFee({amountMsat: amountMsat})
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/react-native/receive_onchain.ts:get-channel-opening-fees}}
 ```
 </section>
 
@@ -506,16 +396,7 @@ try {
 <section>
 
 ```dart
-int amountMsats = <amount msats>
-try {
-    int channelFees = openChannelFee(
-        req: OpenChannelFeeRequest(
-            amountMsats: amountMsats,
-        ),
-    );
-} catch {
-    // Handle error 
-}
+{{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:get-channel-opening-fees}}
 ```
 </section>
 
@@ -537,10 +418,7 @@ except Exception as error:
 <section>
 
 ```go
-amountMsat := uint64(10000)
-if channelFees, err := sdk.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{AmountMsat: amountMsat}); err == nil {
-    log.Printf("%#v", channelFees)
-}
+{{#include ../../snippets/go/receive_onchain.go:get-channel-opening-fees}}
 ```
 </section>
 
@@ -548,8 +426,7 @@ if channelFees, err := sdk.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{Amount
 <section>
 
 ```cs 
-ulong amountMsat = <amount msat>;
-var channelFees = sdk.OpenChannelFee(new OpenChannelFeeRequest(amountMsat));
+{{#include ../../snippets/csharp/ReceiveOnchain.cs:get-channel-opening-fees}}
 ```
 </section>
 </custom-tabs>

@@ -42,33 +42,7 @@ Now your SDK is ready to be used.
 <section>
 
 ```rust,ignore
-let mnemonic = Mnemonic::generate_in(Language::English, 12)?;
-let seed = mnemonic.to_seed("");
-let invite_code = Some("<invite code>".into());
-let api_key = "<api key>".into()
-
-// Create the default config
-let mut config = BreezServices::default_config(
-    EnvironmentType::Production,
-    api_key,
-    breez_sdk_core::NodeConfig::Greenlight {
-        config: GreenlightNodeConfig {
-            partner_credentials: None,
-            invite_code
-        },
-    },
-);
-
-// Customize the config object according to your needs
-config.working_dir = "path to an existing directory".into();
-
-// Connect to the Breez SDK make it ready for use
-let sdk = BreezServices::connect(
-        config,
-        seed.to_vec(),        
-        Box::new(AppEventListener {}),
-    )
-    .await?;
+{{#include ../../snippets/rust/src/getting_started.rs:init-sdk}}
 ```
 
 </section>
@@ -105,7 +79,7 @@ do {
 
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -143,32 +117,7 @@ try {
 <section>
 
 ```typescript
-// SDK events listener
-const onBreezEvent = (event: BreezEvent) => {
-    console.log(`received event ${event.type}`)
-})
-
-// Create the default config
-const seed = await mnemonicToSeed("<mnemonic words>")
-const inviteCode = "<invite code>"
-const apiKey = "<api key>"
-const nodeConfig : NodeConfig = {
-    type: NodeConfigVariant.GREENLIGHT,
-    config: {
-        inviteCode: inviteCode        
-    }
-}
-let config = await defaultConfig(EnvironmentType.PRODUCTION, apiKey, nodeConfig)
-
-// Customize the config object according to your needs
-config.workingDir = "path to an existing directory"
-
-try {
-    // Connect to the Breez SDK make it ready for use
-    const sdkServices = await connect(config, seed, onBreezEvent)
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/getting_started.ts:init-sdk}}
 ```
 
 </section>
@@ -177,32 +126,7 @@ try {
 <section>
 
 ```dart
-// SDK events listener
-breezEventsStream().listen((event) {
-    print("Received Breez event: $event");
-}
-
-// SDK logs listener
-breezLogStream().listen((log) {
-    print("Received Breez log entry: $log");
-}
-
-// Create the default config
-Uint8List seed = await mnemonicToSeed(phrase: "<mnemonic words>");
-String inviteCode = "<invite code>";
-String apiKey = "<api key>"
-NodeConfg nodeConfig = NodeConfig.greenlight(config: GreenlightNodeConfig(partnerCredentials: null, inviteCode: inviteCode));
-Config config = await defaultConfig(configType: EnvironmentType.Production, apiKey: apiKey, nodeConfig: nodeConfig);
-
-// Customize the config object according to your needs
-config.workingDir = "path to an existing directory";
-
-try {
-    // Connect to the Breez SDK make it ready for use
-    await connect(config: config, seed: seed);    
-} catch (error) {
-   // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/getting_started.dart:init-sdk}}
 ```
 </section>
 
@@ -237,41 +161,8 @@ except Exception as error:
 <section>
 
 ```go
-// SDK events listener
-type BreezListener struct{}
-
-func (BreezListener) OnEvent(e breez_sdk.BreezEvent) {
-    log.Printf("received event %#v", e)
-}
-
-// Create the default config
-seed, err := breez_sdk.MnemonicToSeed("<mnemonic words>")
-if err != nil {
-	log.Fatalf("MnemonicToSeed failed: %#v", err)
-}
-
-inviteCode := "<invite code>"
-apiKey := "<api key>"
-nodeConfig := breez_sdk.NodeConfigGreenlight{
-    Config: breez_sdk.GreenlightNodeConfig{
-        PartnerCredentials: nil, 
-        InviteCode:         &inviteCode,
-    },
-}
-
-config, err := breez_sdk.DefaultConfig(breez_sdk.EnvironmentTypeProduction, apiKey, nodeConfig)
-
-if err != nil {
-	log.Fatalf("DefaultConfig failed: %#v", err)
-}
-
-// Customize the config object according to your needs
-config.workingDir = "path to an existing directory"
-
-sdk, err := breez_sdk.Connect(config, seed, BreezListener{})
-if err != nil {
-    log.Fatalf("Connect failed: %#v", err)
-}
+{{#include ../../snippets/go/getting_started.go:init-sdk-requirements}}
+{{#include ../../snippets/go/getting_started.go:init-sdk}}
 ```
 </section>
 
@@ -279,42 +170,7 @@ if err != nil {
 <section>
 
 ```cs
-using Breez.Sdk;
-
-// Create the default config
-var seed = BreezSdkMethods.MnemonicToSeed("<mnemonic words>");
-var inviteCode = "<invite code>";
-var apiKey = "<api key>";
-var nodeConfig = new NodeConfig.Greenlight(
-    new GreenlightNodeConfig(null, inviteCode)
-);
-var config = BreezSdkMethods.DefaultConfig(
-    EnvironmentType.PRODUCTION, 
-    apiKey, 
-    nodeConfig
-) with {
-    // Customize the config object according to your needs
-    workingDir = "path to an existing directory"
-};
-
-BlockingBreezServices sdk;
-try 
-{
-    // Connect to the Breez SDK make it ready for use
-    sdk = BreezSdkMethods.Connect(config, seed, new SdkListener());  
-} catch (Exception) 
-{
-   // Handle error
-}
-
-// SDK event listener
-class SdkListener : EventListener
-{
-    public void OnEvent(BreezEvent e)
-    {
-        Console.WriteLine($"Received Breez event type {e.GetType().Name}");
-    }
-}
+{{#include ../../snippets/csharp/GettingStarted.cs:init-sdk}}
 ```
 </section>
 </custom-tabs>
@@ -326,10 +182,7 @@ At any point we can fetch our balance from the Greenlight node:
 <section>
 
 ```rust,ignore
-if let Some(node_state) = sdk.node_info()? {
-    let balance_ln = node_state.channels_balance_msat;
-    let balance_onchain = node_state.onchain_balance_msat;
-}
+{{#include ../../snippets/rust/src/getting_started.rs:fetch-balance}}
 ```
 </section>
 
@@ -347,7 +200,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -365,13 +218,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const nodeInfo = await nodeInfo();
-    const lnBalance = nodeInfo.channelsBalanceMsat;
-    const onchainBalance = nodeInfo.onchainBalanceMsat;
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/getting_started.ts:fetch-balance}}
 ```
 </section>
 
@@ -379,13 +226,7 @@ try {
 <section>
 
 ```dart
-try {
-    NodeState? nodeInfo = await nodeInfo();    
-    int lnBalance = nodeInfo?.channelsBalanceMsat;
-    int onchainBalance = nodeInfo?.onchainBalanceMsat;
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/getting_started.dart:fetch-balance}}
 ```
 </section>
 
@@ -406,10 +247,7 @@ except Exception as error:
 <section>
 
 ```go
-if nodeInfo, err := sdkServices.NodeInfo(); err != nil {
-    lnBalance := nodeInfo.ChannelsBalanceMsat
-    onchainBalance := nodeInfo.OnchainBalanceMsat
-}
+{{#include ../../snippets/go/getting_started.go:fetch-balance}}
 ```
 </section>
 
@@ -417,15 +255,7 @@ if nodeInfo, err := sdkServices.NodeInfo(); err != nil {
 <section>
 
 ```cs
-try 
-{
-    var nodeInfo = sdk.NodeInfo();    
-    var lnBalance = nodeInfo?.channelsBalanceMsat;
-    var onchainBalance = nodeInfo?.onchainBalanceMsat;
-} 
-catch (Exception) {
-    // Handle error
-}
+{{#include ../../snippets/csharp/GettingStarted.cs:fetch-balance}}
 ```
 </section>
 </custom-tabs>

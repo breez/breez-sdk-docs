@@ -7,14 +7,7 @@ To view your payment history you can list and filter all the sent and received p
 <section>
 
 ```rust,ignore
-let payments = sdk.list_payments(
-    ListPaymentRequest { 
-        filter: PaymentTypeFilter::All,
-        from_timestamp: None,
-        to_timestamp: None,
-        include_failures: None,
-    }
-).await?;
+{{#include ../../snippets/rust/src/list_payments.rs:list-payments}}
 ```
 </section>
 
@@ -30,7 +23,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -46,11 +39,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const payments = await listPayments({filter: PaymentTypeFilter.ALL})
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/list_payments.ts:list-payments}}
 ```
 </section>
 
@@ -58,13 +47,7 @@ try {
 <section>
 
 ```dart
-try {
-    List<Payment> payments = await listPayments(
-      filter: PaymentTypeFilter.All,
-    );
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/list_payments.dart:list-payments}}
 ```
 </section>
 
@@ -83,9 +66,7 @@ except Exception as error:
 <section>
 
 ```go
-if payments, err := sdk.ListPayments(breez_sdk.ListPaymentsRequest{Filter: breez_sdk.PaymentTypeFilterAll}); err == nil {
-    log.Printf("%#v", payments)
-}
+{{#include ../../snippets/go/list_payments.go:list-payments}}
 ```
 </section>
 
@@ -93,14 +74,7 @@ if payments, err := sdk.ListPayments(breez_sdk.ListPaymentsRequest{Filter: breez
 <section>
 
 ```cs
-try 
-{
-    var payments = sdk.ListPayments(new ListPaymentsRequest(PaymentTypeFilter.ALL));
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ListPayments.cs:list-payments}}
 ```
 </section>
 </custom-tabs>
@@ -112,14 +86,7 @@ You can optionally filter payments by timestamp and include failed payments.
 <section>
 
 ```rust,ignore
-let payments = sdk.list_payments(
-    ListPaymentRequest { 
-        filter: PaymentTypeFilter::Sent,
-        from_timestamp: 1696880000,
-        to_timestamp: None,
-        include_failures: true,
-    }
-).await?;
+{{#include ../../snippets/rust/src/list_payments.rs:list-payments-filtered}}
 ```
 </section>
 
@@ -141,7 +108,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -157,15 +124,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const payments = await listPayments({
-        filter: PaymentTypeFilter.SENT, 
-        fromTimestamp: 1696880000,
-        includeFailures: true
-    })
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/list_payments.ts:list-payments-filtered}}
 ```
 </section>
 
@@ -173,15 +132,7 @@ try {
 <section>
 
 ```dart
-try {
-    List<Payment> payments = await listPayments(
-      filter: PaymentTypeFilter.Sent,
-      fromTimestamp: 1696880000,
-      includeFailures: true
-    );
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/list_payments.dart:list-payments-filtered}}
 ```
 </section>
 
@@ -204,16 +155,7 @@ except Exception as error:
 <section>
 
 ```go
-fromTimestamp := int64(1696880000)
-includeFailures := true
-listPaymentsRequest := breez_sdk.ListPaymentsRequest{
-    Filter:          breez_sdk.PaymentTypeFilterSent,
-    FromTimestamp:   &fromTimestamp,
-    IncludeFailures: &includeFailures,
-}
-if payments, err := sdk.ListPayments(listPaymentsRequest); err == nil {
-    log.Printf("%#v", payments)
-}
+{{#include ../../snippets/go/list_payments.go:list-payments-filtered}}
 ```
 </section>
 
@@ -221,14 +163,7 @@ if payments, err := sdk.ListPayments(listPaymentsRequest); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var payments = sdk.ListPayments(new ListPaymentsRequest(PaymentTypeFilter.SENT, fromTimestamp=1696880000, includeFailures=true));
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ListPayments.cs:list-payments-filtered}}
 ```
 </section>
 </custom-tabs>

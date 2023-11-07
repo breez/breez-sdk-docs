@@ -13,6 +13,7 @@ To locally serve the docs run:
 
 ```bash
 cargo install mdbook
+cargo install --path ./snippets-processor
 mdbook build
 mdbook serve --open
 ```

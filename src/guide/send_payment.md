@@ -7,14 +7,7 @@ Once you have outbound liquidity you can start sending payments too.
 <section>
 
 ```rust,ignore
-// The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-// The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
-let amount_msat: Option<u64> = None;
-let req = SendPaymentRequest {
-    bolt11: "...".into(),
-    amount_msat,
-};
-let response = self.send_payment(req).await?;
+{{#include ../../snippets/rust/src/send_payment.rs:send-payment}}
 ```
 </section>
 
@@ -33,7 +26,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -54,15 +47,7 @@ try {
 <section>
 
 ```typescript
-const bolt11 = "..."
-try {
-    // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-    // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
-    const amountMsat = 3000000
-    const response = await sendPayment({bolt11, amountMsat})
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/send_payment.ts:send-payment}}
 ```
 </section>
 
@@ -70,18 +55,7 @@ try {
 <section>
 
 ```dart
-String bolt11 = "...";
-try {
-    // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-    // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
-    SendPaymentRequest req = SendPaymentRequest(
-      bolt11: bolt11,
-      amountMsat: 3000000,
-    );
-    SendPaymentResponse payment = await sendPayment(req: req);
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/send_payment.dart:send-payment}}
 ```
 </section>
 
@@ -104,17 +78,7 @@ except Exception as error:
 <section>
 
 ```go
-bolt11 := "bolt11 invoice"
-// The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-// The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
-amountMsat := uint64(3000000)
-sendPaymentRequest := breez_sdk.SendPaymentRequest{
-    Bolt11: bolt11,
-    AmountMsat: amountMsat,
-}
-if response, err := sdk.SendPayment(sendPaymentRequest); err == nil {
-    log.Printf("%#v", response)
-}
+{{#include ../../snippets/go/send_payment.go:send-payment}}
 ```
 </section>
 
@@ -122,18 +86,7 @@ if response, err := sdk.SendPayment(sendPaymentRequest); err == nil {
 <section>
 
 ```cs
-var bolt11 = "...";
-var amountMsat = 3000000;
-try 
-{
-    // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-    // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
-    var response = sdk.SendPayment(new SendPaymentRequest(bolt11, amountMsat));
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/SendPayment.cs:send-payment}}
 ```
 </section>
 </custom-tabs>

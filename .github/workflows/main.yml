@@ -1,0 +1,107 @@
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push events but only for the "main" branch
+  push:
+    branches: [ main ]
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  clippy:
+    name: Clippy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      # Set up Rust environment and run checks
+      - name: Install rust
+        run: |
+          rustup set auto-self-update disable
+          rustup toolchain install stable --profile minimal
+
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v2
+        with:
+          version: "23.4"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: clippy
+        run: |
+          cd snippets/rust
+          # Explicitly allow clippy::dead_code lint because the functions aren't called in the docs snippets
+          # Explicitly allow clippy::unused_variables because snippets might have to demonstrate how to get certain variables without using them afterward
+          cargo clippy -- --allow dead_code --allow unused_variables --deny warnings
+
+      # Set up the flutter environment and run checks
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.13.9'
+          channel: 'stable'
+
+      - name: pub-get
+        run: |
+          cd snippets/dart_snippets
+          flutter pub get
+
+      - name: dart-analyze
+        run: |
+          cd snippets/dart_snippets
+          dart analyze --fatal-infos
+
+  check-csharp:
+    name: Check C# snippets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Build the csharp project
+        working-directory: snippets/csharp
+        run: dotnet build
+  
+  build:
+    name: Build mdbook
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install rust
+        run: |
+          rustup set auto-self-update disable
+          rustup toolchain install stable --profile minimal
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            . -> target
+            snippets-processor -> snippets-processor/target
+
+      - name: Install dependencies
+        run: |
+          cargo install mdbook --vers "^0.4" --locked
+          cargo install --path ./snippets-processor
+      
+      - name: Build mdbook
+        run: mdbook build
+
+      - name: Archive book
+        uses: actions/upload-artifact@v3
+        with:
+          name: book
+          path: book

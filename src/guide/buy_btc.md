@@ -12,11 +12,7 @@ Once the buy is completed, the provider will transfer the Bitcoin to the generat
 <section>
 
 ```rust,ignore
-let res = sdk.buy_bitcoin(
-    BuyBitcoinRequest {
-        provider: BuyBitcoinProvider::Moonpay,
-        opening_fee_params: None})
-    .await?;
+{{#include ../../snippets/rust/src/buy_btc.rs:buy-btc}}
 ```
 </section>
 
@@ -33,7 +29,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin
@@ -54,11 +50,7 @@ try {
 <section>
 
 ```typescript
-try {
-    let buyBitcoinResponse = await buyBitcoin({provider: BuyBitcoinProvider.MOONPAY})
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/buy_btc.ts:buy-btc}}
 ```
 </section>
 
@@ -66,15 +58,7 @@ try {
 <section>
 
 ```dart
-try {
-    BuyBitcoinResponse buyBitcoinResponse = buyBitcoin(
-        reqData: BuyBitcoinRequest(
-            provider: BuyBitcoinProvider.Moonpay,
-        ),
-    ); 
-} catch {
-    // Handle error
-}
+{{#include ../../snippets/dart_snippets/lib/buy_btc.dart:buy-btc}}
 ```
 </section>
 
@@ -95,12 +79,7 @@ except Exception as error:
 <section>
 
 ```go
-buyBitcoinRequest := breez_sdk.BuyBitcoinRequest{
-	Provider: breez_sdk.BuyBitcoinProviderMoonpay,
-}
-if buyBitcoinResponse, err := sdk.BuyBitcoin(buyBitcoinRequest); err == nil {
-    log.Printf("%#v", buyBitcoinResponse)
-}
+{{#include ../../snippets/go/buy_btc.go:buy-btc}}
 ```
 </section>
 
@@ -109,15 +88,7 @@ if buyBitcoinResponse, err := sdk.BuyBitcoin(buyBitcoinRequest); err == nil {
 <section>
 
 ```cs
-try
-{
-    var buyBitcoinResponse = sdk.BuyBitcoin(
-        new BuyBitcoinRequest(BuyBitcoinProvider.MOONPAY));
-}
-catch (Exception)
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/BuyBtc.cs:buy-btc}}
 ```
 </section>
 </custom-tabs>

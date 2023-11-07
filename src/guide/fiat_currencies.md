@@ -3,7 +3,15 @@
 In order to list the available fiat currencies:
 
 <custom-tabs category="lang">
-<div slot="title">Android</div>
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+{{#include ../../snippets/rust/src/fiat_currencies.rs:list-fiat-currencies}}
+```
+</section>
+
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -19,11 +27,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const fiatCurrencyList = await listFiatCurrencies()
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/fiat_currencies.ts:list-fiat-currencies}}
 ```
 </section>
 
@@ -31,11 +35,7 @@ try {
 <section>
 
 ```dart
-try {
-    List<FiatCurrency> fiatCurrencyList = await listFiatCurrencies();
-} catch(e) {
-     // Handle error
-}
+{{#include ../../snippets/dart_snippets/lib/fiat_currencies.dart:list-fiat-currencies}}
 ```
 </section>
 
@@ -55,9 +55,7 @@ except Exception as error:
 <section>
 
 ```go
-if fiatCurrencies, err := sdk.ListFiatCurrencies(); err == nil {
-    log.Printf("%#v", fiatCurrencies)
-}
+{{#include ../../snippets/go/fiat_currencies.go:list-fiat-currencies}}
 ```
 </section>
 
@@ -65,14 +63,7 @@ if fiatCurrencies, err := sdk.ListFiatCurrencies(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var fiatCurrencies = sdk.ListFiatCurrencies();
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/FiatCurrencies.cs:list-fiat-currencies}}
 ```
 </section>
 </custom-tabs>
@@ -80,7 +71,15 @@ catch (Exception)
 To get the current BTC rate for the currencies:
 
 <custom-tabs category="lang">
-<div slot="title">Android</div>
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+{{#include ../../snippets/rust/src/fiat_currencies.rs:fetch-fiat-rates}}
+```
+</section>
+
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -96,11 +95,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const fiatRatesMap = await fetchFiatRates()
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/fiat_currencies.ts:fetch-fiat-rates}}
 ```
 </section>
 
@@ -108,13 +103,7 @@ try {
 <section>
 
 ```dart
-try {
-    Map<String, Rate> fiatRatesMap = await fetchFiatRates();
-    // print your desired rate 
-    print(fiatRatesMap["USD"]?.value);
-} catch(e) {
-     // Handle error
-}
+{{#include ../../snippets/dart_snippets/lib/fiat_currencies.dart:fetch-fiat-rates}}
 ```
 </section>
 
@@ -134,9 +123,7 @@ except Exception as error:
 <section>
 
 ```go
-if fiatRates, err := sdk.FetchFiatRates(); err == nil {
-    log.Printf("%#v", fiatRates)
-}
+{{#include ../../snippets/go/fiat_currencies.go:fetch-fiat-rates}}
 ```
 </section>
 
@@ -144,14 +131,7 @@ if fiatRates, err := sdk.FetchFiatRates(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var fiatRates = sdk.FetchFiatRates();
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/FiatCurrencies.cs:fetch-fiat-rates}}
 ```
 </section>
 </custom-tabs>
@@ -159,7 +139,15 @@ catch (Exception)
 At the example project you can see these methods combined:
 
 <custom-tabs category="lang">
-<div slot="title">Android</div>
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+{{#include ../../snippets/rust/src/fiat_currencies.rs:get-fiat-currencies-and-rates}}
+```
+</section>
+
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -193,7 +181,7 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 <section>
 
 ```typescript
-// TODO
+{{#include ../../snippets/react-native/fiat_currencies.ts:get-fiat-currencies-and-rates}}
 ```
 </section>
 
@@ -201,31 +189,7 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 <section>
 
 ```dart
-Future<Map<FiatCurrency, Rate>> fiatCurrenciesAndRate() async {
-    try {
-      List<FiatCurrency> fiatCurrencies = await _breezLib.listFiatCurrencies();
-      Map<String, Rate> fiatRates = await _breezLib.fetchFiatRates();
-
-      var sorted = fiatCurrencies.toList();
-      sorted.sort((f1, f2) {
-        return f1.id.compareTo(f2.id);
-      });
-
-      Map<FiatCurrency, Rate> result = {};
-      for (var currency in sorted) {
-        var rate = fiatRates[currency.id];
-        if (rate != null) {
-          result[currency] = rate;
-        }
-      }
-
-      return result;
-    } catch (e) {
-      // Handle error
-      return {};
-    }
-}
-
+{{#include ../../snippets/dart_snippets/lib/fiat_currencies.dart:get-fiat-currencies-and-rates}}
 ```
 </section>
 
@@ -241,7 +205,7 @@ Future<Map<FiatCurrency, Rate>> fiatCurrenciesAndRate() async {
 <section>
 
 ```go
-// TODO
+{{#include ../../snippets/go/fiat_currencies.go:get-fiat-currencies-and-rates}}
 ```
 </section>
 
@@ -249,7 +213,7 @@ Future<Map<FiatCurrency, Rate>> fiatCurrenciesAndRate() async {
 <section>
 
 ```cs
-// TODO
+{{#include ../../snippets/csharp/FiatCurrencies.cs:get-fiat-currencies-and-rates}}
 ```
 </section>
 </custom-tabs>

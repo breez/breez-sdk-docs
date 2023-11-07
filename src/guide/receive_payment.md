@@ -8,17 +8,7 @@ The Breez SDK automatically connects your node to the LSP peer and you can now r
 <section>
 
 ```rust,ignore
-let res = sdk.receive_payment(
-    ReceivePaymentRequest {
-        amount_msat: 3_000_000,
-        description: "Invoice for 3000 sats".into(),
-        cltv: None,
-        expiry: None,
-        opening_fee_params: None,
-        preimage: None,
-        use_description_hash: None
-    })
-    .await?;
+{{#include ../../snippets/rust/src/receive_payment.rs:receive-payment}}
 ```
 </section>
 
@@ -37,7 +27,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -56,14 +46,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const invoice = await receivePayment({
-        amountMsat: 3_000_000, 
-        description: "Invoice for 3000 sats"
-    })
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/receive_payment.ts:receive-payment}}
 ```
 </section>
 
@@ -71,16 +54,7 @@ try {
 <section>
 
 ```dart
-try {
-    ReceivePaymentResponse invoice = await receivePayment(
-        req: ReceivePaymentRequest(
-            amountMsat: 3_000_000, 
-            description: "Invoice for 3000 sats",
-        ),
-    );
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/receive_payment.dart:receive-payment}}
 ```
 </section>
 
@@ -102,13 +76,7 @@ except Exception as error:
 <section>
 
 ```go
-receivePaymentRequest := breez_sdk.ReceivePaymentRequest{
-    AmountMsat:  3_000_000,
-    Description: "Invoice for 3000 sats",
-}
-if receivePaymentResponse, err := sdk.ReceivePayment(receivePaymentRequest); err == nil {
-    log.Printf("%#v", receivePaymentResponse)
-}
+{{#include ../../snippets/go/receive_payment.go:receive-payment}}
 ```
 </section>
 
@@ -116,15 +84,7 @@ if receivePaymentResponse, err := sdk.ReceivePayment(receivePaymentRequest); err
 <section>
 
 ```cs
-try 
-{
-    var invoice = sdk.ReceivePayment(
-        new ReceivePaymentRequest(3_000_000, "Invoice for 3000 sats"));
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ReceivePayment.cs:receive-payment}}
 ```
 </section>
 </custom-tabs>

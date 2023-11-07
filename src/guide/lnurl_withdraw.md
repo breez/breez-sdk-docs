@@ -8,20 +8,7 @@
 <section>
 
 ```rust,ignore
-// Endpoint can also be of the form:
-// lnurlw://domain.com/lnurl-withdraw?key=val
-let lnurl_withdraw_url = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk";
-
-if let Ok(LnUrlWithdraw{data: wd}) = parse(lnurl_withdraw_url).await {
-    let amount_msat = wd.min_withdrawable;
-    let description = "Test withdraw".to_string();
-    
-    sdk.lnurl_withdraw(LnUrlWithdrawRequest{
-        data: wd,
-        amount_msat,
-        description: Some(description)
-    }).await?;
-}
+{{#include ../../snippets/rust/src/lnurl_withdraw.rs:lnurl-withdraw}}
 ```
 </section>
 
@@ -50,7 +37,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -76,19 +63,7 @@ try {
 <section>
 
 ```typescript
-// Endpoint can also be of the form:
-// lnurlw://domain.com/lnurl-withdraw?key=val
-let lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk"
-
-try {
-    const input = await parseInput(lnurlWithdrawUrl)
-    if (input.type === InputTypeVariant.LN_URL_WITHDRAW) {
-        const amountMsat = input.data.minWithdrawable
-        const result = await withdrawLnurl({data: input.data, amountMsat, description: "comment"})
-    }
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/lnurl_withdraw.ts:lnurl-withdraw}}
 ```
 </section>
 
@@ -96,25 +71,7 @@ try {
 <section>
 
 ```dart
-// Endpoint can also be of the form:
-// lnurlw://domain.com/lnurl-withdraw?key=val
-String lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk";
-
-try {
-    InputType inputType = await parseInput(s: lnurlWithdrawUrl);
-    if (inputType is InputType_LnUrlWithdraw) {
-        int amountMsat = inputType.data.minWithdrawable;
-        LnUrlCallbackStatus result = await lnurlWithdraw(
-            req: LnUrlWithdrawRequest(
-                data: inputType.data,
-                amountMsat: amountMsat,
-                description: "comment",
-            ),
-        );
-    }
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/lnurl_withdraw.dart:lnurl-withdraw}}
 ```
 </section>
 
@@ -140,29 +97,7 @@ except Exception as error:
 <section>
 
 ```go
-// Endpoint can also be of the form:
-// lnurlw://domain.com/lnurl-withdraw?key=val
-lnurlWithdrawUrl := "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk"
-
-if input, err := breez_sdk.ParseInput(lnurlWithdrawUrl); err != nil {
-    switch inputType := input.(type) {
-    case breez_sdk.InputTypeLnUrlWithdraw:
-        amountMsat := inputType.Data.MinWithdrawable
-        description := "comment"
-        if result, err := sdk.WithdrawLnurl(breez_sdk.LnUrlWithdrawRequest{
-            Data: inputType.Data, 
-            AmountMsat: amountMsat, 
-            Description: &description,
-        }); err != nil {
-            switch result.(type) {
-            case breez_sdk.LnUrlCallbackStatusOk:
-                log.Printf("Successfully withdrawn")
-            default:
-                log.Printf("Failed to withdraw")
-            }
-        }
-    }
-}
+{{#include ../../snippets/go/lnurl_withdraw.go:lnurl-withdraw}}
 ```
 </section>
 
@@ -170,27 +105,7 @@ if input, err := breez_sdk.ParseInput(lnurlWithdrawUrl); err != nil {
 <section>
 
 ```cs
-// Endpoint can also be of the form:
-// lnurlw://domain.com/lnurl-withdraw?key=val
-var lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk";
-
-try 
-{
-    var input = BreezSdkMethods.ParseInput(lnurlWithdrawUrl);
-    if (input is InputType.LnUrlWithdraw lnurlw) 
-    {
-        var amountMsat = lnurlw.data.minWithdrawable;
-        var result = sdk.WithdrawLnurl(
-            new LnUrlWithdrawRequest(
-                lnurlw.data, 
-                amountMsat, 
-                "comment"));
-    }
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/LnurlWithdraw.cs:lnurl-withdraw}}
 ```
 </section>
 </custom-tabs>

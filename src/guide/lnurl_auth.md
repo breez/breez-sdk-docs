@@ -6,23 +6,7 @@
 <section>
 
 ```rust,ignore
-// Endpoint can also be of the form:
-// keyauth://domain.com/auth?key=val
-let lnurl_auth_url = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu";
-
-if let Ok(LnUrlAuth{data: ad}) = parse(lnurl_auth_url).await {
-    match sdk.lnurl_auth(ad).await {
-        Ok(LnUrlCallbackStatus::Ok) => {
-            info!("Successfully authenticated")
-        }
-        Ok(LnUrlCallbackStatus::ErrorStatus { data }) => {
-            error!("Failed to authenticate: {}", data.reason)
-        }
-        Err(e) => {
-            error!("Failed to connect: {e}")
-        }
-    }
-}
+{{#include ../../snippets/rust/src/lnurl_auth.rs:lnurl-auth}}
 ```
 </section>
 
@@ -51,7 +35,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -77,23 +61,7 @@ try {
 <section>
 
 ```typescript
-// Endpoint can also be of the form:
-// keyauth://domain.com/auth?key=val
-let lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu"
-
-try {
-    const input = await parseInput(lnurlAuthUrl)
-    if (input.type === InputTypeVariant.LN_URL_AUTH) {
-        const result = await lnurlAuth(input.data)
-        if (result.type === LnUrlCallbackStatusVariant.OK) {
-            console.log("Successfully authanticated")
-        } else {
-            console.log("Failed to authenticate")
-        }
-    }    
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/lnurl_auth.ts:lnurl-auth}}
 ```
 </section>
 
@@ -101,23 +69,7 @@ try {
 <section>
 
 ```dart
-// Endpoint can also be of the form:
-// keyauth://domain.com/auth?key=val
-String lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu";
-
-try {
-    InputType inputType = await parse(s: lnurlAuthUrl);
-    if (inputType is InputType_LnUrlAuth) {
-        LnUrlCallbackStatus result = await lnurlAuth(reqData: inputType.data);
-        if (result is LnUrlCallbackStatus_Ok) {
-            print("Successfully authenticated");
-        } else {
-            print("Failed to authenticate");
-        }
-    }
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/lnurl_auth.dart:lnurl-auth}}
 ```
 </section>
 
@@ -146,22 +98,7 @@ except Exception as error:
 <section>
 
 ```go
-// Endpoint can also be of the form:
-// keyauth://domain.com/auth?key=val
-lnurlAuthUrl := "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu"
-
-if input, err := breez_sdk.ParseInput(lnurlAuthUrl); err != nil {
-    switch inputType := input.(type) {
-    case breez_sdk.InputTypeLnUrlAuth:
-        if result, err := sdk.LnurlAuth(inputType.Data); err != nil {
-            switch result.(type) {
-            case breez_sdk.LnUrlCallbackStatusOk:
-                log.Printf("Successfully authenticated")
-            default:
-                log.Printf("Failed to authenticate")
-            }
-        }
-    }
+{{#include ../../snippets/go/lnurl_auth.go:lnurl-auth}}
 ```
 </section>
 
@@ -169,26 +106,7 @@ if input, err := breez_sdk.ParseInput(lnurlAuthUrl); err != nil {
 <section>
 
 ```cs
-// Endpoint can also be of the form:
-// keyauth://domain.com/auth?key=val
-var lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu";
-
-try 
-{
-    var input = BreezSdkMethods.ParseInput(lnurlAuthUrl);
-    if (input is InputType.LnUrlAuth lnurla) {
-        var result = sdk.LnurlAuth(lnurla.data);
-        if (result is LnUrlCallbackStatus.Ok) {
-            Console.WriteLine("Successfully authenticated");
-        } else {
-            Console.WriteLine("Failed to authenticate");
-        }
-    }    
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/LnurlAuth.cs:lnurl-auth}}
 ```
 </section>
 </custom-tabs>

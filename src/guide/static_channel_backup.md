@@ -12,9 +12,7 @@ In order to use the recoverchannel method, the user needs to provide the static 
 <section>
 
 ```rust,ignore
-let backup_data = BreezServices::static_backup(StaticBackupRequest {
-    working_dir: "<working directory>".into(),
-})?;
+{{#include ../../snippets/rust/src/static_channel_backup.rs:static-channel-backup}}
 ```
 
 </section>
@@ -32,7 +30,7 @@ do {
 
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -49,11 +47,7 @@ try {
 <section>
 
 ```typescript
-try {
-    let backupData = await staticBackup({workingDir: "<working directory>"})
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/static_channel_backup.ts:static-channel-backup}}
 ```
 
 </section>
@@ -62,15 +56,7 @@ try {
 <section>
 
 ```dart
-try {
-    StaticBackupResponse backupData = await staticBackup(
-        request: StaticBackupRequest
-            workingDir: "<working directory>",
-        ),
-    );
-} catch (error) {
-   // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/static_channel_backup.dart:static-channel-backup}}
 ```
 </section>
 
@@ -89,10 +75,7 @@ except Exception as error:
 <section>
 
 ```go
-workingDir := "<working directory>"
-if staticBackupResponse, err := breez_sdk.StaticBackup(breez_sdk.StaticBackupRequest{WorkingDir: workingDir}); err == nil {
-    log.Printf("%#v", staticBackupResponse)
-}
+{{#include ../../snippets/go/static_channel_backup.go:static-channel-backup}}
 ```
 </section>
 
@@ -100,15 +83,7 @@ if staticBackupResponse, err := breez_sdk.StaticBackup(breez_sdk.StaticBackupReq
 <section>
 
 ```cs
-using Breez.Sdk;
-
-try 
-{
-    var backupData = BreezSdkMethods.StaticBackup(new StaticBackupRequest("<working directory>"));  
-} catch (Exception) 
-{
-   // Handle error
-}
+{{#include ../../snippets/csharp/StaticChannelBackup.cs:static-channel-backup}}
 ```
 </section>
 </custom-tabs>

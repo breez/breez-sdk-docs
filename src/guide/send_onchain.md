@@ -9,13 +9,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```rust,ignore
-let current_fees = sdk.fetch_reverse_swap_fees(
-    ReverseSwapFeesRequest {
-        send_amount_sat: Some(50000),
-    })
-    .await?;
-
-info!("Total estimated fees for reverse swap: {}", current_fees.total_estimated_fees);
+{{#include ../../snippets/rust/src/send_onchain.rs:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -34,7 +28,7 @@ try {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -51,13 +45,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const currentFees = await fetchReverseSwapFees({sendAmountSat: 50000})
-
-    console.log(`Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`)
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/send_onchain.ts:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -65,17 +53,7 @@ try {
 <section>
 
 ```dart
-try {
-    ReverseSwapPairInfo currentFees = await fetchReverseSwapFees(
-        req: ReverseSwapFeesRequest(
-            sendAmountSat: 50000,
-        ),
-    );
-
-    print("Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}");
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -96,13 +74,7 @@ except Exception as error:
 <section>
 
 ```go
-sendAmountSat := uint64(50000)
-reverseSwapFeesRequest := breez_sdk.ReverseSwapFeesRequest{
-    SendAmountSat: &sendAmountSat,
-}
-if currentFees, err := sdk.FetchReverseSwapFees(reverseSwapFeesRequest); err == nil {
-    log.Printf("Total estimated fees for reverse swap: %v", currentFees.TotalEstimatedFees)
-}
+{{#include ../../snippets/go/send_onchain.go:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -110,16 +82,7 @@ if currentFees, err := sdk.FetchReverseSwapFees(reverseSwapFeesRequest); err == 
 <section>
 
 ```cs
-try
-{
-    var currentFees = sdk.FetchReverseSwapFees(
-        new ReverseSwapFeesRequest(50000));
-    Console.WriteLine($"Total estimated fees for reverse swap: {currentFees.totalEstimatedFees}");
-}
-catch (Exception)
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/SendOnchain.cs:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 </custom-tabs>
@@ -135,8 +98,7 @@ Fetching the fees also tells you what is the range of amounts you can send:
 <section>
 
 ```rust,ignore
-info!("Minimum amount, in sats: {}", current_fees.min);
-info!("Maximum amount, in sats: {}", current_fees.max);
+{{#include ../../snippets/rust/src/send_onchain.rs:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -149,7 +111,7 @@ println("Maximum amount, in sats: \(current_fees.max)")
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -162,8 +124,7 @@ Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
 <section>
 
 ```typescript
-console.log(`Minimum amount, in sats: ${currentFees.min}`)
-console.log(`Maximum amount, in sats: ${currentFees.max}`)
+{{#include ../../snippets/react-native/send_onchain.ts:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -171,8 +132,7 @@ console.log(`Maximum amount, in sats: ${currentFees.max}`)
 <section>
 
 ```dart
-print("Minimum amount, in sats: ${currentFees.min}");
-print("Maximum amount, in sats: ${currentFees.max}");
+{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -189,8 +149,7 @@ print("Maximum amount, in sats: ", current_fees.max)
 <section>
 
 ```go
-log.Printf("Minimum amount, in sats: %v", currentFees.Min)
-log.Printf("Maximum amount, in sats: %v", currentFees.Max)
+{{#include ../../snippets/go/send_onchain.go:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -198,8 +157,7 @@ log.Printf("Maximum amount, in sats: %v", currentFees.Max)
 <section>
 
 ```cs
-Console.WriteLine($"Minimum amount, in sats: {currentFees.min}");
-Console.WriteLine($"Maximum amount, in sats: {currentFees.max}");
+{{#include ../../snippets/csharp/SendOnchain.cs:get-current-reverse-swap-min-max}}
 ```
 </section>
 </custom-tabs>
@@ -211,11 +169,7 @@ Once you checked the fees are acceptable, you can start the reverse swap:
 <section>
 
 ```rust,ignore
-let destination_address = String::from("bc1..");
-let amount_sat = current_fees.min;
-let satPerVbyte = <fee rate>;
-
-sdk.send_onchain(amount_sat, destination_address, current_fees.fees_hash, satPerVbyte).await?;
+{{#include ../../snippets/rust/src/send_onchain.rs:start-reverse-swap}}
 ```
 </section>
 
@@ -238,7 +192,7 @@ try {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -257,14 +211,7 @@ try {
 <section>
 
 ```typescript
-const destinationAddress = "bc1.."
-const amountSat = currentFees.min
-const satPerVbyte = <fee rate>
-try {
-    const reverseSwapInfo = await sendOnchain(amountSat, destinationAddress, currentFees.feesHash, satPerVbyte)
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/send_onchain.ts:start-reverse-swap}}
 ```
 </section>
 
@@ -272,20 +219,7 @@ try {
 <section>
 
 ```dart
-String destinationAddress = "bc1..";
-int amountSat = <amount>;
-int satPerVbyte = <fee rate>
-ReverseSwapPairInfo currentFees = <current reverse swap fees>
-try {
-    ReverseSwapInfo reverseSwapInfo = await sendOnchain(
-        amountSat: amountSat,
-        onchainRecipientAddress: destinationAddress,
-        pairHash: currentFees.feesHash,
-        satPerVbyte: satPerVbyte,
-    );
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:start-reverse-swap}}
 ```
 </section>
 
@@ -310,14 +244,7 @@ except Exception as error:
 <section>
 
 ```go
-destinationAddress := "bc1.."
-sendAmountSat := uint64(50000)
-satPerVbyte := uint64(5)
-if currentFees, err := sdk.FetchReverseSwapFees(breez_sdk.ReverseSwapFeesRequest{SendAmountSat: &sendAmountSat}); err == nil {
-    if reverseSwapInfo, err := sdk.SendOnchain(sendAmountSat, destinationAddress, currentFees.FeesHash, satPerVbyte); err == nil {
-        log.Printf("%#v", reverseSwapInfo)
-    }
-}
+{{#include ../../snippets/go/send_onchain.go:start-reverse-swap}}
 ```
 </section>
 
@@ -325,18 +252,7 @@ if currentFees, err := sdk.FetchReverseSwapFees(breez_sdk.ReverseSwapFeesRequest
 <section>
 
 ```cs
-var destinationAddress = "bc1..";
-var amountSat = currentFees.min;
-var satPerVbyte = <fee rate>;
-try 
-{
-    var reverseSwapInfo = sdk.SendOnchain(
-        amountSat, destinationAddress, currentFees.feesHash, satPerVbyte);
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/SendOnchain.cs:start-reverse-swap}}
 ```
 </section>
 </custom-tabs>
@@ -352,9 +268,7 @@ You can check its status with:
 <section>
 
 ```rust,ignore
-for rs in sdk.in_progress_reverse_swaps().await? {
-    info!("Reverse swap {} in progress, status is {}", rs.id, rs.status);
-}
+{{#include ../../snippets/rust/src/send_onchain.rs:check-reverse-swaps-status}}
 ```
 </section>
 
@@ -368,7 +282,7 @@ for rs in sdk.inProgressReverseSwaps() {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -382,14 +296,7 @@ for (rs in sdk.inProgressReverseSwaps()) {
 <section>
 
 ```typescript
-try {
-    const swaps = await inProgressReverseSwaps()
-    for (const swap of swaps) {
-        console.log(`Reverse swap ${swap.id} in progress, status is ${swap.status}`)
-    }
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/send_onchain.ts:check-reverse-swaps-status}}
 ```
 </section>
 
@@ -397,14 +304,7 @@ try {
 <section>
 
 ```dart
-try {
-    List<ReverseSwapInfo> swaps = await inProgressReverseSwaps();
-    for (swap in swaps) {
-        print(`Reverse swap ${swap.id} in progress, status is ${swap.status}`);
-    }
-} catch (error) {
-    // handle error
-}
+{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:check-reverse-swaps-status}}
 ```
 </section>
 
@@ -425,11 +325,7 @@ except Exception as error:
 <section>
 
 ```go
-if swaps, err := sdk.InProgressReverseSwaps(); err == nil {
-    for _, swap := range swaps {
-        log.Printf("Reverse swap %v in progress, status is %v", swap.Id, swap.Status)
-    }
-}
+{{#include ../../snippets/go/send_onchain.go:check-reverse-swaps-status}}
 ```
 </section>
 
@@ -437,17 +333,7 @@ if swaps, err := sdk.InProgressReverseSwaps(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var swaps = sdk.InProgressReverseSwaps();
-    foreach (var swap in swaps) {
-        Console.WriteLine($"Reverse swap {swap.id} in progress, status is {swap.status}`");
-    }
-} 
-catch (Exception) 
-{
-    // Handle error
-}   
+{{#include ../../snippets/csharp/SendOnchain.cs:check-reverse-swaps-status}}
 ```
 </section>
 </custom-tabs>

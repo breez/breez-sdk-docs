@@ -7,8 +7,7 @@ Based on the API key provided to the Breez SDK, a default LSP is selected for yo
 <section>
 
 ```rust,ignore
-let lsp_id = sdk.lsp_id().await?;
-let lsp_info = sdk.lsp_info().await?;
+{{#include ../../snippets/rust/src/connecting_lsp.rs:get-lsp-info}}
 ```
 </section>
 
@@ -25,7 +24,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -46,12 +45,7 @@ try {
 <section>
 
 ```typescript
-try {
-    const lspId = await lspId() 
-    const lspInfo = await lspInfo()
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/connecting_lsp.ts:get-lsp-info}}
 ```
 </section>
 
@@ -59,12 +53,7 @@ try {
 <section>
 
 ```dart
-try {
-    List<LspInformation> lspList = await listLsps();
-    // Select your desired LSP 
-} catch (e) {
-    // Handle error
-}
+{{#include ../../snippets/dart_snippets/lib/connecting_lsp.dart:get-lsp-info}}
 ```
 </section>
 
@@ -85,12 +74,7 @@ except Exception as error:
 <section>
 
 ```go
-if lspId, err := sdk.LspId(); lspId != nil && err == nil {
-    log.Printf("%#v", *lspId)
-}
-if lspInfo, err := sdk.LspInfo(); err == nil {
-    log.Printf("%#v", lspInfo)
-}
+{{#include ../../snippets/go/connecting_lsp.go:get-lsp-info}}
  ```
 </section>
 
@@ -98,15 +82,7 @@ if lspInfo, err := sdk.LspInfo(); err == nil {
 <section>
 
 ```cs
-try 
-{
-    var lspId = sdk.LspId();
-    var lspInfo = sdk.LspInfo();
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ConnectingLsp.cs:get-lsp-info}}
 ```
 </section>
 </custom-tabs>
@@ -118,7 +94,7 @@ When you have selected an LSP you may then connect to it.
 <section>
 
 ```rust,ignore
-sdk.connect_lsp(lsp_id).await?;
+{{#include ../../snippets/rust/src/connecting_lsp.rs:connect-lsp}}
 ```
 </section>
 
@@ -134,7 +110,7 @@ do {
 ```
 </section>
 
-<div slot="title">Android</div>
+<div slot="title">Kotlin</div>
 <section>
 
 ```kotlin,ignore
@@ -150,11 +126,7 @@ try {
 <section>
 
 ```typescript
-try {
-    await connectLsp(lspId)
-} catch (error) {
-    console.log(error)
-}
+{{#include ../../snippets/react-native/connecting_lsp.ts:connect-lsp}}
 ```
 </section>
 
@@ -162,12 +134,7 @@ try {
 <section>
 
 ```dart
-try {
-    String lspId = await lspId();
-    await connectLSP(lspId);
-} catch (e) {
-    // Handle error
-}
+{{#include ../../snippets/dart_snippets/lib/connecting_lsp.dart:connect-lsp}}
 ```
 </section>
 
@@ -186,10 +153,7 @@ except Exception as error:
 <section>
 
  ```go
-lspId := "your selected lsp id"
-if err := sdk.ConnectLsp(lspId); err != nil {
-    log.Printf("%#v", err)
-}
+{{#include ../../snippets/go/connecting_lsp.go:connect-lsp}}
 ```
 </section>
 
@@ -197,14 +161,7 @@ if err := sdk.ConnectLsp(lspId); err != nil {
 <section>
 
 ```cs
-try 
-{
-    sdk.ConnectLsp(lspId!);
-} 
-catch (Exception) 
-{
-    // Handle error
-}
+{{#include ../../snippets/csharp/ConnectingLsp.cs:connect-lsp}}
 ```
 </section>
 </custom-tabs>

@@ -1,0 +1,11 @@
+[package]
+name = "sdk_docs_snippets"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+bip39 = { version = "2", features = ["rand"] }
+breez-sdk-core = { git = "https://github.com/breez/breez-sdk", rev = "3486c951e2422fe4ac3978795849f0b7649a9f1e" }
+log = "0.4"
+tokio = "1.29"
