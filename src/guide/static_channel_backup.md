@@ -20,7 +20,7 @@ In order to use the recoverchannel method, the user needs to provide the static 
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
     let backupData = breez_sdk.staticBackup(request: StaticBackupRequest(workingDir: "<working directory>"));
 } catch{
@@ -55,7 +55,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/static_channel_backup.dart:static-channel-backup}}
 ```
 </section>
@@ -63,7 +63,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try:
     backup_data = breez_sdk.static_backup(breez_sdk.StaticBackupRequest(working_dir="<working directory>"))
 except Exception as error:
@@ -74,7 +74,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/static_channel_backup.go:static-channel-backup}}
 ```
 </section>
@@ -82,7 +82,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/StaticChannelBackup.cs:static-channel-backup}}
 ```
 </section>

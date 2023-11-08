@@ -19,7 +19,7 @@ Once the buy is completed, the provider will transfer the Bitcoin to the generat
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
   let buyBitcoinResponse = try sdk.buyBitcoin(
     req: BuyBitcoinRequest(provider: .moonpay))
@@ -32,7 +32,7 @@ do {
 <div slot="title">Kotlin</div>
 <section>
 
-```kotlin
+```kotlin,ignore
 try {
     // Choose your provider
     val provider = BuyBitcoinProvider.MOONPAY
@@ -57,7 +57,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/buy_btc.dart:buy-btc}}
 ```
 </section>
@@ -65,7 +65,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try:
     buy_bitcoin_resp = sdk_services.buy_bitcoin(
         breez_sdk.BuyBitcoinRequest(
@@ -78,7 +78,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/buy_btc.go:buy-btc}}
 ```
 </section>
@@ -87,7 +87,7 @@ except Exception as error:
 
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/BuyBtc.cs:buy-btc}}
 ```
 </section>

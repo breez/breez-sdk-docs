@@ -14,7 +14,7 @@ Based on the API key provided to the Breez SDK, a default LSP is selected for yo
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
     let lspId = try sdk.lspId() 
     let lspInfo = try sdk.lspInfo()
@@ -52,7 +52,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/connecting_lsp.dart:get-lsp-info}}
 ```
 </section>
@@ -60,7 +60,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python 
+```python,ignore 
 try: 
     lsp_id = sdk_services.lsp_id()
     lsp_info = sdk_services.lsp_info()
@@ -73,7 +73,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/connecting_lsp.go:get-lsp-info}}
 ```
 </section>
@@ -81,7 +81,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/ConnectingLsp.cs:get-lsp-info}}
 ```
 </section>
@@ -101,7 +101,7 @@ When you have selected an LSP you may then connect to it.
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
     try sdk.connectLsp(lspId: lspId!)
 } catch {
@@ -133,7 +133,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/connecting_lsp.dart:connect-lsp}}
 ```
 </section>
@@ -141,7 +141,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try: 
     sdk_services.connect_lsp(lsp_id)
 except Exception as error:
@@ -152,7 +152,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/connecting_lsp.go:connect-lsp}}
 ```
 </section>
@@ -160,7 +160,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/ConnectingLsp.cs:connect-lsp}}
 ```
 </section>
