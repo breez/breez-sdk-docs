@@ -13,7 +13,7 @@
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 // Endpoint can also be of the form:
 // keyauth://domain.com/auth?key=val
 let lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu"
@@ -68,7 +68,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/lnurl_auth.dart:lnurl-auth}}
 ```
 </section>
@@ -76,7 +76,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 # Endpoint can also be of the form:
 # keyauth://domain.com/auth?key=val
 lnurl_auth_url = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu"
@@ -97,7 +97,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/lnurl_auth.go:lnurl-auth}}
 ```
 </section>
@@ -105,7 +105,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/LnurlAuth.cs:lnurl-auth}}
 ```
 </section>

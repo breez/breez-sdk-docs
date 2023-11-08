@@ -14,7 +14,7 @@ Once you have outbound liquidity you can start sending payments too.
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
   // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
   // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
@@ -54,7 +54,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/send_payment.dart:send-payment}}
 ```
 </section>
@@ -62,7 +62,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 bolt11 = "..."
 try:
   # The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
@@ -77,7 +77,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/send_payment.go:send-payment}}
 ```
 </section>
@@ -85,7 +85,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/SendPayment.cs:send-payment}}
 ```
 </section>

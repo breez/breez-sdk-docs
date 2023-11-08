@@ -34,7 +34,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/fiat_currencies.dart:list-fiat-currencies}}
 ```
 </section>
@@ -42,7 +42,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try: 
     fiat_currencies = sdk_services.list_fiat_currencies()
 
@@ -54,7 +54,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/fiat_currencies.go:list-fiat-currencies}}
 ```
 </section>
@@ -62,7 +62,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/FiatCurrencies.cs:list-fiat-currencies}}
 ```
 </section>
@@ -102,7 +102,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/fiat_currencies.dart:fetch-fiat-rates}}
 ```
 </section>
@@ -110,7 +110,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try:
     fiat_rates = sdk_services.fetch_fiat_rates()
     # print your desired rate 
@@ -122,7 +122,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/fiat_currencies.go:fetch-fiat-rates}}
 ```
 </section>
@@ -130,7 +130,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/FiatCurrencies.cs:fetch-fiat-rates}}
 ```
 </section>
@@ -188,7 +188,7 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/fiat_currencies.dart:get-fiat-currencies-and-rates}}
 ```
 </section>
@@ -196,7 +196,7 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 # TODO
 ```
 </section>
@@ -204,7 +204,7 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/fiat_currencies.go:get-fiat-currencies-and-rates}}
 ```
 </section>
@@ -212,7 +212,7 @@ fun fiatCurrenciesAndRate(): Map<FiatCurrency, Rate> = try {
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/FiatCurrencies.cs:get-fiat-currencies-and-rates}}
 ```
 </section>

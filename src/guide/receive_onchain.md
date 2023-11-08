@@ -17,7 +17,7 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
   let swapInfo = try sdk.receiveOnchain(req: ReceiveOnchainRequest())
 
@@ -54,7 +54,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:generate-receive-onchain-address}}
 ```
 </section>
@@ -62,7 +62,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try: 
     swap_info = sdk_services.receive_onchain(breez_sdk.ReceiveOnchainRequest())
 
@@ -76,7 +76,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/receive_onchain.go:generate-receive-onchain-address}}
 ```
 </section>
@@ -84,7 +84,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/ReceiveOnchain.cs:generate-receive-onchain-address}}
 ```
 </section>
@@ -104,7 +104,7 @@ Once you've sent the funds to the above address, the SDK will monitor this addre
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
   let swapInfo = try sdk.inProgressSwap()
 } catch {
@@ -136,7 +136,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:in-progress-swap}}
 ```
 </section>
@@ -144,7 +144,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try:
     swap_info = sdk_services.in_progress_swap()
 except Exception as error:
@@ -155,7 +155,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 
 {{#include ../../snippets/go/receive_onchain.go:in-progress-swap}}
 ```
@@ -164,7 +164,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/ReceiveOnchain.cs:in-progress-swap}}
 ```
 </section>
@@ -189,7 +189,7 @@ In order to execute a refund, you need to supply an on-chain address to where th
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
   let refundables = try sdk.listRefundables()
 } catch {
@@ -221,7 +221,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:list-refundables}}
 ```
 </section>
@@ -229,7 +229,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try:
     refundables = sdk_services.list_refundables()
 except Exception as error:
@@ -240,7 +240,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/receive_onchain.go:list-refundables}}
 ```
 </section>
@@ -248,7 +248,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/ReceiveOnchain.cs:list-refundables}}
 ```
 </section>
@@ -268,7 +268,7 @@ Once you have a refundable swap in hand, use the following code to execute a ref
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 let destinationAddress = "..."
 let satPerVbyte = <refund tx fee rate>
 
@@ -309,7 +309,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:execute-refund}}
 ```
 </section>
@@ -317,7 +317,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 destination_address = "..."
 sat_per_vbyte = 5
 
@@ -333,7 +333,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/receive_onchain.go:execute-refund}}
 ```
 </section>
@@ -341,7 +341,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/ReceiveOnchain.cs:execute-refund}}
 ```
 </section>
@@ -365,7 +365,7 @@ To calculate the fees for a channel being opened by the LSP:
 <div slot="title">Swift</div>
 <section>
 
-```swift 
+```swift,ignore 
 let amountMsat = <amount msat>
 do {
     let channelFees = try sdk.openChannelFee(
@@ -395,7 +395,7 @@ do {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/receive_onchain.dart:get-channel-opening-fees}}
 ```
 </section>
@@ -403,7 +403,7 @@ do {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 amount_msat = <amount msats>
 try:
     channel_fees = sdk_services.open_channel_fee(
@@ -417,7 +417,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/receive_onchain.go:get-channel-opening-fees}}
 ```
 </section>
@@ -425,13 +425,10 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs 
+```cs,ignore 
 {{#include ../../snippets/csharp/ReceiveOnchain.cs:get-channel-opening-fees}}
 ```
 </section>
-</custom-tabs>
-
-
 </custom-tabs>
 
 
