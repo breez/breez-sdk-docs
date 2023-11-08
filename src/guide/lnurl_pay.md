@@ -14,7 +14,7 @@
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 // Endpoint can also be of the form:
 // lnurlp://domain.com/lnurl-pay?key=val
 // lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
@@ -66,7 +66,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/lnurl_pay.dart:lnurl-pay}}
 ```
 </section>
@@ -74,7 +74,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 # Endpoint can also be of the form:
 # lnurlp://domain.com/lnurl-pay?key=val
 # lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
@@ -97,7 +97,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/lnurl_pay.go:lnurl-pay}}
 ```
 </section>
@@ -105,7 +105,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/LnurlPay.cs:lnurl-pay}}
 ```
 </section>

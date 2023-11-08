@@ -16,7 +16,7 @@ First, fetch the current reverse swap fees:
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 let sendAmountSat:UInt64? = 50000
 try {
   let currentFees = try sdk.fetchReverseSwapFees(
@@ -52,7 +52,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/send_onchain.dart:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
@@ -60,7 +60,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try: 
     current_fees = sdk_services.fetch_reverse_swap_fees(
         breez_sdk.ReverseSwapFeesRequest(send_amount_sat=50000))
@@ -73,7 +73,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/send_onchain.go:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
@@ -81,7 +81,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/SendOnchain.cs:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
@@ -105,7 +105,7 @@ Fetching the fees also tells you what is the range of amounts you can send:
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 println("Minimum amount, in sats: \(current_fees.min)")
 println("Maximum amount, in sats: \(current_fees.max)")
 ```
@@ -131,7 +131,7 @@ Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/send_onchain.dart:get-current-reverse-swap-min-max}}
 ```
 </section>
@@ -139,7 +139,7 @@ Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 print("Minimum amount, in sats: ", current_fees.min)
 print("Maximum amount, in sats: ", current_fees.max)
 ```
@@ -148,7 +148,7 @@ print("Maximum amount, in sats: ", current_fees.max)
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/send_onchain.go:get-current-reverse-swap-min-max}}
 ```
 </section>
@@ -156,7 +156,7 @@ print("Maximum amount, in sats: ", current_fees.max)
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/SendOnchain.cs:get-current-reverse-swap-min-max}}
 ```
 </section>
@@ -176,7 +176,7 @@ Once you checked the fees are acceptable, you can start the reverse swap:
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 let destinationAddress = "bc1.."
 let amountSat = currentFees.min
 let satPerVbyte = <fee rate>
@@ -218,7 +218,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/send_onchain.dart:start-reverse-swap}}
 ```
 </section>
@@ -226,7 +226,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 destination_address = "bc1.."
 amount_sat = 50000
 sat_per_vbyte = 5
@@ -243,7 +243,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/send_onchain.go:start-reverse-swap}}
 ```
 </section>
@@ -251,7 +251,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/SendOnchain.cs:start-reverse-swap}}
 ```
 </section>
@@ -275,7 +275,7 @@ You can check its status with:
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 for rs in sdk.inProgressReverseSwaps() {
   println("Reverse swap \(rs.id) in progress, status is \(rs.status)")
 }
@@ -303,7 +303,7 @@ for (rs in sdk.inProgressReverseSwaps()) {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/send_onchain.dart:check-reverse-swaps-status}}
 ```
 </section>
@@ -311,7 +311,7 @@ for (rs in sdk.inProgressReverseSwaps()) {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try: 
   reverse_swaps = sdk_services.in_progress_reverse_swaps()
   for rs in reverse_swaps:
@@ -324,7 +324,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/send_onchain.go:check-reverse-swaps-status}}
 ```
 </section>
@@ -332,7 +332,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/SendOnchain.cs:check-reverse-swaps-status}}
 ```
 </section>

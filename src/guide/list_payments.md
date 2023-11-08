@@ -14,7 +14,7 @@ To view your payment history you can list and filter all the sent and received p
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
     let payments = try sdk.listPayments(req: ListPaymentsRequest(filter: PaymentTypeFilter.all))
 } catch {
@@ -46,7 +46,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/list_payments.dart:list-payments}}
 ```
 </section>
@@ -54,7 +54,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try:
   sdk_services.list_payments(breez_sdk.ListPaymentsRequest(breez_sdk.PaymentTypeFilter.All))
 except Exception as error:
@@ -65,7 +65,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/list_payments.go:list-payments}}
 ```
 </section>
@@ -73,7 +73,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/ListPayments.cs:list-payments}}
 ```
 </section>
@@ -93,7 +93,7 @@ You can optionally filter payments by timestamp and include failed payments.
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
     let payments = try sdk.listPayments(
         req: ListPaymentsRequest(
@@ -131,7 +131,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/list_payments.dart:list-payments-filtered}}
 ```
 </section>
@@ -139,7 +139,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try:
   sdk_services.list_payments(
     breez_sdk.ListPaymentsRequest(
@@ -154,7 +154,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/list_payments.go:list-payments-filtered}}
 ```
 </section>
@@ -162,7 +162,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/ListPayments.cs:list-payments-filtered}}
 ```
 </section>
