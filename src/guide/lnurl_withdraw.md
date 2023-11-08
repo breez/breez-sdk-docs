@@ -15,7 +15,7 @@
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 // Endpoint can also be of the form:
 // lnurlw://domain.com/lnurl-withdraw?key=val
 let lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk"
@@ -70,7 +70,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/lnurl_withdraw.dart:lnurl-withdraw}}
 ```
 </section>
@@ -78,7 +78,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 # Endpoint can also be of the form:
 # lnurlw://domain.com/lnurl-withdraw?key=val
 lnurl_withdraw_url = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4exctthd96xserjv9mn7um9wdekjmmw843xxwpexdnxzen9vgunsvfexq6rvdecx93rgdmyxcuxverrvcursenpxvukzv3c8qunsdecx33nzwpnvg6ryc3hv93nzvecxgcxgwp3h33lxk"
@@ -96,7 +96,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/lnurl_withdraw.go:lnurl-withdraw}}
 ```
 </section>
@@ -104,7 +104,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/LnurlWithdraw.cs:lnurl-withdraw}}
 ```
 </section>

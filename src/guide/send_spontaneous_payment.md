@@ -14,7 +14,7 @@ They can even be spontaneous payments to a node without a bolt11 invoice.
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 let nodeId = "...";
 do {
     let response = try sdk.sendSpontaneousPayment(
@@ -53,7 +53,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/send_spontaneous_payment.dart:send-spontaneous-payment}}
 ```
 </section>
@@ -61,7 +61,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try:
     sdk_services.send_spontaneous_payment(
         breez_sdk.SendSpontaneousPaymentRequest(
@@ -75,7 +75,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/send_spontaneous_payment.go:send-spontaneous-payment}}
 ```
 </section>
@@ -83,7 +83,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/SendSpontaneousPayment.cs:send-spontaneous-payment}}
 ```
 </section>
