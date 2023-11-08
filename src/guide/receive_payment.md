@@ -15,7 +15,7 @@ The Breez SDK automatically connects your node to the LSP peer and you can now r
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
   let invoice = try sdk.receivePayment(
     req: ReceivePaymentRequest(
@@ -53,7 +53,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/receive_payment.dart:receive-payment}}
 ```
 </section>
@@ -61,7 +61,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try:
   receive_payment_response = sdk_services.receive_payment(
     breez_sdk.ReceivePaymentRequest(
@@ -75,7 +75,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/receive_payment.go:receive-payment}}
 ```
 </section>
@@ -83,7 +83,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/ReceivePayment.cs:receive-payment}}
 ```
 </section>

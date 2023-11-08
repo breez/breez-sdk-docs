@@ -50,7 +50,7 @@ Now your SDK is ready to be used.
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 // SDK events listener
 class SDKListener: EventListener {
   func onEvent(e: BreezEvent) {
@@ -125,7 +125,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/getting_started.dart:init-sdk}}
 ```
 </section>
@@ -133,7 +133,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 # SDK events listener
 class SDKListener(breez_sdk.EventListener):
    def on_event(self, event):
@@ -160,7 +160,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/getting_started.go:init-sdk}}
 ```
 </section>
@@ -168,7 +168,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/GettingStarted.cs:init-sdk}}
 ```
 </section>
@@ -188,7 +188,7 @@ At any point we can fetch our balance from the Greenlight node:
 <div slot="title">Swift</div>
 <section>
 
-```swift
+```swift,ignore
 do {
   let nodeInfo = try sdk.nodeInfo()
   let lnBalance = nodeInfo?.channelsBalanceMsat
@@ -224,7 +224,7 @@ try {
 <div slot="title">Dart</div>
 <section>
 
-```dart
+```dart,ignore
 {{#include ../../snippets/dart_snippets/lib/getting_started.dart:fetch-balance}}
 ```
 </section>
@@ -232,7 +232,7 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python
+```python,ignore
 try: 
     node_info = node_info()
     ln_balance = node_info.channels_balance_msat
@@ -245,7 +245,7 @@ except Exception as error:
 <div slot="title">Go</div>
 <section>
 
-```go
+```go,ignore
 {{#include ../../snippets/go/getting_started.go:fetch-balance}}
 ```
 </section>
@@ -253,7 +253,7 @@ except Exception as error:
 <div slot="title">C#</div>
 <section>
 
-```cs
+```cs,ignore
 {{#include ../../snippets/csharp/GettingStarted.cs:fetch-balance}}
 ```
 </section>
