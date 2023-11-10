@@ -78,18 +78,18 @@ impl Preprocessor for SnippetsProcessor {
     fn run(&self, _ctx: &PreprocessorContext, mut book: Book) -> Result<Book> {
         book.for_each_mut(|item| {
             if let BookItem::Chapter(chapter) = item {
-                let mut resulting_lines: Vec<&str> = vec![];
+                let mut resulting_lines: Vec<String> = vec![];
                 let mut in_block = false;
-                let mut block_lines: Vec<&str> = vec![];
+                let mut block_lines: Vec<String> = vec![];
                 let mut min_indentation: usize = 0;
                 for line in chapter.content.lines() {
                     if line.starts_with("```") {
                         if in_block {
                             // This is end of block
                             // Replace previous lines
-                            for block_line in block_lines.iter() {
+                            for block_line in block_lines.iter().cloned() {
                                 let indent = std::cmp::min(min_indentation, block_line.len());
-                                resulting_lines.push(&block_line[indent..])
+                                resulting_lines.push(block_line[indent..].to_string())
                             }
                             in_block = false;
                         } else {
@@ -99,19 +99,20 @@ impl Preprocessor for SnippetsProcessor {
                             min_indentation = usize::MAX;
                         }
 
-                        resulting_lines.push(line);
+                        resulting_lines.push(line.to_string());
                         continue;
                     }
 
                     if in_block {
-                        block_lines.push(line);
+                        let line = line.replace('\t', "    ");
+                        block_lines.push(line.clone());
                         let trimmed = line.trim_start_matches(' ');
                         if !trimmed.is_empty() {
                             min_indentation =
                                 std::cmp::min(min_indentation, line.len() - trimmed.len())
                         }
                     } else {
-                        resulting_lines.push(line);
+                        resulting_lines.push(line.to_string());
                     }
                 }
 
