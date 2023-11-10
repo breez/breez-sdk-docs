@@ -24,3 +24,5 @@ go.work
 **/*
 !**/*.go
 !**/
+
+breez-sdk-go

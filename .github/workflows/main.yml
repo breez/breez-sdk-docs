@@ -38,7 +38,7 @@ jobs:
       repository: breez/breez-sdk
       ref: ${{ needs.setup.outputs.sdk-ref }}
       package-version: ${{ needs.setup.outputs.package-version }}
-      packages-to-publish: '["csharp", "flutter"]'
+      packages-to-publish: '["csharp", "flutter", "golang"]'
       use-dummy-binaries: true
 
   check-rust:
@@ -157,6 +157,49 @@ jobs:
         working-directory: snippets/csharp
         run: dotnet build
   
+  check-golang:
+    needs:
+      - setup
+      - build-packages
+    name: Check Go snippets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Download archived package
+        uses: actions/download-artifact@v3
+        with:
+          name: breez-sdk-go-${{ needs.setup.outputs.package-version }}
+          path: snippets/go/breez-sdk-go
+
+      - name: Format the Go snippets
+        working-directory: snippets/go
+        run: go fmt
+
+      - name: Test formatted correctly
+        working-directory: snippets/go
+        run: |
+          status=$(git status --porcelain)
+          if [[ -n "$status" ]]; then
+            echo "Git status has changes"
+            echo "$status"
+            git diff
+            exit 1
+          else
+            echo "No changes in git status"
+          fi
+
+      - name: Build the Go snippets
+        working-directory: snippets/go
+        run: |
+          go get
+          go build .
+    
   build:
     name: Build mdbook
     runs-on: ubuntu-latest
