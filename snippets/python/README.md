@@ -5,7 +5,7 @@
 2. Download the wheel artifact for your platform. For linux that is `python-wheel-3.8-manylinux_2_31_x86_64`
 3. Unzip the artifact in the `snippets/python/packages` folder.
 4. Run `pip install packages/{NAME_OF_.WHL_FILE}`
-4. happy coding!
+5. happy coding!
 
 To check the syntax:
 
