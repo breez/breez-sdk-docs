@@ -111,7 +111,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: breez-sdk-flutter-${{ needs.setup.outputs.package-version }}
-          path: breez-sdk-flutter
+          path: snippets/dart_snippets/packages/breez-sdk-flutter
 
       - name: pub-get
         working-directory: snippets/dart_snippets
@@ -140,7 +140,18 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: Breez.Sdk.${{ needs.setup.outputs.package-version }}.nupkg
-          path: packages
+          path: .
+
+      - name: Create nuget package source
+        working-directory: snippets/csharp
+        run: |
+          mkdir packages
+          nuget add ../../Breez.Sdk.${{ needs.setup.outputs.package-version }}.nupkg -Source ./packages
+      
+      - name: Add nuget dependency
+        working-directory: snippets/csharp
+        run: |
+          dotnet add package Breez.Sdk -s ./packages
 
       - name: Build the csharp project
         working-directory: snippets/csharp
