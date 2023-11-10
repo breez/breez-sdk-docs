@@ -6,10 +6,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <RestoreSources>$(RestoreSources);../../packages;https://api.nuget.org/v3/index.json</RestoreSources>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Breez.Sdk" Version="*" />
   </ItemGroup>

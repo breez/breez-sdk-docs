@@ -2,6 +2,4 @@ book
 .DS_Store
 .idea
 
-# Sub-projects with code snippets
-snippets/react-native/node_modules
-snippets/rust/target
+*.nupkg
