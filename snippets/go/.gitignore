@@ -23,4 +23,7 @@ go.work
 # Ignore Go binaries
 **/*
 !**/*.go
+!**/*.md
 !**/
+
+breez-sdk-go
