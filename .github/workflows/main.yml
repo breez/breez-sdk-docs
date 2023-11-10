@@ -38,7 +38,7 @@ jobs:
       repository: breez/breez-sdk
       ref: ${{ needs.setup.outputs.sdk-ref }}
       package-version: ${{ needs.setup.outputs.package-version }}
-      packages-to-publish: '["csharp", "flutter", "golang", "react-native"]'
+      packages-to-publish: '["csharp", "flutter", "golang", "react-native", "python"]'
       use-dummy-binaries: true
 
   check-rust:
@@ -232,7 +232,43 @@ jobs:
         run: |
           go get
           go build .
+
+  check-python:
+    needs:
+      - build-packages
+    name: Check Python snippets
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+  
+      - name: Download archived package
+        uses: actions/download-artifact@v3
+        with:
+          name: python-wheel-3.8-manylinux_2_31_x86_64
+          path: snippets/python/packages
     
+      - name: Install dependencies
+        working-directory: snippets/python
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff
+          whlfile=$(ls packages | grep .whl)
+          pip install "packages/$whlfile"
+
+      - name: Check python formatting
+        working-directory: snippets/python/src
+        run: ruff --ignore F841 --ignore F401 --output-format=github .
+
+      - name: Check python syntax
+        working-directory: snippets/python
+        run: python3 -m compileall src
+
   build:
     name: Build mdbook
     runs-on: ubuntu-latest
@@ -273,31 +309,3 @@ jobs:
           git add -f book
           git commit -m "Generate documentation"
           git push origin --force main:main-generated
-  python:
-    name: Python
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.8'
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install ruff
-          # use pypi when published. 
-          pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple breez_sdk
-
-      - name: python-analyse with ruff
-        run: |
-          cd snippets/python_snippets/src
-          ruff --ignore F841 --ignore F401 --output-format=github .
-
-      - name: Test
-        run: |
-          cd snippets/python_snippets
-          python3 -m compileall src
-          
-        continue-on-error: false
