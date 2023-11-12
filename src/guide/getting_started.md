@@ -4,8 +4,8 @@ The Breez SDK enables mobile developers to integrate Lightning and bitcoin payme
 
 The Breez SDK provides the following services:
 
-* Sending payments (via various protocols such as: bolt11, keysend, lnurl-pay, lightning address, etc.)
-* Receiving payments (via various protocols such as: bolt11, lnurl-withdraw, etc.)
+* Sending payments (via various protocols such as: bolt11, keysend, lnurl-pay, lightning address, btc address, etc.)
+* Receiving payments (via various protocols such as: bolt11, lnurl-withdraw, btc address, etc.)
 * Fetching node status (e.g. balance, max allow to pay, max allow to receive, on-chain balance, etc.)
 * Connecting to a new or existing node.
 
@@ -23,7 +23,7 @@ To get both of them, please contact Breez via email at <contact@breez.technology
 
 ## Support
 
-Join this [telegram group](https://t.me/breezsdk).
+Join this [telegram group](https://t.me/breezsdk) or email us at <contact@breez.technology>.
 
 ## Installing
 
@@ -35,7 +35,7 @@ The first step is to construct the SDK configuration. In it the environment and 
 
 The SDK uses the config working directory to store the state of the SDK instance. Once a connection has been established with a node, the working directory can only be used for that node. When handling multiple instances of the SDK, one per node, each needs to have a different working directory defined.
 
-Now your SDK is ready to be used.
+Now you are ready to interact with the SDK.
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
