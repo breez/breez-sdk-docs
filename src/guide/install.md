@@ -108,4 +108,8 @@ dependencies:
 ```
 ## Python
 
-Currently, python is not accessible as a package and is needed to build it from source. Please visit [sdk-core](https://github.com/breez/breez-sdk/tree/main/libs/sdk-bindings#python) project for instructions.
+Use the latest package [here](https://pypi.org/project/breez-sdk-lib/). 
+
+```console
+pip install breez_sdk_lib
+```
