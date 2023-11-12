@@ -2,7 +2,7 @@
 
 The Breez SDK is available in the following platforms:
 
-## iOS
+## iOS/Swift
 
 We support integration via the [Swift Package Manager](https://www.swift.org/package-manager/) and via [CocoaPods](https://cocoapods.org/).
 See [breez/breez-sdk-swift](https://github.com/breez/breez-sdk-swift) for more information.
@@ -38,7 +38,7 @@ target '<YourApp' do
 end
 ```
 
-## Kotlin / Android
+## Android/Kotlin
 
 We recommend integrating the Breez SDK as Gradle dependency from [our Maven repository](https://mvn.breez.technology/#/releases).
 
