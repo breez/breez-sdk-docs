@@ -2,8 +2,8 @@
 
 # API Overview
 
-- [Installing](guide/install.md)
 - [Getting Started](guide/getting_started.md)
+- [Installing](guide/install.md)
 - [Lightning payments](guide/payments.md)
   - [Receive Payments](guide/receive_payment.md)
   - [Send Payments](guide/send_payment.md)
