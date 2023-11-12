@@ -96,7 +96,7 @@ Check https://github.com/breez/breez-sdk/releases for the latest version.
 breez-sdk-core = { git = "https://github.com/breez/breez-sdk", tag = "0.2.7" }
 ```
 
-## Dart / Flutter
+## Flutter/Dart
 
 We recommend to add our official flutter package as a git dependency. 
 
