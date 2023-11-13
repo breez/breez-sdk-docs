@@ -15,6 +15,7 @@ from src.lnurl_auth import auth
 from src.lnurl_pay import pay
 from src.lnurl_withdraw import withdraw
 import tempfile
+import os
 
 
 class SDKListener(breez_sdk.EventListener):
@@ -26,8 +27,8 @@ def main():
    temp_dir = tempfile.TemporaryDirectory()
 
    
-   api_key = "API_KEY"
-   mnemonic = "MNEMONIC"
+   api_key = os.getenv("API_KEY")
+   mnemonic = os.getenv("MNEMONIC")
 
    # getting started
    sdk_services =  getting_started(api_key, mnemonic, temp_dir.name)    
