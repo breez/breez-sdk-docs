@@ -57,7 +57,7 @@ packages:
       resolved-ref: "9629def110a9dd03413850a05e9709d3c9794b0d"
       url: "https://github.com/breez/breez-sdk-flutter"
     source: git
-    version: "0.2.7"
+    version: "0.2.9"
   build:
     dependency: transitive
     description:
