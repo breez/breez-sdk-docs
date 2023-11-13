@@ -21,11 +21,7 @@ In order to use the recoverchannel method, the user needs to provide the static 
 <section>
 
 ```swift,ignore
-do {
-    let backupData = breez_sdk.staticBackup(request: StaticBackupRequest(workingDir: "<working directory>"));
-} catch{
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/StaticChannelBackup.swift:static-channel-backup}}
 ```
 
 </section>

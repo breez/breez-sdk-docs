@@ -51,30 +51,7 @@ Now you are ready to interact with the SDK.
 <section>
 
 ```swift,ignore
-// SDK events listener
-class SDKListener: EventListener {
-  func onEvent(e: BreezEvent) {
-    print("received event ", e)
-  }
-}
-
-// Create the default config
-let seed = try mnemonicToSeed(phrase: "<mnemonic words>")
-let inviteCode = "<invite code>"
-let apiKey = "<api key>"
-let config = breez_sdk.defaultConfig(envType: EnvironmentType.production, apiKey: apiKey, 
-    nodeConfig: NodeConfig.greenlight(
-        config: GreenlightNodeConfig(partnerCredentials: nil, inviteCode: inviteCode)));    
-
-// Customize the config object according to your needs
-config.workingDir = "path to an existing directory"
-
-do {
-  // Connect to the Breez SDK make it ready for use
-  let sdk = try connect(config: config, seed: seed, listener: SDKListener());        
-} catch{
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/GettingStarted.swift:init-sdk}}
 ```
 
 </section>
@@ -170,13 +147,7 @@ At any point we can fetch our balance from the Greenlight node:
 <section>
 
 ```swift,ignore
-do {
-  let nodeInfo = try sdk.nodeInfo()
-  let lnBalance = nodeInfo?.channelsBalanceMsat
-  let onchainBalance = nodeInfo?.onchainBalanceMsat
-} catch {
-  // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/GettingStarted.swift:fetch-balance}}
 ```
 </section>
 

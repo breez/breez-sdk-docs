@@ -1,5 +1,6 @@
 book
 .DS_Store
 .idea
-
 *.nupkg
+snippets/swift/BreezSDKExamples/.build/*
+snippets/swift/BreezSDKExamples/.swiftpm/*

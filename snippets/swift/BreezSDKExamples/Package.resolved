@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "breez-sdk-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/breez/breez-sdk-swift",
+      "state" : {
+        "revision" : "dcbb39d45bc6797447bf20f52bc22344026d0662",
+        "version" : "0.2.9"
+      }
+    },
+    {
+      "identity" : "example-package-figlet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/example-package-figlet",
+      "state" : {
+        "branch" : "main",
+        "revision" : "166eef46de0b094d6d1966e749f727d6c4beba0e"
+      }
+    }
+  ],
+  "version" : 2
+}

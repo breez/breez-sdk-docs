@@ -18,14 +18,7 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 <section>
 
 ```swift,ignore
-do {
-  let swapInfo = try sdk.receiveOnchain(req: ReceiveOnchainRequest())
-
-  // Send your funds to the bellow bitcoin address
-  let address = swapInfo.bitcoinAddress;
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceiveOnchain.swift:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -99,11 +92,7 @@ Once you've sent the funds to the above address, the SDK will monitor this addre
 <section>
 
 ```swift,ignore
-do {
-  let swapInfo = try sdk.inProgressSwap()
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceiveOnchain.swift:in-progress-swap}}
 ```
 </section>
 
@@ -181,11 +170,7 @@ In order to execute a refund, you need to supply an on-chain address to where th
 <section>
 
 ```swift,ignore
-do {
-  let refundables = try sdk.listRefundables()
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceiveOnchain.swift:list-refundables}}
 ```
 </section>
 
@@ -257,17 +242,7 @@ Once you have a refundable swap in hand, use the following code to execute a ref
 <section>
 
 ```swift,ignore
-let destinationAddress = "..."
-let satPerVbyte = <refund tx fee rate>
-
-do {
-  try sdk.refund(
-      swapAddress: refundable?.bitcoinAddress, 
-      toAddress: "...", 
-      satPerVbyte: satPerVbyte)
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceiveOnchain.swift:execute-refund}}
 ```
 </section>
 
@@ -346,13 +321,7 @@ To calculate the fees for a channel being opened by the LSP:
 <section>
 
 ```swift,ignore 
-let amountMsat = <amount msat>
-do {
-    let channelFees = try sdk.openChannelFee(
-        req: OpenChannelFeeRequest(amountMsat: amountMsat))
-} catch {
-    // Handle error 
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceiveOnchain.swift:get-channel-opening-fees}}
 ```
 </section>
 

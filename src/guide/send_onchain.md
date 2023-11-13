@@ -17,14 +17,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```swift,ignore
-let sendAmountSat:UInt64? = 50000
-try {
-  let currentFees = try sdk.fetchReverseSwapFees(
-      req: ReverseSwapFeesRequest(sendAmountSat: sendAmountSat))
-  print("Total estimated fees for reverse swap: \(currentFees.totalEstimatedFees)")
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -101,8 +94,7 @@ Fetching the fees also tells you what is the range of amounts you can send:
 <section>
 
 ```swift,ignore
-println("Minimum amount, in sats: \(current_fees.min)")
-println("Maximum amount, in sats: \(current_fees.max)")
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -171,18 +163,7 @@ Once you checked the fees are acceptable, you can start the reverse swap:
 <section>
 
 ```swift,ignore
-let destinationAddress = "bc1.."
-let amountSat = currentFees.min
-let satPerVbyte = <fee rate>
-try {
-  try sdk.sendOnchain(
-    amountSat: amountSat,
-    onchainRecipientAddress: destinationAddress, 
-    pairHash: currentFees.feesHash,
-    satPerVbyte: satPerVbyte)
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:start-reverse-swap}}
 ```
 </section>
 
@@ -261,9 +242,7 @@ You can check its status with:
 <section>
 
 ```swift,ignore
-for rs in sdk.inProgressReverseSwaps() {
-  println("Reverse swap \(rs.id) in progress, status is \(rs.status)")
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:check-reverse-swaps-status}}
 ```
 </section>
 

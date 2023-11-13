@@ -15,12 +15,7 @@ Based on the API key provided to the Breez SDK, a default LSP is selected for yo
 <section>
 
 ```swift,ignore
-do {
-    let lspId = try sdk.lspId() 
-    let lspInfo = try sdk.lspInfo()
-} catch {
-    // Handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ConnectingLsp.swift:get-lsp-info}}
 ```
 </section>
 
@@ -97,11 +92,7 @@ When you have selected an LSP you may then connect to it.
 <section>
 
 ```swift,ignore
-do {
-    try sdk.connectLsp(lspId: lspId!)
-} catch {
-    // Handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ConnectingLsp.swift:connect-lsp}}
 ```
 </section>
 

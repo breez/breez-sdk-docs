@@ -15,11 +15,7 @@ To view your payment history you can list and filter all the sent and received p
 <section>
 
 ```swift,ignore
-do {
-    let payments = try sdk.listPayments(req: ListPaymentsRequest(filter: PaymentTypeFilter.all))
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ListPayments.swift:list-payments}}
 ```
 </section>
 
@@ -91,17 +87,7 @@ You can optionally filter payments by timestamp and include failed payments.
 <section>
 
 ```swift,ignore
-do {
-    let payments = try sdk.listPayments(
-        req: ListPaymentsRequest(
-            filter: PaymentTypeFilter.sent,
-            fromTimestamp: 1696880000,
-            includeFailures: true,
-        )
-    )
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ListPayments.swift:list-payments-filtered}}
 ```
 </section>
 

@@ -20,12 +20,7 @@ Once the buy is completed, the provider will transfer the Bitcoin to the generat
 <section>
 
 ```swift,ignore
-do {
-  let buyBitcoinResponse = try sdk.buyBitcoin(
-    req: BuyBitcoinRequest(provider: .moonpay))
-} catch {
-  // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/BuyBtc.swift:buy-btc}}
 ```
 </section>
 
