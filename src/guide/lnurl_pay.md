@@ -75,7 +75,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/src/lnurl_pay.py:lnurl-pay}}
+{{#include ../../snippets/python/src/lnurl_pay.py:lnurl-pay}}
 ```
 </section>
 

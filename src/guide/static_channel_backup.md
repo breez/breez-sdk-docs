@@ -64,7 +64,7 @@ try {
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python_snippets/src/static_channel_backup.py:static-channel-backup}}
+{{#include ../../snippets/python/src/static_channel_backup.py:static-channel-backup}}
 ```
 </section>
 
