@@ -8,7 +8,7 @@ import (
 
 func ListPayments() {
 	// ANCHOR: list-payments
-	if payments, err := sdk.ListPayments(breez_sdk.ListPaymentsRequest{Filter: breez_sdk.PaymentTypeFilterAll}); err == nil {
+	if payments, err := sdk.ListPayments(breez_sdk.ListPaymentsRequest{}); err == nil {
 		log.Printf("%#v", payments)
 	}
 	// ANCHOR_END: list-payments
@@ -16,10 +16,11 @@ func ListPayments() {
 
 func ListPaymentsFiltered() {
 	// ANCHOR: list-payments-filtered
+	filters := []breez_sdk.PaymentTypeFilter{breez_sdk.PaymentTypeFilterSent}
 	fromTimestamp := int64(1696880000)
 	includeFailures := true
 	listPaymentsRequest := breez_sdk.ListPaymentsRequest{
-		Filter:          breez_sdk.PaymentTypeFilterSent,
+		Filters:         &filters,
 		FromTimestamp:   &fromTimestamp,
 		IncludeFailures: &includeFailures,
 	}

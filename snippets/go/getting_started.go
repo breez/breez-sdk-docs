@@ -14,7 +14,7 @@ func (BreezListener) OnEvent(e breez_sdk.BreezEvent) {
 	log.Printf("received event %#v", e)
 }
 
-func GettingStarted() {
+func GettingStarted() *breez_sdk.BlockingBreezServices {
 	// Create the default config
 	seed, err := breez_sdk.MnemonicToSeed("<mnemonic words>")
 	if err != nil {
@@ -38,6 +38,8 @@ func GettingStarted() {
 	if err != nil {
 		log.Fatalf("Connect failed: %#v", err)
 	}
+
+	return sdk
 }
 
 // ANCHOR_END: init-sdk
