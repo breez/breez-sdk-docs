@@ -8,7 +8,7 @@ public class ListPaymentsSnippets
         try
         {
             var payments = sdk.ListPayments(
-                new ListPaymentsRequest(PaymentTypeFilter.ALL));
+                new ListPaymentsRequest());
         }
         catch (Exception)
         {
@@ -24,7 +24,7 @@ public class ListPaymentsSnippets
         {
             var payments = sdk.ListPayments(
                 new ListPaymentsRequest(
-                    PaymentTypeFilter.SENT,
+                    new() { PaymentTypeFilter.SENT },
                     fromTimestamp: 1696880000,
                     includeFailures: true));
         }

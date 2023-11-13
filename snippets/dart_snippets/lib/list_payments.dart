@@ -3,7 +3,7 @@ import 'package:breez_sdk/bridge_generated.dart';
 
 Future<List<Payment>> listPayments() async {
   // ANCHOR: list-payments
-  ListPaymentsRequest req = ListPaymentsRequest(filter: PaymentTypeFilter.All);
+  ListPaymentsRequest req = ListPaymentsRequest();
   List<Payment> paymentsList = await BreezSDK().listPayments(req: req);
   print(paymentsList);
   // ANCHOR_END: list-payments
@@ -22,7 +22,7 @@ Future<List<Payment>> listPaymentsFiltered({
   int fromTimestamp = DateTime.now().subtract(const Duration(minutes: 30)).millisecondsSinceEpoch ~/ 1000;
 
   ListPaymentsRequest req = ListPaymentsRequest(
-    filter: PaymentTypeFilter.Sent,
+    filters: [PaymentTypeFilter.Sent],
     fromTimestamp: fromTimestamp,
     toTimestamp: toTimestamp,
     includeFailures: includeFailures,
