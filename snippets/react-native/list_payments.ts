@@ -1,7 +1,7 @@
 import {
   listPayments,
   PaymentTypeFilter
-} from "@breeztech/react-native-breez-sdk"
+} from '@breeztech/react-native-breez-sdk'
 
 const exampleListPayments = async () => {
   // ANCHOR: list-payments
