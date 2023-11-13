@@ -20,12 +20,14 @@ async fn get_current_rates(sdk: Arc<BreezServices>) -> Result<()> {
     Ok(())
 }
 
-async fn get_fiat_currencies_and_rates(sdk: Arc<BreezServices>) -> Result<Vec<(FiatCurrency, Rate)>> {
+async fn get_fiat_currencies_and_rates(
+    sdk: Arc<BreezServices>,
+) -> Result<Vec<(FiatCurrency, Rate)>> {
     // ANCHOR: get-fiat-currencies-and-rates
     let supported_fiat_currencies = sdk.list_fiat_currencies().await?;
     let fiat_rates = sdk.fetch_fiat_rates().await?;
 
-    let mut rates_map : HashMap<String, Rate> = HashMap::new();
+    let mut rates_map: HashMap<String, Rate> = HashMap::new();
     for rate in fiat_rates {
         rates_map.insert(rate.coin.to_string().to_lowercase(), rate);
     }
@@ -33,7 +35,7 @@ async fn get_fiat_currencies_and_rates(sdk: Arc<BreezServices>) -> Result<Vec<(F
     let mut sorted = supported_fiat_currencies.clone();
     sorted.sort_by_key(|f| f.info.name.clone());
 
-    let mut result : Vec<(FiatCurrency, Rate)> = Vec::new();
+    let mut result: Vec<(FiatCurrency, Rate)> = Vec::new();
     for currency in sorted {
         let rate = rates_map.get(&currency.id.to_lowercase());
         if let Some(rate) = rate.cloned() {

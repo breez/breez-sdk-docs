@@ -5,8 +5,8 @@ use breez_sdk_core::*;
 
 async fn generate_receive_onchain_address(sdk: Arc<BreezServices>) -> Result<()> {
     // ANCHOR: generate-receive-onchain-address
-    let swap_info = sdk.receive_onchain(
-        ReceiveOnchainRequest { opening_fee_params: None } )
+    let swap_info = sdk
+        .receive_onchain(ReceiveOnchainRequest::default())
         .await?;
 
     // Send your funds to the below bitcoin address
@@ -32,7 +32,11 @@ async fn list_refundables(sdk: Arc<BreezServices>) -> Result<()> {
     Ok(())
 }
 
-async fn execute_refund(sdk: Arc<BreezServices>, refund_tx_fee_rate: u32, refundable: SwapInfo) -> Result<()> {
+async fn execute_refund(
+    sdk: Arc<BreezServices>,
+    refund_tx_fee_rate: u32,
+    refundable: SwapInfo,
+) -> Result<()> {
     // ANCHOR: execute-refund
     let destination_address = "...".into();
     let sat_per_vbyte = refund_tx_fee_rate;
@@ -40,8 +44,9 @@ async fn execute_refund(sdk: Arc<BreezServices>, refund_tx_fee_rate: u32, refund
     sdk.refund(RefundRequest {
         to_address: destination_address,
         sat_per_vbyte,
-        swap_address: refundable.bitcoin_address
-    }).await?;
+        swap_address: refundable.bitcoin_address,
+    })
+    .await?;
     // ANCHOR_END: execute-refund
 
     Ok(())
@@ -49,8 +54,11 @@ async fn execute_refund(sdk: Arc<BreezServices>, refund_tx_fee_rate: u32, refund
 
 async fn get_channel_opening_fees(sdk: Arc<BreezServices>, amount_msat: u64) -> Result<()> {
     // ANCHOR: get-channel-opening-fees
-    let channel_fees = sdk.open_channel_fee(
-        OpenChannelFeeRequest { amount_msat, expiry: None })
+    let channel_fees = sdk
+        .open_channel_fee(OpenChannelFeeRequest {
+            amount_msat,
+            expiry: None,
+        })
         .await?;
     // ANCHOR_END: get-channel-opening-fees
 

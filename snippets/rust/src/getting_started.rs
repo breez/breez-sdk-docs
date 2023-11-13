@@ -19,7 +19,7 @@ async fn getting_started() -> Result<Arc<BreezServices>> {
         breez_sdk_core::NodeConfig::Greenlight {
             config: GreenlightNodeConfig {
                 partner_credentials: None,
-                invite_code
+                invite_code,
             },
         },
     );
@@ -28,12 +28,7 @@ async fn getting_started() -> Result<Arc<BreezServices>> {
     config.working_dir = "path to an existing directory".into();
 
     // Connect to the Breez SDK make it ready for use
-    let sdk = BreezServices::connect(
-        config,
-        seed.to_vec(),
-        Box::new(AppEventListener {}),
-    )
-    .await?;
+    let sdk = BreezServices::connect(config, seed.to_vec(), Box::new(AppEventListener {})).await?;
     // ANCHOR_END: init-sdk
 
     Ok(sdk)
