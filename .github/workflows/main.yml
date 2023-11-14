@@ -269,6 +269,25 @@ jobs:
         working-directory: snippets/python
         run: python3 -m compileall src
 
+  check-swift:
+    needs:
+      - build-packages
+    name: Check Swift snippets
+    runs-on: macos-13
+      
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Set up Swift
+      uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: "5.4"
+          
+    - name: Build
+      working-directory: snippets/swift/BreezSDKExamples
+      run: |
+            swift build
+      
   build:
     name: Build mdbook
     runs-on: ubuntu-latest
