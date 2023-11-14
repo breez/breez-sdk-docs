@@ -60,32 +60,7 @@ Now you are ready to interact with the SDK.
 <section>
 
 ```kotlin,ignore
-// SDK events listener
-class SDKListener : EventListener {
-    override fun onEvent(e: BreezEvent) {
-        Log.v("SDKListener", "Received event $e")
-    }
-}
-
-// Select your seed, invite code and eviroment
-val seed = mnemonicToSeed("<mnemonic words>")
-val inviteCode = "<invite code>"
-val apiKey = "<api key>"
-
-// Create the default config
-val greenlightNodeConfig = GreenlightNodeConfig(null, inviteCode)
-val nodeConfig = NodeConfig.Greenlight(greenlightNodeConfig)
-val config = defaultConfig(EnvironmentType.PRODUCTION, apiKey, nodeConfig)
-
-// Customize the config object according to your needs
-config.workingDir = "path to an existing directory"
-
-try {
-    // Connect to the Breez SDK make it ready for use
-    val sdk = connect(config, seed, SDKListener())
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/GettingStarted.kt:init-sdk}}
 ```
 
 </section>
@@ -155,13 +130,7 @@ At any point we can fetch our balance from the Greenlight node:
 <section>
 
 ```kotlin,ignore
-try {
-    val nodeInfo = sdk.nodeInfo()
-    val lnBalance = nodeInfo?.channelsBalanceMsat
-    val onchainBalance = nodeInfo?.onchainBalanceMsat
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/GettingStarted.kt:fetch-balance}}
 ```
 </section>
 

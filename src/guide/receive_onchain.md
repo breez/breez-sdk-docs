@@ -26,13 +26,7 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 <section>
 
 ```kotlin,ignore
-try {
-    val swapInfo = sdk.receiveOnchain(ReceiveOnchainRequest())
-    // Send your funds to the bellow bitcoin address
-    val address = swapInfo.bitcoinAddress
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceiveOnchain.kt:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -100,11 +94,7 @@ Once you've sent the funds to the above address, the SDK will monitor this addre
 <section>
 
 ```kotlin,ignore
-try {
-    val swapInfo = sdk.inProgressSwap()
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceiveOnchain.kt:in-progress-swap}}
 ```
 </section>
 
@@ -178,11 +168,7 @@ In order to execute a refund, you need to supply an on-chain address to where th
 <section>
 
 ```kotlin,ignore
-try {
-    val refundables = sdk.listRefundables()
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceiveOnchain.kt:list-refundables}}
 ```
 </section>
 
@@ -250,14 +236,7 @@ Once you have a refundable swap in hand, use the following code to execute a ref
 <section>
 
 ```kotlin,ignore
-val swapAddress = "..."
-val destinationAddress = "..."
-val satPerVbyte = 1.toUInt()
-try {
-    sdk.refund(swapAddress, destinationAddress, satPerVbyte)
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceiveOnchain.kt:execute-refund}}
 ```
 </section>
 
@@ -329,7 +308,7 @@ To calculate the fees for a channel being opened by the LSP:
 <section>
 
 ```kotlin,ignore
-// TODO add example for openChannelFee
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceiveOnchain.kt:get-channel-opening-fees}}
 ```
 </section>
 

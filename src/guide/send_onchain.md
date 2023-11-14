@@ -25,12 +25,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```kotlin,ignore
-try {
-    val fees = sdk.fetchReverseSwapFees(ReverseSwapFeesRequest(50000))
-    Log.v("Breez", "Total estimated fees for reverse swap: ${fees.totalEstimatedFees}")
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -102,8 +97,7 @@ Fetching the fees also tells you what is the range of amounts you can send:
 <section>
 
 ```kotlin,ignore
-Log.v("Breez", "Minimum amount, in sats: ${fees.min}")
-Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -171,14 +165,7 @@ Once you checked the fees are acceptable, you can start the reverse swap:
 <section>
 
 ```kotlin,ignore
-val address = "bc1.."
-val amountSat = 123L.toULong()
-val satPerVbyte = 1L.toULong()
-try {
-    sdk.sendOnchain(amountSat, address, fees.feesHash, satPerVbyte)
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:start-reverse-swap}}
 ```
 </section>
 
@@ -250,9 +237,7 @@ You can check its status with:
 <section>
 
 ```kotlin,ignore
-for (rs in sdk.inProgressReverseSwaps()) {
-    Log.v("Breez", "Reverse swap ${rs.id} in progress, status is ${rs.status}")
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:check-reverse-swaps-status}}
 ```
 </section>
 

@@ -23,14 +23,7 @@ They can even be spontaneous payments to a node without a bolt11 invoice.
 <section>
 
 ```kotlin,ignore
-val nodeId = "..."
-val amountMsat = 3000000L.toULong()
-try {
-    val response = sdk.sendSpontaneousPayment(
-        SendSpontaneousPaymentRequest(nodeId, amountMsat))
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendSpontaneousPayment.kt:send-spontaneous-payment}}
 ```
 </section>
 

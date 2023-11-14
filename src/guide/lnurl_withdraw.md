@@ -24,21 +24,7 @@
 <section>
 
 ```kotlin,ignore
-// Endpoint can also be of the form:
-// lnurlw://domain.com/lnurl-withdraw?key=val
-// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7…
-val lnurlWithdrawUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7…"
-try {
-    val inputType = parseInput(lnurlPayUrl)
-    if (inputType is InputType.LnUrlWithdraw) {
-        val requestData = inputType.data
-        val amountMsat = requestData.minWithdrawable
-        val comment = "Any comment"
-        sdk.withdrawLnurl(LnUrlWithdrawRequest(requestData, amountMsat, comment)
-    }
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/LnurlWithdraw.kt:lnurl-withdraw}}
 ```
 </section>
 

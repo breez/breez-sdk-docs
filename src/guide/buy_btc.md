@@ -28,16 +28,7 @@ Once the buy is completed, the provider will transfer the Bitcoin to the generat
 <section>
 
 ```kotlin,ignore
-try {
-    // Choose your provider
-    val provider = BuyBitcoinProvider.MOONPAY
-    // request the url to proceed with the Bitcoin acquisition
-    val url = sdk.buyBitcoin(BuyBitcoinRequest(provider)).url
-    // Opens the url in the browser to buy on provider's site
-    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
-} catch (e: Exception) {
-    // Handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/BuyBtc.kt:buy-btc}}
 ```
 </section>
 

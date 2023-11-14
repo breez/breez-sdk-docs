@@ -24,14 +24,7 @@ The Breez SDK automatically connects your node to the LSP peer and you can now r
 <section>
 
 ```kotlin,ignore
-try {
-    val invoice = sdk.receivePayment(ReceivePaymentRequest(
-        3_000_000L.toULong(),
-        "Invoice for 3000 sats",
-    ))
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceivePayment.kt:receive-payment}}
 ```
 </section>
 

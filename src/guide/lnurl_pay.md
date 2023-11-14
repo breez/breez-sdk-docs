@@ -23,20 +23,7 @@
 <section>
 
 ```kotlin,ignore
-// Endpoint can also be of the form:
-// lnurlp://domain.com/lnurl-pay?key=val
-// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
-val lnurlPayUrl = "lightning@address.com";
-try {
-    val inputType = parseInput(lnurlPayUrl)
-    if (inputType is InputType.LnUrlPay) {
-        val requestData = inputType.data
-        val amountMsat = requestData.minSendable
-        sdk.payLnurl(LnUrlPayRequest(requestData, amountMsat, "comment"))
-    }
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/LnurlPay.kt:lnurl-pay}}
 ```
 </section>
 

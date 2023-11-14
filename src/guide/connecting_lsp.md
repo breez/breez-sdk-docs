@@ -23,16 +23,7 @@ Based on the API key provided to the Breez SDK, a default LSP is selected for yo
 <section>
 
 ```kotlin,ignore
-try {
-    val lspId = sdk.lspId()
-    if (lspId != null) {
-        val lspInfo = sdk.lspInfo()
-    } else {
-        // Handle no lsp id scenario
-    }
-} catch (e: Exception) {
-    // Handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ConnectingLsp.kt:get-lsp-info}}
 ```
 </section>
 
@@ -100,11 +91,7 @@ When you have selected an LSP you may then connect to it.
 <section>
 
 ```kotlin,ignore
-try {
-    sdk.connectLsp(lspId)
-} catch (e: Exception) {
-    // Handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ConnectingLsp.kt:connect-lsp}}
 ```
 </section>
 

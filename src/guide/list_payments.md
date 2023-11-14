@@ -23,11 +23,7 @@ To view your payment history you can list and filter all the sent and received p
 <section>
 
 ```kotlin,ignore
-try {
-    val payments = sdk.listPayments(ListPaymentsRequest(PaymentTypeFilter.ALL))
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ListPayments.kt:list-payments}}
 ```
 </section>
 
@@ -95,11 +91,7 @@ You can optionally filter payments by timestamp and include failed payments.
 <section>
 
 ```kotlin,ignore
-try {
-    val payments = sdk.listPayments(ListPaymentsRequest(PaymentTypeFilter.SENT, fromTimestamp = 1696880000, includeFailures = true))
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ListPayments.kt:list-payments-filtered}}
 ```
 </section>
 
