@@ -17,7 +17,6 @@ class SDKListener: EventListener {
 
 func gettingStarted() throws -> BlockingBreezServices?{
     // Create the default config
-    var sdk: BlockingBreezServices?
     let seed = try? mnemonicToSeed(phrase: "<mnemonic words>")
     
     let inviteCode = "<invite code>"
@@ -29,13 +28,9 @@ func gettingStarted() throws -> BlockingBreezServices?{
     // Customize the config object according to your needs
     config.workingDir = "path to an existing directory"
 
-    do {
-        // Connect to the Breez SDK make it ready for use
-        let sdk = try connect(config: config, seed: seed!, listener: SDKListener())
-        
-    } catch{
-        // handle error
-    }
+    
+    // Connect to the Breez SDK make it ready for use
+    let sdk = try? connect(config: config, seed: seed!, listener: SDKListener())
     return sdk
 }
 // ANCHOR_END: init-sdk
