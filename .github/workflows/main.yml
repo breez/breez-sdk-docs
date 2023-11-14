@@ -270,8 +270,7 @@ jobs:
         run: python3 -m compileall src
 
   check-swift:
-    needs:
-      - build-packages
+    
     name: Check Swift snippets
     runs-on: macos-13
       
@@ -281,7 +280,7 @@ jobs:
     - name: Set up Swift
       uses: swift-actions/setup-swift@v1
       with:
-        swift-version: "5.4"
+        swift-version: "5"
           
     - name: Build
       working-directory: snippets/swift/BreezSDKExamples
