@@ -10,12 +10,12 @@
       }
     },
     {
-      "identity" : "example-package-figlet",
+      "identity" : "swift-argument-parser",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/example-package-figlet",
+      "location" : "https://github.com/apple/swift-argument-parser",
       "state" : {
-        "branch" : "main",
-        "revision" : "166eef46de0b094d6d1966e749f727d6c4beba0e"
+        "revision" : "8f4d2753f0e4778c76d5f05ad16c74f707390531",
+        "version" : "1.2.3"
       }
     }
   ],

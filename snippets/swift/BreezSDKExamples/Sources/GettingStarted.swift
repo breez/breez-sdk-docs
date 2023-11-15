@@ -15,7 +15,7 @@ class SDKListener: EventListener {
   }
 }
 
-func gettingStarted() throws -> BlockingBreezServices?{
+func gettingStarted() throws -> BlockingBreezServices? {
     // Create the default config
     let seed = try? mnemonicToSeed(phrase: "<mnemonic words>")
     
@@ -30,19 +30,20 @@ func gettingStarted() throws -> BlockingBreezServices?{
 
     
     // Connect to the Breez SDK make it ready for use
+    guard seed != nil else {
+        return nil
+    }
     let sdk = try? connect(config: config, seed: seed!, listener: SDKListener())
+    
     return sdk
 }
 // ANCHOR_END: init-sdk
 
 func gettingStartedNodeInfo(sdk: BlockingBreezServices) {
     // ANCHOR: fetch-balance
-    do {
-      let nodeInfo = try sdk.nodeInfo()
+    if let nodeInfo = try? sdk.nodeInfo() {
         let lnBalance = nodeInfo.channelsBalanceMsat
         let onchainBalance = nodeInfo.onchainBalanceMsat
-    } catch {
-      // handle error
     }
     // ANCHOR_END: fetch-balance
 }

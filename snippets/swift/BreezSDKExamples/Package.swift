@@ -7,7 +7,7 @@ let package = Package(
     name: "BreezSDKDocs",
     platforms: [.macOS(.v12)],
     dependencies: [
-        .package(url:"https://github.com/apple/example-package-figlet", branch: "main"),
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.3"),
         .package(url: "https://github.com/breez/breez-sdk-swift", from:"0.2.9")
     ],
     targets: [
@@ -16,7 +16,7 @@ let package = Package(
         .executableTarget(
             name: "BreezSDKDocs",
             dependencies: [
-                .product(name: "Figlet", package: "example-package-figlet"),
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 .product(name: "BreezSDK", package: "breez-sdk-swift"),
             ],
             path: "Sources"),

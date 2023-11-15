@@ -11,6 +11,14 @@ In order to list the available fiat currencies:
 ```
 </section>
 
+<div slot="title">Swift</div>
+<section>
+
+```swift,ignore
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/FiatCurrencies.swift:list-fiat-currencies}}
+```
+</section>
+
 <div slot="title">Kotlin</div>
 <section>
 
@@ -72,6 +80,14 @@ To get the current BTC rate for the currencies:
 
 ```rust,ignore
 {{#include ../../snippets/rust/src/fiat_currencies.rs:fetch-fiat-rates}}
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift,ignore
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/FiatCurrencies.swift:fetch-fiat-rates}}
 ```
 </section>
 
@@ -140,6 +156,14 @@ At the example project you can see these methods combined:
 
 ```rust,ignore
 {{#include ../../snippets/rust/src/fiat_currencies.rs:get-fiat-currencies-and-rates}}
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift,ignore
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/FiatCurrencies.swift:get-fiat-currencies-and-rates}}
 ```
 </section>
 
