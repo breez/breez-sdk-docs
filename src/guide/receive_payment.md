@@ -16,14 +16,7 @@ The Breez SDK automatically connects your node to the LSP peer and you can now r
 <section>
 
 ```swift,ignore
-do {
-  let invoice = try sdk.receivePayment(
-    req: ReceivePaymentRequest(
-        amountMsat: 3_000_000, 
-        description: "Invoice for 3000 sats"))
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceivePayment.swift:receive-payment}}
 ```
 </section>
 

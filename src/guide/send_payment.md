@@ -15,14 +15,7 @@ Once you have outbound liquidity you can start sending payments too.
 <section>
 
 ```swift,ignore
-do {
-  // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-  // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
-  let req = SendPaymentRequest(bolt11: "...", amountMsat: 3000000)
-  let response = try sdk.sendPayment(req: req)
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendPayment.swift:send-payment}}
 ```
 </section>
 
