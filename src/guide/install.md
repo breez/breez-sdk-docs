@@ -108,8 +108,8 @@ dependencies:
 ```
 ## Python
 
-Use the latest package [here](https://pypi.org/project/breez-sdk-lib/). 
+Use the latest package [here](https://pypi.org/project/breez-sdk/). 
 
 ```console
-pip install breez_sdk_lib
+pip install breez_sdk
 ```
