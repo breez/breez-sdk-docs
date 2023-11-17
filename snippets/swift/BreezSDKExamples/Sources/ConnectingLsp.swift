@@ -16,10 +16,14 @@ func getLspInfo(sdk: BlockingBreezServices) -> LspInformation?{
     return lspInfo
 }
 
+func listLsps(sdk: BlockingBreezServices) {
+    // ANCHOR: list-lsps
+    let availableLsps = try? sdk.listLsps()
+    // ANCHOR_END: list-lsps
+}
 
 func connectLsp(sdk: BlockingBreezServices, lspId: String) {
     // ANCHOR: connect-lsp
     try? sdk.connectLsp(lspId: lspId)
     // ANCHOR_END: connect-lsp
-
 }

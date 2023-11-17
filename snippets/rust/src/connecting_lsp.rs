@@ -12,6 +12,14 @@ async fn get_lsp_info(sdk: Arc<BreezServices>) -> Result<LspInformation> {
     Ok(lsp_info)
 }
 
+async fn list_lsps(sdk: Arc<BreezServices>) -> Result<()> {
+    // ANCHOR: list-lsps
+    let available_lsps = sdk.list_lsps().await?;
+    // ANCHOR_END: list-lsps
+
+    Ok(())
+}
+
 async fn connect_lsp(sdk: Arc<BreezServices>, lsp_id: String) -> Result<()> {
     // ANCHOR: connect-lsp
     sdk.connect_lsp(lsp_id).await?;

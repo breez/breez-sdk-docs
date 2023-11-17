@@ -10,6 +10,12 @@ Future<void> getLspInfo() async {
   // ANCHOR_END: get-lsp-info
 }
 
+Future<void> listLsps() async {
+  // ANCHOR: list-lsps
+  List<LspInformation> availableLsps = await BreezSDK().listLsps();
+  // ANCHOR_END: list-lsps
+}
+
 Future<void> connectLsp(String lspId) async {
   // ANCHOR: connect-lsp
   await BreezSDK().connectLSP(lspId);

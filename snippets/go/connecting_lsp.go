@@ -16,6 +16,14 @@ func GetLspInfo() {
 	// ANCHOR_END: get-lsp-info
 }
 
+func ListLsps() {
+	// ANCHOR: list-lsps
+	if err := sdk.ListLsps(); err != nil {
+		log.Printf("%#v", err)
+	}
+	// ANCHOR_END: list-lsps
+}
+
 func ConnectLsp() {
 	// ANCHOR: connect-lsp
 	lspId := "your selected lsp id"
