@@ -115,11 +115,7 @@ To get the current BTC rate in the various supported fiat currencies:
 <section>
 
 ```python,ignore
-try:
-    fiat_rates = sdk_services.fetch_fiat_rates()
-    # print your desired rate 
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python/src/fiat_currencies.py:fetch-fiat-rates}}
 ```
 </section>
 
