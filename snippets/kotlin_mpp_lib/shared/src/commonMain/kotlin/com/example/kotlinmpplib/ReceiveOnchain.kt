@@ -37,10 +37,10 @@ class ReceiveOnchain {
     fun execute_refund(sdk: BlockingBreezServices) {
         // ANCHOR: execute-refund
         val swapAddress = "..."
-        val destinationAddress = "..."
+        val toAddress = "..."
         val satPerVbyte = 1.toUInt()
         try {
-            sdk.refund(RefundRequest(swapAddress, destinationAddress, satPerVbyte))
+            sdk.refund(RefundRequest(swapAddress, toAddress, satPerVbyte))
         } catch (e: Exception) {
             // handle error
         }
