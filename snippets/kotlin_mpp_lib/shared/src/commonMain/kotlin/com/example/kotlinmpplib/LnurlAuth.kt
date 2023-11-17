@@ -11,7 +11,7 @@ class LnurlAuth {
             val inputType = parseInput(lnurlAuthUrl)
             if (inputType is InputType.LnUrlAuth) {
                 when (val result = sdk.lnurlAuth(inputType.data)) {
-                    LnUrlCallbackStatus.Ok -> {} // Log.v("Breez", "Successfully authenticated")
+                    is LnUrlCallbackStatus.Ok -> {} // Log.v("Breez", "Successfully authenticated")
                     is LnUrlCallbackStatus.ErrorStatus -> {} // Log.v("Breez", "Failed to authenticate: ${result.data.reason}")
                 }
             }
