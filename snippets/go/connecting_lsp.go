@@ -18,8 +18,8 @@ func GetLspInfo() {
 
 func ListLsps() {
 	// ANCHOR: list-lsps
-	if err := sdk.ListLsps(); err != nil {
-		log.Printf("%#v", err)
+	if lspList, err := sdk.ListLsps(); err == nil {
+		log.Printf("%#v", lspList)
 	}
 	// ANCHOR_END: list-lsps
 }
