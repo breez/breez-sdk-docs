@@ -20,7 +20,7 @@ class ConnectingLsp {
     fun list_lsps(sdk: BlockingBreezServices) {
         // ANCHOR: list-lsps
         try {
-            let availableLsps = sdk.listLsps()
+            val availableLsps = sdk.listLsps()
         } catch (e: Exception) {
             // Handle error
         }

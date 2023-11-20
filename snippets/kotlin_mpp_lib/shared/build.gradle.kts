@@ -32,6 +32,11 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+        val commonMain by getting {
+            dependencies {
+                implementation("technology.breez:breez-sdk-kmp:0.2.9")
+            }
+        }
     }
 }
 
