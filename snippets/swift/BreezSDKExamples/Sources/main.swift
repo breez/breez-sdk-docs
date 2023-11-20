@@ -3,9 +3,9 @@
 
 print("Hello, tester!")
 if let sdk = try gettingStarted(){
-    if let fiarRates = getFiatCurrencyAndRates(sdk: sdk)  {
-        for fiat in fiarRates {
-            print("rate \(fiat)\n")
+    if let fiatRates = getCurrentRates(sdk: sdk)  {
+        for rate in fiatRates {
+            print("rate \(rate)\n")
             print("------------------------")
         }
     }
