@@ -68,7 +68,75 @@ Based on the API key provided to the Breez SDK, a default LSP is selected for yo
 </section>
 </custom-tabs>
 
-When you have selected an LSP you may then connect to it.
+In order to list all available LSPs you may connect to, you may do the following:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+{{#include ../../snippets/rust/src/connecting_lsp.rs:list-lsps}}
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift,ignore
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ConnectingLsp.swift:list-lsps}}
+```
+</section>
+
+<div slot="title">Kotlin</div>
+<section>
+
+```kotlin,ignore
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ConnectingLsp.kt:list-lsps}}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+{{#include ../../snippets/react-native/connecting_lsp.ts:list-lsps}}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart,ignore
+{{#include ../../snippets/dart_snippets/lib/connecting_lsp.dart:list-lsps}}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python,ignore
+{{#include ../../snippets/python/src/connecting_lsp.py:list-lsps}}
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go,ignore
+{{#include ../../snippets/go/connecting_lsp.go:list-lsps}}
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
+
+```cs,ignore
+{{#include ../../snippets/csharp/ConnectingLsp.cs:list-lsps}}
+```
+</section>
+</custom-tabs>
+
+When you have selected an LSP you may then connect to it:
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>

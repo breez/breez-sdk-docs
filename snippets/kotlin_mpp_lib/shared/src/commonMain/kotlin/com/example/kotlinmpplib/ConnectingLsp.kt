@@ -17,6 +17,15 @@ class ConnectingLsp {
         // ANCHOR_END: get-lsp-info
     }
 
+    fun list_lsps(sdk: BlockingBreezServices) {
+        // ANCHOR: list-lsps
+        try {
+            let availableLsps = sdk.listLsps()
+        } catch (e: Exception) {
+            // Handle error
+        }
+        // ANCHOR_END: list-lsps
+    }
     fun connect_lsp(sdk: BlockingBreezServices, lspId: String) {
         // ANCHOR: connect-lsp
         try {
