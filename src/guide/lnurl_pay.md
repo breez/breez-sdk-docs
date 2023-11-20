@@ -15,22 +15,7 @@
 <section>
 
 ```swift,ignore
-// Endpoint can also be of the form:
-// lnurlp://domain.com/lnurl-pay?key=val
-// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
-let lnurlPayUrl = "lightning@address.com";
-do {
-    let inputType = try parseInput(s: lnurlPayUrl)
-    if case .lnUrlPay(let data) = inputType {
-        let amountMsat = data.minSendable;
-        try sdk.payLnurl(req: LnUrlPayRequest(
-            data: data, 
-            amountMsat: amountMsat, 
-            comment: "comment"))
-    }
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/LnurlPay.swift:lnurl-pay}}
 ```
 </section>
 
@@ -38,20 +23,7 @@ do {
 <section>
 
 ```kotlin,ignore
-// Endpoint can also be of the form:
-// lnurlp://domain.com/lnurl-pay?key=val
-// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
-val lnurlPayUrl = "lightning@address.com";
-try {
-    val inputType = parseInput(lnurlPayUrl)
-    if (inputType is InputType.LnUrlPay) {
-        val requestData = inputType.data
-        val amountMsat = requestData.minSendable
-        sdk.payLnurl(LnUrlPayRequest(requestData, amountMsat, "comment"))
-    }
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/LnurlPay.kt:lnurl-pay}}
 ```
 </section>
 
@@ -75,22 +47,7 @@ try {
 <section>
 
 ```python,ignore
-# Endpoint can also be of the form:
-# lnurlp://domain.com/lnurl-pay?key=val
-# lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
-lnurl_pay_url = "lightning@address.com"
-
-try: 
-    parsed_input = breez_sdk.parse_input(lnurl_pay_url)
-    if isinstance(parsed_input, breez_sdk.InputType.LN_URL_PAY):
-        amount_msat = parsed_input.data.min_sendable
-        result = sdk_service.pay_lnurl(
-            breez_sdk.LnUrlPayRequest(
-                data=parsed_input.data, 
-                amount_msat=amount_msat, 
-                comment="comment"))
-except Exception as error:
-      # Handle error
+{{#include ../../snippets/python/src/lnurl_pay.py:lnurl-pay}}
 ```
 </section>
 

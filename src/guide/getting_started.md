@@ -51,30 +51,7 @@ Now you are ready to interact with the SDK.
 <section>
 
 ```swift,ignore
-// SDK events listener
-class SDKListener: EventListener {
-  func onEvent(e: BreezEvent) {
-    print("received event ", e)
-  }
-}
-
-// Create the default config
-let seed = try mnemonicToSeed(phrase: "<mnemonic words>")
-let inviteCode = "<invite code>"
-let apiKey = "<api key>"
-let config = breez_sdk.defaultConfig(envType: EnvironmentType.production, apiKey: apiKey, 
-    nodeConfig: NodeConfig.greenlight(
-        config: GreenlightNodeConfig(partnerCredentials: nil, inviteCode: inviteCode)));    
-
-// Customize the config object according to your needs
-config.workingDir = "path to an existing directory"
-
-do {
-  // Connect to the Breez SDK make it ready for use
-  let sdk = try connect(config: config, seed: seed, listener: SDKListener());        
-} catch{
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/GettingStarted.swift:init-sdk}}
 ```
 
 </section>
@@ -83,32 +60,7 @@ do {
 <section>
 
 ```kotlin,ignore
-// SDK events listener
-class SDKListener : EventListener {
-    override fun onEvent(e: BreezEvent) {
-        Log.v("SDKListener", "Received event $e")
-    }
-}
-
-// Select your seed, invite code and eviroment
-val seed = mnemonicToSeed("<mnemonic words>")
-val inviteCode = "<invite code>"
-val apiKey = "<api key>"
-
-// Create the default config
-val greenlightNodeConfig = GreenlightNodeConfig(null, inviteCode)
-val nodeConfig = NodeConfig.Greenlight(greenlightNodeConfig)
-val config = defaultConfig(EnvironmentType.PRODUCTION, apiKey, nodeConfig)
-
-// Customize the config object according to your needs
-config.workingDir = "path to an existing directory"
-
-try {
-    // Connect to the Breez SDK make it ready for use
-    val sdk = connect(config, seed, SDKListener())
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/GettingStarted.kt:init-sdk}}
 ```
 
 </section>
@@ -134,26 +86,7 @@ try {
 <section>
 
 ```python,ignore
-# SDK events listener
-class SDKListener(breez_sdk.EventListener):
-   def on_event(self, event):
-      print(event)
-
-# Create the default config
-seed = mnemonic_to_seed("<mnemonic words>")
-invite_code = "<invite code>"
-api_key = "<api key>"
-config = breez_sdk.default_config(breez_sdk.EnvironmentType.PRODUCTION, apiKey,  
-    breez_sdk.NodeConfig.GREENLIGHT(breez_sdk.GreenlightNodeConfig(None, invite_code)))
-
-# Customize the config object according to your needs
-config.working_dir = "path to an existing directory"
-
-try:
-    # Connect to the Breez SDK make it ready for use
-    sdk_services = breez_sdk.connect(config, seed, SDKListener())    
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python/src/getting_started.py:init-sdk}}
 ```
 </section>
 
@@ -189,13 +122,7 @@ At any point we can fetch our balance from the Greenlight node:
 <section>
 
 ```swift,ignore
-do {
-  let nodeInfo = try sdk.nodeInfo()
-  let lnBalance = nodeInfo?.channelsBalanceMsat
-  let onchainBalance = nodeInfo?.onchainBalanceMsat
-} catch {
-  // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/GettingStarted.swift:fetch-balance}}
 ```
 </section>
 
@@ -203,13 +130,7 @@ do {
 <section>
 
 ```kotlin,ignore
-try {
-    val nodeInfo = sdk.nodeInfo()
-    val lnBalance = nodeInfo?.channelsBalanceMsat
-    val onchainBalance = nodeInfo?.onchainBalanceMsat
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/GettingStarted.kt:fetch-balance}}
 ```
 </section>
 
@@ -233,12 +154,7 @@ try {
 <section>
 
 ```python,ignore
-try: 
-    node_info = node_info()
-    ln_balance = node_info.channels_balance_msat
-    onchain_balance = node_info.onchain_balance_msat
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python/src/getting_started.py:fetch-balance}}
 ```
 </section>
 

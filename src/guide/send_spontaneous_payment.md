@@ -15,15 +15,7 @@ They can even be spontaneous payments to a node without a bolt11 invoice.
 <section>
 
 ```swift,ignore
-let nodeId = "...";
-do {
-    let response = try sdk.sendSpontaneousPayment(
-        req: SendSpontaneousPaymentRequest(
-            nodeId: "...",
-            amountMsat: 3000000))
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendSpontaneous.swift:send-spontaneous-payment}}
 ```
 </section>
 
@@ -31,14 +23,7 @@ do {
 <section>
 
 ```kotlin,ignore
-val nodeId = "..."
-val amountMsat = 3000000L.toULong()
-try {
-    val response = sdk.sendSpontaneousPayment(
-        SendSpontaneousPaymentRequest(nodeId, amountMsat))
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendSpontaneousPayment.kt:send-spontaneous-payment}}
 ```
 </section>
 
@@ -62,13 +47,7 @@ try {
 <section>
 
 ```python,ignore
-try:
-    sdk_services.send_spontaneous_payment(
-        breez_sdk.SendSpontaneousPaymentRequest(
-            node_id="...", 
-            amount_msat=3000000))
-except Exception as error:
-  # Handle error
+{{#include ../../snippets/python/src/send_spontaneous_payment.py:send-spontaneous-payment}}
 ```
 </section>
 

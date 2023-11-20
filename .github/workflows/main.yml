@@ -38,7 +38,7 @@ jobs:
       repository: breez/breez-sdk
       ref: ${{ needs.setup.outputs.sdk-ref }}
       package-version: ${{ needs.setup.outputs.package-version }}
-      packages-to-publish: '["csharp", "flutter", "golang"]'
+      packages-to-publish: '["csharp", "flutter", "golang", "react-native", "python"]'
       use-dummy-binaries: true
 
   check-rust:
@@ -156,6 +156,39 @@ jobs:
       - name: Build the csharp project
         working-directory: snippets/csharp
         run: dotnet build
+
+  check-react-native:
+    needs: 
+      - setup
+      - build-packages
+    name: Check react native snippets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
+      - name: Download archived package
+        uses: actions/download-artifact@v3
+        with:
+          name: react-native-${{ needs.setup.outputs.package-version }}
+          path: snippets/react-native/packages
+
+      - name: Install dependencies
+        working-directory: snippets/react-native
+        run: yarn
+
+      - name: Check syntax
+        working-directory: snippets/react-native
+        run: tsc
+
+      - name: Check formatting
+        working-directory: snippets/react-native 
+        run: yarn run lint
   
   check-golang:
     needs:
@@ -199,7 +232,81 @@ jobs:
         run: |
           go get
           go build .
+
+  check-python:
+    needs:
+      - build-packages
+    name: Check Python snippets
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+  
+      - name: Download archived package
+        uses: actions/download-artifact@v3
+        with:
+          name: python-wheel-3.8-manylinux_2_31_x86_64
+          path: snippets/python/packages
     
+      - name: Install dependencies
+        working-directory: snippets/python
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff
+          whlfile=$(ls packages | grep .whl)
+          pip install "packages/$whlfile"
+
+      - name: Check python formatting
+        working-directory: snippets/python/src
+        run: ruff --ignore F841 --ignore F401 --output-format=github .
+
+      - name: Check python syntax
+        working-directory: snippets/python
+        run: python3 -m compileall src
+
+  check-swift:
+    
+    name: Check Swift snippets
+    runs-on: macos-13
+      
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Set up Swift
+      uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: "5"
+          
+    - name: Build
+      working-directory: snippets/swift/BreezSDKExamples
+      run: |
+            swift build
+
+  check-kotlin:
+    needs: setup
+    name: Check kotlin MPP snippets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: "temurin"
+          java-version: 17
+
+      - name: Compile Kotlin
+        working-directory: snippets/kotlin_mpp_lib
+        run: |
+          ./gradlew build
+
+      
   build:
     name: Build mdbook
     runs-on: ubuntu-latest

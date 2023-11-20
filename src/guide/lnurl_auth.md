@@ -14,24 +14,7 @@
 <section>
 
 ```swift,ignore
-// Endpoint can also be of the form:
-// keyauth://domain.com/auth?key=val
-let lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu"
-
-do {
- let inputType = try parseInput(s: lnurlAuthUrl)
- if case .lnUrlAuth(let data) = inputType {
-   let result = try sdk.lnurlAuth(reqData: data)
-   switch result {
-   case .ok:
-     print("Successfully authenticated")
-   case .errorStatus(let data):
-     print("Failed to authenticate")
-   }
- }
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/LnurlAuth.swift:lnurl-withdraw}}
 ```
 </section>
 
@@ -39,21 +22,7 @@ do {
 <section>
 
 ```kotlin,ignore
-// Endpoint can also be of the form:
-// keyauth://domain.com/auth?key=val
-// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7…
-val lnurlAuthUrl = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7…"
-try {
-    val inputType = parseInput(lnurlPayUrl)
-    if (inputType is InputType.LnUrlAuth) {
-        when (val result = sdk.lnurlAuth(inputType.data)) {
-            LnUrlCallbackStatus.Ok -> Log.v("Breez", "Successfully authenticated")
-            is LnUrlCallbackStatus.ErrorStatus -> Log.v("Breez", "Failed to authenticate: ${result.data.reason}")
-        }
-    }
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/LnurlAuth.kt:lnurl-auth}}
 ```
 </section>
 
@@ -77,20 +46,7 @@ try {
 <section>
 
 ```python,ignore
-# Endpoint can also be of the form:
-# keyauth://domain.com/auth?key=val
-lnurl_auth_url = "lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttvdankjm3lw3skw0tvdankjm3xdvcn6vtp8q6n2dfsx5mrjwtrxdjnqvtzv56rzcnyv3jrxv3sxqmkyenrvv6kve3exv6nqdtyv43nqcmzvdsnvdrzx33rsenxx5unqc3cxgeqgntfgu"
-
-try:
-    parsed_input = breez_sdk.parse_input(lnurl_auth_url)     
-    if isinstance(parsed_input, breez_sdk.InputType.LN_URL_AUTH):         
-        result = sdk_services.lnurl_auth(parsed_input.data)        
-        if result.is_ok():
-            print("Successfully authenticated")
-        else:
-            print("Failed to authenticate")
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python/src/lnurl_auth.py:lnurl-auth}}
 ```
 </section>
 

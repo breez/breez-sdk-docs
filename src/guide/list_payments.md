@@ -15,11 +15,7 @@ To view your payment history you can list and filter all the sent and received p
 <section>
 
 ```swift,ignore
-do {
-    let payments = try sdk.listPayments(req: ListPaymentsRequest(filter: PaymentTypeFilter.all))
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ListPayments.swift:list-payments}}
 ```
 </section>
 
@@ -27,11 +23,7 @@ do {
 <section>
 
 ```kotlin,ignore
-try {
-    val payments = sdk.listPayments(ListPaymentsRequest(PaymentTypeFilter.ALL))
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ListPayments.kt:list-payments}}
 ```
 </section>
 
@@ -55,10 +47,7 @@ try {
 <section>
 
 ```python,ignore
-try:
-  sdk_services.list_payments(breez_sdk.ListPaymentsRequest(breez_sdk.PaymentTypeFilter.All))
-except Exception as error:
-  # Handle error
+{{#include ../../snippets/python/src/list_payments.py:list-payments}}
 ```
 </section>
 
@@ -94,17 +83,7 @@ You can optionally filter payments by timestamp and include failed payments.
 <section>
 
 ```swift,ignore
-do {
-    let payments = try sdk.listPayments(
-        req: ListPaymentsRequest(
-            filter: PaymentTypeFilter.sent,
-            fromTimestamp: 1696880000,
-            includeFailures: true,
-        )
-    )
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ListPayments.swift:list-payments-filtered}}
 ```
 </section>
 
@@ -112,11 +91,7 @@ do {
 <section>
 
 ```kotlin,ignore
-try {
-    val payments = sdk.listPayments(ListPaymentsRequest(PaymentTypeFilter.SENT, fromTimestamp = 1696880000, includeFailures = true))
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ListPayments.kt:list-payments-filtered}}
 ```
 </section>
 
@@ -140,14 +115,7 @@ try {
 <section>
 
 ```python,ignore
-try:
-  sdk_services.list_payments(
-    breez_sdk.ListPaymentsRequest(
-        breez_sdk.PaymentTypeFilter.Sent, 
-        from_timestamp = 1696880000, 
-        include_failures = True))
-except Exception as error:
-  # Handle error
+{{#include ../../snippets/python/src/list_payments.py:list-payments-filtered}}
 ```
 </section>
 

@@ -17,14 +17,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```swift,ignore
-let sendAmountSat:UInt64? = 50000
-try {
-  let currentFees = try sdk.fetchReverseSwapFees(
-      req: ReverseSwapFeesRequest(sendAmountSat: sendAmountSat))
-  print("Total estimated fees for reverse swap: \(currentFees.totalEstimatedFees)")
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -32,12 +25,7 @@ try {
 <section>
 
 ```kotlin,ignore
-try {
-    val fees = sdk.fetchReverseSwapFees(ReverseSwapFeesRequest(50000))
-    Log.v("Breez", "Total estimated fees for reverse swap: ${fees.totalEstimatedFees}")
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -61,12 +49,7 @@ try {
 <section>
 
 ```python,ignore
-try: 
-    current_fees = sdk_services.fetch_reverse_swap_fees(
-        breez_sdk.ReverseSwapFeesRequest(send_amount_sat=50000))
-    print("Total estimated fees for reverseswap: ", current_fees.total_estimated_fees)
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python/src/send_onchain.py:estimate-current-reverse-swap-total-fees}}
 ```
 </section>
 
@@ -106,8 +89,7 @@ Fetching the fees also tells you what is the range of amounts you can send:
 <section>
 
 ```swift,ignore
-println("Minimum amount, in sats: \(current_fees.min)")
-println("Maximum amount, in sats: \(current_fees.max)")
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -115,8 +97,7 @@ println("Maximum amount, in sats: \(current_fees.max)")
 <section>
 
 ```kotlin,ignore
-Log.v("Breez", "Minimum amount, in sats: ${fees.min}")
-Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -140,8 +121,7 @@ Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
 <section>
 
 ```python,ignore
-print("Minimum amount, in sats: ", current_fees.min)
-print("Maximum amount, in sats: ", current_fees.max)
+{{#include ../../snippets/python/src/send_onchain.py:get-current-reverse-swap-min-max}}
 ```
 </section>
 
@@ -177,18 +157,7 @@ Once you checked the fees are acceptable, you can start the reverse swap:
 <section>
 
 ```swift,ignore
-let destinationAddress = "bc1.."
-let amountSat = currentFees.min
-let satPerVbyte = <fee rate>
-try {
-  try sdk.sendOnchain(
-    amountSat: amountSat,
-    onchainRecipientAddress: destinationAddress, 
-    pairHash: currentFees.feesHash,
-    satPerVbyte: satPerVbyte)
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:start-reverse-swap}}
 ```
 </section>
 
@@ -196,14 +165,7 @@ try {
 <section>
 
 ```kotlin,ignore
-val address = "bc1.."
-val amountSat = 123L.toULong()
-val satPerVbyte = 1L.toULong()
-try {
-    sdk.sendOnchain(amountSat, address, fees.feesHash, satPerVbyte)
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:start-reverse-swap}}
 ```
 </section>
 
@@ -227,16 +189,7 @@ try {
 <section>
 
 ```python,ignore
-destination_address = "bc1.."
-amount_sat = 50000
-sat_per_vbyte = 5
-try:
-  sdk_services.send_onchain(amount_sat=amount_sat,
-                            onchain_recipient_address=destination_address,
-                            pair_hash=current_fees.fee_hash,
-                            sat_per_vbyte=sat_per_vbyte)
-except Exception as error:
-  # Handle erorr
+{{#include ../../snippets/python/src/send_onchain.py:start-reverse-swap}}
 ```
 </section>
 
@@ -276,9 +229,7 @@ You can check its status with:
 <section>
 
 ```swift,ignore
-for rs in sdk.inProgressReverseSwaps() {
-  println("Reverse swap \(rs.id) in progress, status is \(rs.status)")
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:check-reverse-swaps-status}}
 ```
 </section>
 
@@ -286,9 +237,7 @@ for rs in sdk.inProgressReverseSwaps() {
 <section>
 
 ```kotlin,ignore
-for (rs in sdk.inProgressReverseSwaps()) {
-    Log.v("Breez", "Reverse swap ${rs.id} in progress, status is ${rs.status}")
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:check-reverse-swaps-status}}
 ```
 </section>
 
@@ -312,12 +261,7 @@ for (rs in sdk.inProgressReverseSwaps()) {
 <section>
 
 ```python,ignore
-try: 
-  reverse_swaps = sdk_services.in_progress_reverse_swaps()
-  for rs in reverse_swaps:
-    print("Reverse swap ",rs.id , " in progress, status is ", rs.status)
-except Exception as error:
-  # Handle erorr
+{{#include ../../snippets/python/src/send_onchain.py:check-reverse-swaps-status}}
 ```
 </section>
 

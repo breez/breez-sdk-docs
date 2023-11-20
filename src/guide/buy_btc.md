@@ -20,12 +20,7 @@ Once the buy is completed, the provider will transfer the Bitcoin to the generat
 <section>
 
 ```swift,ignore
-do {
-  let buyBitcoinResponse = try sdk.buyBitcoin(
-    req: BuyBitcoinRequest(provider: .moonpay))
-} catch {
-  // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/BuyBtc.swift:buy-btc}}
 ```
 </section>
 
@@ -33,16 +28,7 @@ do {
 <section>
 
 ```kotlin,ignore
-try {
-    // Choose your provider
-    val provider = BuyBitcoinProvider.MOONPAY
-    // request the url to proceed with the Bitcoin acquisition
-    val url = sdk.buyBitcoin(BuyBitcoinRequest(provider)).url
-    // Opens the url in the browser to buy on provider's site
-    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
-} catch (e: Exception) {
-    // Handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/BuyBtc.kt:buy-btc}}
 ```
 </section>
 
@@ -65,13 +51,8 @@ try {
 <div slot="title">Python</div>
 <section>
 
-```python,ignore
-try:
-    buy_bitcoin_resp = sdk_services.buy_bitcoin(
-        breez_sdk.BuyBitcoinRequest(
-            breez_sdk.BuyBitcoinProvider.MOONPAY))
-except Exception as error:
-    # Handle error
+```python,ignore 
+{{#include ../../snippets/python/src/buy_btc.py:buy-btc}}
 ```
 </section>
 

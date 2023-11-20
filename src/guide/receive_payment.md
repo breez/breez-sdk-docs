@@ -16,14 +16,7 @@ The Breez SDK automatically connects your node to the LSP peer and you can now r
 <section>
 
 ```swift,ignore
-do {
-  let invoice = try sdk.receivePayment(
-    req: ReceivePaymentRequest(
-        amountMsat: 3_000_000, 
-        description: "Invoice for 3000 sats"))
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceivePayment.swift:receive-payment}}
 ```
 </section>
 
@@ -31,14 +24,7 @@ do {
 <section>
 
 ```kotlin,ignore
-try {
-    val invoice = sdk.receivePayment(ReceivePaymentRequest(
-        3_000_000L.toULong(),
-        "Invoice for 3000 sats",
-    ))
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceivePayment.kt:receive-payment}}
 ```
 </section>
 
@@ -62,13 +48,7 @@ try {
 <section>
 
 ```python,ignore
-try:
-  receive_payment_response = sdk_services.receive_payment(
-    breez_sdk.ReceivePaymentRequest(
-        amount_msat=3_000_000,
-        description="Invoice for 3000 sats"))
-except Exception as error:
-  # Handle error
+{{#include ../../snippets/python/src/receive_payment.py:receive-payment}}
 ```
 </section>
 

@@ -5,14 +5,25 @@
     "main": "index.ts",
     "license": "MIT",
     "scripts": {
-        "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+        "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+        "format": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+        "compile": "tsc"
     },
     "dependencies": {
-        "@breeztech/react-native-breez-sdk": "0.2.9",
+        "@breeztech/react-native-breez-sdk": "file:./packages/sdk-react-native.tgz",
         "react": "18.1.0",
         "react-native": "0.70.6"
     },
     "devDependencies": {
-        "tsx": "^3.12.7"
+        "@typescript-eslint/eslint-plugin": "^6.4.0",
+        "@typescript-eslint/parser": "^6.10.0",
+        "eslint": "^8.0.1",
+        "eslint-config-standard-with-typescript": "^39.1.1",
+        "eslint-plugin-import": "^2.25.2",
+        "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+        "eslint-plugin-promise": "^6.0.0",
+        "eslint-plugin-react": "^7.33.2",
+        "tsx": "^3.12.7",
+        "typescript": "*"
     }
 }

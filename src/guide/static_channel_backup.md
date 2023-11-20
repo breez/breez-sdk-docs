@@ -21,11 +21,7 @@ In order to use the recoverchannel method, the user needs to provide the static 
 <section>
 
 ```swift,ignore
-do {
-    let backupData = breez_sdk.staticBackup(request: StaticBackupRequest(workingDir: "<working directory>"));
-} catch{
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/StaticChannelBackup.swift:static-channel-backup}}
 ```
 
 </section>
@@ -34,11 +30,7 @@ do {
 <section>
 
 ```kotlin,ignore
-try {
-    val backupData = staticBackup(StaticBackupRequest("<working directory>"))
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/StaticChannelBackup.kt:static-channel-backup}}
 ```
 
 </section>
@@ -64,10 +56,7 @@ try {
 <section>
 
 ```python,ignore
-try:
-    backup_data = breez_sdk.static_backup(breez_sdk.StaticBackupRequest(working_dir="<working directory>"))
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python/src/static_channel_backup.py:static-channel-backup}}
 ```
 </section>
 

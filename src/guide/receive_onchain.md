@@ -18,14 +18,7 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 <section>
 
 ```swift,ignore
-do {
-  let swapInfo = try sdk.receiveOnchain(req: ReceiveOnchainRequest())
-
-  // Send your funds to the bellow bitcoin address
-  let address = swapInfo.bitcoinAddress;
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceiveOnchain.swift:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -33,13 +26,7 @@ do {
 <section>
 
 ```kotlin,ignore
-try {
-    val swapInfo = sdk.receiveOnchain(ReceiveOnchainRequest())
-    // Send your funds to the bellow bitcoin address
-    val address = swapInfo.bitcoinAddress
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceiveOnchain.kt:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -63,13 +50,7 @@ try {
 <section>
 
 ```python,ignore
-try: 
-    swap_info = sdk_services.receive_onchain(breez_sdk.ReceiveOnchainRequest())
-
-    # Send your funds to the below bitcoin address
-    address = swap_info.bitcoin_address
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python/src/receive_onchain.py:generate-receive-onchain-address}}
 ```
 </section>
 
@@ -105,11 +86,7 @@ Once you've sent the funds to the above address, the SDK will monitor this addre
 <section>
 
 ```swift,ignore
-do {
-  let swapInfo = try sdk.inProgressSwap()
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceiveOnchain.swift:in-progress-swap}}
 ```
 </section>
 
@@ -117,11 +94,7 @@ do {
 <section>
 
 ```kotlin,ignore
-try {
-    val swapInfo = sdk.inProgressSwap()
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceiveOnchain.kt:in-progress-swap}}
 ```
 </section>
 
@@ -145,10 +118,7 @@ try {
 <section>
 
 ```python,ignore
-try:
-    swap_info = sdk_services.in_progress_swap()
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python/src/receive_onchain.py:in-progress-swap}}
 ```
 </section>
 
@@ -190,11 +160,7 @@ In order to execute a refund, you need to supply an on-chain address to where th
 <section>
 
 ```swift,ignore
-do {
-  let refundables = try sdk.listRefundables()
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceiveOnchain.swift:list-refundables}}
 ```
 </section>
 
@@ -202,11 +168,7 @@ do {
 <section>
 
 ```kotlin,ignore
-try {
-    val refundables = sdk.listRefundables()
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceiveOnchain.kt:list-refundables}}
 ```
 </section>
 
@@ -230,10 +192,7 @@ try {
 <section>
 
 ```python,ignore
-try:
-    refundables = sdk_services.list_refundables()
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python/src/receive_onchain.py:list-refundables}}
 ```
 </section>
 
@@ -269,17 +228,7 @@ Once you have a refundable swap in hand, use the following code to execute a ref
 <section>
 
 ```swift,ignore
-let destinationAddress = "..."
-let satPerVbyte = <refund tx fee rate>
-
-do {
-  try sdk.refund(
-      swapAddress: refundable?.bitcoinAddress, 
-      toAddress: "...", 
-      satPerVbyte: satPerVbyte)
-} catch {
-    // handle error
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceiveOnchain.swift:execute-refund}}
 ```
 </section>
 
@@ -287,14 +236,7 @@ do {
 <section>
 
 ```kotlin,ignore
-val swapAddress = "..."
-val destinationAddress = "..."
-val satPerVbyte = 1.toUInt()
-try {
-    sdk.refund(swapAddress, destinationAddress, satPerVbyte)
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceiveOnchain.kt:execute-refund}}
 ```
 </section>
 
@@ -318,15 +260,7 @@ try {
 <section>
 
 ```python,ignore
-destination_address = "..."
-sat_per_vbyte = 5
-
-try:
-    result = sdk_services.refund(swap_address=refundable.bitcoin_address,
-                                 to_address=destination_address,
-                                 sat_per_vbyte=sat_per_vbyte)
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python/src/receive_onchain.py:execute-refund}}
 ```
 </section>
 
@@ -366,13 +300,7 @@ To calculate the fees for a channel being opened by the LSP:
 <section>
 
 ```swift,ignore 
-let amountMsat = <amount msat>
-do {
-    let channelFees = try sdk.openChannelFee(
-        req: OpenChannelFeeRequest(amountMsat: amountMsat))
-} catch {
-    // Handle error 
-}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/ReceiveOnchain.swift:get-channel-opening-fees}}
 ```
 </section>
 
@@ -380,7 +308,7 @@ do {
 <section>
 
 ```kotlin,ignore
-// TODO add example for openChannelFee
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/ReceiveOnchain.kt:get-channel-opening-fees}}
 ```
 </section>
 
@@ -404,13 +332,7 @@ do {
 <section>
 
 ```python,ignore
-amount_msat = <amount msats>
-try:
-    channel_fees = sdk_services.open_channel_fee(
-        breez_sdk.OpenChannelFeeRequest(
-            amount_msat=amount_msat))
-except Exception as error:
-    # Handle error
+{{#include ../../snippets/python/src/receive_onchain.py:get-channel-opening-fees}}
 ```
 </section>
 

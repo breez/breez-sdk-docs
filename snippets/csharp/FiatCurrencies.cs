@@ -29,11 +29,4 @@ public class FiatCurrenciesSnippets
         }
         // ANCHOR_END: fetch-fiat-rates
     }
-
-    public void GetFiatCurrenciesAndRates(BlockingBreezServices sdk)
-    {
-        // ANCHOR: get-fiat-currencies-and-rates
-        // TODO
-        // ANCHOR_END: get-fiat-currencies-and-rates
-    }
 }
