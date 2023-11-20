@@ -23,16 +23,7 @@ Once you have outbound liquidity you can start sending payments too.
 <section>
 
 ```kotlin,ignore
-val bolt11 = "..."
-try {
-    // The `amountMsat` param is optional and should only passed if the bolt11 doesn't specify an amount.
-    // The amountMsat is required in case an amount is not specified in the bolt11 invoice'.
-    val amountMsat = 3000000L.toULong()
-    val req = SendPaymentRequest(bolt11, amountMsat)
-    val response = sdk.sendPayment(req)
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendPayment.kt:send-payment}}
 ```
 </section>
 

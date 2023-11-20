@@ -19,9 +19,3 @@ func FetchFiatRates() {
 	}
 	// ANCHOR_END: fetch-fiat-rates
 }
-
-func GetFiatCurrenciesAndRates() {
-	// ANCHOR: get-fiat-currencies-and-rates
-	// TODO
-	// ANCHOR_END: get-fiat-currencies-and-rates
-}

@@ -30,11 +30,7 @@ In order to use the recoverchannel method, the user needs to provide the static 
 <section>
 
 ```kotlin,ignore
-try {
-    val backupData = staticBackup(StaticBackupRequest("<working directory>"))
-} catch (e: Exception) {
-    // handle error
-}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/StaticChannelBackup.kt:static-channel-backup}}
 ```
 
 </section>

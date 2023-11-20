@@ -14,9 +14,3 @@ const exampleFetchRates = async () => {
   const fiatRates = await fetchFiatRates()
   // ANCHOR_END: fetch-fiat-rates
 }
-
-const exampleListCurrenciesAndRates = async () => {
-  // ANCHOR: get-fiat-currencies-and-rates
-  // TODO
-  // ANCHOR_END: get-fiat-currencies-and-rates
-}

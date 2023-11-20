@@ -10,6 +10,15 @@ def get_lsp_info(sdk_services):
         print(error)
         raise
 
+def list_lsps(sdk_services):
+    try:
+        # ANCHOR: list-lsps
+        available_lsps = sdk_services.list_lsps()
+        # ANCHOR_END: list-lsps
+    except Exception as error:
+        print(error)
+        raise
+
 def connect_lsp(sdk_services,lsp_id):
     try:
         # ANCHOR: connect-lsp
