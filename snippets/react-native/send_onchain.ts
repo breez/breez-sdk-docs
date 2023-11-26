@@ -33,7 +33,6 @@ const maxAmount = async () => {
   // ANCHOR_END: max-reverse-swap-amount
 }
 
-
 const exampleSendOnchain = async (currentFees: ReverseSwapPairInfo) => {
   // ANCHOR: start-reverse-swap
   const onchainRecipientAddress = 'bc1..'
