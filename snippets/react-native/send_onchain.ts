@@ -23,7 +23,7 @@ const exampleListCurrentFees = (currentFees: ReverseSwapPairInfo) => {
   // ANCHOR_END: get-current-reverse-swap-min-max
 }
 
-const maxReverseSwapAmount = async () => {
+const maxAmount = async () => {
   // ANCHOR: max-reverse-swap-amount
   const maxAmount = await maxReverseSwapAmount()
 
