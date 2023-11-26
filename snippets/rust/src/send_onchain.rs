@@ -38,7 +38,7 @@ async fn max_reverse_swap_amount(sdk: Arc<BreezServices>) -> Result<()> {
 
     info!(
         "Max reverse swap amount: {:?}",
-        max_amount.totalSat
+        max_amount.total_sat
     );
     // ANCHOR_END: max-reverse-swap-amount
 

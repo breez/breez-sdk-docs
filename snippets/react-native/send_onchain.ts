@@ -2,7 +2,8 @@ import {
   type ReverseSwapPairInfo,
   fetchReverseSwapFees,
   inProgressReverseSwaps,
-  sendOnchain
+  sendOnchain,
+  maxReverseSwapAmount
 } from '@breeztech/react-native-breez-sdk'
 
 const exampleFetchReverseSwapFees = async () => {
