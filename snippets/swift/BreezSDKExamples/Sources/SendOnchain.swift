@@ -24,6 +24,14 @@ func ListCurrentFees(currentFees: ReverseSwapPairInfo) {
     // ANCHOR_END: get-current-reverse-swap-min-max
 }
 
+func MaxReverseSwapAmount(sdk: BlockingBreezServices) -> MaxReverseSwapAmountResponse? {
+    //  ANCHOR: max-reverse-swap-amount   
+    let maxAmount = try? sdk.MaxReverseSwapAmount()
+    print("Max reverse swap amount: \(String(describing: maxAmount?.totalSat))")
+    // ANCHOR_END: max-reverse-swap-amount
+    return maxAmount
+}
+
 func StartReverseSwap(sdk: BlockingBreezServices, currentFees: ReverseSwapPairInfo) -> SendOnchainResponse? {
     // ANCHOR: start-reverse-swap
     let destinationAddress = "bc1.."

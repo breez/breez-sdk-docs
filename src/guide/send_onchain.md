@@ -74,7 +74,7 @@ The reverse swap will involve two on-chain transactions, for which the mining fe
 automatically once the process is started, but the last two values above are these estimates to help you get a picture
 of the total costs.
 
-Fetching the fees also tells you what is the range of amounts you can send:
+Fetching the fees also tells you what is the range of amounts the service allows:
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
@@ -142,7 +142,75 @@ Fetching the fees also tells you what is the range of amounts you can send:
 </section>
 </custom-tabs>
 
-Once you checked the fees are acceptable, you can start the reverse swap:
+In case you want to drain your channels you need to know the maximum sendable amount to an on-chain address:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+{{#include ../../snippets/rust/src/send_onchain.rs:max-reverse-swap-amount}}
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift,ignore
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:max-reverse-swap-amount}}
+```
+</section>
+
+<div slot="title">Kotlin</div>
+<section>
+
+```kotlin,ignore
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:max-reverse-swap-amount}}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+{{#include ../../snippets/react-native/send_onchain.ts:max-reverse-swap-amount}}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart,ignore
+{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:max-reverse-swap-amount}}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python,ignore
+{{#include ../../snippets/python/src/send_onchain.py:max-reverse-swap-amount}}
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go,ignore
+{{#include ../../snippets/go/send_onchain.go:max-reverse-swap-amount}}
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
+
+```cs,ignore
+{{#include ../../snippets/csharp/SendOnchain.cs:max-reverse-swap-amount}}
+```
+</section>
+</custom-tabs>
+
+Once you decided about the amount and checked the fees are acceptable, you can start the reverse swap:
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
