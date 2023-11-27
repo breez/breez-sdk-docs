@@ -2,6 +2,7 @@
 
 You can send funds from the Breez SDK wallet to an on-chain address as follows.
 
+## Setting the fee
 First, fetch the current reverse swap fees:
 
 <custom-tabs category="lang">
@@ -142,7 +143,7 @@ Fetching the fees also tells you what is the range of amounts the service allows
 </section>
 </custom-tabs>
 
-## Send all funds 
+## Sending all funds 
 In case you want to drain your channels you need to know the maximum sendable amount to an on-chain address:
 
 <custom-tabs category="lang">
@@ -210,6 +211,8 @@ In case you want to drain your channels you need to know the maximum sendable am
 ```
 </section>
 </custom-tabs>
+
+## Executing the swap
 
 Once you decided about the amount and checked the fees are acceptable, you can start the reverse swap:
 
