@@ -1,8 +1,8 @@
 package com.example.kotlinmpplib
 
 import breez_sdk.*
-class ConnectingLsp {
-    fun getServiceStatus(sdk: BlockingBreezServices) {
+class ServiceStatus {
+    fun HealthCheckStatus(sdk: BlockingBreezServices) {
         // ANCHOR: health-check-status
         try {
             val healthCheck = sdk.serviceHealthCheck()
