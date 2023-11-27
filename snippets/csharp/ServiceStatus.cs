@@ -8,7 +8,7 @@ public class ServiceStatusSnippets
         try
         {
             var healthCheck = sdk.ServiceHealthCheck();
-            Console.WriteLine($"Current service status is: {currentFees.totalEstimatedFees}"); 
+            Console.WriteLine($"Current service status is: {healthCheck.status}"); 
         }
         catch (Exception)
         {
