@@ -9,9 +9,9 @@ const healthCheckStatus = async () => {
 
 const reportPaymentFailure = async () => {
   // ANCHOR: report-payment-failure
-  const paymentHash = "..."
+  const paymentHash = '...'
   await reportIssue({
-    type: ReportIssueRequestVariant.PAYMENT_FAILURE, 
+    type: ReportIssueRequestVariant.PAYMENT_FAILURE,
     data: { paymentHash }
   })
   // ANCHOR_END: report-payment-failure

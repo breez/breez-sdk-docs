@@ -11,6 +11,8 @@ Future<void> healthCheckStatus() async {
 Future<void> reportPaymentFailure() async {
   // ANCHOR: report-payment-failure
   String paymentHash = "...";
-  await BreezSDK().reportIssue(ReportIssueRequest.paymentFailure(paymentHash: paymentHash));
+  await BreezSDK().reportIssue(
+    req: ReportIssueRequest.paymentFailure(
+      data: ReportPaymentFailureDetails(paymentHash: paymentHash)));
   // ANCHOR_END: report-payment-failure
 }
