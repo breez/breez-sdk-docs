@@ -52,12 +52,10 @@ packages:
   breez_sdk:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "9629def110a9dd03413850a05e9709d3c9794b0d"
-      url: "https://github.com/breez/breez-sdk-flutter"
-    source: git
-    version: "0.2.9"
+      path: "packages/breez-sdk-flutter"
+      relative: true
+    source: path
+    version: "0.2.10"
   build:
     dependency: transitive
     description:
@@ -106,14 +104,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.2"
-  colorize:
-    dependency: transitive
-    description:
-      name: colorize
-      sha256: "584746cd6ba1cba0633b6720f494fe6f9601c4170f0666c1579d2aa2a61071ba"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0"
   convert:
     dependency: transitive
     description:
@@ -171,10 +161,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_rust_bridge
-      sha256: "8dcfeff9dcf0db9c76578c8805a337c0e5e21b4d96887eb1007b6fe141e15ea9"
+      sha256: ff90d5ddd0cda6d94ed048cc9c4a4d993d1a4bb11605d60a1282fc1bbf173c77
       url: "https://pub.dev"
     source: hosted
-    version: "1.75.2"
+    version: "1.80.1"
   freezed:
     dependency: transitive
     description:
@@ -331,10 +321,10 @@ packages:
     dependency: transitive
     description:
       name: petitparser
-      sha256: cb3798bef7fc021ac45b308f4b51208a152792445cce0448c9a4ba5879dd8750
+      sha256: eeb2d1428ee7f4170e2bd498827296a18d4e7fc462b71727d111c0ac7707cfa6
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.0"
+    version: "6.0.1"
   pointycastle:
     dependency: transitive
     description:
@@ -371,10 +361,10 @@ packages:
     dependency: transitive
     description:
       name: puppeteer
-      sha256: dd49117259867d0ce0de33ddd95628fb70cff94581a6432c08272447b8dd1d27
+      sha256: eedeaae6ec5d2e54f9ae22ab4d6b3dda2e8791c356cc783046d06c287ffe11d8
       url: "https://pub.dev"
     source: hosted
-    version: "2.24.0"
+    version: "3.6.0"
   rxdart:
     dependency: transitive
     description:
@@ -589,5 +579,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.1.0-185.0.dev <4.0.0"
-  flutter: ">=3.7.12"
+  dart: ">=3.1.0 <4.0.0"
+  flutter: ">=3.10.0"
