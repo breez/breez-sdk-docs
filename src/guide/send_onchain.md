@@ -142,6 +142,7 @@ Fetching the fees also tells you what is the range of amounts the service allows
 </section>
 </custom-tabs>
 
+## Send all funds 
 In case you want to drain your channels you need to know the maximum sendable amount to an on-chain address:
 
 <custom-tabs category="lang">
