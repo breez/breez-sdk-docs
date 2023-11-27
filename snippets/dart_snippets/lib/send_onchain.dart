@@ -17,6 +17,14 @@ void listCurrentFees({required ReverseSwapPairInfo currentFees}) {
   // ANCHOR_END: get-current-reverse-swap-min-max
 }
 
+Future<MaxReverseSwapAmountResponse> maxReverseSwapAmount() async {
+  // ANCHOR: max-reverse-swap-amount  
+  MaxReverseSwapAmountResponse maxAmount = await BreezSDK().maxReverseSwapAmount();
+  print("Max reverse swap amount: ${maxAmount.totalSat}");
+  // ANCHOR_END: max-reverse-swap-amount
+  return maxAmount;
+}
+
 Future<SendOnchainResponse> startReverseSwap({
   required int amountSat,
   required String onchainRecipientAddress,

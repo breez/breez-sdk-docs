@@ -25,6 +25,14 @@ func ListCurrentFees(currentFees breez_sdk.ReverseSwapPairInfo) {
 	// ANCHOR_END: get-current-reverse-swap-min-max
 }
 
+func MaxReverseSwapAmount() {
+	// ANCHOR: max-reverse-swap-amount
+	if maxAmount, err := sdk.MaxReverseSwapAmount(); err == nil {
+		log.Printf("Max reverse swap amount: %v", maxAmount.TotalSat)
+	}
+	// ANCHOR_END: max-reverse-swap-amount
+}
+
 func StartReverseSwap() {
 	// ANCHOR: start-reverse-swap
 	destinationAddress := "bc1.."

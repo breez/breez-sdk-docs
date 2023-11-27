@@ -18,6 +18,17 @@ def list_current_fees(current_fees):
     print("Maximum amount, in sats: ", current_fees.max)
     # ANCHOR_END: get-current-reverse-swap-min-max
 
+def max_reverse_swap_amount(sdk_services):
+    try: 
+        # ANCHOR: max-reverse-swap-amount     
+        max_amount = sdk_services.max_reverse_swap_amount()
+        print("Max reverse swap amount: ", max_amount.totalSat)
+        # ANCHOR_END: max-reverse-swap-amount
+        return max_amount
+    except Exception as error:
+        print(error)
+        raise
+
 def start_reverse_swap(sdk_services, current_fees,fee_rate):
     # ANCHOR: start-reverse-swap
     destination_address = "bc1.."

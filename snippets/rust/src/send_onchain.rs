@@ -30,6 +30,21 @@ async fn list_current_fees(current_fees: ReverseSwapPairInfo) -> Result<()> {
     Ok(())
 }
 
+async fn max_reverse_swap_amount(sdk: Arc<BreezServices>) -> Result<()> {
+    // ANCHOR: max-reverse-swap-amount
+    let max_amount = sdk
+        .max_reverse_swap_amount()
+        .await?;
+
+    info!(
+        "Max reverse swap amount: {:?}",
+        max_amount.total_sat
+    );
+    // ANCHOR_END: max-reverse-swap-amount
+
+    Ok(())
+}
+
 async fn start_reverse_swap(
     sdk: Arc<BreezServices>,
     current_fees: ReverseSwapPairInfo,

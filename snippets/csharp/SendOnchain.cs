@@ -28,6 +28,22 @@ public class SendOnchainSnippets
         // ANCHOR_END: get-current-reverse-swap-min-max
     }
 
+    public void MaxReverseSwapAmount(BlockingBreezServices sdk)
+    {
+        // ANCHOR: max-reverse-swap-amount
+        try
+        {
+            var maxAmountResponse = sdk.MaxReverseSwapAmount();
+            Console.WriteLine(
+                $"Max reverse swap amount {maxAmountResponse.totalSat}");
+        }
+        catch (Exception)
+        {
+            // Handle error
+        }
+        // ANCHOR_END: max-reverse-swap-amount
+    }
+
     public void StartReverseSwap(BlockingBreezServices sdk, ReverseSwapPairInfo currentFees, uint feeRate)
     {
         // ANCHOR: start-reverse-swap
