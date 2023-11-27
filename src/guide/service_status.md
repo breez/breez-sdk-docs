@@ -1,6 +1,6 @@
 # Health Check Status
 
-You can check the general health status of the services providered by the Breez SDK. 
+You can check the general health status of the services provided by the Breez SDK. 
 The response status will inform you if there is maintenance occurring, a service distruption or the services are operational.
 
 <custom-tabs category="lang">
