@@ -11,6 +11,7 @@ mod receive_payment;
 mod send_onchain;
 mod send_payment;
 mod send_spontaneous_payment;
+mod service_status;
 mod static_channel_backup;
 
 use anyhow::Result;

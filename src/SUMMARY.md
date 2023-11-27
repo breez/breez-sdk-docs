@@ -20,4 +20,5 @@
 - [Supporting fiat currencies](guide/fiat_currencies.md)
 - [Buy Bitcoin](guide/buy_btc.md)
 - [Static Channel Backup](guide/static_channel_backup.md)
+- [Service status](guide/service_status.md)
 - [Moving to production](guide/production.md)
