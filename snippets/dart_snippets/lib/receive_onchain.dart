@@ -7,7 +7,7 @@ Future<SwapInfo> generateReceiveOnchainAddress() async {
   SwapInfo swapInfo = await BreezSDK().receiveOnchain(req: req);
 
   // Send your funds to the below bitcoin address
-  final address = swapInfo.bitcoinAddress;
+  String address = swapInfo.bitcoinAddress;
   print(address);
   return swapInfo;
   // ANCHOR_END: generate-receive-onchain-address

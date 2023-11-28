@@ -8,11 +8,13 @@ Future<void> healthCheckStatus() async {
   // ANCHOR_END: health-check-status
 }
 
-Future<void> reportPaymentFailure() async {
+Future<void> reportPaymentFailure({required String paymentHash}) async {
   // ANCHOR: report-payment-failure
-  String paymentHash = "...";
-  await BreezSDK().reportIssue(
-    req: ReportIssueRequest.paymentFailure(
-      data: ReportPaymentFailureDetails(paymentHash: paymentHash)));
+  ReportIssueRequest req = ReportIssueRequest.paymentFailure(
+    data: ReportPaymentFailureDetails(
+      paymentHash: paymentHash,
+    ),
+  );
+  await BreezSDK().reportIssue(req: req);
   // ANCHOR_END: report-payment-failure
 }
