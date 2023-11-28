@@ -1,6 +1,5 @@
 # LNURL-Withdraw
 
-
 ## Usage
 
 <custom-tabs category="lang">

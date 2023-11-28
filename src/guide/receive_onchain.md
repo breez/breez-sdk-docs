@@ -1,4 +1,5 @@
-# Receiving an on-chain transaction (swap-in)
+# Receiving an On-Chain Transaction (Swap-In)
+
 There are cases when you have funds in some bitcoin address and you would like to send those to your lightning node.
 
 In such cases, the SDK might have to open a new channel, for which case you can specify an optional user-selected
