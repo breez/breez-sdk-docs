@@ -1,4 +1,6 @@
-# Health Check Status
+# Service Status
+
+## Health Check Status
 
 You can check the general health status of the services provided by the Breez SDK. 
 The response status will inform you if there is maintenance occurring, a service distruption or the services are operational.
@@ -69,7 +71,7 @@ The response status will inform you if there is maintenance occurring, a service
 </section>
 </custom-tabs>
 
-# Reporting a Payment Failure
+## Reporting a Payment Failure
 
 While attempting to send payments it may be that sometimes payment failures occur. Reporting these issues through the Breez SDK will help us to improve LSP routing.
 

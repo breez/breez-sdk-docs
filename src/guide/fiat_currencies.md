@@ -1,4 +1,4 @@
-# Supporting fiat currencies
+# Supporting Fiat Currencies
 
 You can get the full details of supported fiat currencies, such as symbols and localized names:
 

@@ -1,6 +1,7 @@
 # LNURL-Auth
 
 ## Usage
+
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
 <section>
