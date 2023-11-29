@@ -14,6 +14,8 @@ from src.fiat_currencies import list_supported_fiat_currencies, get_current_rate
 from src.lnurl_auth import auth
 from src.lnurl_pay import pay
 from src.lnurl_withdraw import withdraw
+from src.production import production_node_config
+from src.service_status import health_check_status, report_payment_failure
 import tempfile
 import os
 
@@ -80,7 +82,12 @@ def main():
    # lnurl withdraw 
    withdraw(sdk_services)
 
+   # moving to production
+   production_node_config()
 
+   # service status
+   health_check_status(sdk_services)
+   report_payment_failure(sdk_services)
 
    # use temp_dir, and remove when done:
    temp_dir.cleanup()
