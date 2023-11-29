@@ -12,7 +12,7 @@ func ProductionNodeConfig() breez_sdk.NodeConfig {
 	greenlightCredentials := breez_sdk.GreenlightCredentials{
 		DeviceKey:  deviceKey,
 		DeviceCert: deviceCert,
-	};
+	}
 
 	nodeConfig := breez_sdk.NodeConfigGreenlight{
 		Config: breez_sdk.GreenlightNodeConfig{

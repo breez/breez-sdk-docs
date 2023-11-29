@@ -6,8 +6,8 @@ import 'package:breez_sdk/bridge_generated.dart';
 NodeConfig productionNodeConfig() {
   // ANCHOR: moving-to-production
   // Read your Greenlight credentials from secure storage
-  Uint8List deviceKey = Uint8List();
-  Uint8List deviceCert = Uint8List();
+  Uint8List deviceKey = Uint8List(0);
+  Uint8List deviceCert = Uint8List(0);
   GreenlightCredentials greenlightCredentials = GreenlightCredentials(deviceKey, deviceCert);
 
   NodeConfig nodeConfig = NodeConfig.greenlight(
@@ -17,5 +17,5 @@ NodeConfig productionNodeConfig() {
     ),
   );
   // ANCHOR_END: moving-to-production
-  return nodeConfig
+  return nodeConfig;
 }
