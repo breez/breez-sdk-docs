@@ -72,6 +72,8 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 </section>
 </custom-tabs>
 
+## Get the in-progress Swap
+
 Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
 
 <custom-tabs category="lang">
@@ -146,6 +148,8 @@ The process of receiving funds via an on-chain address is trustless and uses a s
 1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
 2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
 
+## List refundable Swaps
+
 In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
 
 <custom-tabs category="lang">
@@ -213,6 +217,8 @@ In order to execute a refund, you need to supply an on-chain address to where th
 ```
 </section>
 </custom-tabs>
+
+## Refund a Swap
 
 Once you have a refundable swap in hand, use the following code to execute a refund:
 

@@ -107,6 +107,8 @@ Now you are ready to interact with the SDK.
 </section>
 </custom-tabs>
 
+## Getting the Node State
+
 At any point we can fetch our balance from the Greenlight node:
 
 <custom-tabs category="lang">
