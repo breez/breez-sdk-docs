@@ -212,7 +212,7 @@ In case you want to drain your channels you need to know the maximum sendable am
 </section>
 </custom-tabs>
 
-## Executing the swap
+## Executing the Swap
 
 Once you decided about the amount and checked the fees are acceptable, you can start the reverse swap:
 
@@ -285,6 +285,8 @@ Once you decided about the amount and checked the fees are acceptable, you can s
 Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
 This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
 is either settled or cancelled. This will happen automatically at the end of the reverse swap.
+
+## List in-progress Swaps
 
 You can check its status with:
 

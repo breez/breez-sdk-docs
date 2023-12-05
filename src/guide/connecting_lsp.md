@@ -1,5 +1,7 @@
 # Connecting to an LSP
 
+## Getting the current LSP Information
+
 Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
 
 <custom-tabs category="lang">
@@ -67,6 +69,8 @@ Based on the API key provided to the Breez SDK, a default LSP is selected for yo
 ```
 </section>
 </custom-tabs>
+
+## Listing available LSPs
 
 In order to list all available LSPs you may connect to, you may do the following:
 
@@ -136,6 +140,8 @@ In order to list all available LSPs you may connect to, you may do the following
 </section>
 </custom-tabs>
 
+## Switching to another LSP
+
 When you have selected an LSP you may then connect to it:
 
 <custom-tabs category="lang">
@@ -204,8 +210,7 @@ When you have selected an LSP you may then connect to it:
 </section>
 </custom-tabs>
 
-
-## Channel Opening Fees
+# Channel Opening Fees
 
 Some Breez SDK operations[^1] may need opening a new channel with the LSP. The SDK supports the LSP2 dynamic fees spec[^2],
 which describes how these channel opening fees are handled.
