@@ -1,15 +1,15 @@
 # Receiving Payment Notifications via Webhook in Breez SDK
 
 ## Overview
-The Breez SDK provides a robust feature for applications to receive real-time notifications for incoming payments over the Lightning Network. This is achieved through the use of webhooks. A webhook is a powerful tool that allows your application to be notified via a specified URL when a payment is received.
+The Breez SDK provides a robust feature for applications to receive real-time notifications for incoming payments over the Lightning Network. This is achieved through the use of webhooks. A webhook is a powerful tool that allows your application to be notified via a specified URL when a payment is about to be received.
 
 ## Setting Up the Webhook
-To utilize this feature, you need to set up a webhook that Breez can call when a payment is received.
+To utilize this feature, you need to set up a webhook that the LSP can call when a payment is received.
 
-## Step 1: Define Your Webhook URL
+### Step 1: Define Your Webhook URL
 First, you need to define the URL endpoint in your application that will handle incoming payment notifications. This URL should be capable of receiving POST requests.
 
-## Step 2: Register the Webhook with Breez
+### Step 2: Register the Webhook with Breez
 Next, register this URL with the Breez SDK. This step involves calling a specific SDK function.
 
 <custom-tabs category="lang">
@@ -23,7 +23,7 @@ Next, register this URL with the Breez SDK. This step involves calling a specifi
 </custom-tabs>
 
 ## Handling Incoming Notifications
-When a payment is received, Breez will send a POST request to your webhook URL. The request body will contain details about the payment.
+When a payment is received, the LSP will send a POST request to your webhook URL. The request body will contain details about the payment.
 
 ### Expected Webhook Payload
 The payment received webhook payload is json formatted and contains the following structure:
@@ -40,27 +40,27 @@ The payment received webhook payload is json formatted and contains the followin
 </section>
 
 ## Processing the Payload
-Processing the Payload is according to the application needs. One of the major use cases that can be handled via webhooks is receiving a payment in mobile app while the app is not running, or in short "offline receive"
+Processing of the Payload can be done according to the application's needs. One of the major use cases that can be handled via webhooks is receiving a payment in a mobile app while the app is not running, or in short "offline receive"
 
-## Webhook integration for "offline recieve"
-In the context of mobile applications using the Breez SDK for Lightning Network payments, a crucial architectural component involves the seamless flow of payment notifications to the user's mobile device. This process is facilitated through a Notification Delivery Service (NDS), acting as an intermediary. When a payment is made to a user, the LSP sends a notification to the NDS, configured with a specific webhook URL. The NDS then processes this information and dispatches a push notification to the intended mobile device, ensuring the user receives timely updates about incoming payments. This architecture necessitates vendors to set up and maintain their own NDS, tailored to handle and forward these notifications efficiently.
+## Webhook integration for "offline receive"
+In the context of mobile applications using the Breez SDK for Lightning Network payments, a crucial architectural component involves the seamless flow of payment notifications to the user's mobile device. This process is facilitated through a Notification Delivery Service (NDS) acting as an intermediary. When a payment is made to a user, the LSP sends a notification to the NDS configured with a specific webhook URL. The NDS then processes this information and dispatches a push notification to the intended mobile device, ensuring the user receives timely updates about incoming payments. This architecture necessitates vendors setting up and maintaining their own NDS, tailored to handle and forward these notifications efficiently.
 
-## Step 1: Run your own NDS
-As written above you will need to run your own NDS because NDS is configured to send push notifications to your app users, therefore configured with the required keys and certificates.
-If you don't want to write it from scratch you can use our running <a href="https://github.com/breez/notify">NDS</a>
+### Step 1: Run your own NDS
+As written above you will need to run your own NDS because the NDS is configured to send push notifications to your app users, therefore configured with the required keys and certificates.
+If you don't want to write it from scratch, you can use our own <a href="https://github.com/breez/notify">NDS</a> implementation.
 
-Our used NDS expects urls in the following format:
+Our NDS implementation expects URLs in the following format:
 <section><i>https://your-nds-service.com/notify?platform=<ios|android>&token=[PUSH_TOKEN]</i></section>
 
-Once the NDS received such request it will send a push notification to the matched device.
+Once the NDS has received such request it will send a push notification to the matched device.
 
-## Step 2: Obtain a mobile push token
+### Step 2: Obtain a mobile push token
 First, ensure that your mobile application is set up to receive push notifications and can generate a push token. This token uniquely identifies the device for push notifications.
 
 * For iOS, use Apple Push Notification Service (APNs) to get the token.
 * For Android, use Firebase Cloud Messaging (FCM) to obtain the token.
 
-## Step 3: Register the Webhook with Breez
+### Step 3: Register the Webhook with Breez
 Register the constructed URL with the Breez SDK By calling an SDK function.
 
 <custom-tabs category="lang">
@@ -92,7 +92,7 @@ For iOS, the app must use NotificationServiceExtension to process notifications 
 
 * Handle the Notification: After confirming the payment, handle the notification accordingly by updating the app's UI.
 
-As a reference implelentation see how we did it in c-breez wallet: <a href="https://github.com/breez/c-breez/blob/main/ios/Breez%20Notification%20Service%20Extension/NotificationService.swift">NotificationService.swift</a>
+As a reference implementation, see how we did it in c-breez wallet: <a href="https://github.com/breez/c-breez/blob/main/ios/Breez%20Notification%20Service%20Extension/NotificationService.swift">NotificationService.swift</a>
 
 ### Android Implementation Using WorkManager
 
