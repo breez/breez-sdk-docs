@@ -86,7 +86,7 @@ For iOS, the app must use NotificationServiceExtension to process notifications 
 
 * Wake Up the App: When a push notification is received, the NotificationServiceExtension will be triggered, waking up the app.
 
-* Connect with Breez SDK: Inside the extension, implement the logic to establish a connection with the Breez SDK to process the incoming payment.
+* Connect with Breez SDK: Inside the extension, implement the logic for establishing a connection with the Breez SDK to process the incoming payment.
 
 * Wait for Payment Completion: Once connected, the app should wait for completion status from the Breez SDK that the payment has been received.
 
