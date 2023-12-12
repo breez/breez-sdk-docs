@@ -14,6 +14,8 @@ func generateReceiveOnchainAddress(sdk: BlockingBreezServices) -> String? {
 
     // Send your funds to the bellow bitcoin address
     let address = swapInfo?.bitcoinAddress
+    print("Minimum amount allowed to deposit in sats: \(swapInfo.minAllowedDeposit)")
+    print("Maximum amount allowed to deposit in sats: \(swapInfo.maxAllowedDeposit)")
     // ANCHOR_END: generate-receive-onchain-address
     
     return address

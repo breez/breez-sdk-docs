@@ -12,6 +12,9 @@ func GenerateReceiveOnchainAddress() {
 		// Send your funds to the below bitcoin address
 		address := swapInfo.BitcoinAddress
 		log.Printf("%v", address)
+
+		log.Printf("Minimum amount allowed to deposit in sats: %v", swapInfo.minAllowedDeposit)
+		log.Printf("Maximum amount allowed to deposit in sats: %v", swapInfo.maxAllowedDeposit)
 	}
 	// ANCHOR_END: generate-receive-onchain-address
 }

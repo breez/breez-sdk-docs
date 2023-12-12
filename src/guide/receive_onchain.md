@@ -72,6 +72,8 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 </section>
 </custom-tabs>
 
+It's important to be aware that the swap information provided includes maximum and minimum limits. Users must be informed of these limits because if the amount transferred to the swap address falls outside this valid range, the funds will not be successfully received via lightning. In such cases, a refund will be necessary.
+
 ## Get the in-progress Swap
 
 Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
