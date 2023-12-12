@@ -1,12 +1,12 @@
 //
 //  ServiceStatus.swift
-//  
+//
 //
 //  Created by dangeross on 27/11/2023.
 //
 
-import Foundation
 import BreezSDK
+import Foundation
 
 func getServiceStatus(sdk: BlockingBreezServices) -> ServiceHealthCheckResponse? {
     // ANCHOR: health-check-status

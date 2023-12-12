@@ -15,6 +15,4 @@ func sendPayment(sdk: BlockingBreezServices) -> SendPaymentResponse? {
     let response = try? sdk.sendPayment(req: req)
     // ANCHOR_END: send-payment
     return response
-    
-    
 }
