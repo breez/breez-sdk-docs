@@ -12,8 +12,8 @@ const exampleReceiveOnchain = async () => {
 
   // Send your funds to the below bitcoin address
   const address = swapInfo.bitcoinAddress
-  console.log(`Minimum amount allowed to deposit in sats: {}`, swapInfo.minAllowedDeposit)
-  console.log(`Maximum amount allowed to deposit in sats: {}`, swapInfo.maxAllowedDeposit)
+  console.log(`Minimum amount allowed to deposit in sats: ${swapInfo.minAllowedDeposit}`)
+  console.log(`Maximum amount allowed to deposit in sats: ${swapInfo.maxAllowedDeposit}`)
   // ANCHOR_END: generate-receive-onchain-address
 }
 
