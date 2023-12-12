@@ -10,7 +10,7 @@ import Foundation
 
 func GetCurrentFees(sdk: BlockingBreezServices) -> ReverseSwapPairInfo? {
     //  ANCHOR: estimate-current-reverse-swap-total-fees
-    let sendAmountSat: UInt64 = 50000
+    let sendAmountSat: UInt64 = 50_000
     let currentFees = try? sdk.fetchReverseSwapFees(req: ReverseSwapFeesRequest(sendAmountSat: sendAmountSat))
     print("Total estimated fees for reverse swap: \(String(describing: currentFees?.totalEstimatedFees))")
     // ANCHOR_END: estimate-current-reverse-swap-total-fees

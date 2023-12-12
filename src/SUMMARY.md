@@ -13,8 +13,9 @@
     - [iOS](guide/ios_notification_service_extension.md)
     - [Android](guide/android_notification_foreground_service.md)
 - [Connecting to an LSP](guide/connecting_lsp.md)
-- [Receiving an on-chain transaction](guide/receive_onchain.md)
-- [Sending an on-chain transaction](guide/send_onchain.md)
+- [Receiving an On-Chain Transaction](guide/receive_onchain.md)
+- [Sending an On-Chain Transaction](guide/send_onchain.md)
+  - [Closed channels](guide/closed_channels.md)
 
 - [Using LNURL](guide/lnurl.md)
   - [LNURL-Pay](guide/lnurl_pay.md)

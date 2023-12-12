@@ -2,24 +2,26 @@
 //  ClosedChannel.swift
 //
 //
-//  Created by ruben on 12/11/2023.
+//  Created by ruben on 12/12/2023.
 //
 import Foundation
 
 import BreezSDK
 
-func prepareSweep(sdk: BlockingBreezServices, feeRate: UInt64) -> PrepareSweepResponse? {
-    // // ANCHOR: prepare-sweep
+func prepareRedeemOnchainFunds(sdk: BlockingBreezServices, feeRate: UInt32) -> PrepareRedeemOnchainFundsResponse? {
+    // ANCHOR: prepare-redeem-onchain-funds
     let satPerVbyte = feeRate
-    let sweepRequest = try? sdk.prepareSweep(req: PrepareSweepRequest(toAddress: "bc1..", satPerVbyte: satPerVbyte))
-    // ANCHOR_END: prepare-sweep
-    return sweepRequest
+    let req = PrepareRedeemOnchainFundsRequest(toAddress: "bc1..", satPerVbyte: satPerVbyte)
+    let prepareRedeemOnchainFundsResponse = try? sdk.prepareRedeemOnchainFunds(req: req)
+    // ANCHOR_END: prepare-redeem-onchain-funds
+    return prepareRedeemOnchainFundsResponse
 }
 
-func sweep(sdk: BlockingBreezServices, toAddress _: String, feeRate: UInt32) -> SweepResponse? {
-    // // ANCHOR: sweep
+func redeemOnchainFunds(sdk: BlockingBreezServices, toAddress _: String, feeRate: UInt32) -> RedeemOnchainFundsResponse? {
+    // ANCHOR: redeem-onchain-funds
     let satPerVbyte = feeRate
-    let sweepRequest = try? sdk.sweep(req: SweepRequest(toAddress: "bc1..", satPerVbyte: satPerVbyte))
-    // ANCHOR_END: sweep
-    return sweepRequest
+    let req = RedeemOnchainFundsRequest(toAddress: "bc1..", satPerVbyte: satPerVbyte)
+    let redeemOnchainFundsResponse = try? sdk.redeemOnchainFunds(req: req)
+    // ANCHOR_END: redeem-onchain-funds
+    return redeemOnchainFundsResponse
 }
