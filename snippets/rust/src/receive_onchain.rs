@@ -2,6 +2,7 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use breez_sdk_core::*;
+use log::info;
 
 async fn generate_receive_onchain_address(sdk: Arc<BreezServices>) -> Result<()> {
     // ANCHOR: generate-receive-onchain-address
