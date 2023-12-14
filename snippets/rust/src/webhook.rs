@@ -1,7 +1,5 @@
 use std::sync::Arc;
-
 use anyhow::Result;
-use breez_sdk_core::InputType::LnUrlWithdraw;
 use breez_sdk_core::*;
 
 async fn webhook(sdk: Arc<BreezServices>) -> Result<()> {
