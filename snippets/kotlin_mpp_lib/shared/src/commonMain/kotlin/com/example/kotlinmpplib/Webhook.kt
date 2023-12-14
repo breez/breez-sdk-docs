@@ -1,7 +1,7 @@
 package com.example.kotlinmpplib
 
 import breez_sdk.*
-class ServiceStatus {
+class Webhooks {
     fun Webhook(sdk: BlockingBreezServices) {
         // ANCHOR: register-webook
         try {

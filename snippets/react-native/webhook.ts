@@ -2,8 +2,8 @@ import { registerWebhook } from '@breeztech/react-native-breez-sdk'
 
 const webhook = async () => {
   // ANCHOR: register-webook
-  await registerWebhook("https://yourapplication.com")
-  // ANCHOR_END: register-webook   
+  await registerWebhook('https://yourapplication.com')
+  // ANCHOR_END: register-webook
 }
 
 const paymentWebhook = async () => {

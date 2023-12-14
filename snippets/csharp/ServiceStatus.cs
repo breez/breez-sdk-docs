@@ -1,6 +1,6 @@
 using Breez.Sdk;
 
-public class ServiceStatusSnippets
+public class WebhooksSnippets
 {
     public void HealthCheckStatus(BlockingBreezServices sdk)
     {
