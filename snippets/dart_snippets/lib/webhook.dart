@@ -1,5 +1,4 @@
 import 'package:breez_sdk/breez_sdk.dart';
-import 'package:breez_sdk/bridge_generated.dart';
 
 Future<void> webhook() async {
   // ANCHOR: register-webook
