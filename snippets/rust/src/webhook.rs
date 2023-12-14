@@ -6,7 +6,7 @@ use breez_sdk_core::*;
 
 async fn webhook(sdk: Arc<BreezServices>) -> Result<()> {
     // ANCHOR: register-webook
-    sdk.register_webhook("https://yourapplication.com").await?    
+    sdk.register_webhook("https://yourapplication.com").await?
     // ANCHOR_END: register-webook
 
     Ok(())
