@@ -2,6 +2,7 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use breez_sdk_core::*;
+use log::info;
 
 async fn generate_receive_onchain_address(sdk: Arc<BreezServices>) -> Result<()> {
     // ANCHOR: generate-receive-onchain-address
@@ -11,6 +12,8 @@ async fn generate_receive_onchain_address(sdk: Arc<BreezServices>) -> Result<()>
 
     // Send your funds to the below bitcoin address
     let address = swap_info.bitcoin_address;
+    info!("Minimum amount allowed to deposit in sats: {}", swap_info.min_allowed_deposit);
+    info!("Maximum amount allowed to deposit in sats: {}", swap_info.max_allowed_deposit);
     // ANCHOR_END: generate-receive-onchain-address
 
     Ok(())

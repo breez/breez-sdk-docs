@@ -9,6 +9,8 @@ Future<SwapInfo> generateReceiveOnchainAddress() async {
   // Send your funds to the below bitcoin address
   String address = swapInfo.bitcoinAddress;
   print(address);
+  print("Minimum amount allowed to deposit in sats: ${swapInfo.minAllowedDeposit}");
+  print("Maximum amount allowed to deposit in sats: ${swapInfo.maxAllowedDeposit}");
   return swapInfo;
   // ANCHOR_END: generate-receive-onchain-address
 }

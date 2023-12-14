@@ -7,6 +7,8 @@ def generate_receive_onchain_address(sdk_services):
 
     # Send your funds to the below bitcoin address
     address = swap_info.bitcoin_address
+    print("Minimum amount allowed to deposit in sats:", swap_info.min_allowed_deposit)
+    print("Maximum amount allowed to deposit in sats:", swap_info.max_allowed_deposit)
     # ANCHOR_END: generate-receive-onchain-address
   except Exception as error:
         print(error)

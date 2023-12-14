@@ -8,6 +8,8 @@ class ReceiveOnchain {
             val swapInfo = sdk.receiveOnchain(ReceiveOnchainRequest())
             // Send your funds to the bellow bitcoin address
             val address = swapInfo.bitcoinAddress
+            // Log.v("Breez", "Minimum amount allowed to deposit in sats: ${swapInfo.minAllowedDeposit}")
+            // Log.v("Breez", "Maximum amount allowed to deposit in sats: ${swapInfo.maxAllowedDeposit}")            
         } catch (e: Exception) {
             // handle error
         }

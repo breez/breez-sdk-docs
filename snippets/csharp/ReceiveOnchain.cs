@@ -8,9 +8,10 @@ public class ReceiveOnchainSnippets
         try
         {
             var swapInfo = sdk.ReceiveOnchain(new ReceiveOnchainRequest());
-
             // Send your funds to the below bitcoin address
             var address = swapInfo.bitcoinAddress;
+            Console.WriteLine($"Minimum amount allowed to deposit in sats: {swapInfo.minAllowedDeposit}");
+            Console.WriteLine($"Maximum amount allowed to deposit in sats: {swapInfo.maxAllowedDeposit}");
         }
         catch (Exception)
         {
