@@ -1,4 +1,4 @@
-# Sending Spontaneous Lightning Payments
+# Sending spontaneous Lightning payments
 
 They can even be spontaneous payments to a node without a bolt11 invoice.
 
