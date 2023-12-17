@@ -16,6 +16,7 @@ from src.lnurl_pay import pay
 from src.lnurl_withdraw import withdraw
 from src.production import production_node_config
 from src.service_status import health_check_status, report_payment_failure
+from src.webhook import webhook, payment_webhook
 import tempfile
 import os
 
@@ -58,6 +59,10 @@ def main():
 
    # receive payment
    receive_payment(sdk_services)
+
+   # payment notifications
+   webhook(sdk_services)
+   payment_webhook(sdk_services)
 
    # receive onchain 
    generate_receive_onchain_address(sdk_services)
