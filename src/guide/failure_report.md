@@ -1,4 +1,4 @@
-# Reporting a payment failure
+# Reporting payment failures
 
 While attempting to send payments it may be that sometimes payment failures occur. Reporting these issues through the Breez SDK will help us to improve LSP routing.
 
