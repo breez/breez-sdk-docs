@@ -34,8 +34,8 @@ Once the NDS has received such request it will send a push notification to the c
 
 ### Step 2: Obtain a mobile push token
 Ensure that your mobile application is set up to receive push notifications and can generate a push token. This token uniquely identifies the device for push notifications.
-* For iOS, use Apple Push Notification Service (APNs) to get the token.
-* For Android, use Firebase Cloud Messaging (FCM) to obtain the token.
+* For iOS, use [Apple Push Notification Service (APNs)](https://developer.apple.com/documentation/usernotifications/registering_your_app_with_apns) to get the token.
+* For Android, use [Firebase Cloud Messaging (FCM)](https://firebase.google.com/docs/cloud-messaging/manage-tokens) to obtain the token.
 
 ### Step 3: Register a webhook
 Register the constructed URL with the Breez SDK By calling the register-payment-webook API as follows:
