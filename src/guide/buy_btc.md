@@ -1,4 +1,4 @@
-# Buy Bitcoin
+# Buying Bitcoin
 
 This section of the Breez SDK documentation provides an example on purchasing Bitcoin using Moonpay as the provider. The example code snippet demonstrates how to initiate a Bitcoin purchase transaction using the Breez SDK.
 
