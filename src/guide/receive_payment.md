@@ -1,4 +1,4 @@
-# Receiving Lightning Payments
+# Receiving Lightning payments
 
 With the Breez SDK you aren't required to open a channel and set up your inbound liquidity.
 The Breez SDK automatically connects your node to the LSP peer and you can now receive payments.
