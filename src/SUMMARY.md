@@ -10,6 +10,7 @@
   - [Sending spontaneous payments](guide/send_spontaneous_payment.md)
   - [Listing payments](guide/list_payments.md)
   - [Receiving payments via mobile notifications](guide/payment_notification.md)
+    - [iOS](guide/ios_notification_service_extension.md)
 - [Connecting to an LSP](guide/connecting_lsp.md)
 - [Receiving an on-chain transaction](guide/receive_onchain.md)
 - [Sending an on-chain transaction](guide/send_onchain.md)
