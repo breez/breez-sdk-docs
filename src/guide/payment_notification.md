@@ -16,6 +16,8 @@ The Breez SDK provides users the ability to receive Lightning payments via mobil
 ## Webhook integration for receiving payments while the app isn't running 
 You can use this webhook to allow mobile users to receive Lightning payments even if they aren't running the app at the time of the payment. This process involves using a Notification Delivery Service (NDS) acting as an intermediary. When a payment is made to a user, the LSP sends a notification to the NDS configured with a specific webhook URL. The NDS then processes this information and dispatches a push notification to the intended mobile device, ensuring the user receives timely updates about incoming payments. This architecture necessitates vendors setting up and maintaining their own NDS, tailored to handle and forward these notifications efficiently.
 
+![receive via notifications](https://github.com/breez/breez-sdk-docs/assets/31890660/a8a96f9e-57a3-4fe8-b075-3371f11e9a01)
+
 ### Step 1: Run your own NDS
 You will need to run your own NDS because the NDS is configured to send push notifications to your app users and therefore should be configured with the required keys and certificates.
 
