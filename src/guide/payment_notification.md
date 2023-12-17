@@ -90,7 +90,7 @@ The payment received webhook payload is json formatted and contains the followin
 {
  "type": "payment_received",
  "data": {  
-  "payment_hash" : [payment hash]
+  "payment_hash": [payment hash]
  }
 }
 </pre>
