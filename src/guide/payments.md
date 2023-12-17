@@ -1,12 +1,12 @@
-# Lightning Payments
+# Paying in Lightning
 
 This section details sending and receiving payments over lightning using invoices:
-- **[Receive Payments]** via a bolt11 invoice
-- **[Send Payments]** via a bolt11 invoice
-- **[Send Spontaneous Payments]** to a node
-- **[List Payments]** that have been sent or received in the past
+- **[Receiving payments]** via a bolt11 invoice
+- **[Sending payments]** via a bolt11 invoice
+- **[Sending spontaneous payments]** to a node
+- **[Listing payments]** that have been sent or received in the past
 
-[Receive Payments]: receive_payment.md
-[Send Payments]: send_payment.md
-[Send Spontaneous Payments]: send_spontaneous_payment.md
-[List Payments]: list_payments.md
+[Receiving payments]: receive_payment.md
+[Sending payments]: send_payment.md
+[Sending spontaneous payments]: send_spontaneous_payment.md
+[Listing payments]: list_payments.md
