@@ -1,4 +1,4 @@
-# Moving to Production 
+# Moving to production 
 
 To move your project to production, you will have to replace the evaluation invite code with a partner certificate issued by Greenlight.
 
