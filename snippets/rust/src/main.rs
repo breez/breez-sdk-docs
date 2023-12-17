@@ -14,6 +14,7 @@ mod send_payment;
 mod send_spontaneous_payment;
 mod service_status;
 mod static_channel_backup;
+mod webhook;
 
 use anyhow::Result;
 use breez_sdk_core::*;

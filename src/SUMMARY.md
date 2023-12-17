@@ -21,4 +21,5 @@
 - [Buy Bitcoin](guide/buy_btc.md)
 - [Static Channel Backup](guide/static_channel_backup.md)
 - [Service Status](guide/service_status.md)
+- [Payment Notifications](guide/payment_notification.md)
 - [Moving to Production](guide/production.md)

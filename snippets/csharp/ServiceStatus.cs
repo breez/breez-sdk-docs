@@ -1,6 +1,6 @@
 using Breez.Sdk;
 
-public class ServiceStatusSnippets
+public class WebhooksSnippets
 {
     public void HealthCheckStatus(BlockingBreezServices sdk)
     {
@@ -8,7 +8,7 @@ public class ServiceStatusSnippets
         try
         {
             var healthCheck = sdk.ServiceHealthCheck();
-            Console.WriteLine($"Current service status is: {healthCheck.status}"); 
+            Console.WriteLine($"Current service status is: {healthCheck.status}");
         }
         catch (Exception)
         {
