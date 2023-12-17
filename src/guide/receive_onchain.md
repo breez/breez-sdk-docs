@@ -1,4 +1,4 @@
-# Receiving an On-Chain Transaction (Swap-In)
+# Receiving an on-chain transaction (Swap-In)
 
 There are cases when you have funds in some bitcoin address and you would like to send those to your lightning node.
 
