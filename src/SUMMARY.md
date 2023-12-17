@@ -22,5 +22,5 @@
 - [Buying Bitcoin](guide/buy_btc.md)
 - [Exporting channels backup](guide/static_channel_backup.md)
 - [Retrieving service status](guide/service_status.md)
-- [Sending a payment failure report](guide/failure_report.md)
+- [Reporting payment failures](guide/failure_report.md)
 - [Moving to production](guide/production.md)
