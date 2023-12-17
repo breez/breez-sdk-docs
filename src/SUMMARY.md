@@ -4,7 +4,7 @@
 
 - [Getting Started](guide/getting_started.md)
 - [Installing](guide/install.md)
-- [Lightning payments](guide/payments.md)
+- [Paying in Lightning](guide/payments.md)
   - [Receiving payments](guide/receive_payment.md)
   - [Sending payments](guide/send_payment.md)
   - [Sending spontaneous payments](guide/send_spontaneous_payment.md)
