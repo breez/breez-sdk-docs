@@ -1,4 +1,4 @@
-# List Payments
+# Listing payments
 
 To view your payment history you can list and filter all the sent and received payments made.
 
