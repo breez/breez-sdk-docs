@@ -105,8 +105,12 @@ You will need to run your own NDS because the NDS is configured to send push not
 You can use our [reference NDS implementation](https://github.com/breez/notify).
 
 Our NDS implementation expects URLs in the following format:
-<section><i>https://your-nds-service.com/notify?platform=<ios|android>&token=[PUSH_TOKEN]</i></section>
-
+<section>
+<pre>
+ https://your-nds-service.com/notify?platform=<ios|android>&token=[PUSH_TOKEN]
+</pre>
+</section>
+  
 Once the NDS has received such request it will send a push notification to the corresponding devices.
 
 ### Step 2: Obtain a mobile push token
