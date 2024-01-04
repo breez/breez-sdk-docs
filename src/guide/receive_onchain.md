@@ -373,5 +373,35 @@ To calculate the fees for a channel being opened by the LSP:
 </section>
 </custom-tabs>
 
+# SwapInfo fields
+
+When using these methods you are getting a SwapInfo object in return where some fields are dynamic and some static immutable data. Here is an overview of what the fields represent
+
+### Static data
+- **bitcoin_address**: Single-use bitcoin address created by *script*.
+- **created_at**: Relative time lock start, set to 0.
+- **lock_height**: Relative time lock for the timeout in order for the script to be redeemed if swap fails. 
+- **payment_hash**:(Binary) 256 hash of preimage to used in the claim sript.
+- **preimage**:(Binary) Secret to claim the swap.
+- **private_key**:(Binary) Secret claim key for the bitcoin address
+- **public_key**:(Binary) Public key in binary format of the private claim private key.
+- **swapper_public_key**:(Binary) the public key in binary format from the swapping service.
+- **script**:(Binary) lockingsscript for the generated bitcoin address.
+
+### Dynamic data
+- **bolt11** (Optional): bolt11 invoice to claim the sent funds.
+- **paid_sats**: Amount of sats payed to the claim address
+- **confirmed_sats**: Confirmed onchain sats to be claim with an bolt11 invoice or refunded if swap fails.
+- **unconfirmed_sats**: Unconfirmed sats waiting to be confirmed onchain.
+- **status** (SwapStatus): Shows the current status of the swap, either `Initial` or `Expired`.
+refund_tx_ids: Transaction ID for failed swap attempts.
+- **refund_tx_ids**: Transaction ID for failed swaps attemps.
+- **unconfirmed_tx_ids**: Transaction ID for ongoing swap awaiting confirmation.
+- **confirmed_tx_ids**: Transaction ID that have been confirmed on-chain.
+- **min_allowed_deposit**: The minimum amount the one can send in order for the swap to succeed.
+- **max_allowed_deposit**:  The maximum amount the one can send in order for the swap to succeed.
+- **last_redeem_error** (Optional): Error reason for when swap fails.
+- **channel_opening_fees** (Optional): Fees for opening new channel if needed. [^1]
+
 
 [^1]: For more details on these fees, see [Channel Opening Fees](connecting_lsp.md#channel-opening-fees)

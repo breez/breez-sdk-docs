@@ -3,7 +3,7 @@ import {
   redeemOnchainFunds
   } from '@breeztech/react-native-breez-sdk'
 
-  const prepareRedeemOnchainFunds = async (feeRate: number) => {
+  const examplePrepareRedeemOnchainFunds = async (feeRate: number) => {
     // ANCHOR: prepare-redeem-onchain-funds
     const toAddress = "bc1.."
     const satPerVbyte = feeRate
@@ -12,7 +12,7 @@ import {
     // ANCHOR_END: prepare-redeem-onchain-funds
   }
 
-  const redeemOnchainFunds = async (satPerVbyte: number, toAddress: String) => {
+  const exampleRedeemOnchainFunds = async (satPerVbyte: number, toAddress: string) => {
     // ANCHOR: redeem-onchain-funds
     const redeemOnchainFundsResp = await redeemOnchainFunds({ toAddress, satPerVbyte })
      // ANCHOR_END: redeem-onchain-funds

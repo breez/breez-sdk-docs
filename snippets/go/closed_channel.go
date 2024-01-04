@@ -11,9 +11,8 @@ func PrepareRedeemOnchainFunds(feeRate uint32) {
 	satPerVbyte := feeRate
 	destinationAddress := "bc1.."
 	req := breez_sdk.PrepareRedeemOnchainFundsRequest{SatPerVbyte: satPerVbyte, ToAddress: destinationAddress}
-	res, err := sdk.PrepareRedeemOnchainFunds(req)
-	if err != nil {
-		log.Printf("PrepareRedeemOnchainFunds error %#v", err)
+	if prepareRedeemOnchainFundsResponse, err := sdk.PrepareRedeemOnchainFunds(req); err == nil {
+		log.Printf("PrepareRedeemOnchainFundsRequest is %#v", prepareRedeemOnchainFundsResponse)
 	}
 	// ANCHOR_END: prepare-redeem-onchain-funds
 }
@@ -21,9 +20,8 @@ func PrepareRedeemOnchainFunds(feeRate uint32) {
 func RedeemOnchainFunds(satPerVbyte uint32, toAddress string) {
 	// ANCHOR: redeem-onchain-funds
 	req := breez_sdk.RedeemOnchainFundsRequest{SatPerVbyte: satPerVbyte, ToAddress: toAddress}
-	res, err := sdk.RedeemOnchainFunds(req)
-	if err != nil {
-		log.Printf("RedeemOnchainFunds error %#v", err)
+	if redeemOnchainFundsResponse, err := sdk.RedeemOnchainFunds(req); err == nil {
+		log.Printf("RedeemOnchainFunds error %#v", redeemOnchainFundsResponse)
 	}
 	// ANCHOR_END: redeem-onchain-funds
 }

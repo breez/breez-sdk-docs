@@ -1,9 +1,8 @@
 package com.example.kotlinmpplib
 
 import breez_sdk.*
-
 class ClosedChannel {
-    func prepareRedeemOnchainFunds(sdk: BlockingBreezServices, feeRate: UInt) {
+    fun prepareRedeemOnchainFunds(sdk: BlockingBreezServices, feeRate: UInt) {
         // ANCHOR: prepare-redeem-onchain-funds 
          val satPerVbyte = feeRate
          var destinationAddress = "bc1.."
@@ -17,7 +16,7 @@ class ClosedChannel {
         // ANCHOR_END: prepare-redeem-onchain-funds 
     }
 
-    func redeemOnchainFunds(sdk: BlockingBreezServices, satPerVbyte: UInt, toAddress: String) {
+    fun redeemOnchainFunds(sdk: BlockingBreezServices, satPerVbyte: UInt, toAddress: String) {
         // ANCHOR: redeem-onchain-funds 
          try {
             val req = RedeemOnchainFundsRequest(toAddress, satPerVbyte)
