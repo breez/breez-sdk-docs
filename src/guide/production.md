@@ -68,4 +68,4 @@ To move your project to production, you will have to replace the evaluation invi
 </section>
 </custom-tabs>
 
-To obtain a certificate for a production environment, please contact Breez via email at contact@breez.technology.
+To obtain a certificate for a production environment, please register [here](https://greenlight.blockstream.com/) and make sure to notify your LSP(s).
