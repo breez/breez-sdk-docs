@@ -148,7 +148,7 @@ Once you've sent the funds to the above address, the SDK will monitor this addre
 The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:
 
 1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
-2. Or by your node when the swap didn't complete within a certain timeout - this is the negative case where your node will execute a refund.
+2. Or by your node when the swap didn't complete within a certain timeout (216 blocks) - this is the negative case where your node will execute a refund (funds become refundable after 288 blocks). Refund will also be available in case the amount sent wasn't within the limits.
 
 ## List refundable Swaps
 
