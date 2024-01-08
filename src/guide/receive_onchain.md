@@ -79,6 +79,7 @@ The `swap_info` above includes maximum and minimum limits. Your application's us
 
 </div>
 
+
 ## Get the in-progress Swap
 
 Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
@@ -294,6 +295,13 @@ Once you have a refundable swap in hand, use the following code to execute a ref
 ```
 </section>
 </custom-tabs>
+
+<div class="warning">
+<h4>Developer note</h4>
+
+A refund can be issued several times. A common scenario where this is useful is if the initial refund transaction takes too long to mine, your application's users can be offered the ability to re-trigger the refund with a higher feerate.
+
+</div>
 
 # Calculating fees
 
