@@ -297,7 +297,7 @@ Once you have a refundable swap in hand, use the following code to execute a ref
 <div class="warning">
 <h4>Developer note</h4>
 
-A refund can be issued several times. A common scenario where this is useful is if the initial refund transaction takes too long to mine, your application's users can be offered the ability to re-trigger the refund with a higher feerate.
+A refund can be attempted several times. A common scenario where this is useful is if the initial refund transaction takes too long to mine, your application's users can be offered the ability to re-trigger the refund with a higher feerate.
 
 </div>
 
