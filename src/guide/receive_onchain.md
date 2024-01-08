@@ -156,7 +156,7 @@ The process of receiving funds via an on-chain address is trustless and uses a s
 1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
 2. Or by your node when the swap didn't complete within a certain timeout (216 blocks) - this is the negative case where your node will execute a refund (funds become refundable after 288 blocks). Refund will also be available in case the amount sent wasn't within the limits.
 
-## List refundable Swaps
+## Refund a Swap
 
 In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
 
@@ -225,8 +225,6 @@ In order to execute a refund, you need to supply an on-chain address to where th
 ```
 </section>
 </custom-tabs>
-
-## Refund a Swap
 
 Once you have a refundable swap in hand, use the following code to execute a refund:
 
