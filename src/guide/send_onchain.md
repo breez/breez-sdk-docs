@@ -71,9 +71,14 @@ First, fetch the current reverse swap fees:
 </section>
 </custom-tabs>
 
+<div class="warning">
+<h4>Developer note</h4>
+
 The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
 automatically once the process is started, but the last two values above are these estimates to help you get a picture
 of the total costs.
+
+</div>
 
 Fetching the fees also tells you what is the range of amounts the service allows:
 

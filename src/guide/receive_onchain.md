@@ -72,7 +72,12 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 </section>
 </custom-tabs>
 
-It's important to be aware that the swap information provided includes maximum and minimum limits. Users must be informed of these limits because if the amount transferred to the swap address falls outside this valid range, the funds will not be successfully received via lightning. In such cases, a refund will be necessary.
+<div class="warning">
+<h4>Developer note</h4>
+
+The `swap_info` above includes maximum and minimum limits. Your application's users must be informed of these limits because if the amount transferred to the swap address falls outside this valid range, the funds will not be successfully received via lightning. In such cases, a refund will be necessary.
+
+</div>
 
 ## Get the in-progress Swap
 
