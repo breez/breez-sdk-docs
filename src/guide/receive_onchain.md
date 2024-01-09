@@ -72,7 +72,13 @@ In order to receive funds you first have to be connected to an [LSP](connecting_
 </section>
 </custom-tabs>
 
-It's important to be aware that the swap information provided includes maximum and minimum limits. Users must be informed of these limits because if the amount transferred to the swap address falls outside this valid range, the funds will not be successfully received via lightning. In such cases, a refund will be necessary.
+<div class="warning">
+<h4>Developer note</h4>
+
+The `swap_info` above includes maximum and minimum limits. Your application's users must be informed of these limits because if the amount transferred to the swap address falls outside this valid range, the funds will not be successfully received via lightning. In such cases, a refund will be necessary.
+
+</div>
+
 
 ## Get the in-progress Swap
 
@@ -150,7 +156,7 @@ The process of receiving funds via an on-chain address is trustless and uses a s
 1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
 2. Or by your node when the swap didn't complete within a certain timeout (216 blocks) - this is the negative case where your node will execute a refund (funds become refundable after 288 blocks). Refund will also be available in case the amount sent wasn't within the limits.
 
-## List refundable Swaps
+## Refund a Swap
 
 In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
 
@@ -220,8 +226,6 @@ In order to execute a refund, you need to supply an on-chain address to where th
 </section>
 </custom-tabs>
 
-## Refund a Swap
-
 Once you have a refundable swap in hand, use the following code to execute a refund:
 
 <custom-tabs category="lang">
@@ -289,6 +293,13 @@ Once you have a refundable swap in hand, use the following code to execute a ref
 ```
 </section>
 </custom-tabs>
+
+<div class="warning">
+<h4>Developer note</h4>
+
+A refund can be attempted several times. A common scenario where this is useful is if the initial refund transaction takes too long to mine, your application's users can be offered the ability to re-trigger the refund with a higher feerate.
+
+</div>
 
 # Calculating fees
 
