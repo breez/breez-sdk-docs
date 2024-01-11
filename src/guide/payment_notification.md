@@ -110,3 +110,5 @@ Register the constructed URL with the Breez SDK By calling the register-payment-
 ### Step 4: Handling notifications when the app isn't running
 To ensure that your mobile application can handle payment notifications even when it is not actively running, specific implementations are required for both iOS and Android platforms. This involves waking up the app upon receiving a push notification, connecting with the Breez SDK, and then waiting for the payment to be fully received.
 * For iOS, please follow the steps in [iOS NotificationServiceExtension](ios_notification_service_extension.md).
+
+* For Android, please follow the steps in [Android foreground service](android_notification_foreground_service.md).
