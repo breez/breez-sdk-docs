@@ -7,8 +7,9 @@ Future<ReceivePaymentResponse> receivePayment() async {
     amountMsat: 3000000,
     description: "Invoice for 3000 sats",
   );
-  ReceivePaymentResponse resp = await BreezSDK().receivePayment(req: req);
-  print(resp.lnInvoice);
+  ReceivePaymentResponse receivePaymentResponse = await BreezSDK().receivePayment(req: req);
+
+  print(receivePaymentResponse.lnInvoice);
   // ANCHOR_END: receive-payment
-  return resp;
+  return receivePaymentResponse;
 }

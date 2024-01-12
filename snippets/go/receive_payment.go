@@ -13,7 +13,7 @@ func ReceivePayment() {
 		Description: "Invoice for 3000 sats",
 	}
 	if receivePaymentResponse, err := sdk.ReceivePayment(receivePaymentRequest); err == nil {
-		log.Printf("%#v", receivePaymentResponse)
+		log.Printf("Invoice: %#v", receivePaymentResponse.LnInvoice)
 	}
 	// ANCHOR_END: receive-payment
 }

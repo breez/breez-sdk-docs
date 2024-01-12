@@ -7,8 +7,10 @@ public class ReceivePaymentSnippets
         // ANCHOR: receive-payment
         try
         {
-            var invoice = sdk.ReceivePayment(
+            var receivePaymentResponse = sdk.ReceivePayment(
                 new ReceivePaymentRequest(3_000_000, "Invoice for 3000 sats"));
+
+            var invoice = receivePaymentResponse.lnInvoice;
         }
         catch (Exception)
         {
