@@ -14,12 +14,14 @@ cd snippets/python
 python3 -m compileall src
 ```
 
-To check the snippet formatting:
+To check the snippet against formatting and linter rules:
 
 ```bash
 cd snippets/python/src
-ruff --ignore F841 --ignore F401 --output-format=github .
+ruff check --ignore F841 --ignore F401 --add-noqa .
 ```
+
+and fix all occurrences of the `# noqa` directive.
 
 To execute the snippets locally, in order to check for type correctness:
 
