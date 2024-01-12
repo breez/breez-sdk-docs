@@ -11,6 +11,7 @@ def receive_payment(sdk_services):
 
         invoice = receive_payment_response.ln_invoice
         # ANCHOR_END: receive-payment
+
         return receive_payment_response
     except Exception as error:
         print(error)
