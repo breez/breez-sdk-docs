@@ -5,7 +5,7 @@ The Breez SDK provides users the ability to receive Lightning payments via mobil
 <section>
 <pre>
 {
- "type": "payment_received",
+ "template": "payment_received",
  "data": {  
   "payment_hash": [payment hash]
  }
