@@ -5,7 +5,7 @@ class Metadata {
     fun SetPaymentMetadata(sdk: BlockingBreezServices) {
         // ANCHOR: set-payment-metadata
         try {
-            sdk.SetPaymentMetadata("target-payment-hash", """{"myCustomValue":true}""")
+            sdk.setPaymentMetadata("target-payment-hash", """{"myCustomValue":true}""")
         } catch (e: Exception) {
             // Handle error
         }
