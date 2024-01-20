@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "BreezSDKDocs",
-    platforms: [.macOS(.v12)],
+    platforms: [.macOS(.v13)],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.3"),
         .package(url: "https://github.com/breez/breez-sdk-swift", from:"0.2.12")
