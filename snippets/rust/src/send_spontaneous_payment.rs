@@ -10,6 +10,7 @@ async fn send_spontaneous_payment(sdk: Arc<BreezServices>) -> Result<()> {
     sdk.send_spontaneous_payment(SendSpontaneousPaymentRequest {
         amount_msat: 3_000_000,
         node_id,
+        extra_tlvs: None,
     })
     .await?;
     // ANCHOR_END: send-spontaneous-payment
