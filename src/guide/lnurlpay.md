@@ -1,17 +1,18 @@
-# Receiving via lnurl-pay
+# Receiving payments using LNURL-Pay
 
-Using the Breez SDK users have the ability to receive Lightning payments via lnurl-pay.
-The lnurlpay protocol requires a web server that respons to lnurlpay requests. This service needs to communicate with the user node in order to fetch the required data and the payment request.
-In order to interact with the user node the service uses a simple protocol over push notifications.
-The service sends a push notification to the user node with the lnurlpay request and a reply url, the user node then uses the reply url to responds with the required data which is then forwarded from the service to the payer.
+Breez SDK users have the ability to receive Lightning payments using [LNURL-Pay](https://github.com/lnurl/luds/blob/luds/06.md).
+LNURL-Pay requires a web service that serves LNURL-Pay requests. This service needs to communicate with the user node in order to fetch the necessary metadata data and the associated payment request.
+To interact with the user node, the service uses a simple protocol over push notifications:
+* The service sends a push notification to the user's mobile app with the LNURL-Pay request and a reply URL.
+* The app responds to reply URL with the required data.
+* The data is forwarded from the service to the payer.
 
 ## General workflow
-Although the protocol is application specific, the general workflow is as follows:
 
-### Step 1: User node register for an lnurlpay service
-Use the service endpoint https://app.domain/lnurlpay/[pubkey] to register the user node for an lnurlpay service.
-In order to verify the request the payload should be signed with the user node private key.
-The service responds with a valid lnurlpay url, for example: https://app.domain/lnurlp/[pubkey]
+### Step 1: the app registers for an LNURL-Pay service
+Use the service endpoint https://app.domain/lnurlpay/[pubkey] to register the app for an LNURL-Pay service.
+To verify the request the payload should be signed with the user node private key.
+The service responds with a valid LNURL-Pay url, for example: https://app.domain/lnurlp/[pubkey]
 
 ### Step 2: External wallet scans the lnurlpay url
 The external wallet scans the lnurlpay url and parse the lnurlpay request.
