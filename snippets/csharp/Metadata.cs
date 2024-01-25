@@ -1,7 +1,7 @@
 using Breez.Sdk;
 using System.Text.Json;
 
-public class ServiceStatusSnippets
+public class MetadataSnippets
 {
     public void SetPaymentMetadata(BlockingBreezServices sdk)
     {
@@ -15,16 +15,16 @@ public class ServiceStatusSnippets
         // ANCHOR: filter-payment-metadata
         try
         {
-            MetadataFilter[] metadataFilters = {
+            var metadataFilters = new List<MetadataFilter>(
               new MetadataFilter(
                 jsonPath: "myCustomValue",
-                jsonValue: "true",
-              ),
-            };
+                jsonValue: "true"
+              )
+            );
 
-            var payments = ListPayments(
+            var payments = sdk.ListPayments(
                 new ListPaymentsRequest(
-                    metadataFilters: metadataFilters,
+                    metadataFilters: metadataFilters
                 )
             );
         }
@@ -36,43 +36,43 @@ public class ServiceStatusSnippets
     }
 
     public void FilterPaymentMetadataString(BlockingBreezServices sdk)
-    { 
+    {
         // ANCHOR: filter-payment-metadata-string
-        MetadataFilter[] metadataFilters = {
+        var metadataFilters = new List<MetadataFilter>(
           new MetadataFilter(
             jsonPath: "customerName",
-            jsonValue: "\"Satoshi Nakamoto\"",
+            jsonValue: "\"Satoshi Nakamoto\""
           ),
           new MetadataFilter(
             jsonPath: "customerName",
-            jsonValue: JsonSerializer.Serialize("Satoshi Nakamoto"),
-          ),
-        };
+            jsonValue: JsonSerializer.Serialize("Satoshi Nakamoto")
+          )
+        );
         // ANCHOR_END: filter-payment-metadata-string
     }
 
     public void FilterPaymentMetadataObject(BlockingBreezServices sdk)
-    { 
+    {
         // ANCHOR: filter-payment-metadata-object
         // This will *NOT* work
-        MetadataFilter[] metadataFilters = {
+        var _metadataFilters = new List<MetadataFilter>(
           new MetadataFilter(
             jsonPath: "parent.nestedArray",
-            jsonValue: "[1, 2, 3]",
-          ),
-        };
+            jsonValue: "[1, 2, 3]"
+          )
+        );
 
         // This will work
-        MetadataFilter[] metadataFilters = {
+        var metadataFilters = new List<MetadataFilter>(
           new MetadataFilter(
             jsonPath: "parent.nestedArray",
-            jsonValue: "[1,2,3]",
+            jsonValue: "[1,2,3]"
           ),
           new MetadataFilter(
             jsonPath: "parent.nestedArray",
-            jsonValue: JsonSerializer.Serialize(new int[] {1, 2, 3}),
-          ),
-        };
+            jsonValue: JsonSerializer.Serialize(new int[] {1, 2, 3})
+          )
+        );
         // ANCHOR_END: filter-payment-metadata-object
     }
 }

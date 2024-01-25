@@ -12,10 +12,7 @@ def set_payment_metadata(sdk_services):
 def filter_payment_metadata(sdk_services):
     # ANCHOR: filter-payment-metadata
     metadata_filters = [
-        breez_sdk.MetadataFilter(
-            json_path: "myCustomValue",
-            json_value: "true",
-        )
+        breez_sdk.MetadataFilter("myCustomValue", "true")
     ]
 
     try:
@@ -29,36 +26,20 @@ def filter_payment_metadata(sdk_services):
 
     # ANCHOR: filter-payment-metadata-string
     metadata_filters = [
-        breez_sdk.MetadataFilter(
-            json_path: "customerName",
-            json_value: '"true"',
-        ),
-        breez_sdk.MetadataFilter(
-            json_path: "customerName",
-            json_value: json.dumps("true"),
-        )
+        breez_sdk.MetadataFilter("customerName", "\"Satoshi Nakamoto\""),
+        breez_sdk.MetadataFilter("customerName", json.dumps("Satoshi Nakamoto")),
     ]
     # ANCHOR_END: filter-payment-metadata-string
 
     # ANCHOR: filter-payment-metadata-object
     # This will *NOT* work
     metadata_filters = [
-        breez_sdk.MetadataFilter(
-            json_path: "parent.nestedArray",
-            json_value: '[1, 2, 3]',
-        )
+        breez_sdk.MetadataFilter("parent.nestedArray", "[1, 2, 3]")
     ]
 
     # This will work
     metadata_filters = [
-        breez_sdk.MetadataFilter(
-            json_path: "parent.nestedArray",
-            json_value: '[1,2,3]',
-        ),
-        breez_sdk.MetadataFilter(
-            json_path: "parent.nestedArray",
-            json_value: json.dumps([1,2,3], separators=(',', ':'))
-        ),
-
+        breez_sdk.MetadataFilter("parent.nestedArray", "[1,2,3]"),
+        breez_sdk.MetadataFilter("parent.nestedArray", json.dumps([1,2,3], separators=(',', ':'))),
     ]
     # ANCHOR_END: filter-payment-metadata-object
