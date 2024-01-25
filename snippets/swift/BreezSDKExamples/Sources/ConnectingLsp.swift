@@ -13,6 +13,7 @@ func getLspInfo(sdk: BlockingBreezServices) -> LspInformation?{
     let lspId = try? sdk.lspId()
     let lspInfo = try? sdk.lspInfo()
     // ANCHOR_END: get-lsp-info
+    print(lspId as Any)
     return lspInfo
 }
 

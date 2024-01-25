@@ -19,7 +19,13 @@ func withdraw(sdk: BlockingBreezServices) -> LnUrlWithdrawResult? {
         if case.lnUrlWithdraw(let `data`) = inputType {
             let amountMsat = data.maxWithdrawable
             let description = "Test withdraw"
-            response = try? sdk.withdrawLnurl(request: LnUrlWithdrawRequest(data: data, amountMsat: amountMsat))
+            response = try? sdk.withdrawLnurl(
+                request: LnUrlWithdrawRequest(
+                    data: data,
+                    amountMsat: amountMsat,
+                    description: description
+                )
+            )
         }
     }
     // ANCHOR_END: lnurl-withdraw
