@@ -17,7 +17,7 @@
 - [Sending an on-chain transaction](guide/send_onchain.md)
 
 - [Using LNURL](guide/lnurl.md)
-  - [Sending payment using LNURL-Pay](guide/lnurl_pay.md)
+  - [Sending payments using LNURL-Pay](guide/lnurl_pay.md)
   - [Receiving payments using LNURL-Pay](guide/lnurlpay.md)
   - [Receiving payments using LNURL-Withdraw](guide/lnurl_withdraw.md)
   - [Authenticating using LNURL-Auth](guide/lnurl_auth.md)
