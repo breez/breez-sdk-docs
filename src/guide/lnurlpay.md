@@ -9,6 +9,8 @@ To interact with the user node, the service uses a simple protocol over push not
 * The data is forwarded from the service to the payer.
 
 ## General workflow
+The following workflow is application specific and the steps detailed below refer to the c-breez wallet implementation which requires running <b>[breez-lnurl](https://github.com/breez/breez-lnurl) </b>service.
+
 ![light-lnurlpay](https://github.com/breez/breez-sdk-docs/assets/5394889/f7cb25af-f534-4fd8-bb26-733bc285e0a2)
 
 
