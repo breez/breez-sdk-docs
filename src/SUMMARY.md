@@ -16,9 +16,9 @@
 - [Receiving an on-chain transaction](guide/receive_onchain.md)
 - [Sending an on-chain transaction](guide/send_onchain.md)
 
-- [Using LNURL](guide/lnurl.md)
-  - [Sending payments using LNURL-Pay](guide/lnurl_pay.md)
-  - [Receiving payments using LNURL-Pay](guide/lnurlpay.md)
+- [Using LNURL & Lightning addresses](guide/lnurl.md)
+  - [Sending payments using LNURL-Pay/Lightning address](guide/lnurl_pay.md)
+  - [Receiving payments using LNURL-Pay/Lightning address](guide/lnurlpay.md)
   - [Receiving payments using LNURL-Withdraw](guide/lnurl_withdraw.md)
   - [Authenticating using LNURL-Auth](guide/lnurl_auth.md)
 - [Supporting fiat currencies](guide/fiat_currencies.md)
