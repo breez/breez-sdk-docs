@@ -17,9 +17,10 @@
 - [Sending an on-chain transaction](guide/send_onchain.md)
 
 - [Using LNURL](guide/lnurl.md)
-  - [LNURL-Pay](guide/lnurl_pay.md)
-  - [LNURL-Withdraw](guide/lnurl_withdraw.md)
-  - [LNURL-Auth](guide/lnurl_auth.md)
+  - [Sending payments using LNURL-Pay](guide/lnurl_pay.md)
+  - [Receiving payments using LNURL-Pay](guide/lnurlpay.md)
+  - [Receiving payments using LNURL-Withdraw](guide/lnurl_withdraw.md)
+  - [Authenticating using LNURL-Auth](guide/lnurl_auth.md)
 - [Supporting fiat currencies](guide/fiat_currencies.md)
 - [Buying Bitcoin](guide/buy_btc.md)
 - [Exporting channels backup](guide/static_channel_backup.md)
