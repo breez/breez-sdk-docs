@@ -9,6 +9,8 @@ To interact with the user node, the service uses a simple protocol over push not
 * The data is forwarded from the service to the payer.
 
 ## General workflow
+![light-lnurlpay](https://github.com/breez/breez-sdk-docs/assets/5394889/f7cb25af-f534-4fd8-bb26-733bc285e0a2)
+
 
 ### Step 1: Registering for an LNURL-Pay service
 Use a POST request to the service endpoint:
