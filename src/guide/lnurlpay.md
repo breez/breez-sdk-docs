@@ -11,7 +11,7 @@ To interact with the user node, the service uses a simple protocol over push not
 ## General workflow
 The following workflow is application specific and the steps detailed below refer to the c-breez wallet implementation which requires running <b>[breez-lnurl](https://github.com/breez/breez-lnurl) </b>service.
 
-![lnurlpay-clean](https://github.com/breez/breez-sdk-docs/assets/5394889/89768505-8f93-43da-97f1-78e41d6b0d54)
+![pay](https://github.com/breez/breez-sdk-docs/assets/5394889/ef0a3111-3604-4789-89c6-23adbd7e5d52)
 
 ### Step 1: Registering for an LNURL-Pay service
 Use a POST request to the service endpoint:
