@@ -17,7 +17,8 @@
     {
       devShells.default = pkgs.mkShell {
         buildInputs = with pkgs; [
-          python3
+          python311Full
+          python311Packages.pip
           ruff
         ];
       };

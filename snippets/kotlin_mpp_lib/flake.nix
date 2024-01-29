@@ -16,6 +16,7 @@
     in
     {
       devShells.default = pkgs.mkShell {
+        # TODO make gradle use java17 by default.
         buildInputs = with pkgs; [
           kotlin
           ktlint
