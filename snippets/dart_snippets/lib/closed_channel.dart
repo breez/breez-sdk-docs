@@ -1,9 +1,9 @@
 import 'package:breez_sdk/breez_sdk.dart';
 import 'package:breez_sdk/bridge_generated.dart';
 
-Future<PrepareRedeemOnchainFundsResponse> prepareRedeemOnchainFunds({required int feeRate}) async {
+Future<PrepareRedeemOnchainFundsResponse> prepareRedeemOnchainFunds(
+    {required int satPerVbyte}) async {
   // ANCHOR: prepare-redeem-onchain-funds
-  final satPerVbyte = feeRate;
   PrepareRedeemOnchainFundsRequest req = PrepareRedeemOnchainFundsRequest(
     toAddress: "bc1..",
     satPerVbyte: satPerVbyte,
