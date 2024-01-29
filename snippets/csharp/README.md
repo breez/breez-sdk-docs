@@ -15,3 +15,6 @@ dotnet add package Breez.Sdk -s ./packages
 ```
 
 Happy coding
+
+## Nix
+Use the command `nix develop`
