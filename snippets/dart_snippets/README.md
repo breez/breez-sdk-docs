@@ -4,3 +4,6 @@
   - or by cloning https://github.com/breez/breez-sdk-flutter
 2. Place the files in the folder `snippets/dart-snippets/packages/breez-sdk-flutter`
 3. Happy coding
+
+## Nix
+Use the command `nix develop`
