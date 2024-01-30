@@ -309,7 +309,9 @@ jobs:
  
 
       - name: Compile Kotlin
+        working-directory: snippets/kotlin_mpp_lib
         run: |
+          ./gradlew clean
           ./gradlew build
 
       
