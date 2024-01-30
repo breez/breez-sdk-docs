@@ -1,6 +1,7 @@
 import 'package:breez_sdk/breez_sdk.dart';
 import 'package:breez_sdk/bridge_generated.dart';
 import 'dart:convert';
+import 'dart:typed_data';
 
 Future<SendPaymentResponse> sendSpontaneousPayment({
   required String nodeId,
@@ -21,8 +22,8 @@ Future<SendPaymentResponse> sendSpontaneousPaymentWithTlvs({
   // ANCHOR: send-spontaneous-payment-with-tlvs
   List<TlvEntry> extraTlvs = [
     TlvEntry(
-      fieldNumber: 34349334, 
-      value: utf8.encode("Hello world!"),
+      fieldNumber: 34349334,
+      value: Uint8List.fromList(utf8.encode("Hello world!")),
     )
   ];
   SendSpontaneousPaymentRequest req = SendSpontaneousPaymentRequest(
