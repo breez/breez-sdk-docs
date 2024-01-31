@@ -8,12 +8,12 @@
 import BreezSDK
 import Foundation
 
-func getServiceStatus(sdk: BlockingBreezServices) -> ServiceHealthCheckResponse? {
+func getServiceStatus(sdk: BlockingBreezServices) {
     // ANCHOR: health-check-status
-    let healthCheck = try? sdk.serviceHealthCheck()
-    print("Current service status is: \(healthCheck?.status)")
+    if let healthCheck = try? sdk.serviceHealthCheck() {
+        print("Current service status is: \(healthCheck.status)")
+    }
     // ANCHOR_END: health-check-status
-    return healthCheck
 }
 
 func reportPaymentFailure(sdk: BlockingBreezServices) {

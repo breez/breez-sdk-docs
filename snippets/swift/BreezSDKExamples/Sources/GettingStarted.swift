@@ -38,12 +38,13 @@ func gettingStarted() throws -> BlockingBreezServices? {
 }
 
 // ANCHOR_END: init-sdk
-
 func gettingStartedNodeInfo(sdk: BlockingBreezServices) {
     // ANCHOR: fetch-balance
     if let nodeInfo = try? sdk.nodeInfo() {
         let lnBalance = nodeInfo.channelsBalanceMsat
         let onchainBalance = nodeInfo.onchainBalanceMsat
+        print(lnBalance);
+        print(onchainBalance);
     }
     // ANCHOR_END: fetch-balance
 }
