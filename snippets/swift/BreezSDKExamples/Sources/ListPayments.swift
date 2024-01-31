@@ -5,8 +5,8 @@
 //  Created by ruben on 13/11/2023.
 //
 
-import Foundation
 import BreezSDK
+import Foundation
 
 func ListPayments(sdk: BlockingBreezServices) -> [Payment]? {
     // ANCHOR: list-payments
@@ -20,8 +20,9 @@ func ListPaymentsFiltered(sdk: BlockingBreezServices) -> [Payment]? {
     let payments = try? sdk.listPayments(
         req: ListPaymentsRequest(
             filters: [.sent],
-            fromTimestamp: 1696880000,
-            includeFailures: true))
+            fromTimestamp: 1_696_880_000,
+            includeFailures: true
+        ))
     // ANCHOR_END: list-payments-filtered
     return payments
 }

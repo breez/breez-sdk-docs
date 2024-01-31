@@ -21,7 +21,7 @@ Future<SendPaymentResponse> sendSpontaneousPaymentWithTlvs({
   // ANCHOR: send-spontaneous-payment-with-tlvs
   List<TlvEntry> extraTlvs = [
     TlvEntry(
-      fieldNumber: 34349334, 
+      fieldNumber: 34349334,
       value: utf8.encode("Hello world!"),
     )
   ];

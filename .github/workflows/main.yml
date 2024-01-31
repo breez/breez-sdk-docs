@@ -105,8 +105,8 @@ jobs:
       # Set up the flutter environment and run checks
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.9'
           channel: 'stable'
+          cache: true
 
       - uses: actions/download-artifact@v3
         with:

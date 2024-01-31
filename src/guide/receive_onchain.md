@@ -373,5 +373,4 @@ To calculate the fees for a channel being opened by the LSP:
 </section>
 </custom-tabs>
 
-
 [^1]: For more details on these fees, see [Channel Opening Fees](connecting_lsp.md#channel-opening-fees)

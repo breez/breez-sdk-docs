@@ -5,8 +5,8 @@
 //  Created by ruben on 14/11/2023.
 //
 
-import Foundation
 import BreezSDK
+import Foundation
 
 func pay(sdk: BlockingBreezServices) -> LnUrlPayResult? {
     // ANCHOR: lnurl-pay
@@ -16,7 +16,7 @@ func pay(sdk: BlockingBreezServices) -> LnUrlPayResult? {
     var response: LnUrlPayResult?
     let lnurlPayUrl = "lightning@address.com"
     if let inputType = try? parseInput(s: lnurlPayUrl) {
-        if case.lnUrlPay(let `data`) = inputType {
+        if case let .lnUrlPay(data) = inputType {
             let amountMSat = data.minSendable
             response = try? sdk.payLnurl(req: LnUrlPayRequest(data: data, amountMsat: amountMSat, comment: "comment"))
         }
