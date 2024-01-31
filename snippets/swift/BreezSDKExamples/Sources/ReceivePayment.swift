@@ -1,6 +1,6 @@
 //
 //  ReceivePayment.swift
-//  
+//
 //
 //  Created by ruben on 13/11/2023.
 //

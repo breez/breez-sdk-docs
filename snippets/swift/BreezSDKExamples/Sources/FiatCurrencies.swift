@@ -5,8 +5,8 @@
 //  Created by ruben on 14/11/2023.
 //
 
-import Foundation
 import BreezSDK
+import Foundation
 
 func listSupportedFiatCurrencies(sdk: BlockingBreezServices) -> [FiatCurrency]? {
     // ANCHOR: list-fiat-currencies
@@ -15,7 +15,7 @@ func listSupportedFiatCurrencies(sdk: BlockingBreezServices) -> [FiatCurrency]? 
     return supportedFiatCurrencies
 }
 
-func getCurrentRates(sdk:BlockingBreezServices) -> [Rate]? {
+func getCurrentRates(sdk: BlockingBreezServices) -> [Rate]? {
     // ANCHOR: fetch-fiat-rates
     let fiatRates = try? sdk.fetchFiatRates()
     // ANCHOR_END: fetch-fiat-rates
