@@ -5,8 +5,8 @@
 //  Created by ruben on 14/11/2023.
 //
 
-import Foundation
 import BreezSDK
+import Foundation
 
 func generateReceiveOnchainAddress(sdk: BlockingBreezServices) -> String? {
     // ANCHOR: generate-receive-onchain-address
@@ -17,7 +17,7 @@ func generateReceiveOnchainAddress(sdk: BlockingBreezServices) -> String? {
     print("Minimum amount allowed to deposit in sats: \(swapInfo!.minAllowedDeposit)")
     print("Maximum amount allowed to deposit in sats: \(swapInfo!.maxAllowedDeposit)")
     // ANCHOR_END: generate-receive-onchain-address
-    
+
     return address
 }
 
@@ -28,13 +28,14 @@ func getSwapInProgress(sdk: BlockingBreezServices) -> SwapInfo? {
     return swapInfo
 }
 
-func listRefundables(sdk:BlockingBreezServices) -> [SwapInfo]? {
+func listRefundables(sdk: BlockingBreezServices) -> [SwapInfo]? {
     // ANCHOR: list-refundables
     let refundables = try? sdk.listRefundables()
     // ANCHOR_END: list-refundables
     return refundables
 }
-func executeRefund(sdk: BlockingBreezServices, refundables: SwapInfo,satPerVbyte: UInt32) -> RefundResponse? {
+
+func executeRefund(sdk: BlockingBreezServices, refundables: SwapInfo, satPerVbyte: UInt32) -> RefundResponse? {
     // ANCHOR: execute-refund
     let destinationAddress = "..."
     let response = try? sdk.refund(req: RefundRequest(swapAddress: refundables.bitcoinAddress, toAddress: destinationAddress, satPerVbyte: satPerVbyte))

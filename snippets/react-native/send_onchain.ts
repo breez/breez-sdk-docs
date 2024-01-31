@@ -8,11 +8,15 @@ import {
 
 const exampleFetchReverseSwapFees = async () => {
   // ANCHOR: estimate-current-reverse-swap-total-fees
-  const currentFees = await fetchReverseSwapFees({ sendAmountSat: 50000 })
+  try {
+    const currentFees = await fetchReverseSwapFees({ sendAmountSat: 50000 })
 
-  console.log(
-    `Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`
-  )
+    console.log(
+      `Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`
+    )
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: estimate-current-reverse-swap-total-fees
 }
 
@@ -25,36 +29,48 @@ const exampleListCurrentFees = (currentFees: ReverseSwapPairInfo) => {
 
 const maxAmount = async () => {
   // ANCHOR: max-reverse-swap-amount
-  const maxAmount = await maxReverseSwapAmount()
+  try {
+    const maxAmount = await maxReverseSwapAmount()
 
-  console.log(
-    `Max reverse swap amount: ${maxAmount.totalSat}`
-  )
+    console.log(
+      `Max reverse swap amount: ${maxAmount.totalSat}`
+    )
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: max-reverse-swap-amount
 }
 
 const exampleSendOnchain = async (currentFees: ReverseSwapPairInfo) => {
   // ANCHOR: start-reverse-swap
-  const onchainRecipientAddress = 'bc1..'
-  const amountSat = currentFees.min
-  const satPerVbyte = 5
+  try {
+    const onchainRecipientAddress = 'bc1..'
+    const amountSat = currentFees.min
+    const satPerVbyte = 5
 
-  const reverseSwapInfo = await sendOnchain({
-    amountSat,
-    onchainRecipientAddress,
-    pairHash: currentFees.feesHash,
-    satPerVbyte
-  })
+    const reverseSwapInfo = await sendOnchain({
+      amountSat,
+      onchainRecipientAddress,
+      pairHash: currentFees.feesHash,
+      satPerVbyte
+    })
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: start-reverse-swap
 }
 
 const exampleInProgressReverseSwaps = async () => {
   // ANCHOR: check-reverse-swaps-status
-  const swaps = await inProgressReverseSwaps()
-  for (const swap of swaps) {
-    console.log(
-      `Reverse swap ${swap.id} in progress, status is ${swap.status}`
-    )
+  try {
+    const swaps = await inProgressReverseSwaps()
+    for (const swap of swaps) {
+      console.log(
+        `Reverse swap ${swap.id} in progress, status is ${swap.status}`
+      )
+    }
+  } catch (err) {
+    console.error(err)
   }
   // ANCHOR_END: check-reverse-swaps-status
 }

@@ -1,18 +1,19 @@
 //
 //  ConnectingLsp.swift
-//  
+//
 //
 //  Created by ruben on 14/11/2023.
 //
 
-import Foundation
 import BreezSDK
+import Foundation
 
-func getLspInfo(sdk: BlockingBreezServices) -> LspInformation?{
+func getLspInfo(sdk: BlockingBreezServices) -> LspInformation? {
     // ANCHOR: get-lsp-info
     let lspId = try? sdk.lspId()
     let lspInfo = try? sdk.lspInfo()
     // ANCHOR_END: get-lsp-info
+    print(lspId as Any)
     return lspInfo
 }
 

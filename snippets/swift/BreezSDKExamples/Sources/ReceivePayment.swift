@@ -1,6 +1,6 @@
 //
 //  ReceivePayment.swift
-//  
+//
 //
 //  Created by ruben on 13/11/2023.
 //
@@ -16,5 +16,6 @@ func receivePayment(sdk: BlockingBreezServices) -> ReceivePaymentResponse? {
 
     let invoice = receivePaymentResponse?.lnInvoice;
     // ANCHOR_END: receive-payment
+    print(invoice as Any)
     return receivePaymentResponse
 }

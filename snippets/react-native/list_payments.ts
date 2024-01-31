@@ -5,16 +5,24 @@ import {
 
 const exampleListPayments = async () => {
   // ANCHOR: list-payments
-  const payments = listPayments({})
+  try {
+    const payments = await listPayments({})
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: list-payments
 }
 
 const exampleListPaymentsFiltered = async () => {
   // ANCHOR: list-payments-filtered
-  const payments = listPayments({
-    filters: [PaymentTypeFilter.SENT],
-    fromTimestamp: 1696880000,
-    includeFailures: true
-  })
+  try {
+    const payments = await listPayments({
+      filters: [PaymentTypeFilter.SENT],
+      fromTimestamp: 1696880000,
+      includeFailures: true
+    })
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: list-payments-filtered
 }

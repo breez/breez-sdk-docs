@@ -12,8 +12,14 @@ async fn generate_receive_onchain_address(sdk: Arc<BreezServices>) -> Result<()>
 
     // Send your funds to the below bitcoin address
     let address = swap_info.bitcoin_address;
-    info!("Minimum amount allowed to deposit in sats: {}", swap_info.min_allowed_deposit);
-    info!("Maximum amount allowed to deposit in sats: {}", swap_info.max_allowed_deposit);
+    info!(
+        "Minimum amount allowed to deposit in sats: {}",
+        swap_info.min_allowed_deposit
+    );
+    info!(
+        "Maximum amount allowed to deposit in sats: {}",
+        swap_info.max_allowed_deposit
+    );
     // ANCHOR_END: generate-receive-onchain-address
 
     Ok(())
@@ -55,7 +61,7 @@ async fn execute_refund(
     Ok(())
 }
 
-async fn get_channel_opening_fees(sdk: Arc<BreezServices>, amount_msat: u64) -> Result<()> {
+async fn get_channel_opening_fees(sdk: Arc<BreezServices>, amount_msat: Option<u64>) -> Result<()> {
     // ANCHOR: get-channel-opening-fees
     let channel_fees = sdk
         .open_channel_fee(OpenChannelFeeRequest {

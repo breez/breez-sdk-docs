@@ -7,7 +7,7 @@ from src.connecting_lsp import get_lsp_info, connect_lsp
 from src.buy_btc import buy
 from src.send_onchain import get_current_fees, list_current_fees, check_reverse_swap_status, start_reverse_swap
 from src.static_channel_backup import retrieve_backup_files
-from src.send_spontaneous_payment import send_spontaneous_payment
+from src.send_spontaneous_payment import send_spontaneous_payment, send_spontaneous_payment_with_tlvs
 from src.receive_payment import receive_payment
 from src.receive_onchain import generate_receive_onchain_address, get_in_progress_swap, list_refundables, execute_refund, get_channel_opening_fees
 from src.fiat_currencies import list_supported_fiat_currencies, get_current_rates
@@ -73,6 +73,7 @@ def main():
 
    #send spontaneous payment
    send_spontaneous_payment(sdk_services)
+   send_spontaneous_payment_with_tlvs(sdk_services)
 
    # fiat currencies
    list_supported_fiat_currencies(sdk_services)
