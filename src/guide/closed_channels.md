@@ -1,10 +1,9 @@
-# Closed channels
+# Handling channel closures
 
-On channel close the remaining funds will be sent to an onchain address. In order to redeem those funds you may do the following.
+When channel are closed (due to a misbehaving node or by the LSP), the remaining funds are sent to an on-chain address. To redeem these funds please follow the steps below.
 
-## Prepare Redeem Onchain Funds
-
-First you may want to call prepare the transaction in order to get the transaction weight as well as the calculated fees before eventually broadcasting it.
+## Preparing the transaction
+Prepare the transaction in order to retrieve the transaction weight as well as the calculated fees before broadcasting it:
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
@@ -72,9 +71,8 @@ First you may want to call prepare the transaction in order to get the transacti
 </section>
 </custom-tabs>
 
-## Redeem Onchain Funds
-
-In order to broadcast the redeem transaction do the following.
+## Redeeming the on-chain funds
+Redeem the on-chain fund by broadcasting the transaction to the network:
  
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
