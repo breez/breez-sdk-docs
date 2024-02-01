@@ -15,8 +15,6 @@
 - [Connecting to an LSP](guide/connecting_lsp.md)
 - [Receiving an On-Chain Transaction](guide/receive_onchain.md)
 - [Sending an On-Chain Transaction](guide/send_onchain.md)
-  - [Closed channels](guide/closed_channels.md)
-
 - [Using LNURL & Lightning addresses](guide/lnurl.md)
   - [Sending payments using LNURL-Pay/Lightning address](guide/lnurl_pay.md)
   - [Receiving payments using LNURL-Pay/Lightning address](guide/lnurlpay.md)
@@ -25,6 +23,7 @@
 - [Supporting fiat currencies](guide/fiat_currencies.md)
 - [Buying Bitcoin](guide/buy_btc.md)
 - [Exporting channels backup](guide/static_channel_backup.md)
+- [Handling channel closures](guide/closed_channels.md)
 - [Retrieving service status](guide/service_status.md)
 - [Reporting payment failures](guide/failure_report.md)
 - [Moving to production](guide/production.md)
