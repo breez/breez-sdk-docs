@@ -2,17 +2,25 @@ import { serviceHealthCheck, reportIssue, ReportIssueRequestVariant } from '@bre
 
 const healthCheckStatus = async () => {
   // ANCHOR: health-check-status
-  const healthCheck = await serviceHealthCheck()
-  console.log(`Current service status is: ${healthCheck.status}`)
+  try {
+    const healthCheck = await serviceHealthCheck()
+    console.log(`Current service status is: ${healthCheck.status}`)
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: health-check-status
 }
 
 const reportPaymentFailure = async () => {
   // ANCHOR: report-payment-failure
-  const paymentHash = '...'
-  await reportIssue({
-    type: ReportIssueRequestVariant.PAYMENT_FAILURE,
-    data: { paymentHash }
-  })
+  try {
+    const paymentHash = '...'
+    await reportIssue({
+      type: ReportIssueRequestVariant.PAYMENT_FAILURE,
+      data: { paymentHash }
+    })
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: report-payment-failure
 }

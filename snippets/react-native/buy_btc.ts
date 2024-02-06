@@ -5,8 +5,12 @@ import {
 
 const exampleBuyBtc = async () => {
   // ANCHOR: buy-btc
-  const buyBitcoinResponse = await buyBitcoin({
-    provider: BuyBitcoinProvider.MOONPAY
-  })
+  try {
+    const buyBitcoinResponse = await buyBitcoin({
+      provider: BuyBitcoinProvider.MOONPAY
+    })
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: buy-btc
 }
