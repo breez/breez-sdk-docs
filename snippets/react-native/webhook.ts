@@ -2,12 +2,20 @@ import { registerWebhook } from '@breeztech/react-native-breez-sdk'
 
 const webhook = async () => {
   // ANCHOR: register-webook
-  await registerWebhook('https://yourapplication.com')
+  try {
+    await registerWebhook('https://yourapplication.com')
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: register-webook
 }
 
 const paymentWebhook = async () => {
   // ANCHOR: register-payment-webook
-  await registerWebhook('https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>')
+  try {
+    await registerWebhook('https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>')
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: register-payment-webook
 }

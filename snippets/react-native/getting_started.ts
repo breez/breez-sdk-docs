@@ -16,32 +16,40 @@ const exampleGettingStarted = async () => {
     console.log(`Received event ${e.type}`)
   }
 
-  // Create the default config
-  const seed = await mnemonicToSeed('<mnemonics words>')
-  const inviteCode = '<invite code>'
-  const apiKey = '<api key>'
-  const nodeConfig: NodeConfig = {
-    type: NodeConfigVariant.GREENLIGHT,
-    config: {
-      inviteCode
+  try {
+    // Create the default config
+    const seed = await mnemonicToSeed('<mnemonics words>')
+    const inviteCode = '<invite code>'
+    const apiKey = '<api key>'
+    const nodeConfig: NodeConfig = {
+      type: NodeConfigVariant.GREENLIGHT,
+      config: {
+        inviteCode
+      }
     }
+
+    const config = await defaultConfig(
+      EnvironmentType.PRODUCTION,
+      apiKey,
+      nodeConfig
+    )
+
+    // Connect to the Breez SDK make it ready for use
+    await connect(config, seed, onBreezEvent)
+  } catch (err) {
+    console.error(err)
   }
-
-  const config = await defaultConfig(
-    EnvironmentType.PRODUCTION,
-    apiKey,
-    nodeConfig
-  )
-
-  // Connect to the Breez SDK make it ready for use
-  await connect(config, seed, onBreezEvent)
   // ANCHOR_END: init-sdk
 }
 
 const exampleFetchNodeInfo = async () => {
   // ANCHOR: fetch-balance
-  const nodeState = await nodeInfo()
-  const balanceLn = nodeState.channelsBalanceMsat
-  const balanceOnchain = nodeState.onchainBalanceMsat
+  try {
+    const nodeState = await nodeInfo()
+    const balanceLn = nodeState.channelsBalanceMsat
+    const balanceOnchain = nodeState.onchainBalanceMsat
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: fetch-balance
 }

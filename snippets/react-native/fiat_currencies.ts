@@ -5,12 +5,20 @@ import {
 
 const exampleListCurrencies = async () => {
   // ANCHOR: list-fiat-currencies
-  const fiatCurrencies = await listFiatCurrencies()
+  try {
+    const fiatCurrencies = await listFiatCurrencies()
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: list-fiat-currencies
 }
 
 const exampleFetchRates = async () => {
   // ANCHOR: fetch-fiat-rates
-  const fiatRates = await fetchFiatRates()
+  try {
+    const fiatRates = await fetchFiatRates()
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: fetch-fiat-rates
 }

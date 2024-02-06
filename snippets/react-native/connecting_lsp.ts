@@ -2,20 +2,32 @@ import { connectLsp, listLsps, lspId, lspInfo } from '@breeztech/react-native-br
 
 const exampleAutoConnect = async () => {
   // ANCHOR: get-lsp-info
-  const id = await lspId()
-  const info = await lspInfo()
+  try {
+    const id = await lspId()
+    const info = await lspInfo()
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: get-lsp-info
 }
 
 const exampleListLsps = async () => {
   // ANCHOR: list-lsps
-  const availableLsps = await listLsps()
+  try {
+    const availableLsps = await listLsps()
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: list-lsps
 }
 
 const exampleManualConnect = async () => {
   // ANCHOR: connect-lsp
-  const id = 'your selected lsp id'
-  await connectLsp(id)
+  try {
+    const id = 'your selected lsp id'
+    await connectLsp(id)
+  } catch (err) {
+    console.error(err)
+  }
   // ANCHOR_END: connect-lsp
 }
