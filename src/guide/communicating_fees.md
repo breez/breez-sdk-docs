@@ -161,9 +161,74 @@ Here is how you can build this message:
 ### Receive onchain
 For receiving onchain, there is a minimum and a maximum amount the user can receive. The fees are made up of the same components as receiving a lightning payment.
 
-The user gets an onchain address from receive_onchain. There is no way to know ahead of time exactly the amount that will be received on this address, so it is recommended to show the user the receivable boundaries and the fees involved:
+The user gets an onchain address from `receive_onchain`. There is no way to know ahead of time exactly the amount that will be received on this address, so it is recommended to show the user the receivable boundaries and the fees involved:
 
 > Send more than v sats and up to w sats to this address. A setup fee of x% with a minimum of y sats will be applied for sending more than z sats. This address can only be used once.
 
 Below code sample constructs this message.
-(TODO: code sample)
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+{{#include ../../snippets/rust/src/communicating_fees.rs:get-fee-info-receive-onchain}}
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift,ignore
+// TODO
+```
+</section>
+
+<div slot="title">Kotlin</div>
+<section>
+
+```kotlin,ignore
+// TODO
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+// TODO
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart,ignore
+// TODO
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python,ignore
+# TODO
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go,ignore
+// TODO
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
+
+```cs,ignore
+// TODO
+```
+</section>
+</custom-tabs>
