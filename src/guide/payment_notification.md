@@ -1,6 +1,6 @@
 # Receiving payments via  mobile notifications 
 
-The Breez SDK provides users the ability to receive Lightning payments via mobile notifications. It uses a webhook that allows your application to be notified (via a pre-specified URL) when a payment is about to be received. To use this feature, you need to set up a webhook that an LSP can call when a payment is received and [register it in the Breez SDK](https://sdk-doc.breez.technology/guide/payment_notification.html#step-3-register-a-webhook). This webhook, a URL endpoint in your application, will handle incoming payment notifications. This URL should be capable of receiving POST requests. The payment received webhook payload is json formatted and contains the following structure:
+The Breez SDK provides users the ability to receive Lightning payments via mobile notifications. It uses a webhook that allows your application to be notified (via a pre-specified URL) when a payment is about to be received. To use this feature, you need to set up a webhook that an LSP can call when a payment is received and [register it in the Breez SDK](payment_notification.html#step-3-register-a-webhook). This webhook, a URL endpoint in your application, will handle incoming payment notifications. This URL should be capable of receiving POST requests. The payment received webhook payload is json formatted and contains the following structure:
 
 <section>
 <pre>

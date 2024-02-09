@@ -7,7 +7,7 @@ const examplePrepareRedeemOnchainFunds = async (feeRate: number) => {
   // ANCHOR: prepare-redeem-onchain-funds
   try {
     const toAddress = 'bc1..'
-    const satPerVbyte = feeRate  
+    const satPerVbyte = feeRate
     const prepareRedeemOnchainFundsResp = await prepareRedeemOnchainFunds({ toAddress, satPerVbyte })
   } catch (err) {
     console.error(err)
