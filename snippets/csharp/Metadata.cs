@@ -15,12 +15,12 @@ public class MetadataSnippets
         // ANCHOR: filter-payment-metadata
         try
         {
-            var metadataFilters = new List<MetadataFilter>(
+            var metadataFilters = new List<MetadataFilter>() {
               new MetadataFilter(
                 jsonPath: "myCustomValue",
                 jsonValue: "true"
               )
-            );
+            };
 
             var payments = sdk.ListPayments(
                 new ListPaymentsRequest(
@@ -38,7 +38,7 @@ public class MetadataSnippets
     public void FilterPaymentMetadataString(BlockingBreezServices sdk)
     {
         // ANCHOR: filter-payment-metadata-string
-        var metadataFilters = new List<MetadataFilter>(
+        var metadataFilters = new List<MetadataFilter>() {
           new MetadataFilter(
             jsonPath: "customerName",
             jsonValue: "\"Satoshi Nakamoto\""
@@ -47,7 +47,7 @@ public class MetadataSnippets
             jsonPath: "customerName",
             jsonValue: JsonSerializer.Serialize("Satoshi Nakamoto")
           )
-        );
+        };
         // ANCHOR_END: filter-payment-metadata-string
     }
 
@@ -55,15 +55,15 @@ public class MetadataSnippets
     {
         // ANCHOR: filter-payment-metadata-object
         // This will *NOT* work
-        var _metadataFilters = new List<MetadataFilter>(
+        var _metadataFilters = new List<MetadataFilter>() {
           new MetadataFilter(
             jsonPath: "parent.nestedArray",
             jsonValue: "[1, 2, 3]"
           )
-        );
+        };
 
         // Any of these will work
-        var metadataFilters = new List<MetadataFilter>(
+        var metadataFilters = new List<MetadataFilter>() {
           new MetadataFilter(
             jsonPath: "parent.nestedArray",
             jsonValue: "[1,2,3]"
@@ -72,7 +72,7 @@ public class MetadataSnippets
             jsonPath: "parent.nestedArray",
             jsonValue: JsonSerializer.Serialize(new int[] {1, 2, 3})
           )
-        );
+        };
         // ANCHOR_END: filter-payment-metadata-object
     }
 }
