@@ -65,7 +65,7 @@ async fn get_channel_opening_fees(sdk: Arc<BreezServices>, amount_msat: Option<u
     // ANCHOR: get-channel-opening-fees
     let channel_fees = sdk
         .open_channel_fee(OpenChannelFeeRequest {
-            amount_msat: Some(amount_msat),
+            amount_msat,
             expiry: None,
         })
         .await?;

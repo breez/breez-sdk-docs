@@ -37,7 +37,7 @@ def filter_payment_metadata(sdk_services):
         breez_sdk.MetadataFilter("parent.nestedArray", "[1, 2, 3]")
     ]
 
-    # This will work
+    # Any of these will work
     metadata_filters = [
         breez_sdk.MetadataFilter("parent.nestedArray", "[1,2,3]"),
         breez_sdk.MetadataFilter("parent.nestedArray", json.dumps([1,2,3], separators=(',', ':'))),

@@ -47,7 +47,7 @@ class Metadata {
           jsonValue = "[1, 2, 3]"
         ))
 
-        // This will work
+        // Any of these will work
         val metadataFilters = listOf(MetadataFilter(
           jsonPath = "parent.nestedArray",
           jsonValue = "[1,2,3]"

@@ -62,7 +62,7 @@ public class MetadataSnippets
           )
         );
 
-        // This will work
+        // Any of these will work
         var metadataFilters = new List<MetadataFilter>(
           new MetadataFilter(
             jsonPath: "parent.nestedArray",

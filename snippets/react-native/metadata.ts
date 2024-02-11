@@ -51,7 +51,7 @@ const testFilterPaymentMetadataObject = async () => {
     }
   ]
 
-  // This will work
+  // Any of these will work
   const metadataFilters = [
     {
       jsonPath: 'parent.nestedArray',

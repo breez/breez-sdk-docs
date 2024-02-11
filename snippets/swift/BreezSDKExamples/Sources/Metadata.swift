@@ -51,7 +51,7 @@ func FilterPaymentMetadataObject(sdk: BlockingBreezServices) throws {
         ),
     ]
 
-    // This will work
+    // Any of these will work
     let metadataFilters = [
         MetadataFilter(
             jsonPath: "myCustomValue",

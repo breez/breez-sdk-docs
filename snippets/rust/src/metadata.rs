@@ -52,7 +52,7 @@ async fn filter_payment_metadata_object(sdk: Arc<BreezServices>) -> Result<()> {
         },
     ];
 
-    // This will work
+    // Any of these will work
     let metadata_filters = vec![
         MetadataFilter {
             json_path: "parent.nestedArray".to_string(),

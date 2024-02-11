@@ -57,7 +57,7 @@ func FilterPaymentMetadataObject() {
 		{JsonPath: "parent.nestedArray", JsonValue: "[1, 2, 3]"},
 	}
 
-	// This will work
+	// Any of these will work
 	jsonValue, _ := json.Marshal([]int{1, 2, 3})
 
 	metadataFilters = []breez_sdk.MetadataFilter{

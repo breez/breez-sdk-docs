@@ -42,7 +42,7 @@ Future<void> filterPaymentMetadata() async {
     ),
   ];
 
-  // This will work
+  // Any of these will work
   metadataFilters = [
     MetadataFilter(
       jsonPath: "parent.nestedArray",

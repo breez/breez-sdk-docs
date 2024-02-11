@@ -12,6 +12,7 @@
   - [Receiving payments via mobile notifications](guide/payment_notification.md)
     - [iOS](guide/ios_notification_service_extension.md)
     - [Android](guide/android_notification_foreground_service.md)
+  - [Adding and filtering for payment metadata](guide/payment_metadata.md)
 - [Connecting to an LSP](guide/connecting_lsp.md)
 - [Receiving an On-Chain Transaction](guide/receive_onchain.md)
 - [Sending an On-Chain Transaction](guide/send_onchain.md)
