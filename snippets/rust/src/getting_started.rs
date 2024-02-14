@@ -8,7 +8,7 @@ use crate::AppEventListener;
 async fn getting_started() -> Result<Arc<BreezServices>> {
     // ANCHOR: init-sdk
     let mnemonic = Mnemonic::generate_in(Language::English, 12)?;
-    let seed = mnemonic.to_seed("").to_vec();
+    let seed = mnemonic.to_seed("");
     let invite_code = Some("<invite code>".into());
     let api_key = "<api key>".into();
 
@@ -28,17 +28,26 @@ async fn getting_started() -> Result<Arc<BreezServices>> {
     config.working_dir = "path to an existing directory".into();
 
     // Connect to the Breez SDK make it ready for use
-    let sdk = BreezServices::connect(
-        ConnectRequest {
-            config,
-            seed,
-            restore_only: None,
-        },
-        Box::new(AppEventListener {}),
-    )
-    .await?;
+    let connect_request = ConnectRequest {
+        config,
+        seed: seed.to_vec(),
+        restore_only: None,
+    };
+    let sdk = BreezServices::connect(connect_request, Box::new(AppEventListener {})).await?;
     // ANCHOR_END: init-sdk
 
+    Ok(sdk)
+}
+
+async fn getting_started_restore_only(config: Config, seed: Vec<u8>) -> Result<Arc<BreezServices>> {
+    // ANCHOR: init-sdk-restore-only
+    let connect_request = ConnectRequest {
+        config,
+        seed,
+        restore_only: Some(true),
+    };
+    let sdk = BreezServices::connect(connect_request, Box::new(AppEventListener {})).await?;
+    // ANCHOR_END: init-sdk-restore-only
     Ok(sdk)
 }
 

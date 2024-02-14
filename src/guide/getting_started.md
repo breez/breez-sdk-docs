@@ -113,6 +113,79 @@ Now you are ready to interact with the SDK.
 By default the config working directory is set to `./`. Some platforms may require that you use an application specific directory that is writable within the application sandbox. For example applications running on Android or iOS.
 
 </div>
+<br/>
+
+To connect to an already existing node without registering a new one, use the `restore_only` flag in the connect request. If the node does not exist it will result in an error.
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+{{#include ../../snippets/rust/src/getting_started.rs:init-sdk-restore-only}}
+```
+
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift,ignore
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/GettingStarted.swift:init-sdk-restore-only}}
+```
+
+</section>
+
+<div slot="title">Kotlin</div>
+<section>
+
+```kotlin,ignore
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/GettingStarted.kt:init-sdk-restore-only}}
+```
+
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+{{#include ../../snippets/react-native/getting_started.ts:init-sdk-restore-only}}
+```
+
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart,ignore
+{{#include ../../snippets/dart_snippets/lib/getting_started.dart:init-sdk-restore-only}}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python,ignore
+{{#include ../../snippets/python/src/getting_started.py:init-sdk-restore-only}}
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go,ignore
+{{#include ../../snippets/go/getting_started.go:init-sdk-restore-only}}
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
+
+```cs,ignore
+{{#include ../../snippets/csharp/GettingStarted.cs:init-sdk-restore-only}}
+```
+</section>
+</custom-tabs>
 
 ## Getting the Node State
 
