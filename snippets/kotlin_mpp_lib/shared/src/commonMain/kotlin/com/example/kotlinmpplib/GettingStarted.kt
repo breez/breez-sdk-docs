@@ -26,11 +26,23 @@ class GettingStarted {
 
         try {
             // Connect to the Breez SDK make it ready for use
-            val sdk = connect(config, seed, SDKListener())
+            val connectRequest = ConnectRequest(config, seed)
+            val sdk = connect(connectRequest, SDKListener())
         } catch (e: Exception) {
             // handle error
         }
         // ANCHOR_END: init-sdk
+    }
+
+    fun start_restore_only(config: Config, seed: List<UByte>) {
+        try {
+            // ANCHOR: init-sdk-restore-only
+            val connectRequest = ConnectRequest(config, seed, true)
+            val sdk = connect(connectRequest, SDKListener())
+            // ANCHOR_END: init-sdk-restore-only
+        } catch (e: Exception) {
+            // handle error
+        }
     }
 
     fun fetch_balance(sdk: BlockingBreezServices) {

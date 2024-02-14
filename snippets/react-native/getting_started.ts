@@ -1,6 +1,8 @@
 import {
   type BreezEvent,
   connect,
+  type Config,
+  type ConnectRequest,
   defaultConfig,
   EnvironmentType,
   mnemonicToSeed,
@@ -35,11 +37,23 @@ const exampleGettingStarted = async () => {
     )
 
     // Connect to the Breez SDK make it ready for use
-    await connect(config, seed, onBreezEvent)
+    const connectRequest: ConnectRequest = { config, seed }
+    await connect(connectRequest, onBreezEvent)
   } catch (err) {
     console.error(err)
   }
   // ANCHOR_END: init-sdk
+}
+
+const exampleGettingRestoreOnly = async (config: Config, seed: number[]) => {
+  try {
+    // ANCHOR: init-sdk-restore-only
+    const connectRequest: ConnectRequest = { config, seed, restoreOnly: true }
+    await connect(connectRequest, onBreezEvent)
+    // ANCHOR_END: init-sdk-restore-only
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 const exampleFetchNodeInfo = async () => {
