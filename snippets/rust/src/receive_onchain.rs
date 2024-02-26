@@ -61,7 +61,7 @@ async fn execute_refund(
     Ok(())
 }
 
-async fn get_channel_opening_fees(sdk: Arc<BreezServices>, amount_msat: u64) -> Result<()> {
+async fn get_channel_opening_fees(sdk: Arc<BreezServices>, amount_msat: Option<u64>) -> Result<()> {
     // ANCHOR: get-channel-opening-fees
     let channel_fees = sdk
         .open_channel_fee(OpenChannelFeeRequest {
