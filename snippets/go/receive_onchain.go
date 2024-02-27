@@ -52,7 +52,7 @@ func ExecuteRefund() {
 	// ANCHOR_END: execute-refund
 }
 
-func GetChannelOpeningFees(amountMsat uint64) {
+func GetChannelOpeningFees(amountMsat *uint64) {
 	// ANCHOR: get-channel-opening-fees
 	if channelFees, err := sdk.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{AmountMsat: amountMsat}); err == nil {
 		log.Printf("%#v", channelFees)
