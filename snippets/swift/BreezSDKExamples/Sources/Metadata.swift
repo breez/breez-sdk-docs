@@ -13,7 +13,7 @@ func SetPaymentMetadata(sdk: BlockingBreezServices) throws {
     // ANCHOR_END: set-payment-metadata
 }
 
-func FilterPaymentMetadata(sdk: BlockingBreezServices) throws {
+func FilterPaymentMetadata(sdk: BlockingBreezServices) -> [Payment]? {
     // ANCHOR: filter-payment-metadata
     let metadataFilters = [
         MetadataFilter(
@@ -22,15 +22,17 @@ func FilterPaymentMetadata(sdk: BlockingBreezServices) throws {
         )
     ]
 
-    try? sdk.listPayments(
+    let payments = try? sdk.listPayments(
         req: ListPaymentsRequest(
             metadataFilters: metadataFilters
         )
     )
     // ANCHOR_END: filter-payment-metadata
+
+    return payments
 }
 
-func FilterPaymentMetadataString(sdk: BlockingBreezServices) throws {
+func FilterPaymentMetadataString(sdk: BlockingBreezServices) -> [Payment]? {
     // ANCHOR: filter-payment-metadata-string
     let metadataFilters = [
         MetadataFilter(
@@ -39,12 +41,18 @@ func FilterPaymentMetadataString(sdk: BlockingBreezServices) throws {
         )
     ]
     // ANCHOR_END: filter-payment-metadata-string
+
+    return try? sdk.listPayments(
+        req: ListPaymentsRequest(
+            metadataFilters: metadataFilters
+        )
+    )
 }
 
-func FilterPaymentMetadataObject(sdk: BlockingBreezServices) throws {
+func FilterPaymentMetadataObject(sdk: BlockingBreezServices) -> [Payment]? {
     // ANCHOR: filter-payment-metadata-object
     // This will *NOT* work
-    let _metadataFilters = [
+    var metadataFilters = [
         MetadataFilter(
             jsonPath: "myCustomValue",
             jsonValue: #"[1, 2, 3]"#
@@ -52,11 +60,17 @@ func FilterPaymentMetadataObject(sdk: BlockingBreezServices) throws {
     ]
 
     // Any of these will work
-    let metadataFilters = [
+    metadataFilters = [
         MetadataFilter(
             jsonPath: "myCustomValue",
             jsonValue: #"[1,2,3]"#
         )
     ]
     // ANCHOR_END: filter-payment-metadata-object
+
+    return try? sdk.listPayments(
+        req: ListPaymentsRequest(
+            metadataFilters: metadataFilters
+        )
+    )
 }

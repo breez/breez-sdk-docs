@@ -19,9 +19,7 @@ Future<void> filterPaymentMetadata() async {
   await BreezSDK().listPayments(
     req: ListPaymentsRequest(
       metadataFilters: metadataFilters
-    )).catchError((_) {
-    // handle error
-  });
+    ));
   // ANCHOR_END: filter-payment-metadata
 
   // ANCHOR: filter-payment-metadata-string
