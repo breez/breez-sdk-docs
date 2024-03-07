@@ -11,5 +11,6 @@ Future<ReceivePaymentResponse> receivePayment() async {
 
   print(receivePaymentResponse.lnInvoice);
   // ANCHOR_END: receive-payment
+
   return receivePaymentResponse;
 }
