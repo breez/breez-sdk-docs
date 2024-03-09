@@ -229,6 +229,6 @@ the minimum invoice amount or the date and time until when this opening fee is v
 
 [^1]: See the service methods `receive_payment`, `receive_onchain` or `buy_bitcoin`.
 
-[^2]: [https://github.com/BitcoinAndLightningLayerSpecs/lsp/tree/main/LSPS2]()
+[^2]: https://github.com/BitcoinAndLightningLayerSpecs/lsp/tree/main/LSPS2
 
-[^3]: [https://breez.github.io/breez-sdk/breez_sdk_core/struct.OpeningFeeParams.html]()
+[^3]: https://breez.github.io/breez-sdk/breez_sdk_core/struct.OpeningFeeParams.html
