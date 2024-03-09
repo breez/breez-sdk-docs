@@ -32,7 +32,7 @@ func gettingStarted() throws -> BlockingBreezServices? {
     guard seed != nil else {
         return nil
     }
-    let sdk = try? connect(config: config, seed: seed!, listener: SDKListener())
+    let sdk = try? connect(req: ConnectRequest(config: config, seed: seed!), listener: SDKListener())
 
     return sdk
 }

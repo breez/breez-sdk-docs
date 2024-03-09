@@ -34,7 +34,7 @@ func GettingStarted() *breez_sdk.BlockingBreezServices {
 	// Customize the config object according to your needs
 	config.WorkingDir = "path to an existing directory"
 
-	sdk, err := breez_sdk.Connect(config, seed, BreezListener{})
+	sdk, err := breez_sdk.Connect(ConnectRequest(config, seed), BreezListener{})
 	if err != nil {
 		log.Fatalf("Connect failed: %#v", err)
 	}

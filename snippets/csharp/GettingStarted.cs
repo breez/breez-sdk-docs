@@ -26,7 +26,7 @@ public class GettingStartedSnippets
         try
         {
             // Connect to the Breez SDK make it ready for use
-            sdk = BreezSdkMethods.Connect(config, seed, new SdkListener());
+            sdk = BreezSdkMethods.Connect(new ConnectRequest(config, seed), new SdkListener());
         }
         catch (Exception)
         {

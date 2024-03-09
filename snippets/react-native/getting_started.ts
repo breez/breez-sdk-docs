@@ -35,7 +35,7 @@ const exampleGettingStarted = async () => {
     )
 
     // Connect to the Breez SDK make it ready for use
-    await connect(config, seed, onBreezEvent)
+    await connect(ConnectRequest(config, seed), onBreezEvent)
   } catch (err) {
     console.error(err)
   }

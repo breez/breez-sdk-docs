@@ -29,7 +29,7 @@ Future<void> initializeSDK() async {
   config = config.copyWith(workingDir: "path to an existing directory");
 
   // Connect to the Breez SDK make it ready for use
-  return await BreezSDK().connect(config: config, seed: seed);
+  return await BreezSDK().connect(req: ConnectRequest(config: config, seed: seed);
   // ANCHOR_END: init-sdk
 }
 

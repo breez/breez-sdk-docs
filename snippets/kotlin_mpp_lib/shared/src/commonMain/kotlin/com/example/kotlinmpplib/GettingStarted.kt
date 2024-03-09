@@ -26,7 +26,7 @@ class GettingStarted {
 
         try {
             // Connect to the Breez SDK make it ready for use
-            val sdk = connect(config, seed, SDKListener())
+            val sdk = connect(ConnectRequest(config, seed), SDKListener())
         } catch (e: Exception) {
             // handle error
         }

@@ -23,7 +23,7 @@ def getting_started(API_KEY,mnemonic,temp_dir):
 
     try:
         # Connect to the Breez SDK make it ready for use
-        sdk_services = breez_sdk.connect(config, seed, SDKListener())
+        sdk_services = breez_sdk.connect(ConnectRequest(config, seed), SDKListener())
         
         return sdk_services
     except Exception as error:
