@@ -61,3 +61,9 @@ Future<OpenChannelFeeResponse> getChannelOpeningFees({
   // ANCHOR_END: get-channel-opening-fees
   return resp;
 }
+
+Future rescanSwaps() async {
+  // ANCHOR: rescan-swaps
+  await BreezSDK().rescanSwaps();  
+  // ANCHOR_END: rescan-swaps  
+}

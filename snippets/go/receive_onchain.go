@@ -59,3 +59,11 @@ func GetChannelOpeningFees(amountMsat *uint64) {
 	}
 	// ANCHOR_END: get-channel-opening-fees
 }
+
+func RescanSwaps() {
+	// ANCHOR: rescan-swaps
+	if err := sdk.RescanSwaps(); err == nil {
+		log.Println("Rescan finished")
+	}
+	// ANCHOR_END: rescan-swaps
+}

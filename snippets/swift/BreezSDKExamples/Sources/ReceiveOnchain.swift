@@ -49,3 +49,9 @@ func getChannelOpeningFees(sdk: BlockingBreezServices, amountMsat: UInt64) -> Op
     // ANCHOR_END: get-channel-opening-fees
     return response
 }
+
+func rescanSwaps(sdk: BlockingBreezServices) -> [SwapInfo]? {
+    // ANCHOR: rescan-swaps
+    try? sdk.rescanSwaps()
+    // ANCHOR_END: rescan-swaps    
+}
