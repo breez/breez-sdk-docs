@@ -50,7 +50,7 @@ func getChannelOpeningFees(sdk: BlockingBreezServices, amountMsat: UInt64) -> Op
     return response
 }
 
-func rescanSwaps(sdk: BlockingBreezServices) -> [SwapInfo]? {
+func rescanSwaps(sdk: BlockingBreezServices) -> Void {
     // ANCHOR: rescan-swaps
     try? sdk.rescanSwaps()
     // ANCHOR_END: rescan-swaps    
