@@ -5,7 +5,7 @@ def get_current_fees(sdk_services):
         # ANCHOR: estimate-current-reverse-swap-total-fees
         req = breez_sdk.ReverseSwapFeesRequest(send_amount_sat=50000)
         current_fees = sdk_services.fetch_reverse_swap_fees(req)
-        print("Total estimated fees for reverseswap: ", current_fees)
+        print("Total estimated fees for reverse swap: ", current_fees.total_fees)
         # ANCHOR_END: estimate-current-reverse-swap-total-fees
         return current_fees
     except Exception as error:

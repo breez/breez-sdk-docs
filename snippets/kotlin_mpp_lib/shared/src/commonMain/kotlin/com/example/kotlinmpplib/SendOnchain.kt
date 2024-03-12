@@ -6,7 +6,7 @@ class SendOnchain {
         // ANCHOR: estimate-current-reverse-swap-total-fees
         try {
             val fees = sdk.fetchReverseSwapFees(ReverseSwapFeesRequest(50_000_u))
-            // Log.v("Breez", "Total estimated fees for reverse swap: ${fees.totalEstimatedFees}")
+            // Log.v("Breez", "Total estimated fees for reverse swap: ${fees.totalFees}")
         } catch (e: Exception) {
             // handle error
         }

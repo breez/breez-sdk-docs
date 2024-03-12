@@ -11,7 +11,7 @@ public class SendOnchainSnippets
                 new ReverseSwapFeesRequest(50000));
             Console.WriteLine(
                 $"Total estimated fees for reverse " +
-                $"swap: {currentFees.totalEstimatedFees}");
+                $"swap: {currentFees.totalFees}");
         }
         catch (Exception)
         {

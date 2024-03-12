@@ -12,7 +12,7 @@ const exampleFetchReverseSwapFees = async () => {
     const currentFees = await fetchReverseSwapFees({ sendAmountSat: 50000 })
 
     console.log(
-      `Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}`
+      `Total estimated fees for reverse swap: ${currentFees.totalFees}`
     )
   } catch (err) {
     console.error(err)

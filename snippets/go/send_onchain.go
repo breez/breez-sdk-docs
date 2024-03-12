@@ -13,7 +13,7 @@ func GetCurrentFees() {
 		SendAmountSat: &sendAmountSat,
 	}
 	if currentFees, err := sdk.FetchReverseSwapFees(reverseSwapFeesRequest); err == nil {
-		log.Printf("Total estimated fees for reverse swap: %v", currentFees.TotalEstimatedFees)
+		log.Printf("Total estimated fees for reverse swap: %v", currentFees.TotalFees)
 	}
 	// ANCHOR_END: estimate-current-reverse-swap-total-fees
 }
