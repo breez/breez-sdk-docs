@@ -9,12 +9,13 @@ async fn get_current_fees(sdk: Arc<BreezServices>) -> Result<()> {
     let current_fees = sdk
         .fetch_reverse_swap_fees(ReverseSwapFeesRequest {
             send_amount_sat: Some(50_000),
+            claim_tx_feerate: None,
         })
         .await?;
 
     info!(
         "Total estimated fees for reverse swap: {:?}",
-        current_fees.total_estimated_fees
+        current_fees.total_fees
     );
     // ANCHOR_END: estimate-current-reverse-swap-total-fees
 

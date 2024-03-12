@@ -5,7 +5,7 @@ Future<ReverseSwapPairInfo> estimateCurrentFees() async {
   // ANCHOR: estimate-current-reverse-swap-total-fees
   ReverseSwapFeesRequest req = const ReverseSwapFeesRequest(sendAmountSat: 50000);
   ReverseSwapPairInfo currentFees = await BreezSDK().fetchReverseSwapFees(req: req);
-  print("Total estimated fees for reverse swap: ${currentFees.totalEstimatedFees}");
+  print("Total estimated fees for reverse swap: ${currentFees.totalFees}");
   // ANCHOR_END: estimate-current-reverse-swap-total-fees
   return currentFees;
 }
