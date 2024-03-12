@@ -29,14 +29,14 @@ Future<void> initializeSDK() async {
   config = config.copyWith(workingDir: "path to an existing directory");
 
   // Connect to the Breez SDK make it ready for use
-  ConnectRequest connectRequest = ConnectRequest(config: config, seed: seed)
+  ConnectRequest connectRequest = ConnectRequest(config: config, seed: seed);
   return await BreezSDK().connect(req: connectRequest);
   // ANCHOR_END: init-sdk
 }
 
 Future<void> connectRestoreOnly(Config config, Uint8List seed) async {
   // ANCHOR: init-sdk-restore-only
-  ConnectRequest connectRequest = ConnectRequest(config: config, seed: seed, restoreOnly: true)
+  ConnectRequest connectRequest = ConnectRequest(config: config, seed: seed, restoreOnly: true);
   return await BreezSDK().connect(req: connectRequest);
   // ANCHOR_END: init-sdk-restore-only
 }
