@@ -6,25 +6,17 @@ import {
   maxReverseSwapAmount
 } from '@breeztech/react-native-breez-sdk'
 
-const exampleFetchReverseSwapFees = async () => {
-  // ANCHOR: estimate-current-reverse-swap-total-fees
+const exampleFetchReverseSwapLimits = async () => {
+  // ANCHOR: get-current-reverse-swap-limits
   try {
-    const currentFees = await fetchReverseSwapFees({ sendAmountSat: 50000 })
+    const currentLimits = await onchainPaymentLimits()
 
-    console.log(
-      `Total estimated fees for reverse swap: ${currentFees.totalFees}`
-    )
+    console.log(`Minimum amount, in sats: ${currentLimits.minSat}`)
+    console.log(`Maximum amount, in sats: ${currentLimits.maxSat}`)
   } catch (err) {
     console.error(err)
   }
-  // ANCHOR_END: estimate-current-reverse-swap-total-fees
-}
-
-const exampleListCurrentFees = (currentFees: ReverseSwapPairInfo) => {
-  // ANCHOR: get-current-reverse-swap-min-max
-  console.log(`Minimum amount, in sats: ${currentFees.min}`)
-  console.log(`Maximum amount, in sats: ${currentFees.max}`)
-  // ANCHOR_END: get-current-reverse-swap-min-max
+  // ANCHOR_END: get-current-reverse-swap-limits
 }
 
 const maxAmount = async () => {
