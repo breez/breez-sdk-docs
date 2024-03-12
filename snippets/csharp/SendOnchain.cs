@@ -34,6 +34,31 @@ public class SendOnchainSnippets
         // ANCHOR_END: max-reverse-swap-amount
     }
 
+    public void PreparePayOnchain(BlockingBreezServices sdk, OnchainPaymentLimitsResponse currentLimits, uint feeRate)
+    {
+        // ANCHOR: prepare-pay-onchain
+        var amountSat = currentLimits.minSat;
+        var claimTxFeerate = feeRate;
+
+        try
+        {
+            var resp = sdk.PrepareOnchainPayment(
+                new PrepareOnchainPaymentRequest(
+                    amountSat,
+                    SwapAmountType.SEND,
+                    claimTxFeerate));
+
+            Console.WriteLine($"Send amount, in sats: {resp.senderAmountSat}");
+            Console.WriteLine($"Receive amount, in sats: {resp.recipientAmountSat}");
+            Console.WriteLine($"Total fees, in sats: {resp.totalFees}");
+        }
+        catch (Exception)
+        {
+            // Handle error
+        }
+        // ANCHOR_END: prepare-pay-onchain
+    }
+
     public void StartReverseSwap(BlockingBreezServices sdk, ReverseSwapPairInfo currentFees, uint feeRate)
     {
         // ANCHOR: start-reverse-swap

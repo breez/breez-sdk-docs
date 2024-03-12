@@ -25,6 +25,22 @@ class SendOnchain {
         // ANCHOR_END: max-reverse-swap-amount
     }
 
+    fun prepare_pay_onchain(sdk: BlockingBreezServices, currentLimits: OnchainPaymentLimitsResponse) {
+        // ANCHOR: prepare-pay-onchain
+        val amountSat = currentLimits.minSat
+        val satPerVbyte = 10.toUInt()
+        try {
+            val prepareRequest = PrepareOnchainPaymentRequest(amountSat, SwapAmountType.SEND, satPerVbyte)
+            val prepareRes = sdk.prepareOnchainPayment(prepareRequest)
+            // Log.v("Breez", "Send amount: ${prepareRes.senderAmountSat} sats")
+            // Log.v("Breez", "Receive amount: ${prepareRes.recipientAmountSat} sats")
+            // Log.v("Breez", "Total fees: ${prepareRes.totalFees} sats")
+        } catch (e: Exception) {
+            // handle error
+        }
+        // ANCHOR_END: prepare-pay-onchain
+    }
+
     fun start_reverse_swap(sdk: BlockingBreezServices, fees: ReverseSwapPairInfo) {
         // ANCHOR: start-reverse-swap
         val address = "bc1.."

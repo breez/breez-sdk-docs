@@ -1,9 +1,12 @@
 import {
   type ReverseSwapPairInfo,
+  type OnchainPaymentLimitsResponse,
   fetchReverseSwapFees,
   inProgressReverseSwaps,
   onchainPaymentLimits,
+  prepareOnchainPayment,
   sendOnchain,
+  SwapAmountType,
   maxReverseSwapAmount
 } from '@breeztech/react-native-breez-sdk'
 
@@ -32,6 +35,26 @@ const maxAmount = async () => {
     console.error(err)
   }
   // ANCHOR_END: max-reverse-swap-amount
+}
+
+const examplePreparePayOnchain = async (currentLimits: OnchainPaymentLimitsResponse) => {
+  // ANCHOR: prepare-pay-onchain
+  try {
+    const amountSat = currentLimits.minSat
+    const satPerVbyte = 10
+
+    const prepareResponse = await prepareOnchainPayment({
+      amountSat,
+      amountType: SwapAmountType.SEND,
+      claimTxFeerate: satPerVbyte
+    })
+    console.log(`Send amount: ${prepareResponse.senderAmountSat} sats`)
+    console.log(`Receive amount: ${prepareResponse.recipientAmountSat} sats`)
+    console.log(`Total fees: ${prepareResponse.totalFees} sats`)
+  } catch (err) {
+    console.error(err)
+  }
+  // ANCHOR_END: prepare-pay-onchain
 }
 
 const exampleSendOnchain = async (currentFees: ReverseSwapPairInfo) => {
