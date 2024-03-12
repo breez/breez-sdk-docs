@@ -42,14 +42,15 @@ func GettingStarted() *breez_sdk.BlockingBreezServices {
 
 	return sdk
 }
+
 // ANCHOR_END: init-sdk
 
 func GettingStartedRestoreOnly(config breez_sdk.Config, seed []uint8) *breez_sdk.BlockingBreezServices {
 	// ANCHOR: init-sdk-restore-only
 	restoreOnly := true
 	connectRequest := breez_sdk.ConnectRequest{
-		Config: config,
-		Seed: seed,
+		Config:      config,
+		Seed:        seed,
 		RestoreOnly: &restoreOnly,
 	}
 	sdk, err := breez_sdk.Connect(connectRequest, BreezListener{})
