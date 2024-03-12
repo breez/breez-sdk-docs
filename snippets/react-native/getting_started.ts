@@ -45,6 +45,10 @@ const exampleGettingStarted = async () => {
   // ANCHOR_END: init-sdk
 }
 
+const onBreezEvent = (e: BreezEvent) => {
+  console.log(`Received event ${e.type}`)
+}
+
 const exampleGettingRestoreOnly = async (config: Config, seed: number[]) => {
   try {
     // ANCHOR: init-sdk-restore-only
