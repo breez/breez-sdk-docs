@@ -26,7 +26,8 @@ public class GettingStartedSnippets
         try
         {
             // Connect to the Breez SDK make it ready for use
-            sdk = BreezSdkMethods.Connect(config, seed, new SdkListener());
+            var connectRequest = new ConnectRequest(config, seed);
+            sdk = BreezSdkMethods.Connect(connectRequest, new SdkListener());
         }
         catch (Exception)
         {
@@ -43,6 +44,22 @@ public class GettingStartedSnippets
         }
     }
     // ANCHOR_END: init-sdk
+
+    public void GettingStartedRestoreOnly(Config config, List<byte> seed)
+    {
+        BlockingBreezServices sdk;
+        try
+        {
+            // ANCHOR: init-sdk-restore-only
+            var connectRequest = new ConnectRequest(config, seed, true);
+            sdk = BreezSdkMethods.Connect(connectRequest, new SdkListener());
+            // ANCHOR_END: init-sdk-restore-only
+        }
+        catch (Exception)
+        {
+            // Handle error
+        }
+    }
 
     public void FetchNodeInfo(BlockingBreezServices sdk)
     {

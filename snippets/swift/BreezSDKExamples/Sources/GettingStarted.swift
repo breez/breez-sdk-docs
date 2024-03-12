@@ -32,12 +32,21 @@ func gettingStarted() throws -> BlockingBreezServices? {
     guard seed != nil else {
         return nil
     }
-    let sdk = try? connect(config: config, seed: seed!, listener: SDKListener())
+    let connectRequest = ConnectRequest(config: config, seed: seed!)
+    let sdk = try? connect(req: connectRequest, listener: SDKListener())
 
     return sdk
 }
-
 // ANCHOR_END: init-sdk
+
+func gettingStartedRestoreOnly(config: Config, seed: [UInt8]) throws -> BlockingBreezServices? {
+    // ANCHOR: init-sdk-restore-only
+    let connectRequest = ConnectRequest(config: config, seed: seed, restoreOnly: true)
+    let sdk = try? connect(req: connectRequest, listener: SDKListener())
+    // ANCHOR_END: init-sdk-restore-only
+    return sdk
+}
+
 func gettingStartedNodeInfo(sdk: BlockingBreezServices) {
     // ANCHOR: fetch-balance
     if let nodeInfo = try? sdk.nodeInfo() {

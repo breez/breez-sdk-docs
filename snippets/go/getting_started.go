@@ -34,7 +34,8 @@ func GettingStarted() *breez_sdk.BlockingBreezServices {
 	// Customize the config object according to your needs
 	config.WorkingDir = "path to an existing directory"
 
-	sdk, err := breez_sdk.Connect(config, seed, BreezListener{})
+	connectRequest := breez_sdk.ConnectRequest{Config: config, Seed: seed}
+	sdk, err := breez_sdk.Connect(connectRequest, BreezListener{})
 	if err != nil {
 		log.Fatalf("Connect failed: %#v", err)
 	}
@@ -43,6 +44,23 @@ func GettingStarted() *breez_sdk.BlockingBreezServices {
 }
 
 // ANCHOR_END: init-sdk
+
+func GettingStartedRestoreOnly(config breez_sdk.Config, seed []uint8) *breez_sdk.BlockingBreezServices {
+	// ANCHOR: init-sdk-restore-only
+	restoreOnly := true
+	connectRequest := breez_sdk.ConnectRequest{
+		Config:      config,
+		Seed:        seed,
+		RestoreOnly: &restoreOnly,
+	}
+	sdk, err := breez_sdk.Connect(connectRequest, BreezListener{})
+	// ANCHOR_END: init-sdk-restore-only
+	if err != nil {
+		log.Fatalf("Connect failed: %#v", err)
+	}
+	return sdk
+}
+
 func FetchBalance() {
 	// ANCHOR: fetch-balance
 	if nodeInfo, err := sdk.NodeInfo(); err != nil {

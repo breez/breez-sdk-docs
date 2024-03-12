@@ -23,13 +23,25 @@ def getting_started(API_KEY,mnemonic,temp_dir):
 
     try:
         # Connect to the Breez SDK make it ready for use
-        sdk_services = breez_sdk.connect(config, seed, SDKListener())
+        connect_request = breez_sdk.ConnectRequest(config, seed)
+        sdk_services = breez_sdk.connect(connect_request, SDKListener())
         
         return sdk_services
     except Exception as error:
         logging.error(error)
         raise
     # ANCHOR_END: init-sdk
+
+def getting_started_restore_only(config, seed):
+    try:
+        # ANCHOR: init-sdk-restore-only
+        connect_request = breez_sdk.ConnectRequest(config, seed, restore_only=True)
+        sdk_services = breez_sdk.connect(connect_request, SDKListener())
+        # ANCHOR_END: init-sdk-restore-only
+        return sdk_services
+    except Exception as error:
+        logging.error(error)
+        raise
 
 def getting_started_node_info(sdk_services):
      
