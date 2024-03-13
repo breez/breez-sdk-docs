@@ -17,14 +17,6 @@ func GetCurrentLimits(sdk: BlockingBreezServices) -> ReverseSwapPairInfo? {
     return currentFees
 }
 
-func maxReverseSwapAmount(sdk: BlockingBreezServices) -> MaxReverseSwapAmountResponse? {
-    //  ANCHOR: max-reverse-swap-amount
-    let maxAmount = try? sdk.maxReverseSwapAmount()
-    print("Max reverse swap amount: \(String(describing: maxAmount?.totalSat))")
-    // ANCHOR_END: max-reverse-swap-amount
-    return maxAmount
-}
-
 func PreparePayOnchain(sdk: BlockingBreezServices, currentLimits: OnchainPaymentLimitsResponse) -> PrepareOnchainPaymentResponse? {
     // ANCHOR: prepare-pay-onchain
     let amountSat = currentLimits.minSat

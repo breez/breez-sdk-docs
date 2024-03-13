@@ -10,14 +10,6 @@ Future<OnchainPaymentLimitsResponse> getCurrentLimits() async {
   return currentLimits;
 }
 
-Future<MaxReverseSwapAmountResponse> maxReverseSwapAmount() async {
-  // ANCHOR: max-reverse-swap-amount  
-  MaxReverseSwapAmountResponse maxAmount = await BreezSDK().maxReverseSwapAmount();
-  print("Max reverse swap amount: ${maxAmount.totalSat}");
-  // ANCHOR_END: max-reverse-swap-amount
-  return maxAmount;
-}
-
 Future<PrepareOnchainPaymentResponse> preparePayOnchain({
   required int amountSat,
   required int satPerVbyte,

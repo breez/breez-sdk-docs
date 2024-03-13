@@ -23,20 +23,6 @@ const exampleFetchReverseSwapLimits = async () => {
   // ANCHOR_END: get-current-reverse-swap-limits
 }
 
-const maxAmount = async () => {
-  // ANCHOR: max-reverse-swap-amount
-  try {
-    const maxAmount = await maxReverseSwapAmount()
-
-    console.log(
-      `Max reverse swap amount: ${maxAmount.totalSat}`
-    )
-  } catch (err) {
-    console.error(err)
-  }
-  // ANCHOR_END: max-reverse-swap-amount
-}
-
 const examplePreparePayOnchain = async (currentLimits: OnchainPaymentLimitsResponse) => {
   // ANCHOR: prepare-pay-onchain
   try {

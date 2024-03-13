@@ -15,14 +15,6 @@ func GetCurrentLimits() {
 	// ANCHOR_END: get-current-reverse-swap-limits
 }
 
-func MaxReverseSwapAmount() {
-	// ANCHOR: max-reverse-swap-amount
-	if maxAmount, err := sdk.MaxReverseSwapAmount(); err == nil {
-		log.Printf("Max reverse swap amount: %v", maxAmount.TotalSat)
-	}
-	// ANCHOR_END: max-reverse-swap-amount
-}
-
 func PreparePayOnchain(currentLimits breez_sdk.OnchainPaymentLimitsResponse) {
 	// ANCHOR: prepare-pay-onchain
 	sendAmountSat := currentLimits.MinSat
