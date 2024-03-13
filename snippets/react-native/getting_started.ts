@@ -44,11 +44,12 @@ const exampleGettingStarted = async () => {
   }
   // ANCHOR_END: init-sdk
 }
+
 const exampleGettingRestoreOnly = async (config: Config, seed: number[]) => {
   const onBreezEvent = (e: BreezEvent) => {
     console.log(`Received event ${e.type}`)
   }
-  
+
   try {
     // ANCHOR: init-sdk-restore-only
     const connectRequest: ConnectRequest = { config, seed, restoreOnly: true }
