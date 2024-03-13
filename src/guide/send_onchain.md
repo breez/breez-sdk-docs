@@ -85,10 +85,10 @@ It is best to fetch these limits just before your app shows the Pay Onchain (rev
 The next step is to get an overview of the exact amount that will be sent, the amount that will be received, and the fees.
 
 There are two ways to do this:
-- you can set the send amount, then the received amount will be your input minus the fees
-- you can set the receive amount, in which case the send amount will be your input plus the fees
+- you can set the sender amount, then the recipient amount will be your input minus the fees
+- you can set the recipient amount, in which case the sender amount will be your input plus the fees
 
-Assuming you'd like to specify the send amount, the snippet is as follows:
+Assuming you'd like to specify the sender amount, the snippet is as follows:
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
@@ -156,7 +156,7 @@ Assuming you'd like to specify the send amount, the snippet is as follows:
 </section>
 </custom-tabs>
 
-If instead you'd like to specify the receive amount, simply change the `SwapAmountType` from `Send` to `Receive`.
+If instead you'd like to specify the recipient amount, simply change the `SwapAmountType` from `Send` to `Receive`.
 
 Once you checked the amounts and the fees are acceptable, you can continue with sending the payment.
 

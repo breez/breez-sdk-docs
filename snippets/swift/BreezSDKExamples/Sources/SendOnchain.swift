@@ -33,8 +33,8 @@ func PreparePayOnchain(sdk: BlockingBreezServices, currentLimits: OnchainPayment
     let prepareRequest = PrepareOnchainPaymentRequest(amountSat: amountSat, amountType: .send, claimTxFeerate: satPerVbyte);
     let prepareResponse = try? sdk.prepareOnchainPayment(req: prepareRequest)
 
-    print("Send amount, in sats: \(prepareResponse.senderAmountSat)")
-    print("Receive amount, in sats: \(prepareResponse.recipientAmountSat)")
+    print("Sender amount, in sats: \(prepareResponse.senderAmountSat)")
+    print("Recipient amount, in sats: \(prepareResponse.recipientAmountSat)")
     print("Total fees, in sats: \(prepareResponse.totalFees)")
     // ANCHOR_END: prepare-pay-onchain
     return prepareResponse

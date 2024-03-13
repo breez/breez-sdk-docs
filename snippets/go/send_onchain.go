@@ -35,8 +35,8 @@ func PreparePayOnchain() {
     }
 
 	if prepareResp, err := sdk.PrepareOnchainPayment(req); err == nil {
-		log.Printf("Send amount, in sats: %v", prepareResp.SenderAmountSat)
-		log.Printf("Receive amount, in sats: %v", prepareResp.RecipientAmountSat)
+		log.Printf("Sender amount, in sats: %v", prepareResp.SenderAmountSat)
+		log.Printf("Recipient amount, in sats: %v", prepareResp.RecipientAmountSat)
 		log.Printf("Total fees, in sats: %v", prepareResp.TotalFees)
 	}
 	// ANCHOR_END: prepare-pay-onchain

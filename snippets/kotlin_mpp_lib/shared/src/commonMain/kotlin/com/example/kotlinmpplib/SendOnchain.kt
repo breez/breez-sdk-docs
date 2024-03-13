@@ -32,8 +32,8 @@ class SendOnchain {
         try {
             val prepareRequest = PrepareOnchainPaymentRequest(amountSat, SwapAmountType.SEND, satPerVbyte)
             val prepareRes = sdk.prepareOnchainPayment(prepareRequest)
-            // Log.v("Breez", "Send amount: ${prepareRes.senderAmountSat} sats")
-            // Log.v("Breez", "Receive amount: ${prepareRes.recipientAmountSat} sats")
+            // Log.v("Breez", "Sender amount: ${prepareRes.senderAmountSat} sats")
+            // Log.v("Breez", "Recipient amount: ${prepareRes.recipientAmountSat} sats")
             // Log.v("Breez", "Total fees: ${prepareRes.totalFees} sats")
         } catch (e: Exception) {
             // handle error

@@ -31,8 +31,8 @@ def prepare_pay_onchain(sdk_services, current_limits, fee_rate):
         req = breez_sdk.PrepareOnchainPaymentRequest(amount_sat, breez_sdk.SwapAmountType.SEND, claim_tx_feerate)
         resp = sdk_services.prepare_onchain_payment(req)
 
-        print("Send amount, in sats: ", resp.sender_amount_sat)
-        print("Receive amount, in sats: ", resp.recipient_amount_sat)
+        print("Sender amount, in sats: ", resp.sender_amount_sat)
+        print("Recipient amount, in sats: ", resp.recipient_amount_sat)
         print("Total fees, in sats: ", resp.total_fees)
     # ANCHOR_END: prepare-pay-onchain
     except Exception as error:

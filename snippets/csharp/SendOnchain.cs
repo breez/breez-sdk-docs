@@ -48,8 +48,8 @@ public class SendOnchainSnippets
                     SwapAmountType.SEND,
                     claimTxFeerate));
 
-            Console.WriteLine($"Send amount, in sats: {resp.senderAmountSat}");
-            Console.WriteLine($"Receive amount, in sats: {resp.recipientAmountSat}");
+            Console.WriteLine($"Sender amount, in sats: {resp.senderAmountSat}");
+            Console.WriteLine($"Recipient amount, in sats: {resp.recipientAmountSat}");
             Console.WriteLine($"Total fees, in sats: {resp.totalFees}");
         }
         catch (Exception)

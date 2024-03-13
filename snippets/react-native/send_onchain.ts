@@ -48,8 +48,8 @@ const examplePreparePayOnchain = async (currentLimits: OnchainPaymentLimitsRespo
       amountType: SwapAmountType.SEND,
       claimTxFeerate: satPerVbyte
     })
-    console.log(`Send amount: ${prepareResponse.senderAmountSat} sats`)
-    console.log(`Receive amount: ${prepareResponse.recipientAmountSat} sats`)
+    console.log(`Sender amount: ${prepareResponse.senderAmountSat} sats`)
+    console.log(`Recipient amount: ${prepareResponse.recipientAmountSat} sats`)
     console.log(`Total fees: ${prepareResponse.totalFees} sats`)
   } catch (err) {
     console.error(err)

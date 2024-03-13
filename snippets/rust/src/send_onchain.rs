@@ -42,8 +42,8 @@ async fn prepare_pay_onchain(
         })
         .await?;
 
-    info!("Send amount: {} sats", prepare_res.sender_amount_sat);
-    info!("Receive amount: {} sats", prepare_res.recipient_amount_sat);
+    info!("Sender amount: {} sats", prepare_res.sender_amount_sat);
+    info!("Recipient amount: {} sats", prepare_res.recipient_amount_sat);
     info!("Total fees: {} sats", prepare_res.total_fees);
     // ANCHOR_END: prepare-pay-onchain
 

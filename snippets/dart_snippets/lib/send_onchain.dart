@@ -29,8 +29,8 @@ Future<PrepareOnchainPaymentResponse> preparePayOnchain({
     claimTxFeerate: satPerVbyte,
   );
   PrepareOnchainPaymentResponse resp = await BreezSDK().prepareOnchainPayment(req: req);
-  print("Send amount: ${resp.senderAmountSat} sats");
-  print("Receive amount: ${resp.recipientAmountSat} sats");
+  print("Sender amount: ${resp.senderAmountSat} sats");
+  print("Recipient amount: ${resp.recipientAmountSat} sats");
   print("Total fees: ${resp.totalFees} sats");
   // ANCHOR_END: prepare-pay-onchain
   return resp;
