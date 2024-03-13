@@ -2,22 +2,16 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class SendOnchain {
-    fun estimate_current_rev_swap_fees(sdk: BlockingBreezServices) {
-        // ANCHOR: estimate-current-reverse-swap-total-fees
+    fun get_current_rev_swap_limits(sdk: BlockingBreezServices) {
+        // ANCHOR: get-current-reverse-swap-limits
         try {
-            val fees = sdk.fetchReverseSwapFees(ReverseSwapFeesRequest(50_000_u))
-            // Log.v("Breez", "Total estimated fees for reverse swap: ${fees.totalFees}")
+            val currentLimits = sdk.onchainPaymentLimits()
+            // Log.v("Breez", "Minimum amount, in sats: ${currentLimits.minSat}")
+            // Log.v("Breez", "Maximum amount, in sats: ${currentLimits.maxSat}")
         } catch (e: Exception) {
             // handle error
         }
-        // ANCHOR_END: estimate-current-reverse-swap-total-fees
-    }
-
-    fun get_current_rev_swap_min_max(sdk: BlockingBreezServices, fees: ReverseSwapPairInfo) {
-        // ANCHOR: get-current-reverse-swap-min-max
-        // Log.v("Breez", "Minimum amount, in sats: ${fees.min}")
-        // Log.v("Breez", "Maximum amount, in sats: ${fees.max}")
-        // ANCHOR_END: get-current-reverse-swap-min-max
+        // ANCHOR_END: get-current-reverse-swap-limits
     }
 
     fun max_reverse_swap_amount(sdk: BlockingBreezServices) {

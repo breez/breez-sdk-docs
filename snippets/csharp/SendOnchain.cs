@@ -2,30 +2,20 @@ using Breez.Sdk;
 
 public class SendOnchainSnippets
 {
-    public void GetCurrentFees(BlockingBreezServices sdk)
+    public void GetCurrentLimits(BlockingBreezServices sdk)
     {
-        // ANCHOR: estimate-current-reverse-swap-total-fees
+        // ANCHOR: get-current-reverse-swap-limits
         try
         {
-            var currentFees = sdk.FetchReverseSwapFees(
-                new ReverseSwapFeesRequest(50000));
-            Console.WriteLine(
-                $"Total estimated fees for reverse " +
-                $"swap: {currentFees.totalFees}");
+            var currentLimits = sdk.OnchainPaymentLimits();
+            Console.WriteLine($"Minimum amount, in sats: {currentLimits.minSat}");
+            Console.WriteLine($"Maximum amount, in sats: {currentLimits.maxSat}");
         }
         catch (Exception)
         {
             // Handle error
         }
-        // ANCHOR_END: estimate-current-reverse-swap-total-fees
-    }
-
-    public void ListCurrentFees(BlockingBreezServices sdk, ReverseSwapPairInfo currentFees)
-    {
-        // ANCHOR: get-current-reverse-swap-min-max
-        Console.WriteLine($"Minimum amount, in sats: {currentFees.min}");
-        Console.WriteLine($"Maximum amount, in sats: {currentFees.max}");
-        // ANCHOR_END: get-current-reverse-swap-min-max
+        // ANCHOR_END: get-current-reverse-swap-limits
     }
 
     public void MaxReverseSwapAmount(BlockingBreezServices sdk)

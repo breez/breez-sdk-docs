@@ -2,15 +2,15 @@
 
 You can send funds from the Breez SDK wallet to an on-chain address as follows.
 
-## Setting the fee
-First, fetch the current reverse swap fees:
+## Checking the limits
+First, fetch the current reverse swap limits:
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/send_onchain.rs:estimate-current-reverse-swap-total-fees}}
+{{#include ../../snippets/rust/src/send_onchain.rs:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -18,7 +18,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```swift,ignore
-{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:estimate-current-reverse-swap-total-fees}}
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -26,7 +26,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```kotlin,ignore
-{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:estimate-current-reverse-swap-total-fees}}
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -34,7 +34,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```typescript
-{{#include ../../snippets/react-native/send_onchain.ts:estimate-current-reverse-swap-total-fees}}
+{{#include ../../snippets/react-native/send_onchain.ts:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -42,7 +42,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```dart,ignore
-{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:estimate-current-reverse-swap-total-fees}}
+{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -50,7 +50,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python/src/send_onchain.py:estimate-current-reverse-swap-total-fees}}
+{{#include ../../snippets/python/src/send_onchain.py:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -58,7 +58,7 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```go,ignore
-{{#include ../../snippets/go/send_onchain.go:estimate-current-reverse-swap-total-fees}}
+{{#include ../../snippets/go/send_onchain.go:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -66,87 +66,20 @@ First, fetch the current reverse swap fees:
 <section>
 
 ```cs,ignore
-{{#include ../../snippets/csharp/SendOnchain.cs:estimate-current-reverse-swap-total-fees}}
+{{#include ../../snippets/csharp/SendOnchain.cs:get-current-reverse-swap-limits}}
 ```
 </section>
 </custom-tabs>
+
+This represents the range of valid amounts that can be sent at this point in time. The range may change depending on the wallet's liquidity, swap service parameters or mempool feerate fluctuations.
 
 <div class="warning">
 <h4>Developer note</h4>
 
-The reverse swap will involve two on-chain transactions, for which the mining fees can only be estimated. They will happen
-automatically once the process is started, but the last two values above are these estimates to help you get a picture
-of the total costs.
+
+It is best to fetch these limits just before your app shows the Pay Onchain (reverse swap) UI. You can then use these limits to validate the user input.
 
 </div>
-
-Fetching the fees also tells you what is the range of amounts the service allows:
-
-<custom-tabs category="lang">
-<div slot="title">Rust</div>
-<section>
-
-```rust,ignore
-{{#include ../../snippets/rust/src/send_onchain.rs:get-current-reverse-swap-min-max}}
-```
-</section>
-
-<div slot="title">Swift</div>
-<section>
-
-```swift,ignore
-{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:get-current-reverse-swap-min-max}}
-```
-</section>
-
-<div slot="title">Kotlin</div>
-<section>
-
-```kotlin,ignore
-{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:get-current-reverse-swap-min-max}}
-```
-</section>
-
-<div slot="title">React Native</div>
-<section>
-
-```typescript
-{{#include ../../snippets/react-native/send_onchain.ts:get-current-reverse-swap-min-max}}
-```
-</section>
-
-<div slot="title">Dart</div>
-<section>
-
-```dart,ignore
-{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:get-current-reverse-swap-min-max}}
-```
-</section>
-
-<div slot="title">Python</div>
-<section>
-
-```python,ignore
-{{#include ../../snippets/python/src/send_onchain.py:get-current-reverse-swap-min-max}}
-```
-</section>
-
-<div slot="title">Go</div>
-<section>
-
-```go,ignore
-{{#include ../../snippets/go/send_onchain.go:get-current-reverse-swap-min-max}}
-```
-</section>
-
-<div slot="title">C#</div>
-<section>
-
-```cs,ignore
-{{#include ../../snippets/csharp/SendOnchain.cs:get-current-reverse-swap-min-max}}
-```
-</section>
-</custom-tabs>
 
 ## Sending all funds 
 In case you want to drain your channels you need to know the maximum sendable amount to an on-chain address:
