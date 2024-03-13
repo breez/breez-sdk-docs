@@ -5,7 +5,7 @@ class ServiceStatus {
     fun HealthCheckStatus(sdk: BlockingBreezServices) {
         // ANCHOR: health-check-status
         try {
-            val healthCheck = sdk.serviceHealthCheck()
+            val healthCheck = serviceHealthCheck("<api key>")
             // Log.v("Breez", "Current service status is: ${healthCheck.status}")
         } catch (e: Exception) {
             // Handle error

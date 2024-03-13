@@ -3,7 +3,7 @@ import 'package:breez_sdk/bridge_generated.dart';
 
 Future<void> healthCheckStatus() async {
   // ANCHOR: health-check-status
-  ServiceHealthCheckResponse healthCheck = await BreezSDK().serviceHealthCheck();
+  ServiceHealthCheckResponse healthCheck = await BreezSDK().serviceHealthCheck("<api key>");
   print("Current service status is: ${healthCheck.status}");
   // ANCHOR_END: health-check-status
 }
