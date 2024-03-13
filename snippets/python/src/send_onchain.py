@@ -1,22 +1,16 @@
 import breez_sdk
 
-def get_current_fees(sdk_services):
+def get_current_limits(sdk_services):
     try: 
-        # ANCHOR: estimate-current-reverse-swap-total-fees
-        req = breez_sdk.ReverseSwapFeesRequest(send_amount_sat=50000)
-        current_fees = sdk_services.fetch_reverse_swap_fees(req)
-        print("Total estimated fees for reverse swap: ", current_fees.total_fees)
-        # ANCHOR_END: estimate-current-reverse-swap-total-fees
+        # ANCHOR: get-current-reverse-swap-limits
+        current_limits = sdk_services.onchain_payment_limits()
+        print("Minimum amount, in sats: ", current_limits.min_sat)
+        print("Maximum amount, in sats: ", current_limits.max_sat)
+        # ANCHOR_END: get-current-reverse-swap-limits
         return current_fees
     except Exception as error:
         print(error)
         raise
-
-def list_current_fees(current_fees):
-    # ANCHOR: get-current-reverse-swap-min-max
-    print("Minimum amount, in sats: ", current_fees.min)
-    print("Maximum amount, in sats: ", current_fees.max)
-    # ANCHOR_END: get-current-reverse-swap-min-max
 
 def max_reverse_swap_amount(sdk_services):
     try: 

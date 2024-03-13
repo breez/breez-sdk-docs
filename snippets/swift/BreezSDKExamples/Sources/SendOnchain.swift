@@ -8,20 +8,13 @@
 import BreezSDK
 import Foundation
 
-func GetCurrentFees(sdk: BlockingBreezServices) -> ReverseSwapPairInfo? {
-    //  ANCHOR: estimate-current-reverse-swap-total-fees
-    let sendAmountSat: UInt64 = 50_000
-    let currentFees = try? sdk.fetchReverseSwapFees(req: ReverseSwapFeesRequest(sendAmountSat: sendAmountSat))
-    print("Total estimated fees for reverse swap: \(String(describing: currentFees?.totalFees))")
-    // ANCHOR_END: estimate-current-reverse-swap-total-fees
+func GetCurrentLimits(sdk: BlockingBreezServices) -> ReverseSwapPairInfo? {
+    //  ANCHOR: get-current-reverse-swap-limits
+    let currentLimits = try? sdk.onchainPaymentLimits()
+    print("Minimum amount, in sats: \(currentLimits.minSat)")
+    print("Maximum amount, in sats: \(currentLimits.maxSat)")
+    // ANCHOR_END: get-current-reverse-swap-limits
     return currentFees
-}
-
-func ListCurrentFees(currentFees: ReverseSwapPairInfo) {
-    // ANCHOR: get-current-reverse-swap-min-max
-    print("Minimum amount, in sats: \(currentFees.min)")
-    print("Maximum amount, in sats: \(currentFees.max)")
-    // ANCHOR_END: get-current-reverse-swap-min-max
 }
 
 func maxReverseSwapAmount(sdk: BlockingBreezServices) -> MaxReverseSwapAmountResponse? {

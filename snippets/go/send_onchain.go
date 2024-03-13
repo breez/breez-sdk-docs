@@ -6,23 +6,13 @@ import (
 	"github.com/breez/breez-sdk-go/breez_sdk"
 )
 
-func GetCurrentFees() {
-	// ANCHOR: estimate-current-reverse-swap-total-fees
-	sendAmountSat := uint64(50_000)
-	reverseSwapFeesRequest := breez_sdk.ReverseSwapFeesRequest{
-		SendAmountSat: &sendAmountSat,
+func GetCurrentLimits() {
+	// ANCHOR: get-current-reverse-swap-limits
+	if currentLimits, err := sdk.OnchainPaymentLimits(); err == nil {
+		log.Printf("Minimum amount, in sats: %v", currentLimits.MinSat)
+		log.Printf("Maximum amount, in sats: %v", currentLimits.MaxSat)
 	}
-	if currentFees, err := sdk.FetchReverseSwapFees(reverseSwapFeesRequest); err == nil {
-		log.Printf("Total estimated fees for reverse swap: %v", currentFees.TotalFees)
-	}
-	// ANCHOR_END: estimate-current-reverse-swap-total-fees
-}
-
-func ListCurrentFees(currentFees breez_sdk.ReverseSwapPairInfo) {
-	// ANCHOR: get-current-reverse-swap-min-max
-	log.Printf("Minimum amount, in sats: %v", currentFees.Min)
-	log.Printf("Maximum amount, in sats: %v", currentFees.Max)
-	// ANCHOR_END: get-current-reverse-swap-min-max
+	// ANCHOR_END: get-current-reverse-swap-limits
 }
 
 func MaxReverseSwapAmount() {

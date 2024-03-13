@@ -1,20 +1,13 @@
 import 'package:breez_sdk/breez_sdk.dart';
 import 'package:breez_sdk/bridge_generated.dart';
 
-Future<ReverseSwapPairInfo> estimateCurrentFees() async {
-  // ANCHOR: estimate-current-reverse-swap-total-fees
-  ReverseSwapFeesRequest req = const ReverseSwapFeesRequest(sendAmountSat: 50000);
-  ReverseSwapPairInfo currentFees = await BreezSDK().fetchReverseSwapFees(req: req);
-  print("Total estimated fees for reverse swap: ${currentFees.totalFees}");
-  // ANCHOR_END: estimate-current-reverse-swap-total-fees
-  return currentFees;
-}
-
-void listCurrentFees({required ReverseSwapPairInfo currentFees}) {
-  // ANCHOR: get-current-reverse-swap-min-max
-  print("Minimum amount, in sats: ${currentFees.min}");
-  print("Maximum amount, in sats: ${currentFees.max}");
-  // ANCHOR_END: get-current-reverse-swap-min-max
+Future<OnchainPaymentLimitsResponse> getCurrentLimits() async {
+  // ANCHOR: get-current-reverse-swap-limits
+  OnchainPaymentLimitsResponse currentLimits = await BreezSDK().onchainPaymentLimits();
+  print("Minimum amount, in sats: ${currentLimits.minSat}");
+  print("Maximum amount, in sats: ${currentLimits.maxSat}");
+  // ANCHOR_END: get-current-reverse-swap-limits
+  return currentLimits;
 }
 
 Future<MaxReverseSwapAmountResponse> maxReverseSwapAmount() async {

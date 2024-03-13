@@ -4,29 +4,13 @@ use anyhow::Result;
 use breez_sdk_core::*;
 use log::info;
 
-async fn get_current_fees(sdk: Arc<BreezServices>) -> Result<()> {
-    // ANCHOR: estimate-current-reverse-swap-total-fees
-    let current_fees = sdk
-        .fetch_reverse_swap_fees(ReverseSwapFeesRequest {
-            send_amount_sat: Some(50_000),
-            claim_tx_feerate: None,
-        })
-        .await?;
+async fn get_current_limits(sdk: Arc<BreezServices>) -> Result<()> {
+    // ANCHOR: get-current-reverse-swap-limits
+    let current_limits = sdk.onchain_payment_limits().await?;
 
-    info!(
-        "Total estimated fees for reverse swap: {:?}",
-        current_fees.total_fees
-    );
-    // ANCHOR_END: estimate-current-reverse-swap-total-fees
-
-    Ok(())
-}
-
-async fn list_current_fees(current_fees: ReverseSwapPairInfo) -> Result<()> {
-    // ANCHOR: get-current-reverse-swap-min-max
-    info!("Minimum amount, in sats: {}", current_fees.min);
-    info!("Maximum amount, in sats: {}", current_fees.max);
-    // ANCHOR_END: get-current-reverse-swap-min-max
+    info!("Minimum amount, in sats: {}", current_limits.min_sat);
+    info!("Maximum amount, in sats: {}", current_limits.max_sat);
+    // ANCHOR_END: get-current-reverse-swap-limits
 
     Ok(())
 }
