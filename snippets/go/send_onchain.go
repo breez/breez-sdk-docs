@@ -29,9 +29,9 @@ func PreparePayOnchain(currentLimits breez_sdk.OnchainPaymentLimitsResponse) {
 	satPerVbyte := uint32(10)
 
 	req := breez_sdk.PrepareOnchainPaymentRequest{
-		AmountSat:               sendAmountSat,
-		AmountType:              breez_sdk.SwapAmountTypeSend,
-		ClaimTxFeerate:          satPerVbyte,
+		AmountSat:      sendAmountSat,
+		AmountType:     breez_sdk.SwapAmountTypeSend,
+		ClaimTxFeerate: satPerVbyte,
 	}
 
 	if prepareResp, err := sdk.PrepareOnchainPayment(req); err == nil {
