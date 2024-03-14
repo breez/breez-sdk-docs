@@ -81,6 +81,85 @@ It is best to fetch these limits just before your app shows the Pay Onchain (rev
 
 </div>
 
+## Preparing to send, checking fees
+The next step is to get an overview of the exact amount that will be sent, the amount that will be received, and the fees.
+
+There are two ways to do this:
+- you can set the sender amount, then the recipient amount will be your input minus the fees
+- you can set the recipient amount, in which case the sender amount will be your input plus the fees
+
+Assuming you'd like to specify the sender amount, the snippet is as follows:
+
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+
+```rust,ignore
+{{#include ../../snippets/rust/src/send_onchain.rs:prepare-pay-onchain}}
+```
+</section>
+
+<div slot="title">Swift</div>
+<section>
+
+```swift,ignore
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/SendOnchain.swift:prepare-pay-onchain}}
+```
+</section>
+
+<div slot="title">Kotlin</div>
+<section>
+
+```kotlin,ignore
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/SendOnchain.kt:prepare-pay-onchain}}
+```
+</section>
+
+<div slot="title">React Native</div>
+<section>
+
+```typescript
+{{#include ../../snippets/react-native/send_onchain.ts:prepare-pay-onchain}}
+```
+</section>
+
+<div slot="title">Dart</div>
+<section>
+
+```dart,ignore
+{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:prepare-pay-onchain}}
+```
+</section>
+
+<div slot="title">Python</div>
+<section>
+
+```python,ignore
+{{#include ../../snippets/python/src/send_onchain.py:prepare-pay-onchain}}
+```
+</section>
+
+<div slot="title">Go</div>
+<section>
+
+```go,ignore
+{{#include ../../snippets/go/send_onchain.go:prepare-pay-onchain}}
+```
+</section>
+
+<div slot="title">C#</div>
+<section>
+
+```cs,ignore
+{{#include ../../snippets/csharp/SendOnchain.cs:prepare-pay-onchain}}
+```
+</section>
+</custom-tabs>
+
+If instead you'd like to specify the recipient amount, simply change the `SwapAmountType` from `Send` to `Receive`.
+
+Once you checked the amounts and the fees are acceptable, you can continue with sending the payment.
+
 ## Sending all funds 
 In case you want to drain your channels you need to know the maximum sendable amount to an on-chain address:
 

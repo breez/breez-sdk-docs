@@ -23,6 +23,22 @@ def max_reverse_swap_amount(sdk_services):
         print(error)
         raise
 
+def prepare_pay_onchain(sdk_services, current_limits, fee_rate):
+    amount_sat = current_limits.min_sat
+    claim_tx_feerate = fee_rate
+    try:
+        # ANCHOR: prepare-pay-onchain
+        req = breez_sdk.PrepareOnchainPaymentRequest(amount_sat, breez_sdk.SwapAmountType.SEND, claim_tx_feerate)
+        resp = sdk_services.prepare_onchain_payment(req)
+
+        print("Sender amount, in sats: ", resp.sender_amount_sat)
+        print("Recipient amount, in sats: ", resp.recipient_amount_sat)
+        print("Total fees, in sats: ", resp.total_fees)
+    # ANCHOR_END: prepare-pay-onchain
+    except Exception as error:
+        print(error)
+        raise
+
 def start_reverse_swap(sdk_services, current_fees,fee_rate):
     # ANCHOR: start-reverse-swap
     destination_address = "bc1.."

@@ -18,6 +18,24 @@ Future<MaxReverseSwapAmountResponse> maxReverseSwapAmount() async {
   return maxAmount;
 }
 
+Future<PrepareOnchainPaymentResponse> preparePayOnchain({
+  required int amountSat,
+  required int satPerVbyte,
+}) async {
+  // ANCHOR: prepare-pay-onchain
+  PrepareOnchainPaymentRequest req = PrepareOnchainPaymentRequest(
+    amountSat: amountSat,
+    amountType: SwapAmountType.Send,
+    claimTxFeerate: satPerVbyte,
+  );
+  PrepareOnchainPaymentResponse resp = await BreezSDK().prepareOnchainPayment(req: req);
+  print("Sender amount: ${resp.senderAmountSat} sats");
+  print("Recipient amount: ${resp.recipientAmountSat} sats");
+  print("Total fees: ${resp.totalFees} sats");
+  // ANCHOR_END: prepare-pay-onchain
+  return resp;
+}
+
 Future<SendOnchainResponse> startReverseSwap({
   required int amountSat,
   required String onchainRecipientAddress,

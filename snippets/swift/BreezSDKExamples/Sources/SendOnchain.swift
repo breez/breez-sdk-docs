@@ -25,6 +25,21 @@ func maxReverseSwapAmount(sdk: BlockingBreezServices) -> MaxReverseSwapAmountRes
     return maxAmount
 }
 
+func PreparePayOnchain(sdk: BlockingBreezServices, currentLimits: OnchainPaymentLimitsResponse) -> PrepareOnchainPaymentResponse? {
+    // ANCHOR: prepare-pay-onchain
+    let amountSat = currentLimits.minSat
+    let satPerVbyte: UInt32 = 5
+
+    let prepareRequest = PrepareOnchainPaymentRequest(amountSat: amountSat, amountType: .send, claimTxFeerate: satPerVbyte);
+    let prepareResponse = try? sdk.prepareOnchainPayment(req: prepareRequest)
+
+    print("Sender amount, in sats: \(prepareResponse.senderAmountSat)")
+    print("Recipient amount, in sats: \(prepareResponse.recipientAmountSat)")
+    print("Total fees, in sats: \(prepareResponse.totalFees)")
+    // ANCHOR_END: prepare-pay-onchain
+    return prepareResponse
+}
+
 func StartReverseSwap(sdk: BlockingBreezServices, currentFees: ReverseSwapPairInfo) -> SendOnchainResponse? {
     // ANCHOR: start-reverse-swap
     let destinationAddress = "bc1.."

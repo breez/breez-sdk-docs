@@ -23,6 +23,25 @@ func MaxReverseSwapAmount() {
 	// ANCHOR_END: max-reverse-swap-amount
 }
 
+func PreparePayOnchain(currentLimits breez_sdk.OnchainPaymentLimitsResponse) {
+	// ANCHOR: prepare-pay-onchain
+	sendAmountSat := currentLimits.MinSat
+	satPerVbyte := uint32(10)
+
+	req := breez_sdk.PrepareOnchainPaymentRequest{
+		AmountSat:      sendAmountSat,
+		AmountType:     breez_sdk.SwapAmountTypeSend,
+		ClaimTxFeerate: satPerVbyte,
+	}
+
+	if prepareResp, err := sdk.PrepareOnchainPayment(req); err == nil {
+		log.Printf("Sender amount, in sats: %v", prepareResp.SenderAmountSat)
+		log.Printf("Recipient amount, in sats: %v", prepareResp.RecipientAmountSat)
+		log.Printf("Total fees, in sats: %v", prepareResp.TotalFees)
+	}
+	// ANCHOR_END: prepare-pay-onchain
+}
+
 func StartReverseSwap() {
 	// ANCHOR: start-reverse-swap
 	destinationAddress := "bc1.."
