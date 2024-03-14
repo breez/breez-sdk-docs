@@ -28,11 +28,11 @@ func PreparePayOnchain() {
 	sendAmountSat := uint64(50_000)
 	satPerVbyte := uint32(5)
 
-    req := breez_sdk.PrepareOnchainPaymentRequest{
-        AmountSat:               sendAmountSat,
-        AmountType:              breez_sdk.SwapAmountTypeSend,
-        ClaimTxFeerate:          satPerVbyte,
-    }
+	req := breez_sdk.PrepareOnchainPaymentRequest{
+		AmountSat:               sendAmountSat,
+		AmountType:              breez_sdk.SwapAmountTypeSend,
+		ClaimTxFeerate:          satPerVbyte,
+	}
 
 	if prepareResp, err := sdk.PrepareOnchainPayment(req); err == nil {
 		log.Printf("Sender amount, in sats: %v", prepareResp.SenderAmountSat)
