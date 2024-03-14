@@ -20,28 +20,24 @@ Future<PrepareOnchainPaymentResponse> preparePayOnchain({
     amountType: SwapAmountType.Send,
     claimTxFeerate: satPerVbyte,
   );
-  PrepareOnchainPaymentResponse resp = await BreezSDK().prepareOnchainPayment(req: req);
-  print("Sender amount: ${resp.senderAmountSat} sats");
-  print("Recipient amount: ${resp.recipientAmountSat} sats");
-  print("Total fees: ${resp.totalFees} sats");
+  PrepareOnchainPaymentResponse prepareRes = await BreezSDK().prepareOnchainPayment(req: req);
+  print("Sender amount: ${prepareRes.senderAmountSat} sats");
+  print("Recipient amount: ${prepareRes.recipientAmountSat} sats");
+  print("Total fees: ${prepareRes.totalFees} sats");
   // ANCHOR_END: prepare-pay-onchain
   return resp;
 }
 
 Future<SendOnchainResponse> startReverseSwap({
-  required int amountSat,
   required String onchainRecipientAddress,
-  required String pairHash,
-  required int satPerVbyte,
+  required PrepareOnchainPaymentResponse prepareRes,
 }) async {
   // ANCHOR: start-reverse-swap
-  SendOnchainRequest req = SendOnchainRequest(
-    amountSat: amountSat,
-    onchainRecipientAddress: onchainRecipientAddress,
-    pairHash: pairHash,
-    satPerVbyte: satPerVbyte,
+  PayOnchainRequest req = PayOnchainRequest(
+    recipientAddress: onchainRecipientAddress,
+    prepareRes: prepareRes,
   );
-  SendOnchainResponse resp = await BreezSDK().sendOnchain(req: req);
+  PayOnchainResponse res = await BreezSDK().payOnchain(req: req);
   // ANCHOR_END: start-reverse-swap
   return resp;
 }

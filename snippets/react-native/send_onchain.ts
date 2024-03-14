@@ -43,18 +43,14 @@ const examplePreparePayOnchain = async (currentLimits: OnchainPaymentLimitsRespo
   // ANCHOR_END: prepare-pay-onchain
 }
 
-const exampleSendOnchain = async (currentFees: ReverseSwapPairInfo) => {
+const examplePayOnchain = async (prepareResponse: PrepareOnchainPaymentResponse) => {
   // ANCHOR: start-reverse-swap
   try {
     const onchainRecipientAddress = 'bc1..'
-    const amountSat = currentFees.min
-    const satPerVbyte = 5
 
-    const reverseSwapInfo = await sendOnchain({
-      amountSat,
-      onchainRecipientAddress,
-      pairHash: currentFees.feesHash,
-      satPerVbyte
+    const reverseSwapInfo = await payOnchain({
+      recipientAddress: onchainRecipientAddress,
+      prepareResponse
     })
   } catch (err) {
     console.error(err)

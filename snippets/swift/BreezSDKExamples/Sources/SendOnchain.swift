@@ -32,13 +32,11 @@ func PreparePayOnchain(sdk: BlockingBreezServices, currentLimits: OnchainPayment
     return prepareResponse
 }
 
-func StartReverseSwap(sdk: BlockingBreezServices, currentFees: ReverseSwapPairInfo) -> SendOnchainResponse? {
+func StartReverseSwap(sdk: BlockingBreezServices, prepareResponse: PrepareOnchainPaymentRequest) -> SendOnchainResponse? {
     // ANCHOR: start-reverse-swap
     let destinationAddress = "bc1.."
-    let amountSat = currentFees.min
-    let satPerVbyte: UInt32 = 5
 
-    let response = try? sdk.sendOnchain(req: SendOnchainRequest(amountSat: amountSat, onchainRecipientAddress: destinationAddress, pairHash: currentFees.feesHash, satPerVbyte: satPerVbyte))
+    let response = try? sdk.payOnchain(req: PayOnchainRequest(recipientAddress: destinationAddress, prepareRes: prepareResponse))
     // ANCHOR_END: start-reverse-swap
     return response
 }

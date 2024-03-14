@@ -18,24 +18,22 @@ def prepare_pay_onchain(sdk_services, current_limits, fee_rate):
     try:
         # ANCHOR: prepare-pay-onchain
         req = breez_sdk.PrepareOnchainPaymentRequest(amount_sat, breez_sdk.SwapAmountType.SEND, claim_tx_feerate)
-        resp = sdk_services.prepare_onchain_payment(req)
+        prepare_res = sdk_services.prepare_onchain_payment(req)
 
-        print("Sender amount, in sats: ", resp.sender_amount_sat)
-        print("Recipient amount, in sats: ", resp.recipient_amount_sat)
-        print("Total fees, in sats: ", resp.total_fees)
+        print("Sender amount, in sats: ", prepare_res.sender_amount_sat)
+        print("Recipient amount, in sats: ", prepare_res.recipient_amount_sat)
+        print("Total fees, in sats: ", prepare_res.total_fees)
     # ANCHOR_END: prepare-pay-onchain
     except Exception as error:
         print(error)
         raise
 
-def start_reverse_swap(sdk_services, current_fees,fee_rate):
+def start_reverse_swap(sdk_services, prepare_res):
     # ANCHOR: start-reverse-swap
     destination_address = "bc1.."
-    amount_sat = 50000
-    sat_per_vbyte = fee_rate
     try:
-        req = breez_sdk.SendOnchainRequest(amount_sat, destination_address, current_fees.fees_hash, sat_per_vbyte)
-        sdk_services.send_onchain(req)
+        req = breez_sdk.PayOnchainRequest(destination_address, prepare_res)
+        sdk_services.pay_onchain(req)
     # ANCHOR_END: start-reverse-swap
     except Exception as error:
         print(error)

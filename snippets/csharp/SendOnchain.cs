@@ -26,15 +26,15 @@ public class SendOnchainSnippets
 
         try
         {
-            var resp = sdk.PrepareOnchainPayment(
+            var prepareRes = sdk.PrepareOnchainPayment(
                 new PrepareOnchainPaymentRequest(
                     amountSat,
                     SwapAmountType.SEND,
                     claimTxFeerate));
 
-            Console.WriteLine($"Sender amount, in sats: {resp.senderAmountSat}");
-            Console.WriteLine($"Recipient amount, in sats: {resp.recipientAmountSat}");
-            Console.WriteLine($"Total fees, in sats: {resp.totalFees}");
+            Console.WriteLine($"Sender amount, in sats: {prepareRes.senderAmountSat}");
+            Console.WriteLine($"Recipient amount, in sats: {prepareRes.recipientAmountSat}");
+            Console.WriteLine($"Total fees, in sats: {prepareRes.totalFees}");
         }
         catch (Exception)
         {
@@ -43,20 +43,14 @@ public class SendOnchainSnippets
         // ANCHOR_END: prepare-pay-onchain
     }
 
-    public void StartReverseSwap(BlockingBreezServices sdk, ReverseSwapPairInfo currentFees, uint feeRate)
+    public void StartReverseSwap(BlockingBreezServices sdk, PrepareOnchainPaymentResponse prepareRes)
     {
         // ANCHOR: start-reverse-swap
         var destinationAddress = "bc1..";
-        var amountSat = currentFees.min;
-        var satPerVbyte = feeRate;
         try
         {
-            var reverseSwapInfo = sdk.SendOnchain(
-                new SendOnchainRequest(
-                    amountSat,
-                    destinationAddress,
-                    currentFees.feesHash,
-                    satPerVbyte));
+            var reverseSwapInfo = sdk.PayOnchain(
+                new PayOnchainRequest(destinationAddress, prepareRes));
         }
         catch (Exception)
         {

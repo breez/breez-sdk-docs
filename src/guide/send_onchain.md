@@ -158,14 +158,14 @@ Assuming you'd like to specify the sender amount, the snippet is as follows:
 
 If instead you'd like to specify the recipient amount, simply change the `SwapAmountType` from `Send` to `Receive`.
 
-In case you want to drain your channels and send the maximum amount possible, you can use the above snippet with `amount_sat` set to `current_limits.max_sat` and `amount_type` as `Send`. 
-
-Once you checked the amounts and the fees are acceptable, you can continue with sending the payment.
+In case you want to drain your channels and send the maximum amount possible, you can use the above snippet with `amount_sat` set to `current_limits.max_sat` and `amount_type` as `Send`.
 
 
 ## Executing the Swap
 
-Once you decided about the amount and checked the fees are acceptable, you can start the reverse swap:
+Once you checked the amounts and the fees are acceptable, you can continue with sending the payment.
+
+Note that one of the arguments will be the result from the `prepare` call above.
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
@@ -233,13 +233,13 @@ Once you decided about the amount and checked the fees are acceptable, you can s
 </section>
 </custom-tabs>
 
-Starting the reverse swap will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
+Starting the onchain payment (reverse swap) will trigger a HODL invoice payment, which will only be settled if the entire swap completes.
 This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
 is either settled or cancelled. This will happen automatically at the end of the reverse swap.
 
 ## List in-progress Swaps
 
-You can check its status with:
+You can check the ongoing onchain payments (reverse swaps) and their status with:
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
