@@ -3,7 +3,7 @@ import { serviceHealthCheck, reportIssue, ReportIssueRequestVariant } from '@bre
 const healthCheckStatus = async () => {
   // ANCHOR: health-check-status
   try {
-    const healthCheck = await serviceHealthCheck()
+    const healthCheck = await serviceHealthCheck('<api key>')
     console.log(`Current service status is: ${healthCheck.status}`)
   } catch (err) {
     console.error(err)
