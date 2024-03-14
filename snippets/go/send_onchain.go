@@ -23,10 +23,10 @@ func MaxReverseSwapAmount() {
 	// ANCHOR_END: max-reverse-swap-amount
 }
 
-func PreparePayOnchain() {
+func PreparePayOnchain(currentLimits breez_sdk.OnchainPaymentLimitsResponse) {
 	// ANCHOR: prepare-pay-onchain
-	sendAmountSat := uint64(50_000)
-	satPerVbyte := uint32(5)
+	sendAmountSat := currentLimits.MinSat
+	satPerVbyte := uint32(10)
 
 	req := breez_sdk.PrepareOnchainPaymentRequest{
 		AmountSat:               sendAmountSat,
