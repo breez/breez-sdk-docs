@@ -1,14 +1,14 @@
-import 'package:breez_sdk/breez_sdk.dart';
-import 'package:breez_sdk/bridge_generated.dart';
+// ignore_for_file: unused_local_variable
+
+import 'package:breez_sdk/sdk.dart';
 
 Future<SwapInfo> generateReceiveOnchainAddress() async {
   // ANCHOR: generate-receive-onchain-address
   ReceiveOnchainRequest req = const ReceiveOnchainRequest();
-  SwapInfo swapInfo = await BreezSDK().receiveOnchain(req: req);
+  SwapInfo swapInfo = await BreezSDK.receiveOnchain(req: req);
 
   // Send your funds to the below bitcoin address
   String address = swapInfo.bitcoinAddress;
-  print(address);
   print("Minimum amount allowed to deposit in sats: ${swapInfo.minAllowedDeposit}");
   print("Maximum amount allowed to deposit in sats: ${swapInfo.maxAllowedDeposit}");
   return swapInfo;
@@ -17,18 +17,14 @@ Future<SwapInfo> generateReceiveOnchainAddress() async {
 
 Future<SwapInfo?> getInProgressSwap() async {
   // ANCHOR: in-progress-swap
-  SwapInfo? swapInfo = await BreezSDK().inProgressSwap();
-  print(swapInfo);
+  SwapInfo? swapInfo = await BreezSDK.inProgressSwap();
   // ANCHOR_END: in-progress-swap
   return swapInfo;
 }
 
 Future<List<SwapInfo>> listRefundables() async {
   // ANCHOR: list-refundables
-  List<SwapInfo> refundables = await BreezSDK().listRefundables();
-  for (var refundable in refundables) {
-    print(refundable.bitcoinAddress);
-  }
+  List<SwapInfo> refundables = await BreezSDK.listRefundables();
   // ANCHOR_END: list-refundables
   return refundables;
 }
@@ -44,8 +40,7 @@ Future<RefundResponse> executeRefund({
     toAddress: toAddress,
     satPerVbyte: satPerVbyte,
   );
-  RefundResponse resp = await BreezSDK().refund(req: req);
-  print(resp.refundTxId);
+  RefundResponse resp = await BreezSDK.refund(req: req);
   // ANCHOR_END: execute-refund
   return resp;
 }
@@ -55,9 +50,11 @@ Future<OpenChannelFeeResponse> getChannelOpeningFees({
   int? expiry,
 }) async {
   // ANCHOR: get-channel-opening-fees
-  OpenChannelFeeRequest req = OpenChannelFeeRequest(amountMsat: amountMsat, expiry: expiry);
-  OpenChannelFeeResponse resp = await BreezSDK().openChannelFee(req: req);
-  print(resp.feeMsat);
+  OpenChannelFeeRequest req = OpenChannelFeeRequest(
+    amountMsat: amountMsat,
+    expiry: expiry,
+  );
+  OpenChannelFeeResponse resp = await BreezSDK.openChannelFee(req: req);
   // ANCHOR_END: get-channel-opening-fees
   return resp;
 }

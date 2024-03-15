@@ -1,11 +1,9 @@
-import 'package:breez_sdk/breez_sdk.dart';
-import 'package:breez_sdk/bridge_generated.dart';
+import 'package:breez_sdk/sdk.dart';
 
 Future<List<Payment>> listPayments() async {
   // ANCHOR: list-payments
   ListPaymentsRequest req = ListPaymentsRequest();
-  List<Payment> paymentsList = await BreezSDK().listPayments(req: req);
-  print(paymentsList);
+  List<Payment> paymentsList = await BreezSDK.listPayments(req: req);
   // ANCHOR_END: list-payments
   return paymentsList;
 }
@@ -29,8 +27,7 @@ Future<List<Payment>> listPaymentsFiltered({
     offset: offset,
     limit: limit,
   );
-  List<Payment> paymentsList = await BreezSDK().listPayments(req: req);
-  print(paymentsList);
+  List<Payment> paymentsList = await BreezSDK.listPayments(req: req);
   // ANCHOR_END: list-payments-filtered
   return paymentsList;
 }

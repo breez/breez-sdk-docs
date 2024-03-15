@@ -1,5 +1,6 @@
-import 'package:breez_sdk/breez_sdk.dart';
-import 'package:breez_sdk/bridge_generated.dart';
+// ignore_for_file: unused_local_variable
+
+import 'package:breez_sdk/sdk.dart';
 
 Future<void> lnurlPay() async {
   // ANCHOR: lnurl-pay
@@ -8,7 +9,7 @@ Future<void> lnurlPay() async {
   /// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
   String lnurlPayUrl = "lightning@address.com";
 
-  InputType inputType = await BreezSDK().parseInput(input: lnurlPayUrl);
+  InputType inputType = await BreezSDK.parseInput(input: lnurlPayUrl);
   if (inputType is InputType_LnUrlPay) {
     int amountMsat = inputType.data.minSendable;
     LnUrlPayRequest req = LnUrlPayRequest(
@@ -16,8 +17,7 @@ Future<void> lnurlPay() async {
       amountMsat: amountMsat,
       comment: "<comment>",
     );
-    LnUrlPayResult result = await BreezSDK().lnurlPay(req: req);
-    print(result.data);
+    LnUrlPayResult result = await BreezSDK.lnurlPay(req: req);
   }
   // ANCHOR_END: lnurl-pay
 }
