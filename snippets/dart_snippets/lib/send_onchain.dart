@@ -28,7 +28,7 @@ Future<PrepareOnchainPaymentResponse> preparePayOnchain({
   return prepareRes;
 }
 
-Future<SendOnchainResponse> startReverseSwap({
+Future<PayOnchainResponse> startReverseSwap({
   required String onchainRecipientAddress,
   required PrepareOnchainPaymentResponse prepareRes,
 }) async {
