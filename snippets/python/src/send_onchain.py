@@ -12,17 +12,6 @@ def get_current_limits(sdk_services):
         print(error)
         raise
 
-def max_reverse_swap_amount(sdk_services):
-    try: 
-        # ANCHOR: max-reverse-swap-amount     
-        max_amount = sdk_services.max_reverse_swap_amount()
-        print("Max reverse swap amount: ", max_amount.totalSat)
-        # ANCHOR_END: max-reverse-swap-amount
-        return max_amount
-    except Exception as error:
-        print(error)
-        raise
-
 def prepare_pay_onchain(sdk_services, current_limits, fee_rate):
     amount_sat = current_limits.min_sat
     claim_tx_feerate = fee_rate

@@ -14,17 +14,6 @@ class SendOnchain {
         // ANCHOR_END: get-current-reverse-swap-limits
     }
 
-    fun max_reverse_swap_amount(sdk: BlockingBreezServices) {
-        // ANCHOR: max-reverse-swap-amount
-        try {
-            val maxAmount = sdk.maxReverseSwapAmount()
-            // Log.v("Breez", "Max reverse swap amount: ${maxAmount.totalSat}")
-        } catch (e: Exception) {
-            // handle error
-        }
-        // ANCHOR_END: max-reverse-swap-amount
-    }
-
     fun prepare_pay_onchain(sdk: BlockingBreezServices, currentLimits: OnchainPaymentLimitsResponse) {
         // ANCHOR: prepare-pay-onchain
         val amountSat = currentLimits.minSat

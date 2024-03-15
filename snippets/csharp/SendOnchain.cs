@@ -18,22 +18,6 @@ public class SendOnchainSnippets
         // ANCHOR_END: get-current-reverse-swap-limits
     }
 
-    public void MaxReverseSwapAmount(BlockingBreezServices sdk)
-    {
-        // ANCHOR: max-reverse-swap-amount
-        try
-        {
-            var maxAmountResponse = sdk.MaxReverseSwapAmount();
-            Console.WriteLine(
-                $"Max reverse swap amount {maxAmountResponse.totalSat}");
-        }
-        catch (Exception)
-        {
-            // Handle error
-        }
-        // ANCHOR_END: max-reverse-swap-amount
-    }
-
     public void PreparePayOnchain(BlockingBreezServices sdk, OnchainPaymentLimitsResponse currentLimits, uint feeRate)
     {
         // ANCHOR: prepare-pay-onchain
