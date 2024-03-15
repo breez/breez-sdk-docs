@@ -82,4 +82,18 @@ public class ReceiveOnchainSnippets
         }
         // ANCHOR_END: get-channel-opening-fees
     }
+
+    public void RescanSwaps(BlockingBreezServices sdk)
+    {
+        // ANCHOR: rescan-swaps
+        try
+        {
+            sdk.RescanSwaps();
+        }
+        catch (Exception)
+        {
+            // Handle error
+        }
+        // ANCHOR_END: rescan-swaps
+    }
 }

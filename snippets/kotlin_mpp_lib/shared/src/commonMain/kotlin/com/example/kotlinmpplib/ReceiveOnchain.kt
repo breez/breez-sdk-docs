@@ -59,4 +59,14 @@ class ReceiveOnchain {
         }
         // ANCHOR_END: get-channel-opening-fees
     }
+
+    fun rescan_swaps(sdk: BlockingBreezServices) {
+      // ANCHOR: rescan-swaps
+      try {
+          sdk.rescanSwaps()
+      } catch (e: Exception) {
+          // handle error
+      }
+      // ANCHOR_END: rescan-swaps
+  }
 }
