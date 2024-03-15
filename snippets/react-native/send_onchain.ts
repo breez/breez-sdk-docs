@@ -50,7 +50,7 @@ const examplePayOnchain = async (prepareRes: PrepareOnchainPaymentResponse) => {
 
     const reverseSwapInfo = await payOnchain({
       recipientAddress: onchainRecipientAddress,
-      prepareResponse
+      prepareRes
     })
   } catch (err) {
     console.error(err)
