@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:breez_sdk/bridge_generated.dart';
+import 'package:breez_sdk/sdk.dart';
 
 NodeConfig productionNodeConfig() {
   // ANCHOR: moving-to-production
@@ -8,7 +8,7 @@ NodeConfig productionNodeConfig() {
   Uint8List deviceKey = Uint8List(0);
   Uint8List deviceCert = Uint8List(0);
   GreenlightCredentials greenlightCredentials = GreenlightCredentials(
-    deviceKey: deviceKey, 
+    deviceKey: deviceKey,
     deviceCert: deviceCert,
   );
 

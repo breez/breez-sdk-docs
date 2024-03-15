@@ -1,9 +1,8 @@
-import 'package:breez_sdk/breez_sdk.dart';
-import 'package:breez_sdk/bridge_generated.dart';
+import 'package:breez_sdk/sdk.dart';
 
 Future<void> setPaymentMetadata({required String paymentHash, required String metadata}) async {
   // ANCHOR: set-payment-metadata
-  await BreezSDK().setPaymentMetadata(hash: "target-payment-hash", metadata: '{"myCustomValue":true}');
+  await BreezSDK.setPaymentMetadata(hash: "target-payment-hash", metadata: '{"myCustomValue":true}');
   // ANCHOR_END: set-payment-metadata
 }
 
@@ -16,10 +15,7 @@ Future<void> filterPaymentMetadata() async {
     ),
   ];
 
-  await BreezSDK().listPayments(
-    req: ListPaymentsRequest(
-      metadataFilters: metadataFilters
-    ));
+  await BreezSDK.listPayments(req: ListPaymentsRequest(metadataFilters: metadataFilters));
   // ANCHOR_END: filter-payment-metadata
 
   // ANCHOR: filter-payment-metadata-string

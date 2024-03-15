@@ -1,9 +1,8 @@
-import 'package:breez_sdk/breez_sdk.dart';
-import 'package:breez_sdk/bridge_generated.dart';
+import 'package:breez_sdk/sdk.dart';
 
-Future<void> healthCheckStatus() async {
+Future<void> healthCheckStatus({required String apiKey}) async {
   // ANCHOR: health-check-status
-  ServiceHealthCheckResponse healthCheck = await BreezSDK().serviceHealthCheck(apiKey: "<api key>");
+  ServiceHealthCheckResponse healthCheck = await BreezSDK.serviceHealthCheck(apiKey: apiKey);
   print("Current service status is: ${healthCheck.status}");
   // ANCHOR_END: health-check-status
 }
@@ -15,6 +14,6 @@ Future<void> reportPaymentFailure({required String paymentHash}) async {
       paymentHash: paymentHash,
     ),
   );
-  await BreezSDK().reportIssue(req: req);
+  await BreezSDK.reportIssue(req: req);
   // ANCHOR_END: report-payment-failure
 }
