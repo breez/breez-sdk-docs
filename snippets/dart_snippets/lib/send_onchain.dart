@@ -25,7 +25,7 @@ Future<PrepareOnchainPaymentResponse> preparePayOnchain({
   print("Recipient amount: ${prepareRes.recipientAmountSat} sats");
   print("Total fees: ${prepareRes.totalFees} sats");
   // ANCHOR_END: prepare-pay-onchain
-  return resp;
+  return prepareRes;
 }
 
 Future<SendOnchainResponse> startReverseSwap({
