@@ -303,7 +303,7 @@ A refund can be attempted several times. A common scenario where this is useful 
 
 # Rescanning swaps
 
-The SDK continuously monitors any ongoing swap transactions until they are either completed or refunded. Once one of these outcomes occurs, the SDK ceases its monitoring activities, and users are advised against sending additional funds to the swap address. However, if users inadvertently send extra funds, the SDK won't automatically recognize this since it has already stopped monitoring the swap. In such instances, users have the option to manually scan the swap address to identify the extra funds. This action allows the address to be included in the list eligible for refunds, enabling the initiation of a refund process. For the purpose of rescanning all historical swap addresses and updating their on-chain status, the following code can be used:
+The SDK continuously monitors any ongoing swap transactions until they are either completed or refunded. Once one of these outcomes occurs, the SDK ceases its monitoring activities, and users are advised against sending additional funds to the swap address. However, if users inadvertently send additional funds to a swap address that was already used, the SDK won't automatically recognize it. In such cases, the SDK provides an option to manually scan the used swap addressed to identify additional transactions. This action allows the address to be included in the list eligible for refunds, enabling the initiation of a refund process. For the purpose of rescanning all historical swap addresses and updating their on-chain status, the following code can be used:
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
