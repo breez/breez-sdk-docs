@@ -1,11 +1,11 @@
 import {
-  type ReverseSwapPairInfo,
   type OnchainPaymentLimitsResponse,
+  type PrepareOnchainPaymentResponse,
   fetchReverseSwapFees,
   inProgressReverseSwaps,
   onchainPaymentLimits,
+  payOnchain,
   prepareOnchainPayment,
-  sendOnchain,
   SwapAmountType,
   maxReverseSwapAmount
 } from '@breeztech/react-native-breez-sdk'
