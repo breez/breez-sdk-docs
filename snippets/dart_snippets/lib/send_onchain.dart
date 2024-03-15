@@ -39,7 +39,7 @@ Future<SendOnchainResponse> startReverseSwap({
   );
   PayOnchainResponse res = await BreezSDK().payOnchain(req: req);
   // ANCHOR_END: start-reverse-swap
-  return resp;
+  return res;
 }
 
 Future<List<ReverseSwapInfo>> checkReverseSwapStatus() async {
