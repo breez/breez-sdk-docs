@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:breez_sdk/sdk.dart';
 
 Future<void> lnurlWithdraw() async {
@@ -16,7 +18,6 @@ Future<void> lnurlWithdraw() async {
       description: "<description>",
     );
     LnUrlWithdrawResult result = await BreezSDK.lnurlWithdraw(req: req);
-    print(result.data);
   }
   // ANCHOR_END: lnurl-withdraw
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:breez_sdk/sdk.dart';
 
 Future<SwapInfo> generateReceiveOnchainAddress() async {
@@ -7,7 +9,6 @@ Future<SwapInfo> generateReceiveOnchainAddress() async {
 
   // Send your funds to the below bitcoin address
   String address = swapInfo.bitcoinAddress;
-  print(address);
   print("Minimum amount allowed to deposit in sats: ${swapInfo.minAllowedDeposit}");
   print("Maximum amount allowed to deposit in sats: ${swapInfo.maxAllowedDeposit}");
   return swapInfo;
@@ -17,7 +18,6 @@ Future<SwapInfo> generateReceiveOnchainAddress() async {
 Future<SwapInfo?> getInProgressSwap() async {
   // ANCHOR: in-progress-swap
   SwapInfo? swapInfo = await BreezSDK.inProgressSwap();
-  print(swapInfo);
   // ANCHOR_END: in-progress-swap
   return swapInfo;
 }
@@ -25,9 +25,6 @@ Future<SwapInfo?> getInProgressSwap() async {
 Future<List<SwapInfo>> listRefundables() async {
   // ANCHOR: list-refundables
   List<SwapInfo> refundables = await BreezSDK.listRefundables();
-  for (var refundable in refundables) {
-    print(refundable.bitcoinAddress);
-  }
   // ANCHOR_END: list-refundables
   return refundables;
 }
@@ -44,7 +41,6 @@ Future<RefundResponse> executeRefund({
     satPerVbyte: satPerVbyte,
   );
   RefundResponse resp = await BreezSDK.refund(req: req);
-  print(resp.refundTxId);
   // ANCHOR_END: execute-refund
   return resp;
 }
@@ -54,9 +50,11 @@ Future<OpenChannelFeeResponse> getChannelOpeningFees({
   int? expiry,
 }) async {
   // ANCHOR: get-channel-opening-fees
-  OpenChannelFeeRequest req = OpenChannelFeeRequest(amountMsat: amountMsat, expiry: expiry);
+  OpenChannelFeeRequest req = OpenChannelFeeRequest(
+    amountMsat: amountMsat,
+    expiry: expiry,
+  );
   OpenChannelFeeResponse resp = await BreezSDK.openChannelFee(req: req);
-  print(resp.feeMsat);
   // ANCHOR_END: get-channel-opening-fees
   return resp;
 }

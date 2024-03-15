@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:breez_sdk/sdk.dart';
 
 Future<void> lnurlPay() async {
@@ -16,7 +18,6 @@ Future<void> lnurlPay() async {
       comment: "<comment>",
     );
     LnUrlPayResult result = await BreezSDK.lnurlPay(req: req);
-    print(result.data);
   }
   // ANCHOR_END: lnurl-pay
 }

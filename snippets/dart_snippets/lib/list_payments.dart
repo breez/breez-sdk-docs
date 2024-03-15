@@ -4,7 +4,6 @@ Future<List<Payment>> listPayments() async {
   // ANCHOR: list-payments
   ListPaymentsRequest req = ListPaymentsRequest();
   List<Payment> paymentsList = await BreezSDK.listPayments(req: req);
-  print(paymentsList);
   // ANCHOR_END: list-payments
   return paymentsList;
 }
@@ -29,7 +28,6 @@ Future<List<Payment>> listPaymentsFiltered({
     limit: limit,
   );
   List<Payment> paymentsList = await BreezSDK.listPayments(req: req);
-  print(paymentsList);
   // ANCHOR_END: list-payments-filtered
   return paymentsList;
 }

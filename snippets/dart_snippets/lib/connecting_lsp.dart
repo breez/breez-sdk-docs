@@ -1,11 +1,11 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:breez_sdk/sdk.dart';
 
 Future<void> getLspInfo() async {
   // ANCHOR: get-lsp-info
   String? lspId = await BreezSDK.lspId();
   LspInformation? lspInfo = await BreezSDK.lspInfo();
-  print(lspId);
-  print(lspInfo);
   // ANCHOR_END: get-lsp-info
 }
 

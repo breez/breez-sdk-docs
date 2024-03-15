@@ -7,7 +7,7 @@ Future<List<FiatCurrency>> listFiatCurrencies() async {
   return fiatCurrencyList;
 }
 
-Future<Map<String, Rate>> fetchFiatRates(String lspId) async {
+Future<Map<String, Rate>> fetchFiatRates() async {
   // ANCHOR: fetch-fiat-rates
   Map<String, Rate> fiatRatesMap = await BreezSDK.fetchFiatRates();
   // print your desired rate
