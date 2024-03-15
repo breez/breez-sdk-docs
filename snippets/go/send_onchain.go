@@ -26,29 +26,25 @@ func PreparePayOnchain(currentLimits breez_sdk.OnchainPaymentLimitsResponse) {
 		ClaimTxFeerate: satPerVbyte,
 	}
 
-	if prepareResp, err := sdk.PrepareOnchainPayment(req); err == nil {
-		log.Printf("Sender amount, in sats: %v", prepareResp.SenderAmountSat)
-		log.Printf("Recipient amount, in sats: %v", prepareResp.RecipientAmountSat)
-		log.Printf("Total fees, in sats: %v", prepareResp.TotalFees)
+	if prepareRes, err := sdk.PrepareOnchainPayment(req); err == nil {
+		log.Printf("Sender amount, in sats: %v", prepareRes.SenderAmountSat)
+		log.Printf("Recipient amount, in sats: %v", prepareRes.RecipientAmountSat)
+		log.Printf("Total fees, in sats: %v", prepareRes.TotalFees)
 	}
 	// ANCHOR_END: prepare-pay-onchain
 }
 
-func StartReverseSwap() {
+func StartReverseSwap(prepareRes breez_sdk.PrepareOnchainPaymentResponse) {
 	// ANCHOR: start-reverse-swap
 	destinationAddress := "bc1.."
-	sendAmountSat := uint64(50_000)
-	satPerVbyte := uint32(5)
-	if currentFees, err := sdk.FetchReverseSwapFees(breez_sdk.ReverseSwapFeesRequest{SendAmountSat: &sendAmountSat}); err == nil {
-		sendOnchainRequest := breez_sdk.SendOnchainRequest{
-			AmountSat:               sendAmountSat,
-			OnchainRecipientAddress: destinationAddress,
-			PairHash:                currentFees.FeesHash,
-			SatPerVbyte:             satPerVbyte,
-		}
-		if reverseSwapInfo, err := sdk.SendOnchain(sendOnchainRequest); err == nil {
-			log.Printf("%#v", reverseSwapInfo)
-		}
+
+	payOnchainRequest := breez_sdk.PayOnchainRequest{
+		RecipientAddress: destinationAddress,
+		PrepareRes:       prepareRes,
+	}
+
+	if reverseSwapInfo, err := sdk.PayOnchain(payOnchainRequest); err == nil {
+		log.Printf("%#v", reverseSwapInfo)
 	}
 	// ANCHOR_END: start-reverse-swap
 }

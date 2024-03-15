@@ -33,7 +33,10 @@ async fn prepare_pay_onchain(
         .await?;
 
     info!("Sender amount: {} sats", prepare_res.sender_amount_sat);
-    info!("Recipient amount: {} sats", prepare_res.recipient_amount_sat);
+    info!(
+        "Recipient amount: {} sats",
+        prepare_res.recipient_amount_sat
+    );
     info!("Total fees: {} sats", prepare_res.total_fees);
     // ANCHOR_END: prepare-pay-onchain
 
@@ -42,19 +45,14 @@ async fn prepare_pay_onchain(
 
 async fn start_reverse_swap(
     sdk: Arc<BreezServices>,
-    current_fees: ReverseSwapPairInfo,
-    fee_rate: u32,
+    prepare_res: PrepareOnchainPaymentResponse,
 ) -> Result<()> {
     // ANCHOR: start-reverse-swap
     let destination_address = String::from("bc1..");
-    let amount_sat = current_fees.min;
-    let sat_per_vbyte = fee_rate;
 
-    sdk.send_onchain(SendOnchainRequest {
-        pair_hash: current_fees.fees_hash,
-        amount_sat,
-        sat_per_vbyte,
-        onchain_recipient_address: destination_address,
+    sdk.pay_onchain(PayOnchainRequest {
+        recipient_address: destination_address,
+        prepare_res,
     })
     .await?;
     // ANCHOR_END: start-reverse-swap

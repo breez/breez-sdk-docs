@@ -30,13 +30,11 @@ class SendOnchain {
         // ANCHOR_END: prepare-pay-onchain
     }
 
-    fun start_reverse_swap(sdk: BlockingBreezServices, fees: ReverseSwapPairInfo) {
+    fun start_reverse_swap(sdk: BlockingBreezServices, prepareRes: PrepareOnchainPaymentResponse) {
         // ANCHOR: start-reverse-swap
         val address = "bc1.."
-        val amountSat = 123.toULong()
-        val satPerVbyte = 1.toUInt()
         try {
-            sdk.sendOnchain(SendOnchainRequest(amountSat, address, fees.feesHash, satPerVbyte))
+            sdk.payOnchain(PayOnchainRequest(address, prepareRes))
         } catch (e: Exception) {
             // handle error
         }
