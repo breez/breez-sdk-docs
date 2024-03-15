@@ -15,7 +15,7 @@
   - [Adding and filtering for payment metadata](guide/payment_metadata.md)
 - [Connecting to an LSP](guide/connecting_lsp.md)
 - [Receiving an On-Chain Transaction](guide/receive_onchain.md)
-- [Sending an On-Chain Transaction](guide/send_onchain.md)
+- [Sending an On-Chain Transaction](guide/pay_onchain.md)
 - [Using LNURL & Lightning addresses](guide/lnurl.md)
   - [Sending payments using LNURL-Pay/Lightning address](guide/lnurl_pay.md)
   - [Receiving payments using LNURL-Pay/Lightning address](guide/lnurlpay.md)
