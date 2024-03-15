@@ -39,8 +39,8 @@ func StartReverseSwap(prepareRes breez_sdk.PrepareOnchainPaymentResponse) {
 	destinationAddress := "bc1.."
 
 	payOnchainRequest := breez_sdk.PayOnchainRequest{
-		RecipientAddress:   destinationAddress,
-		PrepareRes:         prepareRes,
+		RecipientAddress: destinationAddress,
+		PrepareRes:       prepareRes,
 	}
 
 	if reverseSwapInfo, err := sdk.PayOnchain(payOnchainRequest); err == nil {
