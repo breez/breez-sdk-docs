@@ -43,7 +43,7 @@ const examplePreparePayOnchain = async (currentLimits: OnchainPaymentLimitsRespo
   // ANCHOR_END: prepare-pay-onchain
 }
 
-const examplePayOnchain = async (prepareResponse: PrepareOnchainPaymentResponse) => {
+const examplePayOnchain = async (prepareRes: PrepareOnchainPaymentResponse) => {
   // ANCHOR: start-reverse-swap
   try {
     const onchainRecipientAddress = 'bc1..'
