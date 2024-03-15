@@ -7,7 +7,7 @@ def get_current_limits(sdk_services):
         print("Minimum amount, in sats: ", current_limits.min_sat)
         print("Maximum amount, in sats: ", current_limits.max_sat)
         # ANCHOR_END: get-current-reverse-swap-limits
-        return current_fees
+        return current_limits
     except Exception as error:
         print(error)
         raise
