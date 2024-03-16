@@ -10,7 +10,7 @@ First, fetch the current reverse swap limits:
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/send_onchain.rs:get-current-reverse-swap-limits}}
+{{#include ../../snippets/rust/src/pay_onchain.rs:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -34,7 +34,7 @@ First, fetch the current reverse swap limits:
 <section>
 
 ```typescript
-{{#include ../../snippets/react-native/send_onchain.ts:get-current-reverse-swap-limits}}
+{{#include ../../snippets/react-native/pay_onchain.ts:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -42,7 +42,7 @@ First, fetch the current reverse swap limits:
 <section>
 
 ```dart,ignore
-{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:get-current-reverse-swap-limits}}
+{{#include ../../snippets/dart_snippets/lib/pay_onchain.dart:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -50,7 +50,7 @@ First, fetch the current reverse swap limits:
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python/src/send_onchain.py:get-current-reverse-swap-limits}}
+{{#include ../../snippets/python/src/pay_onchain.py:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -58,7 +58,7 @@ First, fetch the current reverse swap limits:
 <section>
 
 ```go,ignore
-{{#include ../../snippets/go/send_onchain.go:get-current-reverse-swap-limits}}
+{{#include ../../snippets/go/pay_onchain.go:get-current-reverse-swap-limits}}
 ```
 </section>
 
@@ -95,7 +95,7 @@ Assuming you'd like to specify the sender amount, the snippet is as follows:
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/send_onchain.rs:prepare-pay-onchain}}
+{{#include ../../snippets/rust/src/pay_onchain.rs:prepare-pay-onchain}}
 ```
 </section>
 
@@ -119,7 +119,7 @@ Assuming you'd like to specify the sender amount, the snippet is as follows:
 <section>
 
 ```typescript
-{{#include ../../snippets/react-native/send_onchain.ts:prepare-pay-onchain}}
+{{#include ../../snippets/react-native/pay_onchain.ts:prepare-pay-onchain}}
 ```
 </section>
 
@@ -127,7 +127,7 @@ Assuming you'd like to specify the sender amount, the snippet is as follows:
 <section>
 
 ```dart,ignore
-{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:prepare-pay-onchain}}
+{{#include ../../snippets/dart_snippets/lib/pay_onchain.dart:prepare-pay-onchain}}
 ```
 </section>
 
@@ -135,7 +135,7 @@ Assuming you'd like to specify the sender amount, the snippet is as follows:
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python/src/send_onchain.py:prepare-pay-onchain}}
+{{#include ../../snippets/python/src/pay_onchain.py:prepare-pay-onchain}}
 ```
 </section>
 
@@ -143,7 +143,7 @@ Assuming you'd like to specify the sender amount, the snippet is as follows:
 <section>
 
 ```go,ignore
-{{#include ../../snippets/go/send_onchain.go:prepare-pay-onchain}}
+{{#include ../../snippets/go/pay_onchain.go:prepare-pay-onchain}}
 ```
 </section>
 
@@ -172,7 +172,7 @@ Note that one of the arguments will be the result from the `prepare` call above.
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/send_onchain.rs:start-reverse-swap}}
+{{#include ../../snippets/rust/src/pay_onchain.rs:start-reverse-swap}}
 ```
 </section>
 
@@ -196,7 +196,7 @@ Note that one of the arguments will be the result from the `prepare` call above.
 <section>
 
 ```typescript
-{{#include ../../snippets/react-native/send_onchain.ts:start-reverse-swap}}
+{{#include ../../snippets/react-native/pay_onchain.ts:start-reverse-swap}}
 ```
 </section>
 
@@ -204,7 +204,7 @@ Note that one of the arguments will be the result from the `prepare` call above.
 <section>
 
 ```dart,ignore
-{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:start-reverse-swap}}
+{{#include ../../snippets/dart_snippets/lib/pay_onchain.dart:start-reverse-swap}}
 ```
 </section>
 
@@ -212,7 +212,7 @@ Note that one of the arguments will be the result from the `prepare` call above.
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python/src/send_onchain.py:start-reverse-swap}}
+{{#include ../../snippets/python/src/pay_onchain.py:start-reverse-swap}}
 ```
 </section>
 
@@ -220,7 +220,7 @@ Note that one of the arguments will be the result from the `prepare` call above.
 <section>
 
 ```go,ignore
-{{#include ../../snippets/go/send_onchain.go:start-reverse-swap}}
+{{#include ../../snippets/go/pay_onchain.go:start-reverse-swap}}
 ```
 </section>
 
@@ -246,7 +246,7 @@ You can check the ongoing onchain payments (reverse swaps) and their status with
 <section>
 
 ```rust,ignore
-{{#include ../../snippets/rust/src/send_onchain.rs:check-reverse-swaps-status}}
+{{#include ../../snippets/rust/src/pay_onchain.rs:check-reverse-swaps-status}}
 ```
 </section>
 
@@ -270,7 +270,7 @@ You can check the ongoing onchain payments (reverse swaps) and their status with
 <section>
 
 ```typescript
-{{#include ../../snippets/react-native/send_onchain.ts:check-reverse-swaps-status}}
+{{#include ../../snippets/react-native/pay_onchain.ts:check-reverse-swaps-status}}
 ```
 </section>
 
@@ -278,7 +278,7 @@ You can check the ongoing onchain payments (reverse swaps) and their status with
 <section>
 
 ```dart,ignore
-{{#include ../../snippets/dart_snippets/lib/send_onchain.dart:check-reverse-swaps-status}}
+{{#include ../../snippets/dart_snippets/lib/pay_onchain.dart:check-reverse-swaps-status}}
 ```
 </section>
 
@@ -286,7 +286,7 @@ You can check the ongoing onchain payments (reverse swaps) and their status with
 <section>
 
 ```python,ignore
-{{#include ../../snippets/python/src/send_onchain.py:check-reverse-swaps-status}}
+{{#include ../../snippets/python/src/pay_onchain.py:check-reverse-swaps-status}}
 ```
 </section>
 
@@ -294,7 +294,7 @@ You can check the ongoing onchain payments (reverse swaps) and their status with
 <section>
 
 ```go,ignore
-{{#include ../../snippets/go/send_onchain.go:check-reverse-swaps-status}}
+{{#include ../../snippets/go/pay_onchain.go:check-reverse-swaps-status}}
 ```
 </section>
 
