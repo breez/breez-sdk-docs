@@ -62,9 +62,9 @@ async fn start_reverse_swap(
 
 async fn check_reverse_swap_status(sdk: Arc<BreezServices>) -> Result<()> {
     // ANCHOR: check-reverse-swaps-status
-    for rs in sdk.in_progress_reverse_swaps().await? {
+    for rs in sdk.in_progress_onchain_payments().await? {
         info!(
-            "Reverse swap {} in progress, status is {:?}",
+            "Onchain payment {} in progress, status is {:?}",
             rs.id, rs.status
         );
     }

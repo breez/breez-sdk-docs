@@ -44,10 +44,10 @@ Future<PayOnchainResponse> startReverseSwap({
 
 Future<List<ReverseSwapInfo>> checkReverseSwapStatus() async {
   // ANCHOR: check-reverse-swaps-status
-  List<ReverseSwapInfo> inProgRevSwapList = await BreezSDK().inProgressReverseSwaps();
-  for (var inProgRevSwap in inProgRevSwapList) {
-    print("Reverse swap ${inProgRevSwap.id} in progress, status is ${inProgRevSwap.status.name}");
+  List<ReverseSwapInfo> inProgOnchainPaymentList = await BreezSDK().inProgressOnchainPayments();
+  for (var inProgOnchainPayment in inProgOnchainPaymentList) {
+    print("Onchain payment ${inProgOnchainPayment.id} in progress, status is ${inProgOnchainPayment.status.name}");
   }
   // ANCHOR_END: check-reverse-swaps-status
-  return inProgRevSwapList;
+  return inProgOnchainPaymentList;
 }

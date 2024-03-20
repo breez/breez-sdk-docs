@@ -43,9 +43,9 @@ func StartReverseSwap(sdk: BlockingBreezServices, prepareResponse: PrepareOnchai
 
 func checkReverseSwap(sdk: BlockingBreezServices) {
     // ANCHOR: check-reverse-swaps-status
-    if let inProgressReverseSwaps = try? sdk.inProgressReverseSwaps() {
+    if let inProgressOnchainPayments = try? sdk.inProgressOnchainPayments() {
         for rs in inProgressReverseSwaps {
-            print("Reverse swap \(rs.id) in progress, status is \(rs.status)")
+            print("Onchain payment \(rs.id) in progress, status is \(rs.status)")
         }
     }
     // ANCHOR_END: check-reverse-swaps-status

@@ -61,10 +61,10 @@ const examplePayOnchain = async (prepareRes: PrepareOnchainPaymentResponse) => {
 const exampleInProgressReverseSwaps = async () => {
   // ANCHOR: check-reverse-swaps-status
   try {
-    const swaps = await inProgressReverseSwaps()
+    const swaps = await inProgressOnchainPayments()
     for (const swap of swaps) {
       console.log(
-        `Reverse swap ${swap.id} in progress, status is ${swap.status}`
+        `Onchain payment ${swap.id} in progress, status is ${swap.status}`
       )
     }
   } catch (err) {

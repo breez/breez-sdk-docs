@@ -42,9 +42,9 @@ def start_reverse_swap(sdk_services, prepare_res):
 def check_reverse_swap_status(sdk_services):
     try: 
         # ANCHOR: check-reverse-swaps-status
-        reverse_swaps = sdk_services.in_progress_reverse_swaps()
+        reverse_swaps = sdk_services.in_progress_onchain_payments()
         for rs in reverse_swaps:
-            print("Reverse swap ",rs.id , " in progress, status is ", rs.status)
+            print("Onchain payment ",rs.id , " in progress, status is ", rs.status)
         # ANCHOR_END: check-reverse-swaps-status
     except Exception as error:
         print(error)

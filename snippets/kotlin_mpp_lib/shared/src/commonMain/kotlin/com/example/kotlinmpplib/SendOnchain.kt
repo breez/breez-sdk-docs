@@ -43,8 +43,8 @@ class SendOnchain {
 
     fun check_rev_swap_status(sdk: BlockingBreezServices) {
         // ANCHOR: check-reverse-swaps-status
-        for (rs in sdk.inProgressReverseSwaps()) {
-            // Log.v("Breez", "Reverse swap ${rs.id} in progress, status is ${rs.status}")
+        for (rs in sdk.inProgressOnchainPayments()) {
+            // Log.v("Breez", "Onchain payment ${rs.id} in progress, status is ${rs.status}")
         }
         // ANCHOR_END: check-reverse-swaps-status
     }

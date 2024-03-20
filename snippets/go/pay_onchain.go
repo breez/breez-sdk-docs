@@ -51,9 +51,9 @@ func StartReverseSwap(prepareRes breez_sdk.PrepareOnchainPaymentResponse) {
 
 func CheckReverseSwapStatus() {
 	// ANCHOR: check-reverse-swaps-status
-	if swaps, err := sdk.InProgressReverseSwaps(); err == nil {
+	if swaps, err := sdk.InProgressOnchainPayments(); err == nil {
 		for _, swap := range swaps {
-			log.Printf("Reverse swap %v in progress, status is %v", swap.Id, swap.Status)
+			log.Printf("Onchain payment %v in progress, status is %v", swap.Id, swap.Status)
 		}
 	}
 	// ANCHOR_END: check-reverse-swaps-status
