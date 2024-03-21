@@ -64,11 +64,11 @@ public class SendOnchainSnippets
         // ANCHOR: check-reverse-swaps-status
         try
         {
-            var swaps = sdk.InProgressReverseSwaps();
+            var swaps = sdk.InProgressOnchainPayments();
             foreach (var swap in swaps)
             {
                 Console.WriteLine(
-                    $"Reverse swap {swap.id} in progress, " +
+                    $"Onchain payment {swap.id} in progress, " +
                     $"status is {swap.status}`");
             }
         }

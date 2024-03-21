@@ -25,7 +25,7 @@ jobs:
     name: setup
     runs-on: ubuntu-latest
     outputs:
-      sdk-ref: ${{ inputs.sdk-ref || '16e70474937e3938563103adb463fb67c676415c' }}
+      sdk-ref: ${{ inputs.sdk-ref || 'f02e3e8fbd9b480c0a21e094d06888f54a3a108c' }}
       package-version: '0.3.4'
     steps:
       - run: echo "set pre-setup output variables"
