@@ -2,7 +2,7 @@ import {
   type OnchainPaymentLimitsResponse,
   type PrepareOnchainPaymentResponse,
   fetchReverseSwapFees,
-  inProgressReverseSwaps,
+  inProgressOnchainPayments,
   onchainPaymentLimits,
   payOnchain,
   prepareOnchainPayment,
