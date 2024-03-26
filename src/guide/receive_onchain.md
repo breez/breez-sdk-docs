@@ -156,6 +156,16 @@ The process of receiving funds via an on-chain address is trustless and uses a s
 1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
 2. Or by your node when the swap didn't complete within a certain timeout (216 blocks) - this is the negative case where your node will execute a refund (funds become refundable after 288 blocks). Refund will also be available in case the amount sent wasn't within the limits.
 
+
+## Notifications
+
+Enabling [mobile notifications](payment_notification.md) in your app will automatically register it for swap notifications.
+
+This means that, when the user performs a swap-in (receive onchain), the app will
+
+- automatically complete the swap in the background when the onchain transaction is confirmed, even if the app is closed
+- display an OS notification, informing the user of the received funds
+
 ## Refund a Swap
 
 In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
