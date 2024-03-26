@@ -68,6 +68,10 @@ The Breez SDK automatically connects your node to the LSP peer and you can now r
 ```
 </section>
 </custom-tabs>
+<div class="warning">
+<h4>Developer note</h4>
+Consider implementing the <a href="/notifications/getting_started.md">Notification Plugin</a> when using the Breez SDK in a mobile application. By registering a webhook the application can receive a payment notification to process the payment in the background.
+</div>
 
 # Calculating fees
 

@@ -9,9 +9,6 @@
   - [Sending payments](guide/send_payment.md)
   - [Sending spontaneous payments](guide/send_spontaneous_payment.md)
   - [Listing payments](guide/list_payments.md)
-  - [Receiving payments via mobile notifications](guide/payment_notification.md)
-    - [iOS](guide/ios_notification_service_extension.md)
-    - [Android](guide/android_notification_foreground_service.md)
   - [Adding and filtering for payment metadata](guide/payment_metadata.md)
 - [Connecting to an LSP](guide/connecting_lsp.md)
 - [Receiving an On-Chain Transaction](guide/receive_onchain.md)
@@ -28,3 +25,18 @@
 - [Retrieving service status](guide/service_status.md)
 - [Reporting payment failures](guide/failure_report.md)
 - [Moving to production](guide/production.md)
+
+# Notifications
+
+- [Getting Started](notifications/getting_started.md)
+- [Setup an NDS](notifications/setup_nds.md)
+- [Register a webhook](notifications/register_webhook.md)
+- [Project Integration](notifications/setup_plugin.md)
+    - [Android](notifications/android_setup.md)
+    - [iOS](notifications/ios_setup.md)
+      - [Notification Service Extension](notifications/ios_service.md)
+      - [Notification Plugin](notifications/ios_plugin.md)
+- [Logging](notifications/logging.md)
+- [Service Configuration](notifications/service_configuration.md)
+- [Changing Default Strings](notifications/changing_strings.md)
+- [Custom Notification Handling](notifications/custom_notifications.md)
