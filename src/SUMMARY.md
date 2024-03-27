@@ -33,6 +33,8 @@
 - [Register a webhook](notifications/register_webhook.md)
 - [Project Integration](notifications/setup_plugin.md)
     - [Android](notifications/android_setup.md)
+      - [Foreground Service](notifications/android_service.md)
+      - [Notification Plugin](notifications/android_plugin.md)
     - [iOS](notifications/ios_setup.md)
       - [Notification Service Extension](notifications/ios_service.md)
       - [Notification Plugin](notifications/ios_plugin.md)

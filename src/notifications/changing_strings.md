@@ -6,7 +6,7 @@ The Notification Plugin uses a set of identifiers and default strings to display
 
 In the `string.xml` file of the application's `res/values` directory, add the key/value:
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="lnurl_pay_metadata_plain_text">Pay to Custom App</string>
@@ -18,7 +18,7 @@ You can find the current identifiers and default strings [here](https://github.c
 
 In the `Info.plist` file of the `NotificationService` target, add the key/value:
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">

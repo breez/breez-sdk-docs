@@ -2,7 +2,7 @@
 
 Add the `BreezSDK` cocoapod to your iOS Podfile, with the target `NotificationService`. You can add any other dependencies your require here also, for example `KeychainAccess` to read the saved mnemonic from the keychain.
 
-```
+```podfile
 target 'NotificationService' do
   pod 'BreezSDK'
   pod 'KeychainAccess'
@@ -42,6 +42,7 @@ fileprivate let accountMnemonic: String = "BREEZ_SDK_SEED_MNEMONIC"
 fileprivate let accountApiKey: String = "BREEZ_SDK_API_KEY"
 
 class NotificationService: SDKNotificationService {
+    // Override the `getConnectRequest` function
     override func getConnectRequest() -> ConnectRequest? {
         // Get the Breez API key from the target bundle's Info.plist
         guard let apiKey = Bundle.main.object(forInfoDictionaryKey: accountApiKey) as? String else {
