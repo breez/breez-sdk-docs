@@ -28,6 +28,39 @@ class NotificationService: SDKNotificationService {
 <section>
 
 ```kotlin,ignore
+package com.example.application
+
+import android.content.SharedPreferences
+import breez_sdk_notification.ForegroundService
+import breez_sdk_notification.ServiceConfig
+import org.tinylog.kotlin.Logger
+
+class ExampleForegroundService : ForegroundService() {
+    companion object {
+        // Your own shared preferences name or `FlutterSharedPreferences` for Flutter
+        private const val SHARED_PREFERENCES_NAME = "group.com.example.application"
+        private const val CHANNEL_SETUP_FEE_LIMIT = "CHANNEL_SETUP_FEE_LIMIT"
+    }
+
+    // Override the `getServiceConfig` function 
+    override fun getServiceConfig(): ServiceConfig? {
+        try {
+            val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences(
+                SHARED_PREFERENCES_NAME,
+                MODE_PRIVATE
+            )
+            // Get the fee limit for opening a new channel from the shared preferences
+            val channelFeeLimitMsat =
+                sharedPreferences.getLong(CHANNEL_SETUP_FEE_LIMIT, 0).toULong()
+            return ServiceConfig(channelFeeLimitMsat = channelFeeLimitMsat)
+        } catch (e: Exception) {
+            Logger.tag(TAG).error { "Failed to get service config: ${e.message}" }
+        }
+
+        return ServiceConfig.default()
+    }
+}
+
 ```
 
 </section>

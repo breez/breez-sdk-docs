@@ -5,6 +5,7 @@ You can customise the Notification Plugin even further by handling your own noti
 <custom-tabs category="lang">
 <div slot="title">Swift</div>
 <section>
+First you need to override the <code>getTaskFromNotification</code> function in the implementation of the <code>SDKNotificationService</code> class.
 
 ```swift,ignore
 class NotificationService: SDKNotificationService {
@@ -32,15 +33,53 @@ class NotificationService: SDKNotificationService {
 </section>
 <div slot="title">Kotlin</div>
 <section>
+First you need to override the <code>getJobFromIntent</code> function in the implementation of the <code>ForegroundService</code> class.
 
 ```kotlin,ignore
+package com.example.application
+
+import android.content.Intent
+import breez_sdk_notification.ForegroundService
+import breez_sdk_notification.job.Job
+import breez_sdk_notification.Message
+import breez_sdk_notification.NotificationHelper.Companion.registerNotificationChannels
+
+class ExampleForegroundService : ForegroundService() {
+    // Override the `onCreate` function and register custom notification channels if needed
+    override fun onCreate() {
+        super.onCreate()
+        // First register the default notification channels
+        registerNotificationChannels(applicationContext, DEFAULT_CLICK_ACTION)
+        // Then register any additional notification channels
+    }
+
+    // Override the `getJobFromIntent` function 
+    override fun getJobFromIntent(intent: Intent?): Job? {
+        return super.getJobFromIntent(intent) ?: run {
+            // If the job cannot be handled by the notification plugin
+            Message.createFromIntent(intent)?.let { message ->
+                message.payload?.let { payload ->
+                    when (message.type) {
+                        "custom_type" -> CustomJob(
+                            applicationContext,
+                            this,
+                            payload,
+                            logger
+                        )
+
+                        else -> null
+                    }
+                }
+            }
+        }
+    }
+}
 ```
 
 </section>
 </custom-tabs>
 
-
-You can customise the Notification Plugin even further by handling your own notification types sent to the application via push notification. Follow the code example below for adding these to iOS and Android.
+Then add a class that encapsulates the handling of the custom push notification type.
 
 <custom-tabs category="lang">
 <div slot="title">Swift</div>
@@ -76,6 +115,7 @@ class CustomTask : TaskProtocol {
     
     // The `start` function is called once the SDK instance is connected
     func start(breezSDK: BlockingBreezServices) throws {
+        // Decode the `CustomRequest` from the payload
         var customRequest: CustomRequest? = nil
         do {
             customRequest = try JSONDecoder().decode(CustomRequest.self, from: self.payload.data(using: .utf8)!)
@@ -85,9 +125,9 @@ class CustomTask : TaskProtocol {
             throw e
         }
 
+        // Do something with the SDK, then once finished call 'displayPushNotification' with a success 
+        // or failure message. The 'onShutdown' function can also be called to show the failure message
         do {
-            // Do something with the SDK, then once finished call 'displayPushNotification' with a success 
-            // or failure message. The 'onShutdown' function can also be called to show the failure message
             self.displayPushNotification(title: "Success", logger: self.logger)
         } catch let e {
             self.logger.log(tag: TAG, line: "Failed to process notification: \(e)", level: "ERROR")
@@ -108,6 +148,65 @@ class CustomTask : TaskProtocol {
 <section>
 
 ```kotlin,ignore
+package com.example.application
+
+import android.content.Context
+import breez_sdk.BlockingBreezServices
+import breez_sdk.BreezEvent
+import breez_sdk_notification.NotificationHelper.Companion.notifyChannel
+import breez_sdk_notification.SdkForegroundService
+import breez_sdk_notification.ServiceLogger
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
+
+// Use a `Serializable` data class to decode the notification payload
+@Serializable
+data class CustomRequest(
+)
+
+class CustomJob(
+    private val context: Context,
+    private val fgService: SdkForegroundService,
+    private val payload: String,
+    private val logger: ServiceLogger,
+) : Job {
+    companion object {
+        private const val TAG = "CustomJob"
+    }
+
+    // Use the `onEvent` function to handle events from the Breez SDK 
+    // that can be used in your task
+    override fun onEvent(e: BreezEvent) {}
+
+    // The `start` function is called once the SDK instance is connected
+    override fun start(breezSDK: BlockingBreezServices) {
+        // Remember if you are using a custom notification channel, you have to register it first
+        val applicationId = context.applicationContext.packageName
+        val notificationChannel = "${applicationId}.CUSTOM_JOB"
+        try {
+            // Decode the `CustomRequest` from the payload
+            val request = Json.decodeFromString(CustomRequest.serializer(), payload)
+            // Do something with the SDK. Once finished call 'notifyChannel' 
+            // with a success or failure message
+            notifyChannel(
+                context,
+                notificationChannel,
+                "Success",
+            )
+        } catch (e: Exception) {
+            logger.log(TAG, "Failed to process notification: ${e.message}", "WARN")
+            notifyChannel(
+                context,
+                notificationChannel,
+                "Failed",
+            )
+        }
+
+        // Shutdown the foreground service once finished
+        fgService.shutdown()
+    }
+
+}
 ```
 
 </section>
