@@ -38,10 +38,13 @@ First you need to override the <code>getJobFromIntent</code> function in the imp
 ```kotlin,ignore
 package com.example.application
 
+import android.app.NotificationManager
 import android.content.Intent
 import breez_sdk_notification.ForegroundService
 import breez_sdk_notification.job.Job
 import breez_sdk_notification.Message
+import breez_sdk_notification.NotificationHelper.Companion.createNotificationChannel
+import breez_sdk_notification.NotificationHelper.Companion.createNotificationChannelGroup
 import breez_sdk_notification.NotificationHelper.Companion.registerNotificationChannels
 
 class ExampleForegroundService : ForegroundService() {
@@ -51,6 +54,20 @@ class ExampleForegroundService : ForegroundService() {
         // First register the default notification channels
         registerNotificationChannels(applicationContext, DEFAULT_CLICK_ACTION)
         // Then register any additional notification channels
+        createNotificationChannelGroup(
+            applicationContext, 
+            "custom_job_group", 
+            "Custom Job Group", 
+            "Required to handle custom job requests when the application is in the background"
+        )
+        createNotificationChannel(
+            applicationContext, 
+            "CUSTOM_JOB", 
+            "Custom Job", 
+            "Notifications for custom job when the application is in the background",
+            "custom_job_group",
+            NotificationManager.IMPORTANCE_DEFAULT
+        )
     }
 
     // Override the `getJobFromIntent` function 
@@ -181,8 +198,7 @@ class CustomJob(
     // The `start` function is called once the SDK instance is connected
     override fun start(breezSDK: BlockingBreezServices) {
         // Remember if you are using a custom notification channel, you have to register it first
-        val applicationId = context.applicationContext.packageName
-        val notificationChannel = "${applicationId}.CUSTOM_JOB"
+        val notificationChannel = "CUSTOM_JOB"
         try {
             // Decode the `CustomRequest` from the payload
             val request = Json.decodeFromString(CustomRequest.serializer(), payload)
