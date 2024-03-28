@@ -71,3 +71,13 @@ const exampleOpenChannelFee = async () => {
   }
   // ANCHOR_END: get-channel-opening-fees
 }
+
+const exampleRescanSwaps = async () => {
+  // ANCHOR: rescan-swaps
+  try {
+    await rescanSwaps()
+  } catch (err) {
+    console.error(err)
+  }
+  // ANCHOR_END: rescan-swaps
+}

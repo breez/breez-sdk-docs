@@ -60,3 +60,12 @@ def get_channel_opening_fees(sdk_services ,amount_msat=None):
    except Exception as error:
        print(error)
        raise
+
+def rescan_swaps(sdk_services):
+    try:
+        # ANCHOR: rescan-swaps
+        sdk_services.rescan_swaps()
+        # ANCHOR_END: rescan-swaps        
+    except Exception as error:
+        print(error)
+        raise
