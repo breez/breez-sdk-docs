@@ -143,3 +143,6 @@ class ExampleForegroundService : ForegroundService() {
     }
 }
 ```
+
+## Reference implementation
+For a complete reference, see how we implemented it in c-breez wallet: [BreezFcmService.kt](https://github.com/breez/c-breez/blob/main/android/app/src/main/kotlin/com/cBreez/client/BreezFcmService.kt).

@@ -11,6 +11,8 @@ end
 
 Once added to the Podfile, run `pod install` to install the dependencies.
 
+More installation methods, including with the Swift Package Manager, can be found in the [breez-sdk-swift](https://github.com/breez/breez-sdk-swift/blob/main/README.md) repository.
+
 ## Integrate the Notification Plugin
 
 You're ready to add some Swift code to implement the Notification Plugin in your NotificationService target. In Xcode, in the `NotificationService` folder, open the Swift file named `NotificationService.swift`.

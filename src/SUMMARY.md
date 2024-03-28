@@ -42,3 +42,6 @@
 - [Service Configuration](notifications/service_configuration.md)
 - [Changing Default Strings](notifications/changing_strings.md)
 - [Custom Notification Handling](notifications/custom_notifications.md)
+
+<!-- Hidden Links -->
+[](guide/payment_notification.md)
