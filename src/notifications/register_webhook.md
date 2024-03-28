@@ -1,6 +1,6 @@
 # Register a webhook
 
-Once your vendor [NDS is setup](setup_nds.md) and can accept POST requests from the SDK services, you can within your mail application register the webhook URL with the Breez SDK by calling the register webhook API as follows:
+Once your vendor [NDS is set up](setup_nds.md) and can accept POST requests from the SDK services, you can within your mail application register the webhook URL with the Breez SDK by calling the register webhook API as follows:
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
@@ -68,4 +68,4 @@ Once your vendor [NDS is setup](setup_nds.md) and can accept POST requests from 
 </section>
 </custom-tabs>
 
-Now when the NDS receives a POST request for this webhook URL, it will forward the request data via push notification to the applications Service Extension (iOS) or Foreground Service (Android) to be handled by the [Notification Plugin](setup_plugin.md).
+When the NDS receives a POST request for the registered webhook URL, it will forward the request data via push notification to the applications Service Extension (iOS) or Foreground Service (Android) to be handled by the [Notification Plugin](setup_plugin.md).

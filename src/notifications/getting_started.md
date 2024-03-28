@@ -1,6 +1,6 @@
 # Introduction
 
-The Breez SDK Notification Plugin provides vendors the ability to receive events via mobile notifications even while the application is in the background or closed. This plugin processes several different notification types like receiving payments, LNURL-pay flows and swap confirmations. Within your application you can even extend the functionality to handle your own notification types.
+The Breez SDK Notification Plugin provides vendors the ability to receive events via mobile notifications even while the application is in the background or closed. This plugin processes several different notification types like receiving payments, LNURL-pay flows and swap confirmations. You can even extend the functionality to handle your own notification types within your application.
 
 ![receive via notifications_2](https://github.com/breez/breez-sdk-docs/assets/31890660/75e7cac6-4480-453d-823b-f52bd6757ce9)
 

@@ -28,7 +28,7 @@ dependencies {
 
 ## Integrate the Notification Plugin
 
-You're ready to add some Kotlin code to implement the Notification Plugin in your application. In the example below we are using the `FirebaseMessagingService` to receive the message intents. First lets implement the Notification Plugin's `MessagingService` class along with `FirebaseMessagingService`. 
+You're ready to add some Kotlin code to implement the Notification Plugin in your application. In the example below, we are using the `FirebaseMessagingService` to receive the message intents. First, let's implement the Notification Plugin's `MessagingService` class along with `FirebaseMessagingService`. 
 
 ```kotlin
 package com.example.application
