@@ -218,10 +218,9 @@ class CustomJob(
             )
         }
 
-        // Shutdown the foreground service once finished
-        fgService.shutdown()
+        // Tell the foreground service the job is finished
+        fgService.onFinished(this)
     }
-
 }
 ```
 
