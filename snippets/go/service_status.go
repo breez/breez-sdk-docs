@@ -8,7 +8,7 @@ import (
 
 func HealthCheckStatus() {
 	// ANCHOR: health-check-status
-	if healthCheck, err := sdk.ServiceHealthCheck(); err != nil {
+	if healthCheck, err := breez_sdk.ServiceHealthCheck("<api key>"); err != nil {
 		log.Printf("Current service status is: %v", healthCheck.Status)
 	}
 	// ANCHOR_END: health-check-status
