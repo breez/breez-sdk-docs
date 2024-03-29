@@ -4,9 +4,9 @@
 In Xcode add a new Target to your application:
 1. In the menu `File > New > Target...`
 2. Select `Notification Service Extension`
-3. Give the name `NotificationExtension`
+3. Give the name `NotificationService`
 
-This should create a new target with a bundle identifier like `com.example.application.NotificationExtension` and a folder in your application called `NotificationExtension`.
+This should create a new target with a bundle identifier like `com.example.application.NotificationService` and a folder in your application called `NotificationService`.
 
 ## Identifiers
 
@@ -25,7 +25,7 @@ Now add the App Group to your existing main application release and debug Identi
 Create new release and debug Identifiers for the new service extension.
 1. Click `+` to add an Identifier
 2. Select `App IDs` from the list
-3. Give the Identifier a description and identifier the same as the service extension, like `com.example.application.NotificationExtension`
+3. Give the Identifier a description and identifier the same as the service extension, like `com.example.application.NotificationService`
 4. Enable the `App Groups` app service
 5. Save the Identifier, then edit again it to add the created app group as above
 
