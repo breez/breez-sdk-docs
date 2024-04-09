@@ -2,23 +2,23 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class Webhooks {
-    fun webhook(sdk: BlockingBreezServices) {
+    fun registerWebhook(sdk: BlockingBreezServices) {
         // ANCHOR: register-webook
         try {
-            sdk.registerWebhook("https://yourapplication.com")
+            sdk.registerWebhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>")
         } catch (e: Exception) {
             // Handle error
         }
         // ANCHOR_END: register-webook
     }
 
-    fun paymentWebhook(sdk: BlockingBreezServices) {
-        // ANCHOR: register-payment-webook
+    fun unregisterWebhook(sdk: BlockingBreezServices) {
+        // ANCHOR: unregister-webook
         try {
-            sdk.registerWebhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>")
+            sdk.unregisterWebhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>")
         } catch (e: Exception) {
             // Handle error
         }
-        // ANCHOR_END: register-payment-webook
+        // ANCHOR_END: unregister-webook
     }
 }

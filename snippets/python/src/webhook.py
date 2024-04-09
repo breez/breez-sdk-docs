@@ -1,19 +1,19 @@
 import breez_sdk
 
-def webhook(sdk_services):
-    try: 
+def register_webhook(sdk_services):
+    try:
         # ANCHOR: register-webook
-        sdk_services.register_webhook("https://yourapplication.com")    
+        sdk_services.register_webhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>")
         # ANCHOR_END: register-webook
-    except Exception as error: 
+    except Exception as error:
         print(error)
         raise
 
-def payment_webhook(sdk_services):
+def unregister_webhook(sdk_services):
     try:
-        # ANCHOR: register-payment-webook
-        sdk_services.register_webhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>")
-        # ANCHOR_END: register-payment-webook
+        # ANCHOR: unregister-webook
+        sdk_services.unregister_webhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>")
+        # ANCHOR_END: unregister-webook
     except Exception as error:
         print(error)
         raise
