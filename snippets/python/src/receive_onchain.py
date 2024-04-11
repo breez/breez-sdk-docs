@@ -34,23 +34,23 @@ def list_refundables(sdk_services):
         print(error)
         raise
 
-def execute_refund(sdk_services,refundable):
-   if refundable is breez_sdk.SwapInfo:
-    # ANCHOR: execute-refund
-    destination_address = "..."
-    
-    sat_per_vbyte = 5
-    try:
-        result = sdk_services.refund(
-           swap_address=refundable.bitcoin_address,                         
-           to_address=destination_address,
-           sat_per_vbyte=sat_per_vbyte)
-    # ANCHOR_END: execute-refund
-    except Exception as error:
-       print(error)
-       raise
+def execute_refund(sdk_services, refundable):
+    if refundable is breez_sdk.SwapInfo:
+        # ANCHOR: execute-refund
+        destination_address = "..."
+        
+        sat_per_vbyte = 5
+        try:
+            result = sdk_services.refund(
+            swap_address=refundable.bitcoin_address,                         
+            to_address=destination_address,
+            sat_per_vbyte=sat_per_vbyte)
+        # ANCHOR_END: execute-refund
+        except Exception as error:
+            print(error)
+            raise
 
-def get_channel_opening_fees(sdk_services ,amount_msat=None):
+def get_channel_opening_fees(sdk_services, amount_msat=None):
    try:
     # ANCHOR: get-channel-opening-fees
     req = breez_sdk.OpenChannelFeeRequest(amount_msat)

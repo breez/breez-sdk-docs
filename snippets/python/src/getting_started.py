@@ -30,7 +30,7 @@ def getting_started(API_KEY,mnemonic,temp_dir):
     except Exception as error:
         logging.error(error)
         raise
-    # ANCHOR_END: init-sdk
+# ANCHOR_END: init-sdk
 
 def getting_started_restore_only(config, seed):
     try:

@@ -7,10 +7,12 @@ const exampleSendSpontaneousPayment = async () => {
   // ANCHOR: send-spontaneous-payment
   try {
     const nodeId = '...'
+    const optionalLabel = '<label>'
 
     const sendPaymentResponse = await sendSpontaneousPayment({
       nodeId,
-      amountMsat: 3000000
+      amountMsat: 3000000,
+      label: optionalLabel
     })
   } catch (err) {
     console.error(err)
@@ -30,14 +32,14 @@ const exampleSendSpontaneousPaymentWithTlvs = async () => {
   // ANCHOR: send-spontaneous-payment-with-tlvs
   try {
     const nodeId = '...'
-    const extraTlvs: TlvEntry[] = [
+    const optionalExtraTlvs: TlvEntry[] = [
       { fieldNumber: 34349334, value: stringToBytes('Hello world!') }
     ]
 
     const sendPaymentResponse = await sendSpontaneousPayment({
       nodeId,
       amountMsat: 3000000,
-      extraTlvs
+      extraTlvs: optionalExtraTlvs
     })
   } catch (err) {
     console.error(err)

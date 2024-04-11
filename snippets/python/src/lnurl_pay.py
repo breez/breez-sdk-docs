@@ -11,10 +11,12 @@ def pay(sdk_services):
     parsed_input = breez_sdk.parse_input(lnurl_pay_url)
     if isinstance(parsed_input, breez_sdk.InputType.LN_URL_PAY):
        amount_msat = parsed_input.data.min_sendable
-       req = breez_sdk.LnUrlPayRequest(parsed_input.data,amount_msat,"comment")
+       optional_comment = "<comment>"
+       optional_payment_label = "<label>"
+       req = breez_sdk.LnUrlPayRequest(parsed_input.data, amount_msat, optional_comment, optional_payment_label)
        result = sdk_services.pay_lnurl(req)
-       # ANCHOR_END: lnurl-pay
        return result
   except Exception as error:
       print(error)
-      raise
+      raise 
+  # ANCHOR_END: lnurl-pay
