@@ -102,6 +102,7 @@ import breez_sdk.mnemonicToSeed
 import breez_sdk_notification.ForegroundService
 import breez_sdk_notification.NotificationHelper.Companion.registerNotificationChannels
 import breez_sdk_notification.ServiceConfig
+import com.example.application.BuildConfig
 
 class ExampleForegroundService : ForegroundService() {
     companion object {
@@ -113,7 +114,7 @@ class ExampleForegroundService : ForegroundService() {
     override fun onCreate() {
         super.onCreate()
         // Register the default notification channels
-        registerNotificationChannels(applicationContext, DEFAULT_CLICK_ACTION)
+        registerNotificationChannels(applicationContext)
     }
 
     // Override the `getConnectRequest` function
@@ -125,7 +126,7 @@ class ExampleForegroundService : ForegroundService() {
         val config = defaultConfig(EnvironmentType.PRODUCTION, apiKey, nodeConf)
 
         // Set the workingDir as the same directory as the main application
-        config.workingDir = "${applicationContext.applicationInfo.dataDir}/breezSdk"
+        config.workingDir = "${applicationContext.filesDir}/breezSdk"
 
         // Get the mnemonic from secured storage using an implementation of
         // `readSecuredValue` depending on how data is written to secured storage.
