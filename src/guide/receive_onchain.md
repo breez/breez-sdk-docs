@@ -159,7 +159,7 @@ The process of receiving funds via an on-chain address is trustless and uses a s
 
 ## Notifications
 
-Enabling [mobile notifications](payment_notification.md) in your app will automatically register it for swap notifications.
+Enabling [mobile notifications](payment_notification.md) will register your app for swap notifications.
 
 This means that, when the user performs a swap-in (receive onchain), the app will
 
