@@ -1,4 +1,5 @@
-# iOS Notfication Service Extension
+# Setting up the Notification Service Extension
+
 ## Add a Notfication Service Extension target
 
 In Xcode add a new Target to your application:

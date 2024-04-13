@@ -1,4 +1,4 @@
-# Add the Android Notification Plugin
+# Adding the Notification Plugin
 
 Add the `breez-sdk` dependency to your application's `build.gradle` file in the `app` directory.
 

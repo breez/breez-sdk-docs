@@ -1,4 +1,4 @@
-# Changing Default Strings
+# Changing default strings
 
 The Notification Plugin uses a set of identifiers and default strings to display messages when processing push notifications. These default strings can be customised by the application. For example, if you wanted to change the `lnurl_pay_metadata_plain_text`, which sets the LNURL-pay text/plain metadata.
 

@@ -1,4 +1,4 @@
-# Custom Notification Handling
+# Handling custom notifications
 
 You can customise the Notification Plugin even further by handling your own notification types sent to the application via push notification. Follow the code example below for adding these to iOS and Android.
 

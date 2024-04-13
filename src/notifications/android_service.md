@@ -1,4 +1,4 @@
-# Android Foreground Service
+# Setting up the Foreground Service
 
 In the `AndroidManifest.xml` file of the application's `app/src/main` directory, add the user permissions necessary to handle notifications `POST_NOTIFICATIONS` as a foreground service `FOREGROUND_SERVICE`. Then to your main application add two services, one to handle messaging events and one to handle the foreground service.
 

@@ -26,22 +26,24 @@
 - [Reporting payment failures](guide/failure_report.md)
 - [Moving to production](guide/production.md)
 
+---
+
 # Notifications
 
-- [Getting Started](notifications/getting_started.md)
-- [Setup an NDS](notifications/setup_nds.md)
-- [Register a webhook](notifications/register_webhook.md)
-- [Project Integration](notifications/setup_plugin.md)
+- [Implementing mobile notifications](notifications/getting_started.md)
+- [Setting up an NDS](notifications/setup_nds.md)
+- [Registering a webhook](notifications/register_webhook.md)
+- [Integrating the plugin](notifications/setup_plugin.md)
     - [Android](notifications/android_setup.md)
-      - [Foreground Service](notifications/android_service.md)
-      - [Notification Plugin](notifications/android_plugin.md)
+      - [Setting up the Foreground Service](notifications/android_service.md)
+      - [Adding the Notification Plugin](notifications/android_plugin.md)
     - [iOS](notifications/ios_setup.md)
-      - [Notification Service Extension](notifications/ios_service.md)
-      - [Notification Plugin](notifications/ios_plugin.md)
+      - [Setting up the Notification Service Extension](notifications/ios_service.md)
+      - [Adding the Notification Plugin](notifications/ios_plugin.md)
 - [Logging](notifications/logging.md)
-- [Service Configuration](notifications/service_configuration.md)
-- [Changing Default Strings](notifications/changing_strings.md)
-- [Custom Notification Handling](notifications/custom_notifications.md)
+- [Configuring the plugin](notifications/service_configuration.md)
+- [Changing default strings](notifications/changing_strings.md)
+- [Handling custom notifications](notifications/custom_notifications.md)
 
 <!-- Hidden Links -->
 [](guide/payment_notification.md)

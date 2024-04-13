@@ -1,4 +1,4 @@
-# Add the iOS Notification Plugin
+# Adding the Notification Plugin
 
 Add the `BreezSDK` cocoapod to your iOS Podfile, with the target `NotificationService`. You can add any other dependencies your require here also, for example `KeychainAccess` to read the saved mnemonic from the keychain.
 
