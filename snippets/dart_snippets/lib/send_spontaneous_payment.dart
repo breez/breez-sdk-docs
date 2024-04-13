@@ -6,9 +6,12 @@ Future<SendPaymentResponse> sendSpontaneousPayment({
   required String nodeId,
 }) async {
   // ANCHOR: send-spontaneous-payment
+  String optionalLabel = "<label>";
+
   SendSpontaneousPaymentRequest req = SendSpontaneousPaymentRequest(
     amountMsat: 3000000,
     nodeId: nodeId,
+    label: optionalLabel,
   );
   SendPaymentResponse resp = await BreezSDK().sendSpontaneousPayment(req: req);
   // ANCHOR_END: send-spontaneous-payment
@@ -19,7 +22,7 @@ Future<SendPaymentResponse> sendSpontaneousPaymentWithTlvs({
   required String nodeId,
 }) async {
   // ANCHOR: send-spontaneous-payment-with-tlvs
-  List<TlvEntry> extraTlvs = [
+  List<TlvEntry> optionalExtraTlvs = [
     TlvEntry(
       fieldNumber: 34349334,
       value: utf8.encode("Hello world!"),
@@ -28,7 +31,7 @@ Future<SendPaymentResponse> sendSpontaneousPaymentWithTlvs({
   SendSpontaneousPaymentRequest req = SendSpontaneousPaymentRequest(
     amountMsat: 3000000,
     nodeId: nodeId,
-    extraTlvs: extraTlvs,
+    extraTlvs: optionalExtraTlvs,
   );
   SendPaymentResponse resp = await BreezSDK().sendSpontaneousPayment(req: req);
   // ANCHOR_END: send-spontaneous-payment-with-tlvs

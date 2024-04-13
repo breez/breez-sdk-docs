@@ -1,7 +1,6 @@
 import breez_sdk
 
 def prepare_redeem_onchain_funds(sdk_services, fee_rate):
-   
     try:
          # ANCHOR: prepare-redeem-onchain-funds
         destination_address = "bc1.."
