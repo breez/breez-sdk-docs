@@ -18,7 +18,7 @@ public class LnurlPaySnippets
                 var amountMsat = lnurlp.data.minSendable;
                 var optionalComment = "<comment>";
                 var optionalPaymentLabel = "<label>";
-                var req = new LnUrlPayRequest(lnurlp.data, amountMsat, optionalComment, optionalPaymentLabel)
+                var req = new LnUrlPayRequest(lnurlp.data, amountMsat, optionalComment, optionalPaymentLabel);
                 var result = sdk.PayLnurl(req);
             }
         }
