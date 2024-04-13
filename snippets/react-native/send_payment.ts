@@ -9,9 +9,9 @@ const exampleSendLightningPayment = async () => {
     const optionalAmountMsat = 3000000
     const optionalLabel = '<label>'
     const response = await sendPayment({
-      bolt11, 
-      amountMsat: optionalAmountMsat, 
-      label: optionalLabel 
+      bolt11,
+      amountMsat: optionalAmountMsat,
+      label: optionalLabel
     })
   } catch (err) {
     console.error(err)
