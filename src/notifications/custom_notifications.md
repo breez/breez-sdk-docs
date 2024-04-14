@@ -125,11 +125,7 @@ class CustomTask : TaskProtocol {
         self.bestAttemptContent = bestAttemptContent
         self.logger = logger
     }
-    
-    // Use the `onEvent` function to handle events from the Breez SDK 
-    // that can be used in your task
-    public func onEvent(e: BreezEvent) {}
-    
+        
     // The `start` function is called once the SDK instance is connected
     func start(breezSDK: BlockingBreezServices) throws {
         // Decode the `CustomRequest` from the payload
@@ -151,6 +147,10 @@ class CustomTask : TaskProtocol {
             self.onShutdown()
         }
     }
+
+    // Use the `onEvent` function to handle events from the Breez SDK 
+    // that can be used in your task
+    public func onEvent(e: BreezEvent) {}
 
     // The 'onShutdown' function can be called when the notification service extension is about to be 
     // shutdown by the OS, here you can cleanup and display the failed push notification message
@@ -191,10 +191,6 @@ class CustomJob(
         private const val TAG = "CustomJob"
     }
 
-    // Use the `onEvent` function to handle events from the Breez SDK 
-    // that can be used in your task
-    override fun onEvent(e: BreezEvent) {}
-
     // The `start` function is called once the SDK instance is connected
     override fun start(breezSDK: BlockingBreezServices) {
         // Remember if you are using a custom notification channel, you have to register it first
@@ -221,6 +217,14 @@ class CustomJob(
         // Tell the foreground service the job is finished
         fgService.onFinished(this)
     }
+
+    // Use the `onEvent` function to handle events from the Breez SDK 
+    // that can be used in your task
+    override fun onEvent(e: BreezEvent) {}
+
+    // The `onShutdown` function is called when the service timeout is reached
+    // and the job should cleanup before shutting down
+    override fun onShutdown() {}
 }
 ```
 
