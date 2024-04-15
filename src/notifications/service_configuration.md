@@ -1,4 +1,4 @@
-# Service Configuration
+# Configuring the plugin
 
 You can override the default Notification Plugin config to set values used to process certain notification events. For example, the `channelFeeLimitMsat` value can be set to limit the maximum fee paid in the case where a channel will be opened during receiving a payment with LNURL-pay.
 
