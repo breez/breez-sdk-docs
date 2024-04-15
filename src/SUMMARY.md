@@ -25,7 +25,6 @@
 - [Retrieving service status](guide/service_status.md)
 - [Reporting payment failures](guide/failure_report.md)
 - [Moving to production](guide/production.md)
-  - [Production checklist](guide/production_checklist.md)
 
 # Notifications
 
