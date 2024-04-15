@@ -79,4 +79,6 @@ There are some use cases where you need to verify that they are implemented corr
 
 - **Handle swaps refunds**: Swaps that are the result of [Receiving an On-Chain Transaction](receive_onchain.md) may not be completed and change to `Refundable` state. Make sure you handle this case correctly by allowing the user to retry the [refund](receive_onchain.html#refund-a-swap) with different fees as long as the refund is not confirmed. A confirmed refund changes the swap status from `Refundable` to `Completed`.
 
+- **Swap-in / swap-out fees**: When sending or receiving on-chain, make sure to clearly show the expected fees involved, as well as the send / receive amounts.
+
 - **Connect**: Create a Lightning node (connect) only when users are interested to receive payments with Lightning (not on the app startup).
