@@ -6,3 +6,5 @@ There are some usecases where you need to verify that are implemented correctly.
 - **Pending payments**: Payments always contain a status field that can be used to determine if the payment was completed or not. Make sure you handle the case where the payment is still pending by showing the correct status to the user.
 
 - **Handle swaps refunds**: Swaps that are the result of [Receiving an On-Chain Transaction](guide/receive_onchain.md) may not be completed and turn into `Refundable` state. Make sure you handle this case correctly by allowing the user to retry the [refund](receive_onchain.html#refund-a-swap) with different fees as long as the refund is not confirmed. A confirmed refund changes the swap status from `Refundable` to `Completed`.
+
+- **Connect**: Create a Lightning node (connect) only when users are interested to receive in Lightning (not on the app startup).
