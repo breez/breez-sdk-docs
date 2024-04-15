@@ -461,8 +461,8 @@ dependencies = [
 
 [[package]]
 name = "breez-sdk-core"
-version = "0.3.2"
-source = "git+https://github.com/breez/breez-sdk?branch=main#908bed466000617364047c103a8785222f8eedff"
+version = "0.4.0"
+source = "git+https://github.com/breez/breez-sdk?tag=0.4.0-rc1#3434278077be8bca6789c3dcb615b88e993d1d0f"
 dependencies = [
  "aes",
  "anyhow",
@@ -1129,7 +1129,7 @@ checksum = "4271d37baee1b8c7e4b708028c57d816cf9d2434acb33a549475f78c181f6253"
 [[package]]
 name = "gl-client"
 version = "0.1.11"
-source = "git+https://github.com/Blockstream/greenlight.git?rev=1dbe06999bac216212124779c60006bd3d135ac7#1dbe06999bac216212124779c60006bd3d135ac7"
+source = "git+https://github.com/Blockstream/greenlight.git?rev=97e2f418c331653330f9fa928ed10ed1538c27d0#97e2f418c331653330f9fa928ed10ed1538c27d0"
 dependencies = [
  "anyhow",
  "async-trait",

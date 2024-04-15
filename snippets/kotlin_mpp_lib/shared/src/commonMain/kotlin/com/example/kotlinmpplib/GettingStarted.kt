@@ -35,6 +35,10 @@ class GettingStarted {
     }
 
     fun start_restore_only(config: Config, seed: List<UByte>) {
+        class SDKListener : EventListener {
+            override fun onEvent(e: BreezEvent) {}
+        }
+
         try {
             // ANCHOR: init-sdk-restore-only
             val connectRequest = ConnectRequest(config, seed, true)
