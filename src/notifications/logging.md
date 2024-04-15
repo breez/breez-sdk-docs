@@ -1,4 +1,4 @@
-# Logging
+# Adding logging
 
 You can override the default logger used by the Notification Plugin to use your own logging implementation or dependency. Lets look at an example of a file logger.
 

@@ -40,7 +40,12 @@
     - [iOS](notifications/ios_setup.md)
       - [Setting up the Notification Service Extension](notifications/ios_service.md)
       - [Adding the Notification Plugin](notifications/ios_plugin.md)
-- [Logging](notifications/logging.md)
+
+---
+
+# Advanced 
+
+- [Adding logging](notifications/logging.md)
 - [Configuring the plugin](notifications/service_configuration.md)
 - [Changing default strings](notifications/changing_strings.md)
 - [Handling custom notifications](notifications/custom_notifications.md)
