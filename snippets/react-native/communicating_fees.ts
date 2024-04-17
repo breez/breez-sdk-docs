@@ -1,4 +1,7 @@
-import { receivePayment } from '@breeztech/react-native-breez-sdk'
+import {
+    receivePayment,
+    ReceivePaymentResponse
+} from '@breeztech/react-native-breez-sdk'
 
 const get_fee_info_after_invoice_created = async (receivePaymentResponse: ReceivePaymentResponse) => {
   // ANCHOR: get-fee-info-after-invoice-created
