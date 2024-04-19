@@ -9,9 +9,9 @@ async fn get_fee_info_before_receiving_payment(sdk: Arc<BreezServices>) -> Resul
     let inbound_liquidity_msat = sdk.node_info()?.inbound_liquidity_msats;
     let inbound_liquidity_sat = inbound_liquidity_msat / 1000;
 
-let opening_fee_response = sdk
-    .open_channel_fee(OpenChannelFeeRequest::default())
-    .await?;
+    let opening_fee_response = sdk
+        .open_channel_fee(OpenChannelFeeRequest::default())
+        .await?;
 
     let opening_fees = opening_fee_response.fee_params;
     let fee_percentage = (opening_fees.proportional * 100) as f64 / 1_000_000_f64;
