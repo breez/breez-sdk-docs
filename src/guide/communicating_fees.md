@@ -35,7 +35,7 @@ You can construct this message as follows:
 <section>
 
 ```kotlin,ignore
-// TODO
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/CommunicatingFees.kt:get-fee-info-before-receiving-payment}}
 ```
 </section>
 
@@ -188,7 +188,7 @@ Below code sample constructs this message.
 <section>
 
 ```kotlin,ignore
-// TODO
+{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/CommunicatingFees.kt:get-fee-info-receive-onchain}}
 ```
 </section>
 
