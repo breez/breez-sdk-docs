@@ -51,7 +51,7 @@ You can construct this message as follows:
 <section>
 
 ```dart,ignore
-// TODO
+{{#include ../../snippets/dart_snippets/lib/communicating_fees.dart:get-fee-info-before-receiving-payment}}
 ```
 </section>
 
@@ -204,7 +204,7 @@ Below code sample constructs this message.
 <section>
 
 ```dart,ignore
-// TODO
+{{#include ../../snippets/dart_snippets/lib/communicating_fees.dart:get-fee-info-receive-onchain}}
 ```
 </section>
 
