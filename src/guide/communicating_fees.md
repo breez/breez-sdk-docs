@@ -43,7 +43,7 @@ You can construct this message as follows:
 <section>
 
 ```typescript
-// TODO
+{{#include ../../snippets/react-native/communicating_fees.ts:get-fee-info-before-receiving-payment}}
 ```
 </section>
 
@@ -196,7 +196,7 @@ Below code sample constructs this message.
 <section>
 
 ```typescript
-// TODO
+{{#include ../../snippets/react-native/communicating_fees.ts:get-fee-info-receive-onchain}}
 ```
 </section>
 
