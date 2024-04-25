@@ -59,7 +59,7 @@ You can construct this message as follows:
 <section>
 
 ```python,ignore
-# TODO
+{{#include ../../snippets/python/src/communicating_fees.py:get-fee-info-before-receiving-payment}}
 ```
 </section>
 
@@ -212,7 +212,7 @@ Below code sample constructs this message.
 <section>
 
 ```python,ignore
-# TODO
+{{#include ../../snippets/python/src/communicating_fees.py:get-fee-info-receive-onchain}}
 ```
 </section>
 
