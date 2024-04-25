@@ -75,7 +75,7 @@ You can construct this message as follows:
 <section>
 
 ```cs,ignore
-// TODO
+{{#include ../../snippets/csharp/CommunicatingFees.cs:get-fee-info-before-receiving-payment}}
 ```
 </section>
 </custom-tabs>
@@ -228,7 +228,7 @@ Below code sample constructs this message.
 <section>
 
 ```cs,ignore
-// TODO
+{{#include ../../snippets/csharp/CommunicatingFees.cs:get-fee-info-receive-onchain}}
 ```
 </section>
 </custom-tabs>
