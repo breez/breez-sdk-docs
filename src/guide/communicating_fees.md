@@ -27,7 +27,7 @@ You can construct this message as follows:
 <section>
 
 ```swift,ignore
-// TODO
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/CommunicatingFees.swift:get-fee-info-before-receiving-payment}}
 ```
 </section>
 
@@ -180,7 +180,7 @@ Below code sample constructs this message.
 <section>
 
 ```swift,ignore
-// TODO
+{{#include ../../snippets/swift/BreezSDKExamples/Sources/CommunicatingFees.swift:get-fee-info-receive-onchain}}
 ```
 </section>
 
