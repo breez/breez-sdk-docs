@@ -93,7 +93,7 @@ Check https://github.com/breez/breez-sdk/releases for the latest version.
 
 ```toml
 [dependencies]
-breez-sdk-core = { git = "https://github.com/breez/breez-sdk", tag = "0.4.0-rc1" }
+breez-sdk-core = { git = "https://github.com/breez/breez-sdk", tag = "0.4.0-rc5" }
 ```
 
 ## Flutter/Dart

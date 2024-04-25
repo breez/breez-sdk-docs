@@ -8,7 +8,7 @@ let package = Package(
     platforms: [.macOS(.v13)],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.3"),
-        .package(url: "https://github.com/breez/breez-sdk-swift", from:"0.4.0-rc1")
+        .package(url: "https://github.com/breez/breez-sdk-swift", from:"0.4.0-rc5")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.

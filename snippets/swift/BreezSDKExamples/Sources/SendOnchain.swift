@@ -8,13 +8,15 @@
 import BreezSDK
 import Foundation
 
-func GetCurrentLimits(sdk: BlockingBreezServices) -> ReverseSwapPairInfo? {
+func GetCurrentLimits(sdk: BlockingBreezServices) -> OnchainPaymentLimitsResponse?? {
     //  ANCHOR: get-current-reverse-swap-limits
     let currentLimits = try? sdk.onchainPaymentLimits()
-    print("Minimum amount, in sats: \(currentLimits.minSat)")
-    print("Maximum amount, in sats: \(currentLimits.maxSat)")
+    if let limits = currentLimits {
+        print("Minimum amount, in sats: \(limits.minSat)")
+        print("Maximum amount, in sats: \(limits.maxSat)")
+    }
     // ANCHOR_END: get-current-reverse-swap-limits
-    return currentFees
+    return currentLimits
 }
 
 func PreparePayOnchain(sdk: BlockingBreezServices, currentLimits: OnchainPaymentLimitsResponse) -> PrepareOnchainPaymentResponse? {
@@ -25,14 +27,16 @@ func PreparePayOnchain(sdk: BlockingBreezServices, currentLimits: OnchainPayment
     let prepareRequest = PrepareOnchainPaymentRequest(amountSat: amountSat, amountType: .send, claimTxFeerate: satPerVbyte);
     let prepareResponse = try? sdk.prepareOnchainPayment(req: prepareRequest)
 
-    print("Sender amount, in sats: \(prepareResponse.senderAmountSat)")
-    print("Recipient amount, in sats: \(prepareResponse.recipientAmountSat)")
-    print("Total fees, in sats: \(prepareResponse.totalFees)")
+    if let response = prepareResponse {
+        print("Sender amount, in sats: \(response.senderAmountSat)")
+        print("Recipient amount, in sats: \(response.recipientAmountSat)")
+        print("Total fees, in sats: \(response.totalFees)")
+    }
     // ANCHOR_END: prepare-pay-onchain
     return prepareResponse
 }
 
-func StartReverseSwap(sdk: BlockingBreezServices, prepareResponse: PrepareOnchainPaymentRequest) -> SendOnchainResponse? {
+func StartReverseSwap(sdk: BlockingBreezServices, prepareResponse: PrepareOnchainPaymentResponse) -> PayOnchainResponse? {
     // ANCHOR: start-reverse-swap
     let destinationAddress = "bc1.."
 
@@ -44,7 +48,7 @@ func StartReverseSwap(sdk: BlockingBreezServices, prepareResponse: PrepareOnchai
 func checkReverseSwap(sdk: BlockingBreezServices) {
     // ANCHOR: check-reverse-swaps-status
     if let inProgressOnchainPayments = try? sdk.inProgressOnchainPayments() {
-        for rs in inProgressReverseSwaps {
+        for rs in inProgressOnchainPayments {
             print("Onchain payment \(rs.id) in progress, status is \(rs.status)")
         }
     }
