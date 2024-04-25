@@ -23,7 +23,7 @@ func getFeeInfoBeforeInvoiceCreated() {
 			} else {
 				log.Printf(
 					"A setup fee of %#v%% with a minimum of %#v sats will be applied" +
-					 "for receiving more than %#v sats.",
+						"for receiving more than %#v sats.",
 					feePercentage, minFeeSat, inboundLiquiditySat)
 			}
 		}
@@ -57,8 +57,8 @@ func getFeeInfoReceiveOnchain() {
 
 			log.Printf(
 				"Send more than %#v sats and up to %#v sats to this address. " +
-				"A setup fee of %#v%% with a minimum of %#v sats will be applied " +
-				"for sending more than %#v sats. This address can only be used once.",
+					"A setup fee of %#v%% with a minimum of %#v sats will be applied " +
+					"for sending more than %#v sats. This address can only be used once.",
 				minDepositSat, maxDepositSat, feePercentage, minFeeSat, inboundLiquiditySat)
 		}
 	}
