@@ -1,5 +1,6 @@
 import {
   nodeInfo,
+  openChannelFee,
   receiveOnchain,
   receivePayment,
   type ReceivePaymentResponse
