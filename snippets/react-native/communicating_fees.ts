@@ -12,7 +12,7 @@ const getFeeInfoBeforeInvoiceCreated = async () => {
   const inboundLiquidityMsat = nodeState.inboundLiquidityMsats
   const inboundLiquiditySat = inboundLiquidityMsat != null ? inboundLiquidityMsat / 1_000 : 0
 
-  const openChannelFeeResponse = await openChannelFee()
+  const openChannelFeeResponse = await openChannelFee({})
 
   const openingFees = openChannelFeeResponse.feeParams
   const feePercentage = (openingFees.proportional * 100) / 1_000_000
