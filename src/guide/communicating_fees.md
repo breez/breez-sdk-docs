@@ -67,7 +67,7 @@ You can construct this message as follows:
 <section>
 
 ```go,ignore
-// TODO
+{{#include ../../snippets/go/communicating_fees.go:get-fee-info-before-receiving-payment}}
 ```
 </section>
 
@@ -220,7 +220,7 @@ Below code sample constructs this message.
 <section>
 
 ```go,ignore
-// TODO
+{{#include ../../snippets/go/communicating_fees.go:get-fee-info-receive-onchain}}
 ```
 </section>
 
