@@ -1,6 +1,6 @@
 # Communicating fees
 
-In the LSP model, fees are involved when the user wants to receive a payment, but doesn't have sufficient receivable amount. This section provides recommendations on how to communicate these fees to a user.
+In the LSP model, fees are involved when the user wants to receive a payment, but doesn't have a sufficient receivable amount. This section provides recommendations on how to communicate these fees to a user.
 
 ### Before receiving a payment
 When the user wants to receive a payment, a setup fee is paid when the resulting invoice would exceed the receivable amount.
