@@ -83,7 +83,7 @@ You can construct this message as follows:
 ### When an invoice is created
 After calling `receive_payment`, you would typically show the recipient a screen containing a QR code with the invoice that the sender can scan.
 
-This is another point to show the user the opening fees applied to the invoice. At this point the amount the user wants to receive is known, so the message can be more concise:
+This is another place to show the user the opening fees applied to the invoice. At this point the amount the user wants to receive is known, so the message can be more concise:
 
 > A setup fee of x sats is applied to this invoice.
 
