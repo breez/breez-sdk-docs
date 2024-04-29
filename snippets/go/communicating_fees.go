@@ -18,12 +18,12 @@ func getFeeInfoBeforeInvoiceCreated() {
 
 			if inboundLiquiditySat == 0 {
 				log.Printf(
-					"A setup fee of %#v%% with a minimum of %#v sats will be applied.",
+					"A setup fee of %v%% with a minimum of %v sats will be applied.",
 					feePercentage, minFeeSat)
 			} else {
 				log.Printf(
-					"A setup fee of %#v%% with a minimum of %#v sats will be applied"+
-						"for receiving more than %#v sats.",
+					"A setup fee of %v%% with a minimum of %v sats will be applied"+
+						"for receiving more than %v sats.",
 					feePercentage, minFeeSat, inboundLiquiditySat)
 			}
 		}
