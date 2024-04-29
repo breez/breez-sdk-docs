@@ -87,7 +87,11 @@ This is another place to show the user the opening fees applied to the invoice. 
 
 > A setup fee of x sats is applied to this invoice.
 
-The fiat amount can be included. In case of a mobile app it is recommended to communicate to the user that the app has to be run in the foreground in order to be able to receive the payment.
+The fiat amount can also be included. In case of a mobile app it is recommended to communicate to the user that the app has to be run in the foreground in order to be able to receive the payment.
+<div class="warning">
+<h4>Developer note</h4>
+Consider implementing the <a href="/notifications/getting_started.md">Notification Plugin</a> when using the Breez SDK in a mobile application. By registering a webhook the application can receive a payment notification to process the payment in the background.
+</div>
 
 Here is how you can build this message:
 
