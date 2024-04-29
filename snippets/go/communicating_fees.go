@@ -38,7 +38,7 @@ func GetFeeInfoAfterInvoiceCreated(receivePaymentResponse breez_sdk.ReceivePayme
 	if openingFeeMsat != nil {
 		openingFeeSat = int(*openingFeeMsat / 1_000)
 	}
-	log.Printf("A setup fee of %#v sats is applied to this invoice.", openingFeeSat)
+	log.Printf("A setup fee of %v sats is applied to this invoice.", openingFeeSat)
 	// ANCHOR_END: get-fee-info-after-invoice-created
 }
 
