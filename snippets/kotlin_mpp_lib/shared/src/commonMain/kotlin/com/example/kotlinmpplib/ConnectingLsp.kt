@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class ConnectingLsp {
-    fun get_lsp_info(sdk: BlockingBreezServices) {
+    fun getLspInfo(sdk: BlockingBreezServices) {
         // ANCHOR: get-lsp-info
         try {
             val lspId = sdk.lspId()
@@ -17,7 +17,7 @@ class ConnectingLsp {
         // ANCHOR_END: get-lsp-info
     }
 
-    fun list_lsps(sdk: BlockingBreezServices) {
+    fun listLsps(sdk: BlockingBreezServices) {
         // ANCHOR: list-lsps
         try {
             val availableLsps = sdk.listLsps()
@@ -26,7 +26,7 @@ class ConnectingLsp {
         }
         // ANCHOR_END: list-lsps
     }
-    fun connect_lsp(sdk: BlockingBreezServices, lspId: String) {
+    fun connectLsp(sdk: BlockingBreezServices, lspId: String) {
         // ANCHOR: connect-lsp
         try {
             sdk.connectLsp(lspId)

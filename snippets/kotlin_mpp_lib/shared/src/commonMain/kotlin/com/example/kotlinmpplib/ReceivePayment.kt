@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class ReceivePayment {
-    fun receive_payment(sdk: BlockingBreezServices) {
+    fun receivePayment(sdk: BlockingBreezServices) {
         // ANCHOR: receive-payment
         try {
             val receivePaymentResponse = sdk.receivePayment(ReceivePaymentRequest(

@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class Webhooks {
-    fun Webhook(sdk: BlockingBreezServices) {
+    fun webhook(sdk: BlockingBreezServices) {
         // ANCHOR: register-webook
         try {
             sdk.registerWebhook("https://yourapplication.com")

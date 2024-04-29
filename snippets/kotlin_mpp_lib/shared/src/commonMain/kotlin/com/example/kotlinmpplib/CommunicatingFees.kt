@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class CommunicatingFees {
-    fun get_fee_info_before_invoice_created(sdk: BlockingBreezServices) {
+    fun getFeeInfoBeforeInvoiceCreated(sdk: BlockingBreezServices) {
         // ANCHOR: get-fee-info-before-receiving-payment
         val inboundLiquidityMsat = sdk.nodeInfo()?.inboundLiquidityMsats ?: 0u
         val inboundLiquiditySat = inboundLiquidityMsat / 1_000u
@@ -21,14 +21,14 @@ class CommunicatingFees {
         // ANCHOR_END: get-fee-info-before-receiving-payment
     }
 
-    fun get_fee_info_after_invoice_created(receivePaymentResponse: ReceivePaymentResponse) {
+    fun getFeeInfoAfterInvoiceCreated(receivePaymentResponse: ReceivePaymentResponse) {
         // ANCHOR: get-fee-info-after-invoice-created
         val openingFeeSat = receivePaymentResponse.openingFeeMsat?.let{ it.div(1000UL).toULong() } ?: run { 0UL }
         // Log.v("Breez", "A setup fee of ${openingFeeSat} sats is applied to this invoice.")
         // ANCHOR_END: get-fee-info-after-invoice-created
     }
 
-    fun get_fee_info_receive_onchain(sdk: BlockingBreezServices) {
+    fun getFeeInfoReceiveOnchain(sdk: BlockingBreezServices) {
         // ANCHOR: get-fee-info-receive-onchain
         val swapInfo = sdk.receiveOnchain(ReceiveOnchainRequest())
 

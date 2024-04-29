@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class LnurlAuth {
-    fun lnurl_auth(sdk: BlockingBreezServices) {
+    fun lnurlAuth(sdk: BlockingBreezServices) {
         // ANCHOR: lnurl-auth
         // Endpoint can also be of the form:
         // keyauth://domain.com/auth?key=val
