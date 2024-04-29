@@ -19,6 +19,7 @@ func GettingStarted() *breez_sdk.BlockingBreezServices {
 	seed, err := breez_sdk.MnemonicToSeed("<mnemonic words>")
 	if err != nil {
 		log.Fatalf("MnemonicToSeed failed: %#v", err)
+		return err
 	}
 
 	inviteCode := "<invite code>"
@@ -38,11 +39,11 @@ func GettingStarted() *breez_sdk.BlockingBreezServices {
 	sdk, err := breez_sdk.Connect(connectRequest, BreezListener{})
 	if err != nil {
 		log.Fatalf("Connect failed: %#v", err)
+		return err
 	}
 
 	return sdk
 }
-
 // ANCHOR_END: init-sdk
 
 func GettingStartedRestoreOnly(config breez_sdk.Config, seed []uint8) *breez_sdk.BlockingBreezServices {
@@ -54,20 +55,23 @@ func GettingStartedRestoreOnly(config breez_sdk.Config, seed []uint8) *breez_sdk
 		RestoreOnly: &restoreOnly,
 	}
 	sdk, err := breez_sdk.Connect(connectRequest, BreezListener{})
-	// ANCHOR_END: init-sdk-restore-only
 	if err != nil {
 		log.Fatalf("Connect failed: %#v", err)
+		return err
 	}
+	// ANCHOR_END: init-sdk-restore-only
 	return sdk
 }
 
 func FetchBalance() {
 	// ANCHOR: fetch-balance
-	if nodeInfo, err := sdk.NodeInfo(); err == nil {
-		lnBalance := nodeInfo.ChannelsBalanceMsat
-		onchainBalance := nodeInfo.OnchainBalanceMsat
-
-		log.Printf("%#v %#v", lnBalance, onchainBalance)
+	nodeInfo, err := sdk.NodeInfo()
+	if err != nil {
+		return err
 	}
+
+	lnBalance := nodeInfo.ChannelsBalanceMsat
+	onchainBalance := nodeInfo.OnchainBalanceMsat
+	log.Printf("%#v %#v", lnBalance, onchainBalance)
 	// ANCHOR_END: fetch-balance
 }

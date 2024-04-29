@@ -8,9 +8,11 @@ import (
 
 func HealthCheckStatus() {
 	// ANCHOR: health-check-status
-	if healthCheck, err := breez_sdk.ServiceHealthCheck("<api key>"); err != nil {
-		log.Printf("Current service status is: %v", healthCheck.Status)
+	healthCheck, err := breez_sdk.ServiceHealthCheck("<api key>")
+	if err != nil {
+		return err
 	}
+	log.Printf("Current service status is: %v", healthCheck.Status)
 	// ANCHOR_END: health-check-status
 }
 
@@ -22,8 +24,10 @@ func ReportPaymentFailure() {
 			PaymentHash: paymentHash,
 		},
 	}
-	if err := sdk.ReportIssue(reportIssueRequest); err != nil {
-		log.Printf("%#v", err)
+
+	_, err := sdk.ReportIssue(reportIssueRequest)
+	if err != nil {
+		return err
 	}
 	// ANCHOR_END: report-payment-failure
 }

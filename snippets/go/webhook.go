@@ -6,16 +6,20 @@ import (
 
 func Webhook() {
 	// ANCHOR: register-webook
-	if err := sdk.RegisterWebhook("https://yourapplication.com"); err != nil {
+	_, err := sdk.RegisterWebhook("https://yourapplication.com")
+	if err != nil {
 		log.Printf("Webhook registration failed: %v", err)
+		return err
 	}
 	// ANCHOR_END: register-webook
 }
 
 func PaymentWebhook() {
 	// ANCHOR: register-payment-webook
-	if err := sdk.RegisterWebhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>"); err != nil {
+	_, err := sdk.RegisterWebhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>")
+	if err != nil {
 		log.Printf("Webhook registration failed: %v", err)
+		return err
 	}
 	// ANCHOR_END: register-payment-webook
 }
