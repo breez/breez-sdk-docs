@@ -56,9 +56,9 @@ func getFeeInfoReceiveOnchain() {
 			var minFeeSat = swapOpeningFees.MinMsat / 1_000
 
 			log.Printf(
-				"Send more than %#v sats and up to %#v sats to this address. "+
-					"A setup fee of %#v%% with a minimum of %#v sats will be applied "+
-					"for sending more than %#v sats. This address can only be used once.",
+				"Send more than %v sats and up to %v sats to this address. "+
+					"A setup fee of %v%% with a minimum of %v sats will be applied "+
+					"for sending more than %v sats. This address can only be used once.",
 				minDepositSat, maxDepositSat, feePercentage, minFeeSat, inboundLiquiditySat)
 		}
 	}
