@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class SendOnchain {
-    fun get_current_rev_swap_limits(sdk: BlockingBreezServices) {
+    fun getCurrentRevSwapLimits(sdk: BlockingBreezServices) {
         // ANCHOR: get-current-reverse-swap-limits
         try {
             val currentLimits = sdk.onchainPaymentLimits()
@@ -14,7 +14,7 @@ class SendOnchain {
         // ANCHOR_END: get-current-reverse-swap-limits
     }
 
-    fun prepare_pay_onchain(sdk: BlockingBreezServices, currentLimits: OnchainPaymentLimitsResponse) {
+    fun preparePayOnchain(sdk: BlockingBreezServices, currentLimits: OnchainPaymentLimitsResponse) {
         // ANCHOR: prepare-pay-onchain
         val amountSat = currentLimits.minSat
         val satPerVbyte = 10.toUInt()
@@ -30,7 +30,7 @@ class SendOnchain {
         // ANCHOR_END: prepare-pay-onchain
     }
 
-    fun start_reverse_swap(sdk: BlockingBreezServices, prepareRes: PrepareOnchainPaymentResponse) {
+    fun startReverseSwap(sdk: BlockingBreezServices, prepareRes: PrepareOnchainPaymentResponse) {
         // ANCHOR: start-reverse-swap
         val address = "bc1.."
         try {
@@ -41,7 +41,7 @@ class SendOnchain {
         // ANCHOR_END: start-reverse-swap
     }
 
-    fun check_rev_swap_status(sdk: BlockingBreezServices) {
+    fun checkRevSwapStatus(sdk: BlockingBreezServices) {
         // ANCHOR: check-reverse-swaps-status
         for (rs in sdk.inProgressOnchainPayments()) {
             // Log.v("Breez", "Onchain payment ${rs.id} in progress, status is ${rs.status}")

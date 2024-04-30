@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class LnurlWithdraw {
-    fun lnurl_withdraw(sdk: BlockingBreezServices) {
+    fun lnurlWithdraw(sdk: BlockingBreezServices) {
         // ANCHOR: lnurl-withdraw
         // Endpoint can also be of the form:
         // lnurlw://domain.com/lnurl-withdraw?key=val

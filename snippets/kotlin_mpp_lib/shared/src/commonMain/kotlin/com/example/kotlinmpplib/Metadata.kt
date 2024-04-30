@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class Metadata {
-    fun SetPaymentMetadata(sdk: BlockingBreezServices) {
+    fun setPaymentMetadata(sdk: BlockingBreezServices) {
         // ANCHOR: set-payment-metadata
         try {
             sdk.setPaymentMetadata("target-payment-hash", """{"myCustomValue":true}""")
@@ -12,7 +12,7 @@ class Metadata {
         // ANCHOR_END: set-payment-metadata
     }
 
-    fun FilterPaymentMetadata(sdk: BlockingBreezServices) {
+    fun filterPaymentMetadata(sdk: BlockingBreezServices) {
         // ANCHOR: filter-payment-metadata
         val metadataFilters = listOf(MetadataFilter(
           jsonPath = "myCustomValue",
@@ -30,7 +30,7 @@ class Metadata {
         // ANCHOR_END: filter-payment-metadata
     }
 
-    fun FilterPaymentMetadataString(sdk: BlockingBreezServices) {
+    fun filterPaymentMetadataString(sdk: BlockingBreezServices) {
         // ANCHOR: filter-payment-metadata-string
         val metadataFilters = listOf(MetadataFilter(
           jsonPath = "customerName",
@@ -39,7 +39,7 @@ class Metadata {
         // ANCHOR_END: filter-payment-metadata-string
     }
 
-    fun FilterPaymentMetadataObject(sdk: BlockingBreezServices) {
+    fun filterPaymentMetadataObject(sdk: BlockingBreezServices) {
         // ANCHOR: filter-payment-metadata-object
         // This will *NOT* work
         val _metadataFilters = listOf(MetadataFilter(

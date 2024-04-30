@@ -1,5 +1,6 @@
 mod buy_btc;
 mod closed_channel;
+mod communicating_fees;
 mod connecting_lsp;
 mod fiat_currencies;
 mod getting_started;

@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class LnurlPay {
-    fun lnurl_pay(sdk: BlockingBreezServices) {
+    fun lnurlPay(sdk: BlockingBreezServices) {
         // ANCHOR: lnurl-pay
         // Endpoint can also be of the form:
         // lnurlp://domain.com/lnurl-pay?key=val

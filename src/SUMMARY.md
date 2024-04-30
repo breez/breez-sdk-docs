@@ -13,6 +13,7 @@
 - [Connecting to an LSP](guide/connecting_lsp.md)
 - [Receiving an On-Chain Transaction](guide/receive_onchain.md)
 - [Sending an On-Chain Transaction](guide/pay_onchain.md)
+- [Communicating fees](guide/communicating_fees.md)
 - [Using LNURL & Lightning addresses](guide/lnurl.md)
   - [Sending payments using LNURL-Pay/Lightning address](guide/lnurl_pay.md)
   - [Receiving payments using LNURL-Pay/Lightning address](guide/lnurlpay.md)

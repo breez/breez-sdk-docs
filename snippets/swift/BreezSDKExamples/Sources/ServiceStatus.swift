@@ -10,7 +10,7 @@ import Foundation
 
 func getServiceStatus() {
     // ANCHOR: health-check-status
-    if let healthCheck = try? serviceHealthCheck("<api key>") {
+    if let healthCheck = try? serviceHealthCheck(apiKey: "<api key>") {
         print("Current service status is: \(healthCheck.status)")
     }
     // ANCHOR_END: health-check-status

@@ -63,7 +63,7 @@ func GettingStartedRestoreOnly(config breez_sdk.Config, seed []uint8) *breez_sdk
 
 func FetchBalance() {
 	// ANCHOR: fetch-balance
-	if nodeInfo, err := sdk.NodeInfo(); err != nil {
+	if nodeInfo, err := sdk.NodeInfo(); err == nil {
 		lnBalance := nodeInfo.ChannelsBalanceMsat
 		onchainBalance := nodeInfo.OnchainBalanceMsat
 

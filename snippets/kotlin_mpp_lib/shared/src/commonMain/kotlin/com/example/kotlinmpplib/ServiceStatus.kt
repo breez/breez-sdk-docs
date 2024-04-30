@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class ServiceStatus {
-    fun HealthCheckStatus(sdk: BlockingBreezServices) {
+    fun healthCheckStatus(sdk: BlockingBreezServices) {
         // ANCHOR: health-check-status
         try {
             val healthCheck = serviceHealthCheck("<api key>")

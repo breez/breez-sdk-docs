@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class SendSpontaneousPayment {
-    fun send_spontaneous_payment(sdk: BlockingBreezServices) {
+    fun sendSpontaneousPayment(sdk: BlockingBreezServices) {
         // ANCHOR: send-spontaneous-payment
         val nodeId = "..."
         val amountMsat = 3_000_000.toULong()
@@ -16,7 +16,7 @@ class SendSpontaneousPayment {
         // ANCHOR_END: send-spontaneous-payment
     }
 
-    fun send_spontaneous_payment_with_tlvs(sdk: BlockingBreezServices) {
+    fun sendSpontaneousPaymentWithTlvs(sdk: BlockingBreezServices) {
         // ANCHOR: send-spontaneous-payment-with-tlvs
         val nodeId = "..."
         val amountMsat = 3_000_000.toULong()

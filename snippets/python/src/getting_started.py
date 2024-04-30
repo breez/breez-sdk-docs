@@ -46,7 +46,7 @@ def getting_started_restore_only(config, seed):
 def getting_started_node_info(sdk_services):
      
     try: 
-         # ANCHOR: fetch-balance
+        # ANCHOR: fetch-balance
         node_info = sdk_services.node_info()
         ln_balance = node_info.channels_balance_msat
         onchain_balance = node_info.onchain_balance_msat

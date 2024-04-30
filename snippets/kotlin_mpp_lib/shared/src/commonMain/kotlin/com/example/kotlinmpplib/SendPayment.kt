@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class SendPayment {
-    fun send_payment(sdk: BlockingBreezServices) {
+    fun sendPayment(sdk: BlockingBreezServices) {
         // ANCHOR: send-payment
         val bolt11 = "..."
         try {

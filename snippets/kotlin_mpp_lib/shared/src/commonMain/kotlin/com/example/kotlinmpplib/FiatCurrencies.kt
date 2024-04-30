@@ -3,7 +3,7 @@ package com.example.kotlinmpplib
 import breez_sdk.*
 
 class FiatCurrencies {
-    fun list_fiat_currencies(sdk: BlockingBreezServices) {
+    fun listFiatCurrencies(sdk: BlockingBreezServices) {
         // ANCHOR: list-fiat-currencies
         try {
             val fiatCurrencyList = sdk.listFiatCurrencies()
@@ -13,7 +13,7 @@ class FiatCurrencies {
         // ANCHOR_END: list-fiat-currencies
     }
 
-    fun fetch_fiat_rates(sdk: BlockingBreezServices) {
+    fun fetchFiatRates(sdk: BlockingBreezServices) {
         // ANCHOR: fetch-fiat-rates
         try {
             val fiatRatesMap = sdk.fetchFiatRates()
