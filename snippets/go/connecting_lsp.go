@@ -6,21 +6,29 @@ import (
 
 func GetLspInfo() {
 	// ANCHOR: get-lsp-info
-	if lspId, err := sdk.LspId(); lspId != nil && err == nil {
+	lspId, err := sdk.LspId()
+	if err != nil {
+		return err
+	}
+	if lspId != nil {
 		log.Printf("%#v", *lspId)
 	}
 
-	if lspInfo, err := sdk.LspInfo(); err == nil {
-		log.Printf("%#v", lspInfo)
+	lspInfo, err := sdk.LspInfo()
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", lspInfo)
 	// ANCHOR_END: get-lsp-info
 }
 
 func ListLsps() {
 	// ANCHOR: list-lsps
-	if lspList, err := sdk.ListLsps(); err == nil {
-		log.Printf("%#v", lspList)
+	lspList, err := sdk.ListLsps()
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", lspList)
 	// ANCHOR_END: list-lsps
 }
 
@@ -28,8 +36,9 @@ func ConnectLsp() {
 	// ANCHOR: connect-lsp
 	lspId := "your selected lsp id"
 
-	if err := sdk.ConnectLsp(lspId); err != nil {
-		log.Printf("%#v", err)
+	_, err := sdk.ConnectLsp(lspId)
+	if err != nil {
+		return err
 	}
 	// ANCHOR_END: connect-lsp
 }

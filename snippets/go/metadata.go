@@ -22,12 +22,11 @@ func FilterPaymentMetadata() {
 	payments, err := sdk.ListPayments(breez_sdk.ListPaymentsRequest{
 		MetadataFilters: &metadataFilters,
 	})
-
 	if err != nil {
-		// handle error
+		return err
 	}
-	// ANCHOR_END: filter-payment-metadata
 	log.Printf("%#v", payments)
+	// ANCHOR_END: filter-payment-metadata
 }
 
 func FilterPaymentMetadataString() {
@@ -43,11 +42,11 @@ func FilterPaymentMetadataString() {
 			JsonValue: string(jsonValue),
 		},
 	}
-	// ANCHOR_END: filter-payment-metadata-string
 
 	sdk.ListPayments(breez_sdk.ListPaymentsRequest{
 		MetadataFilters: &metadataFilters,
 	})
+	// ANCHOR_END: filter-payment-metadata-string
 }
 
 func FilterPaymentMetadataObject() {
@@ -64,9 +63,9 @@ func FilterPaymentMetadataObject() {
 		{JsonPath: "parent.nestedArray", JsonValue: "[1,2,3]"},
 		{JsonPath: "parent.nestedArray", JsonValue: string(jsonValue)},
 	}
-	// ANCHOR_END: filter-payment-metadata-object
 
 	sdk.ListPayments(breez_sdk.ListPaymentsRequest{
 		MetadataFilters: &metadataFilters,
 	})
+	// ANCHOR_END: filter-payment-metadata-object
 }

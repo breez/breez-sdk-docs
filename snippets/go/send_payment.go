@@ -18,8 +18,11 @@ func SendPayment() {
 		AmountMsat: &optionalAmountMsat,
 		Label:      &optionalLabel,
 	}
-	if response, err := sdk.SendPayment(sendPaymentRequest); err == nil {
-		log.Printf("%#v", response)
+
+	response, err := sdk.SendPayment(sendPaymentRequest)
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", response)
 	// ANCHOR_END: send-payment
 }

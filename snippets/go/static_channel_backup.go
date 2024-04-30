@@ -9,8 +9,11 @@ import (
 func RetrieveBackupFiles() {
 	// ANCHOR: static-channel-backup
 	workingDir := "<working directory>"
-	if staticBackupResponse, err := breez_sdk.StaticBackup(breez_sdk.StaticBackupRequest{WorkingDir: workingDir}); err == nil {
-		log.Printf("%#v", staticBackupResponse)
+
+	staticBackupResponse, err := breez_sdk.StaticBackup(breez_sdk.StaticBackupRequest{WorkingDir: workingDir})
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", staticBackupResponse)
 	// ANCHOR_END: static-channel-backup
 }

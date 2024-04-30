@@ -13,26 +13,33 @@ func LnurlPay() {
 	// lnurl1dp68gurn8ghj7mr0vdskc6r0wd6z7mrww4excttsv9un7um9wdekjmmw84jxywf5x43rvv35xgmr2enrxanr2cfcvsmnwe3jxcukvde48qukgdec89snwde3vfjxvepjxpjnjvtpxd3kvdnxx5crxwpjvyunsephsz36jf
 	lnurlPayUrl := "lightning@address.com"
 
-	if input, err := breez_sdk.ParseInput(lnurlPayUrl); err != nil {
-		switch inputType := input.(type) {
-		case breez_sdk.InputTypeLnUrlPay:
-			amountMsat := inputType.Data.MinSendable
-			optionalComment := "<comment>"
-			optionalPaymentLabel := "<label>"
-			lnUrlPayRequest := breez_sdk.LnUrlPayRequest{
-				Data:         inputType.Data,
-				AmountMsat:   amountMsat,
-				Comment:      &optionalComment,
-				PaymentLabel: &optionalPaymentLabel,
-			}
-			if result, err := sdk.PayLnurl(lnUrlPayRequest); err != nil {
-				switch result.(type) {
-				case breez_sdk.LnUrlPayResultEndpointSuccess:
-					log.Printf("Successfully paid")
-				default:
-					log.Printf("Failed to pay")
-				}
-			}
+	input, err := breez_sdk.ParseInput(lnurlPayUrl)
+	if err != nil {
+		return err
+	}
+
+	switch inputType := input.(type) {
+	case breez_sdk.InputTypeLnUrlPay:
+		amountMsat := inputType.Data.MinSendable
+		optionalComment := "<comment>"
+		optionalPaymentLabel := "<label>"
+		lnUrlPayRequest := breez_sdk.LnUrlPayRequest{
+			Data:         inputType.Data,
+			AmountMsat:   amountMsat,
+			Comment:      &optionalComment,
+			PaymentLabel: &optionalPaymentLabel,
+		}
+
+		result, err := sdk.PayLnurl(lnUrlPayRequest)
+		if err != nil {
+			return err
+		}
+
+		switch result.(type) {
+		case breez_sdk.LnUrlPayResultEndpointSuccess:
+			log.Printf("Successfully paid")
+		default:
+			log.Printf("Failed to pay")
 		}
 	}
 	// ANCHOR_END: lnurl-pay

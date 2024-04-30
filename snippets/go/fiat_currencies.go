@@ -6,16 +6,20 @@ import (
 
 func ListFiatCurrencies() {
 	// ANCHOR: list-fiat-currencies
-	if fiatCurrencies, err := sdk.ListFiatCurrencies(); err == nil {
-		log.Printf("%#v", fiatCurrencies)
+	fiatCurrencies, err := sdk.ListFiatCurrencies()
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", fiatCurrencies)
 	// ANCHOR_END: list-fiat-currencies
 }
 
 func FetchFiatRates() {
 	// ANCHOR: fetch-fiat-rates
-	if fiatRates, err := sdk.FetchFiatRates(); err == nil {
-		log.Printf("%#v", fiatRates)
+	fiatRates, err := sdk.FetchFiatRates()
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", fiatRates)
 	// ANCHOR_END: fetch-fiat-rates
 }

@@ -8,9 +8,11 @@ import (
 
 func ListPayments() {
 	// ANCHOR: list-payments
-	if payments, err := sdk.ListPayments(breez_sdk.ListPaymentsRequest{}); err == nil {
-		log.Printf("%#v", payments)
+	payments, err := sdk.ListPayments(breez_sdk.ListPaymentsRequest{})
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", payments)
 	// ANCHOR_END: list-payments
 }
 
@@ -24,8 +26,11 @@ func ListPaymentsFiltered() {
 		FromTimestamp:   &fromTimestamp,
 		IncludeFailures: &includeFailures,
 	}
-	if payments, err := sdk.ListPayments(listPaymentsRequest); err == nil {
-		log.Printf("%#v", payments)
+
+	payments, err := sdk.ListPayments(listPaymentsRequest)
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", payments)
 	// ANCHOR_END: list-payments-filtered
 }

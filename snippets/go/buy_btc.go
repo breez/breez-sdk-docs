@@ -11,8 +11,11 @@ func BuyBitcoin() {
 	buyBitcoinRequest := breez_sdk.BuyBitcoinRequest{
 		Provider: breez_sdk.BuyBitcoinProviderMoonpay,
 	}
-	if buyBitcoinResponse, err := sdk.BuyBitcoin(buyBitcoinRequest); err == nil {
-		log.Printf("%#v", buyBitcoinResponse)
+
+	buyBitcoinResponse, err := sdk.BuyBitcoin(buyBitcoinRequest)
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", buyBitcoinResponse)
 	// ANCHOR_END: buy-btc
 }
