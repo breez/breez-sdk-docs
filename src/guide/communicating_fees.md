@@ -2,7 +2,7 @@
 
 In the LSP model, fees are involved when the user wants to receive a payment, but doesn't have a sufficient receivable amount. This section provides recommendations on how to communicate these fees to a user.
 
-### Before receiving a payment
+### Before receiving a Lightning payment
 When the user wants to receive a payment, a setup fee is paid when the resulting invoice would exceed the receivable amount.
 The setup fee is made up of two parts:
 - A minimum fee
@@ -80,7 +80,7 @@ You can construct this message as follows:
 </section>
 </custom-tabs>
 
-### When an invoice is created
+### After creating an invoice
 After calling `receive_payment`, you would typically show the recipient a screen containing a QR code with the invoice that the sender can scan.
 
 This is another place to show the user the opening fees applied to the invoice. At this point the amount the user wants to receive is known, so the message can be more concise:
@@ -162,7 +162,7 @@ Here is how you can build this message:
 </custom-tabs>
 
 
-### Receive onchain
+### Receiving an on-chain transaction
 For receiving onchain, there is a minimum and a maximum amount the user can receive. The fees are made up of the same components as receiving a lightning payment.
 
 The user gets an onchain address from `receive_onchain`. There is no way to know ahead of time exactly the amount that will be received on this address, so it is recommended to show the user the receivable boundaries and the fees involved:
