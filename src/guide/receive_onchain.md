@@ -160,6 +160,16 @@ The process of receiving funds via an on-chain address is trustless and uses a s
 Consider implementing the <a href="/notifications/getting_started.md">Notification Plugin</a> when using the Breez SDK in a mobile application. By registering a webhook the application can receive a transaction confirmation notification to redeem the swap in the background.
 </div>
 
+
+## Notifications
+
+Enabling [mobile notifications](payment_notification.md) will register your app for swap notifications.
+
+This means that, when the user performs a swap-in (receive onchain), the app will
+
+- automatically complete the swap in the background when the onchain transaction is confirmed, even if the app is closed
+- display an OS notification, informing the user of the received funds
+
 ## Refund a Swap
 
 In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
