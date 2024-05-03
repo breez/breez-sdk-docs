@@ -1,6 +1,6 @@
 # Registering a webhook
 
-Once your [NDS is set up](setup_nds.md) and can accept POST requests from the SDK services, you can within your mail application register the webhook URL with the Breez SDK by calling the register webhook API as follows:
+Once your [NDS is set up](setup_nds.md) and can accept POST requests from the SDK services, you can within your main application register the webhook URL with the Breez SDK. The registration of the webhook URL should be done **every time** the application is started and when the webhook URL changes. This can be done by calling the register webhook API as follows:
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
