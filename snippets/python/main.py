@@ -92,7 +92,7 @@ def main():
    production_node_config()
 
    # service status
-   health_check_status(sdk_services)
+   health_check_status()
    report_payment_failure(sdk_services)
 
    # use temp_dir, and remove when done:

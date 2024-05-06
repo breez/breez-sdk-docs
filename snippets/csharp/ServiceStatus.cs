@@ -7,7 +7,7 @@ public class WebhooksSnippets
         // ANCHOR: health-check-status
         try
         {
-            var healthCheck = sdk.ServiceHealthCheck();
+            var healthCheck = BreezSdkMethods.ServiceHealthCheck("<api key>");
             Console.WriteLine($"Current service status is: {healthCheck.status}");
         }
         catch (Exception)

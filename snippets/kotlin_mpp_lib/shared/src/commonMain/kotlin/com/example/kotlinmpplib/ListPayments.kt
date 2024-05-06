@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class ListPayments {
-    fun list_payments(sdk: BlockingBreezServices) {
+    fun listPayments(sdk: BlockingBreezServices) {
         // ANCHOR: list-payments
         try {
             val payments = sdk.listPayments(ListPaymentsRequest())
@@ -12,7 +12,7 @@ class ListPayments {
         // ANCHOR_END: list-payments
     }
 
-    fun list_payments_filtered(sdk: BlockingBreezServices) {
+    fun listPaymentsFiltered(sdk: BlockingBreezServices) {
         // ANCHOR: list-payments-filtered
         try {
             val payments = sdk.listPayments(

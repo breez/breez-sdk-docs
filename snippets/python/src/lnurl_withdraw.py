@@ -12,8 +12,8 @@ def withdraw(sdk_services):
         if isinstance(parsed_input, breez_sdk.InputType.LN_URL_WITHDRAW):
             amount_msat = parsed_input.data.min_withdrawable
         result = sdk_services.withdraw_lnurl(parsed_input.data, amount_msat, "comment")
-        # ANCHOR_END: lnurl-withdraw
         return result
     except Exception as error:
         print(error)
         raise
+    # ANCHOR_END: lnurl-withdraw

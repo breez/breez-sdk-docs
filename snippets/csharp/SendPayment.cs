@@ -6,8 +6,9 @@ public class SendPaymentSnippets
     {
         // ANCHOR: send-payment
         var bolt11 = "...";
-        ulong amountMsat = 3_000_000;
-
+        ulong optionalAmountMsat = 3_000_000;
+        var optionalLabel = "<label>";
+        
         try
         {
             // The `amountMsat` param is optional and should only passed if the
@@ -15,7 +16,7 @@ public class SendPaymentSnippets
             // The amountMsat is required in case an amount is not specified in
             // the bolt11 invoice.
             var response = sdk.SendPayment(
-                new SendPaymentRequest(bolt11, amountMsat));
+                new SendPaymentRequest(bolt11, optionalAmountMsat, optionalLabel));
         }
         catch (Exception)
         {

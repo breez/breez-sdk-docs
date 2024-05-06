@@ -2,29 +2,30 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class SendSpontaneousPayment {
-    fun send_spontaneous_payment(sdk: BlockingBreezServices) {
+    fun sendSpontaneousPayment(sdk: BlockingBreezServices) {
         // ANCHOR: send-spontaneous-payment
         val nodeId = "..."
         val amountMsat = 3_000_000.toULong()
+        val optionalLabel = "<label>"
         try {
-            val response = sdk.sendSpontaneousPayment(
-                SendSpontaneousPaymentRequest(nodeId, amountMsat))
+            val req = SendSpontaneousPaymentRequest(nodeId, amountMsat, label = optionalLabel)
+            val response = sdk.sendSpontaneousPayment(req)
         } catch (e: Exception) {
             // handle error
         }
         // ANCHOR_END: send-spontaneous-payment
     }
 
-    fun send_spontaneous_payment_with_tlvs(sdk: BlockingBreezServices) {
+    fun sendSpontaneousPaymentWithTlvs(sdk: BlockingBreezServices) {
         // ANCHOR: send-spontaneous-payment-with-tlvs
         val nodeId = "..."
         val amountMsat = 3_000_000.toULong()
-        val extraTlvs = listOf<TlvEntry>(
+        val optionalExtraTlvs = listOf<TlvEntry>(
             TlvEntry(34_349_334.toULong(), "Hello world!".encodeToByteArray().asUByteArray().toList())
         )
         try {
-            val response = sdk.sendSpontaneousPayment(
-                SendSpontaneousPaymentRequest(nodeId, amountMsat, extraTlvs))
+            val req = SendSpontaneousPaymentRequest(nodeId, amountMsat, optionalExtraTlvs)
+            val response = sdk.sendSpontaneousPayment(req)
         } catch (e: Exception) {
             // handle error
         }

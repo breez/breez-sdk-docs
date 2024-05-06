@@ -2,10 +2,10 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class ServiceStatus {
-    fun HealthCheckStatus(sdk: BlockingBreezServices) {
+    fun healthCheckStatus(sdk: BlockingBreezServices) {
         // ANCHOR: health-check-status
         try {
-            val healthCheck = sdk.serviceHealthCheck()
+            val healthCheck = serviceHealthCheck("<api key>")
             // Log.v("Breez", "Current service status is: ${healthCheck.status}")
         } catch (e: Exception) {
             // Handle error

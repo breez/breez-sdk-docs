@@ -11,10 +11,13 @@ Future<void> lnurlPay() async {
   InputType inputType = await BreezSDK().parseInput(input: lnurlPayUrl);
   if (inputType is InputType_LnUrlPay) {
     int amountMsat = inputType.data.minSendable;
+    String optionalComment = "<comment>";
+    String optionalPaymentLabel = "<label>";
     LnUrlPayRequest req = LnUrlPayRequest(
       data: inputType.data,
       amountMsat: amountMsat,
-      comment: "<comment>",
+      comment: optionalComment,
+      paymentLabel: optionalPaymentLabel,
     );
     LnUrlPayResult result = await BreezSDK().lnurlPay(req: req);
     print(result.data);

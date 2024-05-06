@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class LnurlPay {
-    fun lnurl_pay(sdk: BlockingBreezServices) {
+    fun lnurlPay(sdk: BlockingBreezServices) {
         // ANCHOR: lnurl-pay
         // Endpoint can also be of the form:
         // lnurlp://domain.com/lnurl-pay?key=val
@@ -13,7 +13,10 @@ class LnurlPay {
             if (inputType is InputType.LnUrlPay) {
                 val requestData = inputType.data
                 val amountMsat = requestData.minSendable
-                sdk.payLnurl(LnUrlPayRequest(requestData, amountMsat, "comment"))
+                val optionalComment = "<comment>";
+                val optionalPaymentLabel = "<label>";
+                val req = LnUrlPayRequest(requestData, amountMsat, optionalComment, optionalPaymentLabel)
+                sdk.payLnurl(req)
             }
         } catch (e: Exception) {
             // handle error

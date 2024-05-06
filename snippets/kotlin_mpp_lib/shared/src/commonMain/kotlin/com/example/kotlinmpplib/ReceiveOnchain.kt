@@ -2,7 +2,7 @@ package com.example.kotlinmpplib
 
 import breez_sdk.*
 class ReceiveOnchain {
-    fun generate_receive_onchain_address(sdk: BlockingBreezServices) {
+    fun generateReceiveOnchainAddress(sdk: BlockingBreezServices) {
         // ANCHOR: generate-receive-onchain-address
         try {
             val swapInfo = sdk.receiveOnchain(ReceiveOnchainRequest())
@@ -16,7 +16,7 @@ class ReceiveOnchain {
         // ANCHOR_END: generate-receive-onchain-address
     }
 
-    fun in_progress_swap(sdk: BlockingBreezServices) {
+    fun inProgressSwap(sdk: BlockingBreezServices) {
         // ANCHOR: in-progress-swap
         try {
             val swapInfo = sdk.inProgressSwap()
@@ -26,7 +26,7 @@ class ReceiveOnchain {
         // ANCHOR_END: in-progress-swap
     }
 
-    fun list_refundables(sdk: BlockingBreezServices) {
+    fun listRefundables(sdk: BlockingBreezServices) {
         // ANCHOR: list-refundables
         try {
             val refundables = sdk.listRefundables()
@@ -36,7 +36,7 @@ class ReceiveOnchain {
         // ANCHOR_END: list-refundables
     }
 
-    fun execute_refund(sdk: BlockingBreezServices) {
+    fun executeRefund(sdk: BlockingBreezServices) {
         // ANCHOR: execute-refund
         val swapAddress = "..."
         val toAddress = "..."
@@ -49,7 +49,7 @@ class ReceiveOnchain {
         // ANCHOR_END: execute-refund
     }
 
-    fun get_channel_opening_fees(sdk: BlockingBreezServices) {
+    fun getChannelOpeningFees(sdk: BlockingBreezServices) {
         // ANCHOR: get-channel-opening-fees
         try {
             val amountMsat = 5_000.toULong();
@@ -60,7 +60,7 @@ class ReceiveOnchain {
         // ANCHOR_END: get-channel-opening-fees
     }
 
-    fun rescan_swaps(sdk: BlockingBreezServices) {
+    fun rescanSwaps(sdk: BlockingBreezServices) {
       // ANCHOR: rescan-swaps
       try {
           sdk.rescanSwaps()

@@ -1,9 +1,9 @@
 import breez_sdk
 
-def health_check_status(sdk_services):
+def health_check_status():
     try: 
         # ANCHOR: health-check-status
-        health_check = sdk_services.service_health_check()
+        health_check = breez_sdk.service_health_check("<api key>")
         print("Current service status is: ", health_check.status)
         # ANCHOR_END: health-check-status
     except Exception as error: 

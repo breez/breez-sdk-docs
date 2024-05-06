@@ -9,10 +9,12 @@ public class SendSpontaneousPaymentSnippets
         // ANCHOR: send-spontaneous-payment
         var nodeId = "...";
         ulong amountMsat = 3_000_000;
+        var optionalLabel = "<label>";
+
         try
         {
             var response = sdk.SendSpontaneousPayment(
-                new SendSpontaneousPaymentRequest(nodeId, amountMsat));
+                new SendSpontaneousPaymentRequest(nodeId, amountMsat, label: optionalLabel));
         }
         catch (Exception)
         {
@@ -26,14 +28,14 @@ public class SendSpontaneousPaymentSnippets
         // ANCHOR: send-spontaneous-payment-with-tlvs
         var nodeId = "...";
         ulong amountMsat = 3_000_000;
-        var extraTlvs = new List<TlvEntry>{
+        var optionalExtraTlvs = new List<TlvEntry>{
             new TlvEntry(34349334, Encoding.ASCII.GetBytes("Hello world!").ToList())
         };
 
         try
         {
             var response = sdk.SendSpontaneousPayment(
-                new SendSpontaneousPaymentRequest(nodeId, amountMsat, extraTlvs));
+                new SendSpontaneousPaymentRequest(nodeId, amountMsat, optionalExtraTlvs));
         }
         catch (Exception)
         {

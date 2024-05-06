@@ -9,13 +9,11 @@
   - [Sending payments](guide/send_payment.md)
   - [Sending spontaneous payments](guide/send_spontaneous_payment.md)
   - [Listing payments](guide/list_payments.md)
-  - [Receiving payments via mobile notifications](guide/payment_notification.md)
-    - [iOS](guide/ios_notification_service_extension.md)
-    - [Android](guide/android_notification_foreground_service.md)
   - [Adding and filtering for payment metadata](guide/payment_metadata.md)
 - [Connecting to an LSP](guide/connecting_lsp.md)
 - [Receiving an On-Chain Transaction](guide/receive_onchain.md)
-- [Sending an On-Chain Transaction](guide/send_onchain.md)
+- [Sending an On-Chain Transaction](guide/pay_onchain.md)
+- [Communicating fees](guide/communicating_fees.md)
 - [Using LNURL & Lightning addresses](guide/lnurl.md)
   - [Sending payments using LNURL-Pay/Lightning address](guide/lnurl_pay.md)
   - [Receiving payments using LNURL-Pay/Lightning address](guide/lnurlpay.md)
@@ -28,3 +26,30 @@
 - [Retrieving service status](guide/service_status.md)
 - [Reporting payment failures](guide/failure_report.md)
 - [Moving to production](guide/production.md)
+
+---
+
+# Notifications
+
+- [Implementing mobile notifications](notifications/getting_started.md)
+- [Setting up an NDS](notifications/setup_nds.md)
+- [Registering a webhook](notifications/register_webhook.md)
+- [Integrating the plugin](notifications/setup_plugin.md)
+    - [Android](notifications/android_setup.md)
+      - [Setting up the Foreground Service](notifications/android_service.md)
+      - [Adding the Notification Plugin](notifications/android_plugin.md)
+    - [iOS](notifications/ios_setup.md)
+      - [Setting up the Notification Service Extension](notifications/ios_service.md)
+      - [Adding the Notification Plugin](notifications/ios_plugin.md)
+
+---
+
+# Advanced 
+
+- [Adding logging](notifications/logging.md)
+- [Configuring the plugin](notifications/service_configuration.md)
+- [Changing default strings](notifications/changing_strings.md)
+- [Handling custom notifications](notifications/custom_notifications.md)
+
+<!-- Hidden Links -->
+[](guide/payment_notification.md)

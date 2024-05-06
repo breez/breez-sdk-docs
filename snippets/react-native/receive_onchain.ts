@@ -3,7 +3,8 @@ import {
   listRefundables,
   openChannelFee,
   receiveOnchain,
-  refund
+  refund,
+  rescanSwaps
 } from '@breeztech/react-native-breez-sdk'
 
 const exampleReceiveOnchain = async () => {

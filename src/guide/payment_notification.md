@@ -1,114 +1,67 @@
-# Receiving payments via  mobile notifications 
+# Implementing mobile notifications
 
-The Breez SDK provides users the ability to receive Lightning payments via mobile notifications. It uses a webhook that allows your application to be notified (via a pre-specified URL) when a payment is about to be received. To use this feature, you need to set up a webhook that an LSP can call when a payment is received and [register it in the Breez SDK](payment_notification.html#step-3-register-a-webhook). This webhook, a URL endpoint in your application, will handle incoming payment notifications. This URL should be capable of receiving POST requests. The payment received webhook payload is json formatted and contains the following structure:
+The Breez SDK Notification Plugin provides developers a simple solution to improve the payment experience on a mobile device. No longer does the application need to be in foreground when receiving payments. When the Notification Plugin is added to process push notifications, the application can be in the background or even closed.
 
-<section>
-<pre>
-{
- "template": "payment_received",
- "data": {  
-  "payment_hash": [payment hash]
- }
-}
-</pre>
-</section>
+## How it works
 
-## Webhook integration for receiving payments while the app isn't running 
-You can use this webhook to allow mobile users to receive Lightning payments even if they aren't running the app at the time of the payment. This process involves using a Notification Delivery Service (NDS) acting as an intermediary. When a payment is made to a user, the LSP sends a notification to the NDS configured with a specific webhook URL. The NDS then processes this information and dispatches a push notification to the intended mobile device, ensuring the user receives timely updates about incoming payments. This architecture necessitates vendors setting up and maintaining their own NDS, tailored to handle and forward these notifications efficiently.
+The process involves using a Notification Delivery Service (NDS) acting as an intermediary host by the application developer. The NDS must provide a public facing webhook URL where a POST request can be sent to when a notification needs to be delivered to the application. The NDS then forwards the data sent in the webhook POST request via push notification to the application. When the application then receives the push notification, the Breez SDK Notification Plugin can be used to process the event.
 
 ![receive via notifications_2](https://github.com/breez/breez-sdk-docs/assets/31890660/75e7cac6-4480-453d-823b-f52bd6757ce9)
 
-### Step 1: Run your own NDS
-You will need to run your own NDS because the NDS is configured to send push notifications to your app users and therefore should be configured with the required keys and certificates.
+## Use cases
 
-You can use our [reference NDS implementation](https://github.com/breez/notify).
+The Notification Plugin handles several use cases by default to automatically process push notifications sent via the NDS from when an SDK service calls the registered webhook. If your use case isn't covered by the Notification Plugin, you can extend the plugin to [handle custom notifications](/notifications/custom_notifications.md).
 
-Our NDS implementation expects URLs in the following format:
-<section>
-<pre>
- https://your-nds-service.com/notify?platform=<ios|android>&token=[PUSH_TOKEN]
-</pre>
-</section>
-  
-Once the NDS has received such request it will send a push notification to the corresponding devices.
+#### Receiving a payment
 
-### Step 2: Obtain a mobile push token
-Ensure that your mobile application is set up to receive push notifications and can generate a push token. This token uniquely identifies the device for push notifications.
-* For iOS, use [Apple Push Notification Service (APNs)](https://developer.apple.com/documentation/usernotifications/registering_your_app_with_apns) to get the token.
-* For Android, use [Firebase Cloud Messaging (FCM)](https://firebase.google.com/docs/cloud-messaging/manage-tokens) to obtain the token.
-
-### Step 3: Register a webhook
-Register the constructed URL with the Breez SDK By calling the register-payment-webook API as follows:
-
-<custom-tabs category="lang">
-<div slot="title">Rust</div>
-<section>
-
-```rust,ignore
-{{#include ../../snippets/rust/src/webhook.rs:register-payment-webook}}
+Payments are routed through an LSP to the user's node. When an LSP intercepts a payment, the LSP calls the registered webhook with the details of the payment. The Notification Plugin when receiving this notification from the NDS will connect to the Breez SDK and wait for the payment to be processed by the Breez SDK. The `payment_received` notification type has the following format:
+```json
+{
+    "template": "payment_received",
+    "data": {  
+        "payment_hash": "" // The payment hash that is in progress
+    }
+}
 ```
-</section>
 
-<div slot="title">Swift</div>
-<section>
+#### Confirming a swap
 
-```swift,ignore
-{{#include ../../snippets/swift/BreezSDKExamples/Sources/Webhook.swift:register-payment-webook}}
+When receiving a payment via a onchain address, the swap address needs to be monitored until the funds are confirmed onchain before the swap is executed. A chain service is used to monitor the address for confirmed funds. Once funds are confirmed, the chain service calls the registered webhook with the address. The Notification Plugin when receiving this notification from the NDS will connect to the Breez SDK and redeem the swap. The `address_txs_confirmed` notification type has the following format:
+```json
+{
+    "template": "address_txs_confirmed",
+    "data": {  
+        "address": "" // The address of the swap with confirmed funds
+    }
+}
 ```
-</section>
 
-<div slot="title">Kotlin</div>
-<section>
+#### Handling LNURL pay requests
 
-```kotlin,ignore
-{{#include ../../snippets/kotlin_mpp_lib/shared/src/commonMain/kotlin/com/example/kotlinmpplib/Webhook.kt:register-payment-webook}}
+Having the ability to process push notifications when the application is in the background or closed also opens up the ability to handle payment requests from a static LNURL address. To do this the application also needs to register a webook with an [LNURL-pay service](lnurlpay.md), then when the LNURL service receives a request on the static LNURL address, it will forward it via the NDS to the application. The Notification Plugin handles the two-step flow for fulfilling these requests.
+
+Firstly the LNURL service receives a request for LNURL-pay information to get the min/max amount that can be received. The LNURL service calls the registered webhook and when receiving this notification, the Notification Plugin will connect to the Breez SDK and send a response back to the LNURL service based on the node info. The `lnurlpay_info` notification type has the following format:
+```json
+{
+    "template": "lnurlpay_info",
+    "data": {  
+        "callback_url": "", // The URL of the LNURL service
+        "reply_url": "" // The URL to reply to this request
+    }
+}
 ```
-</section>
-
-<div slot="title">React Native</div>
-<section>
-
-```typescript
-{{#include ../../snippets/react-native/webhook.ts:register-payment-webook}}
+Secondly the LNURL service receives a request for an invoice based on the selected amount to pay. The LNURL service calls the registered webhook and when receiving this notification, the Notification Plugin will connect to the Breez SDK and call receive payment for the requested amount. The resulting invoice is then returned to the LNURL service. The `lnurlpay_invoice` notification type has the following format:
+```json
+{
+    "template": "lnurlpay_invoice",
+    "data": {  
+        "amount": 0, // The amount in millisatoshis within the min/max sendable range
+        "reply_url": "" // The URL to reply to this request
+    }
+}
 ```
-</section>
 
-<div slot="title">Dart</div>
-<section>
-
-```dart,ignore
-{{#include ../../snippets/dart_snippets/lib/webhook.dart:register-payment-webook}}
-```
-</section>
-
-<div slot="title">Python</div>
-<section>
-
-```python,ignore
-{{#include ../../snippets/python/src/webhook.py:register-payment-webook}}
-```
-</section>
-
-<div slot="title">Go</div>
-<section>
-
-```go,ignore
-{{#include ../../snippets/go/webhook.go:register-payment-webook}}
-```
-</section>
-
-<div slot="title">C#</div>
-<section>
-
-```cs,ignore
-{{#include ../../snippets/csharp/Webhook.cs:register-payment-webook}}
-```
-</section>
-
-</custom-tabs>
-
-### Step 4: Handling notifications when the app isn't running
-To ensure that your mobile application can handle payment notifications even when it is not actively running, specific implementations are required for both iOS and Android platforms. This involves waking up the app upon receiving a push notification, connecting with the Breez SDK, and then waiting for the payment to be fully received.
-* For iOS, please follow the steps in [iOS NotificationServiceExtension](ios_notification_service_extension.md).
-
-* For Android, please follow the steps in [Android foreground service](android_notification_foreground_service.md).
+## Next steps
+- **[Setting up an NDS](/notifications/setup_nds.md)** to receive webhook requests
+- **[Registering a webhook](/notifications/register_webhook.md)** in your main application
+- **[Integrating the plugin](/notifications/setup_plugin.md)** using a notification service extension or foreground service

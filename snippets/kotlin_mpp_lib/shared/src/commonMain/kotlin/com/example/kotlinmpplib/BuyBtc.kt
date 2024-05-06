@@ -3,7 +3,7 @@ package com.example.kotlinmpplib
 import breez_sdk.*
 
 class BuyBtc {
-    fun buy_btc(sdk: BlockingBreezServices) {
+    fun buyBtc(sdk: BlockingBreezServices) {
         // ANCHOR: buy-btc
         try {
             // Choose your provider

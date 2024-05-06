@@ -8,9 +8,9 @@
 import BreezSDK
 import Foundation
 
-func getServiceStatus(sdk: BlockingBreezServices) {
+func getServiceStatus() {
     // ANCHOR: health-check-status
-    if let healthCheck = try? sdk.serviceHealthCheck() {
+    if let healthCheck = try? serviceHealthCheck(apiKey: "<api key>") {
         print("Current service status is: \(healthCheck.status)")
     }
     // ANCHOR_END: health-check-status

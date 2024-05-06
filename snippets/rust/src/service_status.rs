@@ -4,9 +4,11 @@ use anyhow::Result;
 use breez_sdk_core::*;
 use log::info;
 
-async fn health_check_status(sdk: Arc<BreezServices>) -> Result<()> {
+async fn health_check_status() -> Result<()> {
     // ANCHOR: health-check-status
-    let health_check = sdk.service_health_check().await?;
+    let api_key = "<api key>".to_string();
+
+    let health_check = BreezServices::service_health_check(api_key).await?;
     info!("Current service status is: {:?}", health_check.status);
     // ANCHOR_END: health-check-status
 

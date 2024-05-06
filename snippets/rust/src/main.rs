@@ -1,5 +1,6 @@
 mod buy_btc;
 mod closed_channel;
+mod communicating_fees;
 mod connecting_lsp;
 mod fiat_currencies;
 mod getting_started;
@@ -7,10 +8,10 @@ mod list_payments;
 mod lnurl_auth;
 mod lnurl_pay;
 mod lnurl_withdraw;
+mod pay_onchain;
 mod production;
 mod receive_onchain;
 mod receive_payment;
-mod send_onchain;
 mod send_payment;
 mod send_spontaneous_payment;
 mod service_status;

@@ -34,7 +34,11 @@ class GettingStarted {
         // ANCHOR_END: init-sdk
     }
 
-    fun start_restore_only(config: Config, seed: List<UByte>) {
+    fun startRestoreOnly(config: Config, seed: List<UByte>) {
+        class SDKListener : EventListener {
+            override fun onEvent(e: BreezEvent) {}
+        }
+
         try {
             // ANCHOR: init-sdk-restore-only
             val connectRequest = ConnectRequest(config, seed, true)
@@ -45,7 +49,7 @@ class GettingStarted {
         }
     }
 
-    fun fetch_balance(sdk: BlockingBreezServices) {
+    fun fetchBalance(sdk: BlockingBreezServices) {
         // ANCHOR: fetch-balance
         try {
             val nodeInfo = sdk.nodeInfo()

@@ -155,6 +155,10 @@ The process of receiving funds via an on-chain address is trustless and uses a s
 
 1. Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.
 2. Or by your node when the swap didn't complete within a certain timeout (216 blocks) - this is the negative case where your node will execute a refund (funds become refundable after 288 blocks). Refund will also be available in case the amount sent wasn't within the limits.
+<div class="warning">
+<h4>Developer note</h4>
+Consider implementing the <a href="/notifications/getting_started.md">Notification Plugin</a> when using the Breez SDK in a mobile application. By registering a webhook the application can receive a transaction confirmation notification to redeem the swap in the background.
+</div>
 
 
 ## Notifications
