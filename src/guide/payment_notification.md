@@ -63,5 +63,5 @@ Secondly the LNURL service receives a request for an invoice based on the select
 
 ## Next steps
 - **[Setting up an NDS](/notifications/setup_nds.md)** to receive webhook requests
-- **[Registering a webhook](/notifications/register_webhook.md)** in your main application
+- **[Using Webhooks](/notifications/using_webhooks.md)** in your main application
 - **[Integrating the plugin](/notifications/setup_plugin.md)** using a notification service extension or foreground service
