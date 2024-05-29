@@ -34,7 +34,7 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
-                implementation("technology.breez:breez-sdk-kmp:0.4.1")
+                implementation("technology.breez:breez-sdk-kmp:0.4.2-rc1")
             }
         }
     }
