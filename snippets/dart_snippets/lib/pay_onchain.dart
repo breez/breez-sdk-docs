@@ -1,9 +1,9 @@
-import 'package:breez_sdk/breez_sdk.dart';
+import 'package:dart_snippets/sdk_instance.dart';
 import 'package:breez_sdk/bridge_generated.dart';
 
 Future<OnchainPaymentLimitsResponse> getCurrentLimits() async {
   // ANCHOR: get-current-reverse-swap-limits
-  OnchainPaymentLimitsResponse currentLimits = await BreezSDK().onchainPaymentLimits();
+  OnchainPaymentLimitsResponse currentLimits = await breezSDK.onchainPaymentLimits();
   print("Minimum amount, in sats: ${currentLimits.minSat}");
   print("Maximum amount, in sats: ${currentLimits.maxSat}");
   // ANCHOR_END: get-current-reverse-swap-limits
@@ -20,7 +20,7 @@ Future<PrepareOnchainPaymentResponse> preparePayOnchain({
     amountType: SwapAmountType.Send,
     claimTxFeerate: satPerVbyte,
   );
-  PrepareOnchainPaymentResponse prepareRes = await BreezSDK().prepareOnchainPayment(req: req);
+  PrepareOnchainPaymentResponse prepareRes = await breezSDK.prepareOnchainPayment(req: req);
   print("Sender amount: ${prepareRes.senderAmountSat} sats");
   print("Recipient amount: ${prepareRes.recipientAmountSat} sats");
   print("Total fees: ${prepareRes.totalFees} sats");
@@ -37,14 +37,14 @@ Future<PayOnchainResponse> startReverseSwap({
     recipientAddress: onchainRecipientAddress,
     prepareRes: prepareRes,
   );
-  PayOnchainResponse res = await BreezSDK().payOnchain(req: req);
+  PayOnchainResponse res = await breezSDK.payOnchain(req: req);
   // ANCHOR_END: start-reverse-swap
   return res;
 }
 
 Future<List<ReverseSwapInfo>> checkReverseSwapStatus() async {
   // ANCHOR: check-reverse-swaps-status
-  List<ReverseSwapInfo> inProgOnchainPaymentList = await BreezSDK().inProgressOnchainPayments();
+  List<ReverseSwapInfo> inProgOnchainPaymentList = await breezSDK.inProgressOnchainPayments();
   for (var inProgOnchainPayment in inProgOnchainPaymentList) {
     print("Onchain payment ${inProgOnchainPayment.id} in progress, status is ${inProgOnchainPayment.status.name}");
   }
