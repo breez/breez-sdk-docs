@@ -49,6 +49,7 @@
 - [Adding logging](notifications/logging.md)
 - [Configuring the plugin](notifications/service_configuration.md)
 - [Changing default strings](notifications/changing_strings.md)
+- [Customising push messages](notifications/custom_messages.md)
 - [Handling custom notifications](notifications/custom_notifications.md)
 
 <!-- Hidden Links -->
