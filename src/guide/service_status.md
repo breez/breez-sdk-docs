@@ -1,7 +1,7 @@
 # Retrieving service status 
 
 You can check the general health status of the services provided by the Breez SDK. 
-The response status will inform you if there is maintenance occurring, a service distruption or the services are operational.
+The response status will inform you if there is maintenance occurring, a service disruption or the services are operational.
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
