@@ -70,7 +70,7 @@ They can even be spontaneous payments to a node without a bolt11 invoice.
 
 ## Adding Extra TLVs to a Spontaneous Payment
 
-A list of extra TLV data can also be sent with the sponaneous payment.
+A list of extra TLV data can also be sent with the spontaneous payment.
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>

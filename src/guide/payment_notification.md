@@ -10,7 +10,7 @@ The process involves using a Notification Delivery Service (NDS) acting as an in
 
 ### Push notification data
 
-When receiving POST request data on the webhook URL, the NDS should get the `token`, `platform` and optional `app_data` from the URL params. If neccessary, convert the token to a token that can be sent to the push notification service. Then format the data to be sent to the push notification service, which includes converting any json data into a string format. 
+When receiving POST request data on the webhook URL, the NDS should get the `token`, `platform` and optional `app_data` from the URL params. If necessary, convert the token to a token that can be sent to the push notification service. Then format the data to be sent to the push notification service, which includes converting any JSON data into a string format. 
 
 By default the Notification Plugin should receive the push notification data in the following format:
 
@@ -57,7 +57,7 @@ The `address_txs_confirmed` notification type will be received by the webhook in
 
 #### Handling LNURL pay requests
 
-Having the ability to process push notifications when the application is in the background or closed also opens up the ability to handle payment requests from a static LNURL address. To do this the application also needs to register a webook with an [LNURL-pay service](lnurlpay.md), then when the LNURL service receives a request on the static LNURL address, it will forward it via the NDS to the application. The Notification Plugin handles the two-step flow for fulfilling these requests.
+Having the ability to process push notifications when the application is in the background or closed also opens up the ability to handle payment requests from a static LNURL address. To do this the application also needs to register a webhook with an [LNURL-pay service](lnurlpay.md), then when the LNURL service receives a request on the static LNURL address, it will forward it via the NDS to the application. The Notification Plugin handles the two-step flow for fulfilling these requests.
 
 Firstly the LNURL service receives a request for LNURL-pay information to get the min/max amount that can be received. The LNURL service calls the registered webhook and when receiving this notification, the Notification Plugin will connect to the Breez SDK and send a response back to the LNURL service based on the node info. 
 

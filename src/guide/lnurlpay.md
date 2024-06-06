@@ -76,7 +76,7 @@ The service receives the response from the app and forwards it to the sender.
 
 ### Step 4: Fetching a bolt11 invoice
 
-The sender fetchs a bolt11 invoice by invoking a GET request to the callback_url with adding a specific amount as a query parameter. For example: 
+The sender fetches a bolt11 invoice by invoking a GET request to the callback_url with adding a specific amount as a query parameter. For example: 
 ```
 https://app.domain.com/lnurlpay/invoice?amount=1000
 ```
