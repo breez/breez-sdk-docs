@@ -70,6 +70,18 @@ To move your project to production, you will have to replace the evaluation invi
 
 To obtain a certificate for a production environment, please register [here](https://greenlight.blockstream.com/) and make sure to notify your LSP(s).
 
+## Using the certificates
+
+The certificates received from Blockstream should be contained with a zip file. Within the zip file should be a `.crt` and a `.pem` file, these are the certificate and private key files. To use these files with the Breez SDK each file needs to be read as binary/byte data, inserting the `.crt` data as the device cert and the `.pem` data as the device key.
+<div class="warning">
+<h4>Developer note</h4>
+Leave the file contents as is, manipulating the file contents will result in transport errors. 
+<ul>
+<li><b>Do not</b> strip the headers and footers from the file contents<br/>(<code>BEGIN CERTIFICATE</code> / <code>END CERTIFICATE</code> / <code>BEGIN PRIVATE KEY</code> / <code>END PRIVATE KEY</code>)</li>
+<li><b>Do not</b> use only part of the certificate</li>
+</ul>
+</div>
+
 ## Production checklist
 There are some use cases where you need to verify that they are implemented correctly. Here is a checklist you can use to verify that your application is production ready.
 
