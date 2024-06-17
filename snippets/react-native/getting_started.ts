@@ -36,7 +36,7 @@ const exampleGettingStarted = async () => {
       nodeConfig
     )
 
-    // By default in React Native the workingDir is set it to:
+    // By default in React Native the workingDir is set to:
     // `/<APPLICATION_SANDBOX_DIRECTORY>/breezSdk`
     // You can change this to another writable directory or a
     // subdirectory of the workingDir if managing multiple nodes.

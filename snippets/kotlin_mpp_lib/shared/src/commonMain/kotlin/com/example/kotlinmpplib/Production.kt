@@ -4,7 +4,8 @@ import breez_sdk.*
 class Production {
     fun productionNodeConfig(): NodeConfig {
         // ANCHOR: moving-to-production
-        // Read your Greenlight credentials from secure storage
+        // Read in your Greenlight credentials from the file 
+        // system, environment variable or build config
         val deviceKey = emptyList<UByte>()
         val deviceCert = emptyList<UByte>()
         val greenlightCredentials = GreenlightCredentials(deviceKey, deviceCert)
