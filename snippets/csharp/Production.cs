@@ -4,7 +4,8 @@ public class ProductionSnippets
 {
     public NodeConfig ProductionNodeConfig() {
         // ANCHOR: moving-to-production
-        // Read your Greenlight credentials from secure storage
+        // Read in your Greenlight credentials from the file 
+        // system, environment variable or build config
         var deviceKey = new List<byte>();
         var deviceCert = new List<byte>();
         var greenlightCredentials = new GreenlightCredentials(deviceKey, deviceCert);

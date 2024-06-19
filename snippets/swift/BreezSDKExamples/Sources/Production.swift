@@ -9,7 +9,8 @@ import BreezSDK
 
 func productionNodeConfig() -> NodeConfig {
     // ANCHOR: moving-to-production
-    // Read your Greenlight credentials from secure storage
+    // Read in your Greenlight credentials from the file 
+    // system, environment variable or build config
     let deviceKey = [UInt8]()
     let deviceCert = [UInt8]()
     let greenlightCredentials = GreenlightCredentials(deviceKey: deviceKey, deviceCert: deviceCert)
