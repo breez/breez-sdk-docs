@@ -12,7 +12,9 @@ Starting with this 1.8.20 release, the Kotlin K2 compiler has a preview version 
 
 ## JNA library
 
-JNA relies on specific class and method names to load native libraries and access native code. If these names are obfuscated or removed, it can cause runtime errors and failures in native library loading.
+JNA relies on specific class and method names to load native libraries and access native code. If these names are obfuscated or removed, it can cause runtime errors and failures in native library loading. 
+
+The JNA library code obfuscation issue may not be apparent until compiled on "release" mode with maximum optimization and minimal footprint size that'll be used when deploying and publishing an application.
 
 To ensure proper functionality, a Proguard rules needs to be added to explicitly tell R8 compiler to keep certain parts of the JNA library. Here is an example of Proguard rules:
 ```pro
