@@ -4,6 +4,7 @@
 
 - [Getting Started](guide/getting_started.md)
   - [Installing the Breez SDK](guide/install.md)
+    - [Troubleshooting Android](guide/android_troubleshooting.md)
   - [Connecting to a node](guide/connecting.md)
   - [Getting the node state](guide/node_state.md)
   - [Adding logging](guide/logging.md)
