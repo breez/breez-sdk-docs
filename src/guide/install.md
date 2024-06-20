@@ -56,7 +56,7 @@ dependencies {
 }
 ```
 
-See [the example](https://github.com/breez/breez-sdk-examples/tree/main/Android) for more details
+Please check the [troubleshooting guide](/guide/android_troubleshooting.md) if you are having problems compiling your Android application.
 
 ## React Native
 
