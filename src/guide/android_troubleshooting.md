@@ -1,10 +1,10 @@
 # Troubleshooting Android
 
-When including the Breez SDK and/or Notification Plugin into your application you might come across issues compiling because: 
-- it uses `kotlinx-serialization`
-- it relies on JNA library
+After installing Breez SDK into your application you might come across issues compiling on Android platforms because Breez SDK's Notification Plugin: 
+- uses `kotlinx-serialization` dependency,
+- and it relies on JNA library.
 
-If you do, there are several steps you can take to compile and build properly, even if they do not using the Notification Plugin feature.
+If you do, there are several steps you can take to compile and build properly, even if your application is not using the Notification Plugin feature.
 
 ## kotlinx-serialization
 
@@ -72,5 +72,5 @@ android {
 If you get a `Java heap space` error, try to increase the maximum memory allocation pool for the JVM in `gradle.properties`.
 
 ```
-org.gradle.jvmargs=-Xmx3072m -XX:MaxMetaspaceSize=512m
+org.gradle.jvmargs=-Xmx4G -XX:MaxMetaspaceSize=512m
 ```
