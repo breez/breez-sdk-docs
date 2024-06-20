@@ -6,7 +6,7 @@ import {
 
 const productionNodeConfig = (): NodeConfig => {
   // ANCHOR: moving-to-production
-  // Read in your Greenlight credentials from the file file
+  // Read in your Greenlight credentials from the file
   // system, environment variable or build config
   const deviceKey: number[] = []
   const deviceCert: number[] = []

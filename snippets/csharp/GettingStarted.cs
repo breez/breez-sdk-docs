@@ -76,4 +76,27 @@ public class GettingStartedSnippets
         }
         // ANCHOR_END: fetch-balance
     }
+
+    // ANCHOR: logging
+    public void GettingStartedLogging()
+    {
+        try
+        {
+            sdk = BreezSdkMethods.SetLogStream(new SdkLogStream());
+        }
+        catch (Exception)
+        {
+            // Handle error
+        }
+    }
+
+    class SdkLogStream : LogStream
+    {
+        public void Log(LogEntry l)
+        {
+            Console.WriteLine($"Received Log [{l.Level}]: {l.Line}");
+        }
+    }
+    // ANCHOR_END: logging
+
 }

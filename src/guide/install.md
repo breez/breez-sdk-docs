@@ -1,6 +1,6 @@
-# Installing
+# Installing the Breez SDK
 
-The Breez SDK is available in the following platforms:
+The Breez SDK is available for several platforms. Follow the instructions below on how to install on your platform:
 
 ## iOS/Swift
 

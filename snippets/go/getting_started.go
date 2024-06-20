@@ -71,3 +71,18 @@ func FetchBalance() {
 	}
 	// ANCHOR_END: fetch-balance
 }
+
+// ANCHOR: logging
+type SdkLogStream struct{}
+
+func (SdkLogStream) Log(l breez_sdk.LogEntry) {
+	log.Printf("Received log [%v]: %v", l.Level, l.Line)
+}
+
+func GettingStartedLogging() {
+	err := breez_sdk.SetLogStream(SdkLogStream{})
+	if err != nil {
+		log.Fatalf("SetLogStream failed: %#v", err)
+	}
+}
+// ANCHOR_END: logging
