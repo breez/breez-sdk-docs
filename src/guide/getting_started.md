@@ -26,7 +26,7 @@ To get both of them, please contact Breez via email at <contact@breez.technology
 Join this [telegram group](https://t.me/breezsdk) or email us at <contact@breez.technology>.
 
 ## Next steps
-- **[Installing the Breez SDK](install.md)**
-- **[Connecting to a node](connecting.md)**
-- **[Getting the node state](node_state.md)**
-- **[Adding logging](logging.md)**
+- **[Installing the Breez SDK](/guide/install.md)**
+- **[Connecting to a node](/guide/connecting.md)**
+- **[Getting the node state](/guide/node_state.md)**
+- **[Adding logging](/guide/logging.md)**
