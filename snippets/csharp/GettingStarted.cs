@@ -94,7 +94,7 @@ public class GettingStartedSnippets
     {
         public void Log(LogEntry l)
         {
-            Console.WriteLine($"Received Log [{l.Level}]: {l.Line}");
+            Console.WriteLine($"Received Log [{l.level}]: {l.line}");
         }
     }
     // ANCHOR_END: logging

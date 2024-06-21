@@ -66,6 +66,6 @@ class SDKLogStream: LogStream {
 }
 
 func logging() throws {
-    try? setLogStream(log_stream: SDKLogStream())
+    try? setLogStream(logStream: SDKLogStream())
 }
 // ANCHOR_END: logging

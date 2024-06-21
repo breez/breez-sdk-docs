@@ -79,7 +79,7 @@ Now you are ready to interact with the SDK.
 <div class="warning">
 <h4>Developer note</h4>
 
-By default the config working directory is set to `./`. Some platforms may require that you use an application specific directory that is writable within the application sandbox. For example applications running on Android or iOS.
+By default the config working directory is set to `./`. Some platforms may require that you use an application specific directory that is writable within the application sandbox. For example, applications running on Android or iOS.
 
 </div>
 <br/>

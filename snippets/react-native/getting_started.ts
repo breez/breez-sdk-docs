@@ -9,7 +9,7 @@ import {
   type NodeConfig,
   NodeConfigVariant,
   nodeInfo,
-  LogEntry,
+  type LogEntry,
   setLogStream
 } from '@breeztech/react-native-breez-sdk'
 

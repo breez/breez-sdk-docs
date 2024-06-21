@@ -1,6 +1,6 @@
 # Adding logging
 
-The Breez SDK implements detailed logging via a streaming interface so you can manage within your application. The log entries are split into several levels that you can filter and store how you want within your application, for example appending them to a log file.
+Breez SDK implements detailed logging via a streaming interface you can manage within your application. The log entries are split into several levels that you can filter and store as desired within your application, for example, by appending them to a log file.
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
