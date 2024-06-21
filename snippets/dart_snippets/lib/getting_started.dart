@@ -52,3 +52,13 @@ Future<void> fetchBalance(String lspId) async {
   }
   // ANCHOR_END: fetch-balance
 }
+
+// ANCHOR: logging
+void onLogEntry(log) {
+  print("Received log ${log.level}]: ${log.line}");
+}
+
+void logging(BreezSDK breezSDK) {
+  breezSDK.logStream.listen(onLogEntry);
+}
+// ANCHOR_END: logging

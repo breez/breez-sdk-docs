@@ -1,6 +1,6 @@
-# Installing
+# Installing the Breez SDK
 
-The Breez SDK is available in the following platforms:
+The Breez SDK is available for several platforms. Follow the instructions below on how to install on your platform:
 
 ## iOS/Swift
 
@@ -56,7 +56,7 @@ dependencies {
 }
 ```
 
-See [the example](https://github.com/breez/breez-sdk-examples/tree/main/Android) for more details
+Please check the [troubleshooting guide](/guide/android_troubleshooting.md) if you are having problems compiling your Android application.
 
 ## React Native
 

@@ -8,7 +8,9 @@ import {
   mnemonicToSeed,
   type NodeConfig,
   NodeConfigVariant,
-  nodeInfo
+  nodeInfo,
+  type LogEntry,
+  setLogStream
 } from '@breeztech/react-native-breez-sdk'
 
 const exampleGettingStarted = async () => {
@@ -77,4 +79,14 @@ const exampleFetchNodeInfo = async () => {
     console.error(err)
   }
   // ANCHOR_END: fetch-balance
+}
+
+const exampleLogging = async () => {
+  // ANCHOR: logging
+  const onLogEntry = (l: LogEntry) => {
+    console.log(`Received log [${l.level}]: ${l.line}`)
+  }
+
+  const subscription = await setLogStream(onLogEntry)
+  // ANCHOR_END: logging
 }

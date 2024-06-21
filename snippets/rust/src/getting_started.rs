@@ -1,7 +1,9 @@
+use std::{fs, path::PathBuf};
+use std::sync::Arc;
+
 use anyhow::Result;
 use bip39::{Language, Mnemonic};
 use breez_sdk_core::*;
-use std::sync::Arc;
 
 use crate::AppEventListener;
 
@@ -57,6 +59,17 @@ async fn getting_started_node_info(sdk: Arc<BreezServices>) -> Result<()> {
     let balance_ln = node_state.channels_balance_msat;
     let balance_onchain = node_state.onchain_balance_msat;
     // ANCHOR_END: fetch-balance
+
+    Ok(())
+}
+
+async fn getting_started_logging(data_dir: String) -> Result<()> {
+    // ANCHOR: logging
+    let data_dir_path = PathBuf::from(&data_dir);
+    fs::create_dir_all(data_dir_path)?;
+
+    BreezServices::init_logging(&data_dir, None)?;
+    // ANCHOR_END: logging
 
     Ok(())
 }

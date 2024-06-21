@@ -3,7 +3,11 @@
 # API Overview
 
 - [Getting Started](guide/getting_started.md)
-- [Installing](guide/install.md)
+  - [Installing the Breez SDK](guide/install.md)
+    - [Troubleshooting Android](guide/android_troubleshooting.md)
+  - [Connecting to a node](guide/connecting.md)
+  - [Getting the node state](guide/node_state.md)
+  - [Adding logging](guide/logging.md)
 - [Paying in Lightning](guide/payments.md)
   - [Receiving payments](guide/receive_payment.md)
   - [Sending payments](guide/send_payment.md)

@@ -60,4 +60,20 @@ class GettingStarted {
         }
         // ANCHOR_END: fetch-balance
     }
+
+    fun logging() {
+        // ANCHOR: logging
+        class SDKLogStream : LogStream {
+            override fun log(l: LogEntry) {
+                // Log.v("SDKListener", "Received log [${l.level}]: ${l.line}")
+            }
+        }
+
+        try {
+            setLogStream(SDKLogStream())
+        } catch (e: Exception) {
+            // handle error
+        }
+        // ANCHOR_END: logging
+    }
 }
