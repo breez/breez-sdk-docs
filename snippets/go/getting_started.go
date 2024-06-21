@@ -85,4 +85,5 @@ func GettingStartedLogging() {
 		log.Fatalf("SetLogStream failed: %#v", err)
 	}
 }
+
 // ANCHOR_END: logging

@@ -82,7 +82,7 @@ public class GettingStartedSnippets
     {
         try
         {
-            sdk = BreezSdkMethods.SetLogStream(new SdkLogStream());
+            BreezSdkMethods.SetLogStream(new SdkLogStream());
         }
         catch (Exception)
         {
