@@ -8,11 +8,11 @@ const productionNodeConfig = (): NodeConfig => {
   // ANCHOR: moving-to-production
   // Read in your Greenlight credentials from the file
   // system, environment variable or build config
-  const deviceKey: number[] = []
-  const deviceCert: number[] = []
+  const developerKey: number[] = []
+  const developerCert: number[] = []
   const greenlightCredentials: GreenlightCredentials = {
-    deviceKey,
-    deviceCert
+    developerKey,
+    developerCert
   }
 
   const nodeConfig: NodeConfig = {

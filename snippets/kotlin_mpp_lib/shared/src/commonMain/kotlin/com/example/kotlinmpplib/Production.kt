@@ -6,9 +6,9 @@ class Production {
         // ANCHOR: moving-to-production
         // Read in your Greenlight credentials from the file 
         // system, environment variable or build config
-        val deviceKey = emptyList<UByte>()
-        val deviceCert = emptyList<UByte>()
-        val greenlightCredentials = GreenlightCredentials(deviceKey, deviceCert)
+        val developerKey = emptyList<UByte>()
+        val developerCert = emptyList<UByte>()
+        val greenlightCredentials = GreenlightCredentials(developerKey, developerCert)
 
         val nodeConfig = NodeConfig.Greenlight(GreenlightNodeConfig(greenlightCredentials, null))
         // ANCHOR_END: moving-to-production
