@@ -11,8 +11,8 @@ func ProductionNodeConfig() breez_sdk.NodeConfig {
 	developerKey := []uint8{}
 	developerCert := []uint8{}
 	greenlightCredentials := breez_sdk.GreenlightCredentials{
-		developerKey:  developerKey,
-		developerCert: developerCert,
+		DeveloperKey:  developerKey,
+		DeveloperCert: developerCert,
 	}
 
 	nodeConfig := breez_sdk.NodeConfigGreenlight{
