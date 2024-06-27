@@ -56,4 +56,15 @@ def getting_started_node_info(sdk_services):
         logging.error(error)
         raise
 
+# ANCHOR: logging
+class SDKLogStream(breez_sdk.LogStream):
+    def log(self, l):
+        print("Received log [", l.level, "]: ", l.line)
 
+def logging():
+    try:
+        breez_sdk.set_log_stream(SDKLogStream())
+    except Exception as error:
+        print(error)
+        raise
+# ANCHOR_END: logging

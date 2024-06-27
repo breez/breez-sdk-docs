@@ -5,7 +5,7 @@ You can override the default logger used by the Notification Plugin to use your 
 <custom-tabs category="lang">
 <div slot="title">Swift</div>
 <section>
-In iOS lets use the <code>XCGLogger</code> to handle logging to a seperate log file in the app group's shared directory.
+In iOS lets use the <code>XCGLogger</code> to handle logging to a separate log file in the app group's shared directory.
 
 ```swift,ignore
 import BreezSDK
@@ -103,7 +103,7 @@ class ExampleFcmService : MessagingService, FirebaseMessagingService() {
 }
 ```
 
-When the foreground service is created, initialise the Breek SDK log stream and subscribe to log entries
+When the foreground service is created, initialise the Breez SDK log stream and subscribe to log entries
 
 ```kotlin,ignore
 package com.example.application

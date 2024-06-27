@@ -8,13 +8,30 @@ The process involves using a Notification Delivery Service (NDS) acting as an in
 
 ![receive via notifications_2](https://github.com/breez/breez-sdk-docs/assets/31890660/75e7cac6-4480-453d-823b-f52bd6757ce9)
 
+### Push notification data
+
+When receiving POST request data on the webhook URL, the NDS should get the `token`, `platform` and optional `app_data` from the URL params. If necessary, convert the token to a token that can be sent to the push notification service. Then format the data to be sent to the push notification service, which includes converting any JSON data into a string format. 
+
+By default the Notification Plugin should receive the push notification data in the following format:
+
+```json
+{
+    "notification_type": "payment_received",
+    "notification_payload": "{ \"payment_hash\": \"\" }",
+    "app_data": ""
+}
+```
+The structure and fields of this data can be changed by [customising the push messages](custom_messages.md) handling in the Notification Plugin to reflect how your NDS sends this data over push notifications.
+
 ## Use cases
 
 The Notification Plugin handles several use cases by default to automatically process push notifications sent via the NDS from when an SDK service calls the registered webhook. If your use case isn't covered by the Notification Plugin, you can extend the plugin to [handle custom notifications](custom_notifications.md).
 
 #### Receiving a payment
 
-Payments are routed through an LSP to the user's node. When an LSP intercepts a payment, the LSP calls the registered webhook with the details of the payment. The Notification Plugin when receiving this notification from the NDS will connect to the Breez SDK and wait for the payment to be processed by the Breez SDK. The `payment_received` notification type has the following format:
+Payments are routed through an LSP to the user's node. When an LSP intercepts a payment, the LSP calls the registered webhook with the details of the payment. The Notification Plugin when receiving this notification from the NDS will connect to the Breez SDK and wait for the payment to be processed by the Breez SDK. 
+
+The `payment_received` notification type will be received by the webhook in the following format:
 ```json
 {
     "template": "payment_received",
@@ -26,7 +43,9 @@ Payments are routed through an LSP to the user's node. When an LSP intercepts a 
 
 #### Confirming a swap
 
-When receiving a payment via a onchain address, the swap address needs to be monitored until the funds are confirmed onchain before the swap is executed. A chain service is used to monitor the address for confirmed funds. Once funds are confirmed, the chain service calls the registered webhook with the address. The Notification Plugin when receiving this notification from the NDS will connect to the Breez SDK and redeem the swap. The `address_txs_confirmed` notification type has the following format:
+When receiving a payment via a onchain address, the swap address needs to be monitored until the funds are confirmed onchain before the swap is executed. A chain service is used to monitor the address for confirmed funds. Once funds are confirmed, the chain service calls the registered webhook with the address. The Notification Plugin when receiving this notification from the NDS will connect to the Breez SDK and redeem the swap. 
+
+The `address_txs_confirmed` notification type will be received by the webhook in the following format:
 ```json
 {
     "template": "address_txs_confirmed",
@@ -38,9 +57,11 @@ When receiving a payment via a onchain address, the swap address needs to be mon
 
 #### Handling LNURL pay requests
 
-Having the ability to process push notifications when the application is in the background or closed also opens up the ability to handle payment requests from a static LNURL address. To do this the application also needs to register a webook with an [LNURL-pay service](/guide/lnurlpay.md), then when the LNURL service receives a request on the static LNURL address, it will forward it via the NDS to the application. The Notification Plugin handles the two-step flow for fulfilling these requests.
+Having the ability to process push notifications when the application is in the background or closed also opens up the ability to handle payment requests from a static LNURL address. To do this the application also needs to register a webhook with an [LNURL-pay service](/guide/lnurlpay.md), then when the LNURL service receives a request on the static LNURL address, it will forward it via the NDS to the application. The Notification Plugin handles the two-step flow for fulfilling these requests.
 
-Firstly the LNURL service receives a request for LNURL-pay information to get the min/max amount that can be received. The LNURL service calls the registered webhook and when receiving this notification, the Notification Plugin will connect to the Breez SDK and send a response back to the LNURL service based on the node info. The `lnurlpay_info` notification type has the following format:
+Firstly the LNURL service receives a request for LNURL-pay information to get the min/max amount that can be received. The LNURL service calls the registered webhook and when receiving this notification, the Notification Plugin will connect to the Breez SDK and send a response back to the LNURL service based on the node info. 
+
+The `lnurlpay_info` notification type will be received by the webhook in the following format:
 ```json
 {
     "template": "lnurlpay_info",
@@ -50,7 +71,9 @@ Firstly the LNURL service receives a request for LNURL-pay information to get th
     }
 }
 ```
-Secondly the LNURL service receives a request for an invoice based on the selected amount to pay. The LNURL service calls the registered webhook and when receiving this notification, the Notification Plugin will connect to the Breez SDK and call receive payment for the requested amount. The resulting invoice is then returned to the LNURL service. The `lnurlpay_invoice` notification type has the following format:
+Secondly the LNURL service receives a request for an invoice based on the selected amount to pay. The LNURL service calls the registered webhook and when receiving this notification, the Notification Plugin will connect to the Breez SDK and call receive payment for the requested amount. The resulting invoice is then returned to the LNURL service. 
+
+The `lnurlpay_invoice` notification type will be received by the webhook in the following format:
 ```json
 {
     "template": "lnurlpay_invoice",

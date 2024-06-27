@@ -57,3 +57,15 @@ func gettingStartedNodeInfo(sdk: BlockingBreezServices) {
     }
     // ANCHOR_END: fetch-balance
 }
+
+// ANCHOR: logging
+class SDKLogStream: LogStream {
+    func log(l: LogEntry) {
+        print("Received log [", l.level, "]: ", l.line)
+    }
+}
+
+func logging() throws {
+    try? setLogStream(logStream: SDKLogStream())
+}
+// ANCHOR_END: logging

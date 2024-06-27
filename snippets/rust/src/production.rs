@@ -3,7 +3,8 @@ use breez_sdk_core::*;
 
 fn production_node_config() -> Result<NodeConfig> {
     // ANCHOR: moving-to-production
-    // Read your Greenlight credentials from secure storage
+    // Read in your Greenlight credentials from the file 
+    // system, environment variable or build config
     let device_key: Vec<u8> = vec![];
     let device_cert: Vec<u8> = vec![];
     let greenlight_credentials = GreenlightCredentials {
