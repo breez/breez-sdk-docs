@@ -6,11 +6,11 @@ NodeConfig productionNodeConfig() {
   // ANCHOR: moving-to-production
   // Read in your Greenlight credentials from the file 
   // system, environment variable or build config
-  Uint8List deviceKey = Uint8List(0);
-  Uint8List deviceCert = Uint8List(0);
+  Uint8List developerKey = Uint8List(0);
+  Uint8List developerCert = Uint8List(0);
   GreenlightCredentials greenlightCredentials = GreenlightCredentials(
-    deviceKey: deviceKey, 
-    deviceCert: deviceCert,
+    developerKey: developerKey, 
+    developerCert: developerCert,
   );
 
   NodeConfig nodeConfig = NodeConfig.greenlight(

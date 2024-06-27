@@ -5,11 +5,11 @@ fn production_node_config() -> Result<NodeConfig> {
     // ANCHOR: moving-to-production
     // Read in your Greenlight credentials from the file 
     // system, environment variable or build config
-    let device_key: Vec<u8> = vec![];
-    let device_cert: Vec<u8> = vec![];
+    let developer_key: Vec<u8> = vec![];
+    let developer_cert: Vec<u8> = vec![];
     let greenlight_credentials = GreenlightCredentials {
-        device_key,
-        device_cert,
+        developer_key,
+        developer_cert,
     };
 
     let node_config = NodeConfig::Greenlight {

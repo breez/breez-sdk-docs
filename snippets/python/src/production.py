@@ -4,9 +4,9 @@ def production_node_config():
     # ANCHOR: moving-to-production
     # Read in your Greenlight credentials from the file 
     # system, environment variable or build config
-    deviceKey = []
-    deviceCert = []
-    greenlightCredentials = breez_sdk.GreenlightCredentials(deviceKey, deviceCert)
+    developerKey = []
+    developerCert = []
+    greenlightCredentials = breez_sdk.GreenlightCredentials(developerKey, developerCert)
 
     node_config = breez_sdk.NodeConfig.GREENLIGHT(
         breez_sdk.GreenlightNodeConfig(greenlightCredentials, None))

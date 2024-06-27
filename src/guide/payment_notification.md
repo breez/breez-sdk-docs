@@ -86,5 +86,5 @@ The `lnurlpay_invoice` notification type will be received by the webhook in the 
 
 ## Next steps
 - **[Setting up an NDS](/notifications/setup_nds.md)** to receive webhook requests
-- **[Registering a webhook](/notifications/register_webhook.md)** in your main application
+- **[Using Webhooks](/notifications/using_webhooks.md)** in your main application
 - **[Integrating the plugin](/notifications/setup_plugin.md)** using a notification service extension or foreground service

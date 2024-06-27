@@ -5,7 +5,7 @@ import breez_sdk
 from src.getting_started import getting_started,getting_started_node_info
 from src.connecting_lsp import get_lsp_info, connect_lsp
 from src.buy_btc import buy
-from src.send_onchain import get_current_fees, list_current_fees, check_reverse_swap_status, start_reverse_swap
+from src.pay_onchain import get_current_limits, prepare_pay_onchain, check_reverse_swap_status, start_reverse_swap
 from src.static_channel_backup import retrieve_backup_files
 from src.send_spontaneous_payment import send_spontaneous_payment, send_spontaneous_payment_with_tlvs
 from src.receive_payment import receive_payment
@@ -16,7 +16,7 @@ from src.lnurl_pay import pay
 from src.lnurl_withdraw import withdraw
 from src.production import production_node_config
 from src.service_status import health_check_status, report_payment_failure
-from src.webhook import webhook, payment_webhook
+from src.webhook import register_webhook, unregister_webhook
 import tempfile
 import os
 
@@ -48,10 +48,10 @@ def main():
    buy(sdk_services)
 
    # send onchain
-   current_fees = get_current_fees(sdk_services)
-   list_current_fees(current_fees)
+   current_limits = get_current_limits(sdk_services)
+   prepare_res = prepare_pay_onchain(sdk_services, current_limits, 7)
    check_reverse_swap_status(sdk_services)
-   start_reverse_swap(sdk_services,current_fees, 7)
+   start_reverse_swap(sdk_services, prepare_res)
 
    # static backup
    temp_dir2 = tempfile.TemporaryDirectory()
@@ -61,8 +61,8 @@ def main():
    receive_payment(sdk_services)
 
    # payment notifications
-   webhook(sdk_services)
-   payment_webhook(sdk_services)
+   register_webhook(sdk_services)
+   unregister_webhook(sdk_services)
 
    # receive onchain 
    generate_receive_onchain_address(sdk_services)

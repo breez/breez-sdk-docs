@@ -1,4 +1,4 @@
-import 'package:breez_sdk/breez_sdk.dart';
+import 'package:dart_snippets/sdk_instance.dart';
 import 'package:breez_sdk/bridge_generated.dart';
 import 'dart:convert';
 
@@ -13,7 +13,7 @@ Future<SendPaymentResponse> sendSpontaneousPayment({
     nodeId: nodeId,
     label: optionalLabel,
   );
-  SendPaymentResponse resp = await BreezSDK().sendSpontaneousPayment(req: req);
+  SendPaymentResponse resp = await breezSDK.sendSpontaneousPayment(req: req);
   // ANCHOR_END: send-spontaneous-payment
   return resp;
 }
@@ -33,7 +33,7 @@ Future<SendPaymentResponse> sendSpontaneousPaymentWithTlvs({
     nodeId: nodeId,
     extraTlvs: optionalExtraTlvs,
   );
-  SendPaymentResponse resp = await BreezSDK().sendSpontaneousPayment(req: req);
+  SendPaymentResponse resp = await breezSDK.sendSpontaneousPayment(req: req);
   // ANCHOR_END: send-spontaneous-payment-with-tlvs
   return resp;
 }

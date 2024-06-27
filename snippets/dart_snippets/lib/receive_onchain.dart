@@ -1,10 +1,10 @@
-import 'package:breez_sdk/breez_sdk.dart';
+import 'package:dart_snippets/sdk_instance.dart';
 import 'package:breez_sdk/bridge_generated.dart';
 
 Future<SwapInfo> generateReceiveOnchainAddress() async {
   // ANCHOR: generate-receive-onchain-address
   ReceiveOnchainRequest req = const ReceiveOnchainRequest();
-  SwapInfo swapInfo = await BreezSDK().receiveOnchain(req: req);
+  SwapInfo swapInfo = await breezSDK.receiveOnchain(req: req);
 
   // Send your funds to the below bitcoin address
   String address = swapInfo.bitcoinAddress;
@@ -17,7 +17,7 @@ Future<SwapInfo> generateReceiveOnchainAddress() async {
 
 Future<SwapInfo?> getInProgressSwap() async {
   // ANCHOR: in-progress-swap
-  SwapInfo? swapInfo = await BreezSDK().inProgressSwap();
+  SwapInfo? swapInfo = await breezSDK.inProgressSwap();
   print(swapInfo);
   // ANCHOR_END: in-progress-swap
   return swapInfo;
@@ -25,7 +25,7 @@ Future<SwapInfo?> getInProgressSwap() async {
 
 Future<List<SwapInfo>> listRefundables() async {
   // ANCHOR: list-refundables
-  List<SwapInfo> refundables = await BreezSDK().listRefundables();
+  List<SwapInfo> refundables = await breezSDK.listRefundables();
   for (var refundable in refundables) {
     print(refundable.bitcoinAddress);
   }
@@ -44,7 +44,7 @@ Future<RefundResponse> executeRefund({
     toAddress: toAddress,
     satPerVbyte: satPerVbyte,
   );
-  RefundResponse resp = await BreezSDK().refund(req: req);
+  RefundResponse resp = await breezSDK.refund(req: req);
   print(resp.refundTxId);
   // ANCHOR_END: execute-refund
   return resp;
@@ -56,7 +56,7 @@ Future<OpenChannelFeeResponse> getChannelOpeningFees({
 }) async {
   // ANCHOR: get-channel-opening-fees
   OpenChannelFeeRequest req = OpenChannelFeeRequest(amountMsat: amountMsat, expiry: expiry);
-  OpenChannelFeeResponse resp = await BreezSDK().openChannelFee(req: req);
+  OpenChannelFeeResponse resp = await breezSDK.openChannelFee(req: req);
   print(resp.feeMsat);
   // ANCHOR_END: get-channel-opening-fees
   return resp;
@@ -64,6 +64,6 @@ Future<OpenChannelFeeResponse> getChannelOpeningFees({
 
 Future rescanSwaps() async {
   // ANCHOR: rescan-swaps
-  await BreezSDK().rescanSwaps();  
+  await breezSDK.rescanSwaps();  
   // ANCHOR_END: rescan-swaps  
 }

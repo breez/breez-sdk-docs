@@ -1,5 +1,5 @@
-import 'package:breez_sdk/breez_sdk.dart';
+import 'package:dart_snippets/sdk_instance.dart';
 
 void main(List<String> arguments) {
-  BreezSDK().initialize();
+  breezSDK.initialize();
 }

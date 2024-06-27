@@ -11,9 +11,9 @@ func productionNodeConfig() -> NodeConfig {
     // ANCHOR: moving-to-production
     // Read in your Greenlight credentials from the file 
     // system, environment variable or build config
-    let deviceKey = [UInt8]()
-    let deviceCert = [UInt8]()
-    let greenlightCredentials = GreenlightCredentials(deviceKey: deviceKey, deviceCert: deviceCert)
+    let developerKey = [UInt8]()
+    let developerCert = [UInt8]()
+    let greenlightCredentials = GreenlightCredentials(developerKey: developerKey, developerCert: developerCert)
 
     let nodeConfig = NodeConfig.greenlight(
         config: GreenlightNodeConfig(partnerCredentials: greenlightCredentials, inviteCode: nil))

@@ -75,9 +75,9 @@ async fn get_channel_opening_fees(sdk: Arc<BreezServices>, amount_msat: Option<u
 }
 
 async fn rescan_swaps(sdk: Arc<BreezServices>) -> Result<()> {
-  // ANCHOR: rescan-swaps
-  sdk.rescan_swaps().await?;
-  // ANCHOR_END: rescan-swaps
+    // ANCHOR: rescan-swaps
+    sdk.rescan_swaps().await?;
+    // ANCHOR_END: rescan-swaps
 
-  Ok(())
+    Ok(())
 }

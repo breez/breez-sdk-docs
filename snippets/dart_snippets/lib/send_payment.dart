@@ -1,4 +1,4 @@
-import 'package:breez_sdk/breez_sdk.dart';
+import 'package:dart_snippets/sdk_instance.dart';
 import 'package:breez_sdk/bridge_generated.dart';
 
 Future<SendPaymentResponse> sendPayment({required String bolt11}) async {
@@ -8,7 +8,7 @@ Future<SendPaymentResponse> sendPayment({required String bolt11}) async {
   int optionalAmountMsat = 3000000;
   String optionalLabel = "<label>";
   SendPaymentRequest req = SendPaymentRequest(bolt11: bolt11, amountMsat: optionalAmountMsat, label: optionalLabel);
-  SendPaymentResponse resp = await BreezSDK().sendPayment(req: req);
+  SendPaymentResponse resp = await breezSDK.sendPayment(req: req);
   // ANCHOR_END: send-payment
   return resp;
 }
