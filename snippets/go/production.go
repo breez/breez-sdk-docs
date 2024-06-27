@@ -8,11 +8,11 @@ func ProductionNodeConfig() breez_sdk.NodeConfig {
 	// ANCHOR: moving-to-production
 	// Read in your Greenlight credentials from the file
 	// system, environment variable or build config
-	deviceKey := []uint8{}
-	deviceCert := []uint8{}
+	developerKey := []uint8{}
+	developerCert := []uint8{}
 	greenlightCredentials := breez_sdk.GreenlightCredentials{
-		DeviceKey:  deviceKey,
-		DeviceCert: deviceCert,
+		developerKey:  developerKey,
+		developerCert: developerCert,
 	}
 
 	nodeConfig := breez_sdk.NodeConfigGreenlight{
