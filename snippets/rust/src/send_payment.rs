@@ -13,7 +13,7 @@ async fn send_payment(sdk: Arc<BreezServices>) -> Result<()> {
     let req = SendPaymentRequest {
         bolt11: "...".into(),
         amount_msat: optional_amount_msat,
-        label: optional_label
+        label: optional_label,
     };
     let response = sdk.send_payment(req).await?;
     // ANCHOR_END: send-payment

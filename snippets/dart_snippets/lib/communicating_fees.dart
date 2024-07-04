@@ -1,13 +1,13 @@
-import 'package:breez_sdk/breez_sdk.dart';
+import 'package:dart_snippets/sdk_instance.dart';
 import 'package:breez_sdk/bridge_generated.dart';
 
 Future<void> getFeeInfoBeforeInvoiceCreated() async {
   // ANCHOR: get-fee-info-before-receiving-payment
-  NodeState? nodeInfo = await BreezSDK().nodeInfo();
+  NodeState? nodeInfo = await breezSDK.nodeInfo();
   if (nodeInfo != null) {
     int inboundLiquiditySat = nodeInfo.inboundLiquidityMsats ~/ 1000;
 
-    OpenChannelFeeResponse openingFeeResponse = await BreezSDK().openChannelFee(req: OpenChannelFeeRequest());
+    OpenChannelFeeResponse openingFeeResponse = await breezSDK.openChannelFee(req: OpenChannelFeeRequest());
 
     OpeningFeeParams openingFees = openingFeeResponse.feeParams;
     double feePercentage = (openingFees.proportional * 100) / 1000000;
@@ -31,12 +31,12 @@ Future<void> getFeeInfoAfterInvoiceCreated({required ReceivePaymentResponse rece
 
 Future<void> getFeeInfoReceiveOnchain() async {
   // ANCHOR: get-fee-info-receive-onchain
-  SwapInfo swapInfo = await BreezSDK().receiveOnchain(req: ReceiveOnchainRequest());
+  SwapInfo swapInfo = await breezSDK.receiveOnchain(req: ReceiveOnchainRequest());
 
   int minDepositSat = swapInfo.minAllowedDeposit;
   int maxDepositSat = swapInfo.maxAllowedDeposit;
 
-  NodeState? nodeInfo = await BreezSDK().nodeInfo();
+  NodeState? nodeInfo = await breezSDK.nodeInfo();
   if (nodeInfo != null) {
     int inboundLiquiditySat = nodeInfo.inboundLiquidityMsats ~/ 1000;
 

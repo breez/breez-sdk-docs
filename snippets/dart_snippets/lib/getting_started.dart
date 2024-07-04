@@ -1,16 +1,27 @@
 import 'dart:typed_data';
 
 import 'package:breez_sdk/breez_sdk.dart';
+import 'package:dart_snippets/sdk_instance.dart';
 import 'package:breez_sdk/bridge_generated.dart';
 
 Future<void> initializeSDK() async {
   // ANCHOR: init-sdk
 
-  // Initialize SDK logs listener
-  BreezSDK().initialize();
+  // It is recommended to use a single instance of BreezSDK across your Dart/Flutter app.
+  //
+  // All of the snippets assume a BreezSDK object is created on entrypoint of the app as such:
+  //
+  // BreezSDK breezSDK = BreezSDK();
+  //
+  // and is accessible throughout the app. There are various approaches on how to achieve this; creating a Singleton class using factory constructor, using state management libraries such as 'provider', 'GetX', 'Riverpod' and 'Redux' to name a few.
+
+  // Initializes SDK events & log streams.
+  //
+  // Call once on your Dart entrypoint file, e.g.; `lib/main.dart`.
+  breezSDK.initialize();
 
   // Create the default config
-  Uint8List seed = await BreezSDK().mnemonicToSeed("<mnemonic words>");
+  Uint8List seed = await breezSDK.mnemonicToSeed("<mnemonic words>");
   String inviteCode = "<invite code>";
   String apiKey = "<api key>";
   NodeConfig nodeConfig = NodeConfig.greenlight(
@@ -19,7 +30,7 @@ Future<void> initializeSDK() async {
       inviteCode: inviteCode,
     ),
   );
-  Config config = await BreezSDK().defaultConfig(
+  Config config = await breezSDK.defaultConfig(
     envType: EnvironmentType.Production,
     apiKey: apiKey,
     nodeConfig: nodeConfig,
@@ -30,20 +41,20 @@ Future<void> initializeSDK() async {
 
   // Connect to the Breez SDK make it ready for use
   ConnectRequest connectRequest = ConnectRequest(config: config, seed: seed);
-  return await BreezSDK().connect(req: connectRequest);
+  return await breezSDK.connect(req: connectRequest);
   // ANCHOR_END: init-sdk
 }
 
 Future<void> connectRestoreOnly(Config config, Uint8List seed) async {
   // ANCHOR: init-sdk-restore-only
   ConnectRequest connectRequest = ConnectRequest(config: config, seed: seed, restoreOnly: true);
-  return await BreezSDK().connect(req: connectRequest);
+  return await breezSDK.connect(req: connectRequest);
   // ANCHOR_END: init-sdk-restore-only
 }
 
 Future<void> fetchBalance(String lspId) async {
   // ANCHOR: fetch-balance
-  NodeState? nodeInfo = await BreezSDK().nodeInfo();
+  NodeState? nodeInfo = await breezSDK.nodeInfo();
   if (nodeInfo != null) {
     int lnBalance = nodeInfo.channelsBalanceMsat;
     int onchainBalance = nodeInfo.onchainBalanceMsat;

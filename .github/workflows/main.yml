@@ -25,8 +25,8 @@ jobs:
     name: setup
     runs-on: ubuntu-latest
     outputs:
-      sdk-ref: ${{ inputs.sdk-ref || '0.4.0' }}
-      package-version: '0.4.0'
+      sdk-ref: ${{ inputs.sdk-ref || '83740c3595ac16b29896c76a2e8790fba0535ab3' }}
+      package-version: '0.5.0'
     steps:
       - run: echo "set pre-setup output variables"
 
@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Set up Rust environment and run checks
       - name: Install rust
@@ -66,7 +66,7 @@ jobs:
           workspaces: snippets/rust -> snippets/rust/target
 
       - name: temporarily get sdk
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: breez/breez-sdk
           ref: ${{ needs.setup.outputs.sdk-ref }}
@@ -100,7 +100,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Set up the flutter environment and run checks
       - uses: subosito/flutter-action@v2
@@ -108,7 +108,7 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: breez-sdk-flutter-${{ needs.setup.outputs.package-version }}
           path: snippets/dart_snippets/packages/breez-sdk-flutter
@@ -129,15 +129,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '7.0.x'
 
       - name: Download archived package
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Breez.Sdk.${{ needs.setup.outputs.package-version }}.nupkg
           path: .
@@ -165,15 +165,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set Node.js 20.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20.x
 
       - name: Download archived package
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: react-native-${{ needs.setup.outputs.package-version }}
           path: snippets/react-native/packages
@@ -198,14 +198,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
           go-version: '1.21'
 
       - name: Download archived package
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: breez-sdk-go-${{ needs.setup.outputs.package-version }}
           path: snippets/go/packages/breez-sdk-go
@@ -243,12 +243,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.8'
   
       - name: Download archived package
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: python-wheel-3.8-manylinux_2_31_x86_64
           path: snippets/python/packages
@@ -293,10 +293,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Java 17
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           distribution: "temurin"
           java-version: 17
@@ -312,7 +312,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install rust
         run: |
@@ -334,7 +334,7 @@ jobs:
         run: mdbook build
 
       - name: Archive book
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: book
           path: book

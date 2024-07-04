@@ -1,4 +1,4 @@
-import 'package:breez_sdk/breez_sdk.dart';
+import 'package:dart_snippets/sdk_instance.dart';
 import 'package:breez_sdk/bridge_generated.dart';
 
 Future<PrepareRedeemOnchainFundsResponse> prepareRedeemOnchainFunds(
@@ -8,7 +8,7 @@ Future<PrepareRedeemOnchainFundsResponse> prepareRedeemOnchainFunds(
     toAddress: "bc1..",
     satPerVbyte: satPerVbyte,
   );
-  final resp = await BreezSDK().prepareRedeemOnchainFunds(req: req);
+  final resp = await breezSDK.prepareRedeemOnchainFunds(req: req);
   // ANCHOR_END: prepare-redeem-onchain-funds
   return resp;
 }
@@ -20,7 +20,7 @@ Future<RedeemOnchainFundsResponse> redeemOnchainFunds(
     toAddress: "bc1..",
     satPerVbyte: satPerVbyte,
   );
-  final resp = await BreezSDK().redeemOnchainFunds(req: req);
+  final resp = await breezSDK.redeemOnchainFunds(req: req);
   // ANCHOR_END: redeem-onchain-funds
   return resp;
 }

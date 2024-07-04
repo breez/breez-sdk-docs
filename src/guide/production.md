@@ -72,7 +72,7 @@ To obtain a certificate for a production environment, please register [here](htt
 
 ## Applying certificates
 
-The certificates received from Blockstream should be contained with a zip file. Within the zip file should be a `.crt` and a `.pem` file, these are the certificate and private key files. To use these files with the Breez SDK each file needs to be read as binary/byte data, inserting the `.crt` data as the device cert and the `.pem` data as the device key.
+The certificates received from Blockstream should be contained with a zip file. Within the zip file should be a `.crt` and a `.pem` file, these are the certificate and private key files. To use these files with the Breez SDK each file needs to be read as binary/byte data, inserting the `.crt` data as the developer cert and the `.pem` data as the developer key.
 <div class="warning">
 <h4>Developer note</h4>
 Leave the file contents as is, manipulating the file contents will result in transport errors. 

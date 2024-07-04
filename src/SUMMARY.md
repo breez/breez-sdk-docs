@@ -37,7 +37,7 @@
 
 - [Implementing mobile notifications](notifications/getting_started.md)
 - [Setting up an NDS](notifications/setup_nds.md)
-- [Registering a webhook](notifications/register_webhook.md)
+- [Using webhooks](notifications/using_webhooks.md)
 - [Integrating the plugin](notifications/setup_plugin.md)
     - [Android](notifications/android_setup.md)
       - [Setting up the Foreground Service](notifications/android_service.md)

@@ -4,18 +4,18 @@ import (
 	"log"
 )
 
-func Webhook() {
+func RegisterWebhook() {
 	// ANCHOR: register-webook
-	if err := sdk.RegisterWebhook("https://yourapplication.com"); err != nil {
-		log.Printf("Webhook registration failed: %v", err)
+	if err := sdk.RegisterWebhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>"); err != nil {
+		log.Printf("Webhook register failed: %v", err)
 	}
 	// ANCHOR_END: register-webook
 }
 
-func PaymentWebhook() {
-	// ANCHOR: register-payment-webook
-	if err := sdk.RegisterWebhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>"); err != nil {
-		log.Printf("Webhook registration failed: %v", err)
+func UnregisterWebhook() {
+	// ANCHOR: unregister-webook
+	if err := sdk.UnregisterWebhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>"); err != nil {
+		log.Printf("Webhook unregister failed: %v", err)
 	}
-	// ANCHOR_END: register-payment-webook
+	// ANCHOR_END: unregister-webook
 }
