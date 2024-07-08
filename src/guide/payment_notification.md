@@ -43,7 +43,7 @@ The `payment_received` notification type will be received by the webhook in the 
 
 #### Confirming a swap
 
-When receiving a payment via a onchain address, the swap address needs to be monitored until the funds are confirmed onchain before the swap is executed. A chain service is used to monitor the address for confirmed funds. Once funds are confirmed, the chain service calls the registered webhook with the address. The Notification Plugin when receiving this notification from the NDS will connect to the Breez SDK and redeem the swap. 
+When sending or receiving a payment via a onchain address, the swap address needs to be monitored until the funds are confirmed onchain before the swap is executed. A chain service is used to monitor the address for confirmed funds. Once funds are confirmed, the chain service calls the registered webhook with the address. The Notification Plugin when receiving this notification from the NDS will connect to the Breez SDK and claim or redeem the swap. 
 
 The `address_txs_confirmed` notification type will be received by the webhook in the following format:
 ```json
