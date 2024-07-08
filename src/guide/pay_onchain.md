@@ -314,7 +314,7 @@ If however something goes wrong at any point in the process, the initial HODL pa
 your Breez SDK wallet will be unlocked.
 <div class="warning">
 <h4>Developer note</h4>
-Consider implementing the <a href="/notifications/getting_started.md">Notification Plugin</a> when using the Breez SDK in a mobile application. By registering a webhook the application can receive a transaction confirmation notification to claim the swap in the background.
+Consider implementing the <a href="/notifications/getting_started.md">Notification Plugin</a> when using the Breez SDK in a mobile application. By registering a webhook, the application can receive a transaction confirmation notification to claim the swap in the background.
 </div>
 
 
