@@ -71,7 +71,11 @@ First, fetch the current reverse swap limits:
 </section>
 </custom-tabs>
 
-This represents the range of valid amounts that can be sent at this point in time. The range may change depending on the wallet's liquidity, swap service parameters or mempool feerate fluctuations.
+This represents the Pay Onchain limits at this point in time.
+
+The min-max range may change depending on the swap service parameters or mempool feerate fluctuations. The caller should make sure the Pay Onchain amount is within this range.
+
+The `max_payable_sat` field shows the maximum amount the node can send, given its available channels and local balance. The caller should also ensure the Pay Onchain amount is lower or equal to this amount.
 
 <div class="warning">
 <h4>Developer note</h4>

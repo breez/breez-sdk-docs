@@ -14,6 +14,7 @@ func GetCurrentLimits(sdk: BlockingBreezServices) -> OnchainPaymentLimitsRespons
     if let limits = currentLimits {
         print("Minimum amount, in sats: \(limits.minSat)")
         print("Maximum amount, in sats: \(limits.maxSat)")
+        print("Maximum payable, in sats: \(limits.maxPayableSat)")
     }
     // ANCHOR_END: get-current-reverse-swap-limits
     return currentLimits

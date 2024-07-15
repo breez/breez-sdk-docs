@@ -10,6 +10,7 @@ public class SendOnchainSnippets
             var currentLimits = sdk.OnchainPaymentLimits();
             Console.WriteLine($"Minimum amount, in sats: {currentLimits.minSat}");
             Console.WriteLine($"Maximum amount, in sats: {currentLimits.maxSat}");
+            Console.WriteLine($"Maximum payable, in sats: {currentLimits.maxPayableSat}");
         }
         catch (Exception)
         {

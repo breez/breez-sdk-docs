@@ -8,6 +8,7 @@ class SendOnchain {
             val currentLimits = sdk.onchainPaymentLimits()
             // Log.v("Breez", "Minimum amount, in sats: ${currentLimits.minSat}")
             // Log.v("Breez", "Maximum amount, in sats: ${currentLimits.maxSat}")
+            // Log.v("Breez", "Maximum payable, in sats: ${currentLimits.maxPayableSat}")
         } catch (e: Exception) {
             // handle error
         }

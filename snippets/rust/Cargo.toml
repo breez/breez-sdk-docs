@@ -6,6 +6,6 @@ edition = "2021"
 [dependencies]
 anyhow = "1"
 bip39 = { version = "2", features = ["rand"] }
-breez-sdk-core = { git = "https://github.com/breez/breez-sdk", rev = "83740c3595ac16b29896c76a2e8790fba0535ab3" }
+breez-sdk-core = { git = "https://github.com/breez/breez-sdk", rev = "6a18553a879bea66038ad8c6355d1fd80a3b68c1" }
 log = "0.4"
 tokio = "1.29"

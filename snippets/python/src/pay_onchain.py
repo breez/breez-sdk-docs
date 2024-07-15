@@ -6,6 +6,7 @@ def get_current_limits(sdk_services):
         current_limits = sdk_services.onchain_payment_limits()
         print("Minimum amount, in sats: ", current_limits.min_sat)
         print("Maximum amount, in sats: ", current_limits.max_sat)
+        print("Maximum payable, in sats: ", current_limits.max_payable_sat)
         # ANCHOR_END: get-current-reverse-swap-limits
         return current_limits
     except Exception as error:

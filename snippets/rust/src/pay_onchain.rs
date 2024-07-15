@@ -10,6 +10,7 @@ async fn get_current_limits(sdk: Arc<BreezServices>) -> Result<()> {
 
     info!("Minimum amount: {} sats", current_limits.min_sat);
     info!("Maximum amount: {} sats", current_limits.max_sat);
+    info!("Maximum payable: {} sats", current_limits.max_payable_sat);
     // ANCHOR_END: get-current-reverse-swap-limits
 
     Ok(())

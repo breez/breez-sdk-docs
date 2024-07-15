@@ -17,6 +17,7 @@ const exampleFetchReverseSwapLimits = async () => {
 
     console.log(`Minimum amount, in sats: ${currentLimits.minSat}`)
     console.log(`Maximum amount, in sats: ${currentLimits.maxSat}`)
+    console.log(`Maximum payable, in sats: ${currentLimits.maxPayableSat}`)
   } catch (err) {
     console.error(err)
   }

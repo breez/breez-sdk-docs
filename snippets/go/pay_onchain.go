@@ -11,6 +11,7 @@ func GetCurrentLimits() {
 	if currentLimits, err := sdk.OnchainPaymentLimits(); err == nil {
 		log.Printf("Minimum amount, in sats: %v", currentLimits.MinSat)
 		log.Printf("Maximum amount, in sats: %v", currentLimits.MaxSat)
+		log.Printf("Maximum payable, in sats: %v", currentLimits.MaxPayableSat)
 	}
 	// ANCHOR_END: get-current-reverse-swap-limits
 }
