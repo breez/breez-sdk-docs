@@ -71,5 +71,6 @@
 ## Supported Specs
 - [LUD-01](https://github.com/lnurl/luds/blob/luds/01.md) LNURL bech32 encoding
 - [LUD-06](https://github.com/lnurl/luds/blob/luds/06.md) `payRequest` spec
+- [LUD-09](https://github.com/lnurl/luds/blob/luds/09.md) `successAction` field for `payRequest`
 - [LUD-16](https://github.com/lnurl/luds/blob/luds/16.md) LN Address
 - [LUD-17](https://github.com/lnurl/luds/blob/luds/17.md) Support for lnurlp prefix with non-bech32-encoded LNURL URLs
