@@ -68,6 +68,11 @@
 </section>
 </custom-tabs>
 
+<div class="warning">
+<h4>Developer note</h4>
+By default when the LNURL-pay results in a success action with a URL, the URL is validated to check if there is a mismatch with the LNURL callback domain. You can disable this behaviour by setting the optional validation <code>LnUrlPayPrequest</code> param to false.
+</div>
+
 ## Supported Specs
 - [LUD-01](https://github.com/lnurl/luds/blob/luds/01.md) LNURL bech32 encoding
 - [LUD-06](https://github.com/lnurl/luds/blob/luds/06.md) `payRequest` spec
