@@ -33,7 +33,7 @@ class NotificationService: SDKNotificationService {
         self.logger.log(tag: TAG, line: "\(notificationType) data string: \(payload)", level: "INFO")
         switch(notificationType) {
         case Constants.MESSAGE_TYPE_ADDRESS_TXS_CONFIRMED:
-            return RedeemSwapTask(payload: payload, logger: self.logger, contentHandler: contentHandler, bestAttemptContent: bestAttemptContent)
+            return ConfirmTransactionTask(payload: payload, logger: self.logger, contentHandler: contentHandler, bestAttemptContent: bestAttemptContent)
         case Constants.MESSAGE_TYPE_LNURL_PAY_INFO:
             return LnurlPayInfoTask(payload: payload, logger: self.logger, config: self.config, contentHandler: contentHandler, bestAttemptContent: bestAttemptContent)
         case Constants.MESSAGE_TYPE_LNURL_PAY_INVOICE:

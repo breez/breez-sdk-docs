@@ -163,7 +163,7 @@ Consider implementing the <a href="/notifications/getting_started.md">Notificati
 
 ## Notifications
 
-Enabling [mobile notifications](payment_notification.md) will register your app for swap notifications.
+Enabling [mobile notifications](/notifications/getting_started.md) will register your app for swap notifications.
 
 This means that, when the user performs a swap-in (receive onchain), the app will
 

@@ -312,3 +312,17 @@ change from pending to settled.
 
 If however something goes wrong at any point in the process, the initial HODL payment will be cancelled and the funds in
 your Breez SDK wallet will be unlocked.
+<div class="warning">
+<h4>Developer note</h4>
+Consider implementing the <a href="/notifications/getting_started.md">Notification Plugin</a> when using the Breez SDK in a mobile application. By registering a webhook, the application can receive a transaction confirmation notification to claim the swap in the background.
+</div>
+
+
+## Notifications
+
+Enabling [mobile notifications](/notifications/getting_started.md) will register your app for swap notifications.
+
+This means that, when the user performs a swap-out (send onchain), the app will
+
+- automatically claim the swap in the background when the onchain transaction is confirmed, even if the app is closed
+- display an OS notification, informing the user of the received funds
