@@ -2,6 +2,7 @@
 
 # API Overview
 
+- [About the Breez SDK - *Greenlight*](guide/about_breez_sdk_greenlight.md)
 - [Getting Started](guide/getting_started.md)
   - [Installing the Breez SDK](guide/install.md)
     - [Troubleshooting Android](guide/android_troubleshooting.md)
