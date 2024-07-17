@@ -13,7 +13,13 @@ def pay(sdk_services):
        amount_msat = parsed_input.data.min_sendable
        optional_comment = "<comment>"
        optional_payment_label = "<label>"
-       req = breez_sdk.LnUrlPayRequest(parsed_input.data, amount_msat, optional_comment, optional_payment_label)
+       optional_validate_success_action_url = True
+       req = breez_sdk.LnUrlPayRequest(
+          parsed_input.data, 
+          amount_msat, 
+          optional_comment, 
+          optional_payment_label, 
+          optional_validate_success_action_url)
        result = sdk_services.pay_lnurl(req)
        return result
   except Exception as error:

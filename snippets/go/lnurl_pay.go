@@ -19,11 +19,13 @@ func LnurlPay() {
 			amountMsat := inputType.Data.MinSendable
 			optionalComment := "<comment>"
 			optionalPaymentLabel := "<label>"
+			optionalValidateSuccessActionUrl := true
 			lnUrlPayRequest := breez_sdk.LnUrlPayRequest{
-				Data:         inputType.Data,
-				AmountMsat:   amountMsat,
-				Comment:      &optionalComment,
-				PaymentLabel: &optionalPaymentLabel,
+				Data:                     inputType.Data,
+				AmountMsat:               amountMsat,
+				Comment:                  &optionalComment,
+				PaymentLabel:             &optionalPaymentLabel,
+				ValidateSuccessActionUrl: &optionalValidateSuccessActionUrl,
 			}
 			if result, err := sdk.PayLnurl(lnUrlPayRequest); err != nil {
 				switch result.(type) {

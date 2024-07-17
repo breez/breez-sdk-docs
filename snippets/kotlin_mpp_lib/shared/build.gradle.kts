@@ -24,17 +24,12 @@ kotlin {
     }
 
     sourceSets {
-        commonMain.dependencies {
-            //put your multiplatform dependencies here
-            implementation(libs.breez)
-
-        }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
         val commonMain by getting {
             dependencies {
-                implementation("technology.breez:breez-sdk-kmp:0.5.0")
+                implementation("technology.breez:breez-sdk-kmp:0.5.1-rc4")
             }
         }
     }
@@ -49,6 +44,5 @@ android {
 }
 
 dependencies {
-    implementation(libs.breez)
     implementation("androidx.core:core-ktx:+")
 }
