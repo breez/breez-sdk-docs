@@ -10,7 +10,7 @@ To get both of them, please contact Breez via email at <contact@breez.technology
 
 Join our [Telegram channel](https://t.me/breezsdk) or email us at <contact@breez.technology>.
 
-## Next steps
+## Next Steps
 - **[Installing the Breez SDK](/guide/install.md)**
 - **[Connecting to a node](/guide/connecting.md)**
 - **[Getting the node state](/guide/node_state.md)**
