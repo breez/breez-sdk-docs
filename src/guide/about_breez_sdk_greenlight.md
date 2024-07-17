@@ -36,7 +36,7 @@ The *Greenlight* implementation allows end-users to send and receive payments us
 - **Lightning Service Providers (LSP)**: Design partners use LSPs, operated by entities other than Breez, to facilitate channel connectivity. LSP nodes are connected to Breez’s routing nodes, which in turn connect to other nodes in the Lightning Network.
 - **Submarine Swaps**: Submarine swaps and reverse submarine swaps are used for transactions involving BTC addresses (on-chain). When receiving funds, submarine swaps convert the BTC to the user node on the Lightning Network. When sending funds to BTC addresses, reverse submarine swaps convert Lightning Network funds back to BTC.
 
-![Breez SDK - Greenlight](https://github.com/breez/breez-sdk-docs/blob/main/src/images/BreezSDK_Greenlight.png)
+![Breez SDK - Greenlight](https://github.com/breez/breez-sdk-docs/raw/main/src/images/BreezSDK_Greenlight.png)
 
 ## Pricing
 
