@@ -3,7 +3,7 @@ authors = ["Roei Erez"]
 language = "en"
 multilingual = true
 src = "src"
-title = "Breez SDK"
+title = "Breez SDK - Greenlight"
 
 [output.html]
 theme="theme"
