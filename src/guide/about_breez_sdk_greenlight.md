@@ -32,8 +32,11 @@ The *Greenlight* implementation is a cloud-based Lightning integration. It offer
 The *Greenlight* implementation allows end-users to send and receive payments using the Breez SDK through several key components:
 
 - **Signer**: The app integrating the Breez SDK runs a validating signer that interacts with the end-user node.
+  
 - **Node**: End-user nodes are hosted on Blockstream’s Greenlight cloud infrastructure. The SDK creates a node when an end-user needs to send or receive a payment via the Lightning Network. Each end-user has their own node.
+
 - **Lightning Service Providers (LSP)**: Design partners use LSPs, operated by entities other than Breez, to facilitate channel connectivity. LSP nodes are connected to Breez’s routing nodes, which in turn connect to other nodes in the Lightning Network.
+
 - **Submarine Swaps**: Submarine swaps and reverse submarine swaps are used for transactions involving BTC addresses (on-chain). When receiving funds, submarine swaps convert the BTC to the user node on the Lightning Network. When sending funds to BTC addresses, reverse submarine swaps convert Lightning Network funds back to BTC.
 
 ![Breez SDK - Greenlight](https://github.com/breez/breez-sdk-docs/raw/main/src/images/BreezSDK_Greenlight.png)
