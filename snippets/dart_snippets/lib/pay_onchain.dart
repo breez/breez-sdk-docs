@@ -6,6 +6,7 @@ Future<OnchainPaymentLimitsResponse> getCurrentLimits() async {
   OnchainPaymentLimitsResponse currentLimits = await breezSDK.onchainPaymentLimits();
   print("Minimum amount, in sats: ${currentLimits.minSat}");
   print("Maximum amount, in sats: ${currentLimits.maxSat}");
+  print("Maximum payable, in sats: ${currentLimits.maxPayableSat}");
   // ANCHOR_END: get-current-reverse-swap-limits
   return currentLimits;
 }
