@@ -20,7 +20,14 @@ func pay(sdk: BlockingBreezServices) -> LnUrlPayResult? {
             let amountMsat = data.minSendable
             let optionalComment = "<comment>"
             let optionalPaymentLabel = "<label>"
-            let req = LnUrlPayRequest(data: data, amountMsat: amountMsat, comment: optionalComment, paymentLabel: optionalPaymentLabel)
+            let optionalValidateSuccessActionUrl = true
+            let req = LnUrlPayRequest(
+                data: data, 
+                amountMsat: amountMsat, 
+                comment: optionalComment, 
+                paymentLabel: optionalPaymentLabel, 
+                validateSuccessActionUrl: optionalValidateSuccessActionUrl
+            )
             response = try? sdk.payLnurl(req: req)
         }
     }

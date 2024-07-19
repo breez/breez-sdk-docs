@@ -17,11 +17,13 @@ const exampleLnurlPay = async () => {
       const amountMsat = input.data.minSendable
       const optionalComment = '<comment>'
       const optionalPaymentLabel = '<label>'
+      const optionalValidateSuccessActionUrl = true
       const lnUrlPayResult = await payLnurl({
         data: input.data,
         amountMsat,
         comment: optionalComment,
-        paymentLabel: optionalPaymentLabel
+        paymentLabel: optionalPaymentLabel,
+        validateSuccessActionUrl: optionalValidateSuccessActionUrl
       })
     }
   } catch (err) {
