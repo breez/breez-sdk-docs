@@ -4,6 +4,11 @@
 
 The Breez SDK provides developers with an end-to-end solution for integrating self-custodial Lightning payments into their apps and services. It eliminates the need for third-parties, simplifies the complexities of Bitcoin and Lightning, and enables seamless onboarding for billions of users to the future of peer-to-peer payments.
 
+To provide the best experience for their end-users, developers can choose between the following implementations:
+
+- [Breez SDK - Greenlight](../guide/about_breez_sdk_greenlight.md#what-is-the-greenlight-implementation)
+- [Breez SDK - Liquid](https://sdk-doc-liquid.breez.technology/)
+
 ## **What Is the *Greenlight* Implementation?**
 
 The *Greenlight* implementation is a cloud-based Lightning integration. It offers a self-custodial, end-to-end solution for integrating Lightning payments, utilizing nodes-on-demand provided by Blockstream’s Greenlight, with built-in Lightning Service Providers (LSP), on-chain interoperability, and third-party fiat on-ramps.
@@ -40,6 +45,18 @@ The *Greenlight* implementation allows end-users to send and receive payments us
 - **Submarine Swaps**: Submarine swaps and reverse submarine swaps are used for transactions involving BTC addresses (on-chain). When receiving funds, submarine swaps convert the BTC to the user node on the Lightning Network. When sending funds to BTC addresses, reverse submarine swaps convert Lightning Network funds back to BTC.
 
 ![Breez SDK - Greenlight](https://github.com/breez/breez-sdk-docs/raw/main/src/images/BreezSDK_Greenlight.png)
+
+### **Differences Between Implementations**
+
+| Greenlight Implementation | Liquid Implementation |
+| --- | --- |
+| Pure Lightning Network implementation | Trust profile is with the Liquid sidechain |
+| Uses Lightning Service Providers (LSPs) for liquidity | No channel management or LSP required |
+| Channel open and closing fees | No setup fees for end-users |
+| No minimum limit for transactions (after channel opening) | Minimum payment size of 1,000 sats |
+| Setup costs are correlated to Bitcoin mining fees | Static Liquid on-chain fees |
+| Requires an API key | Does not require an API key |
+
 
 ## Pricing
 
