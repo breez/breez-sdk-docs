@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>About the Breez SDK - Greenlight - Breez SDK - Greenlight</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="task-lists.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">API Overview</li><li class="chapter-item expanded "><a href="guide/about_breez_sdk_greenlight.html" class="active"><strong aria-hidden="true">1.</strong> About the Breez SDK - Greenlight</a></li><li class="chapter-item expanded "><a href="guide/getting_started.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guide/install.html"><strong aria-hidden="true">2.1.</strong> Installing the Breez SDK</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guide/android_troubleshooting.html"><strong aria-hidden="true">2.1.1.</strong> Troubleshooting Android</a></li></ol></li><li class="chapter-item expanded "><a href="guide/connecting.html"><strong aria-hidden="true">2.2.</strong> Connecting to a node</a></li><li class="chapter-item expanded "><a href="guide/node_state.html"><strong aria-hidden="true">2.3.</strong> Getting the node state</a></li><li class="chapter-item expanded "><a href="guide/logging.html"><strong aria-hidden="true">2.4.</strong> Adding logging</a></li></ol></li><li class="chapter-item expanded "><a href="guide/payments.html"><strong aria-hidden="true">3.</strong> Paying in Lightning</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guide/receive_payment.html"><strong aria-hidden="true">3.1.</strong> Receiving payments</a></li><li class="chapter-item expanded "><a href="guide/send_payment.html"><strong aria-hidden="true">3.2.</strong> Sending payments</a></li><li class="chapter-item expanded "><a href="guide/send_spontaneous_payment.html"><strong aria-hidden="true">3.3.</strong> Sending spontaneous payments</a></li><li class="chapter-item expanded "><a href="guide/list_payments.html"><strong aria-hidden="true">3.4.</strong> Listing payments</a></li><li class="chapter-item expanded "><a href="guide/payment_metadata.html"><strong aria-hidden="true">3.5.</strong> Adding and filtering for payment metadata</a></li></ol></li><li class="chapter-item expanded "><a href="guide/connecting_lsp.html"><strong aria-hidden="true">4.</strong> Connecting to an LSP</a></li><li class="chapter-item expanded "><a href="guide/receive_onchain.html"><strong aria-hidden="true">5.</strong> Receiving an On-Chain Transaction</a></li><li class="chapter-item expanded "><a href="guide/pay_onchain.html"><strong aria-hidden="true">6.</strong> Sending an On-Chain Transaction</a></li><li class="chapter-item expanded "><a href="guide/communicating_fees.html"><strong aria-hidden="true">7.</strong> Communicating fees</a></li><li class="chapter-item expanded "><a href="guide/lnurl.html"><strong aria-hidden="true">8.</strong> Using LNURL & Lightning addresses</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guide/lnurl_pay.html"><strong aria-hidden="true">8.1.</strong> Sending payments using LNURL-Pay/Lightning address</a></li><li class="chapter-item expanded "><a href="guide/lnurlpay.html"><strong aria-hidden="true">8.2.</strong> Receiving payments using LNURL-Pay/Lightning address</a></li><li class="chapter-item expanded "><a href="guide/lnurl_withdraw.html"><strong aria-hidden="true">8.3.</strong> Receiving payments using LNURL-Withdraw</a></li><li class="chapter-item expanded "><a href="guide/lnurl_auth.html"><strong aria-hidden="true">8.4.</strong> Authenticating using LNURL-Auth</a></li></ol></li><li class="chapter-item expanded "><a href="guide/fiat_currencies.html"><strong aria-hidden="true">9.</strong> Supporting fiat currencies</a></li><li class="chapter-item expanded "><a href="guide/buy_btc.html"><strong aria-hidden="true">10.</strong> Buying Bitcoin</a></li><li class="chapter-item expanded "><a href="guide/static_channel_backup.html"><strong aria-hidden="true">11.</strong> Exporting channels backup</a></li><li class="chapter-item expanded "><a href="guide/closed_channels.html"><strong aria-hidden="true">12.</strong> Handling channel closures</a></li><li class="chapter-item expanded "><a href="guide/service_status.html"><strong aria-hidden="true">13.</strong> Retrieving service status</a></li><li class="chapter-item expanded "><a href="guide/failure_report.html"><strong aria-hidden="true">14.</strong> Reporting payment failures</a></li><li class="chapter-item expanded "><a href="guide/production.html"><strong aria-hidden="true">15.</strong> Moving to production</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Notifications</li><li class="chapter-item expanded "><a href="notifications/getting_started.html"><strong aria-hidden="true">16.</strong> Implementing mobile notifications</a></li><li class="chapter-item expanded "><a href="notifications/setup_nds.html"><strong aria-hidden="true">17.</strong> Setting up an NDS</a></li><li class="chapter-item expanded "><a href="notifications/using_webhooks.html"><strong aria-hidden="true">18.</strong> Using webhooks</a></li><li class="chapter-item expanded "><a href="notifications/setup_plugin.html"><strong aria-hidden="true">19.</strong> Integrating the plugin</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="notifications/android_setup.html"><strong aria-hidden="true">19.1.</strong> Android</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="notifications/android_service.html"><strong aria-hidden="true">19.1.1.</strong> Setting up the Foreground Service</a></li><li class="chapter-item expanded "><a href="notifications/android_plugin.html"><strong aria-hidden="true">19.1.2.</strong> Adding the Notification Plugin</a></li></ol></li><li class="chapter-item expanded "><a href="notifications/ios_setup.html"><strong aria-hidden="true">19.2.</strong> iOS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="notifications/ios_service.html"><strong aria-hidden="true">19.2.1.</strong> Setting up the Notification Service Extension</a></li><li class="chapter-item expanded "><a href="notifications/ios_plugin.html"><strong aria-hidden="true">19.2.2.</strong> Adding the Notification Plugin</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Advanced</li><li class="chapter-item expanded "><a href="notifications/logging.html"><strong aria-hidden="true">20.</strong> Adding logging</a></li><li class="chapter-item expanded "><a href="notifications/service_configuration.html"><strong aria-hidden="true">21.</strong> Configuring the plugin</a></li><li class="chapter-item expanded "><a href="notifications/changing_strings.html"><strong aria-hidden="true">22.</strong> Changing default strings</a></li><li class="chapter-item expanded "><a href="notifications/custom_messages.html"><strong aria-hidden="true">23.</strong> Customising push messages</a></li><li class="chapter-item expanded "><a href="notifications/custom_notifications.html"><strong aria-hidden="true">24.</strong> Handling custom notifications</a></li><li class="chapter-item expanded affix "><a href="guide/payment_notification.html"></a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Breez SDK - Greenlight</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/breez/breez-sdk-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/breez/breez-sdk-docs/edit/main/src/guide/about_breez_sdk_greenlight.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="about-the-breez-sdk---greenlight"><a class="header" href="#about-the-breez-sdk---greenlight">About the Breez SDK - <em>Greenlight</em></a></h1>
+<h2 id="what-is-the-breez-sdk"><a class="header" href="#what-is-the-breez-sdk"><strong>What Is the Breez SDK?</strong></a></h2>
+<p>The Breez SDK provides developers with an end-to-end solution for integrating self-custodial Lightning payments into their apps and services. It eliminates the need for third-parties, simplifies the complexities of Bitcoin and Lightning, and enables seamless onboarding for billions of users to the future of peer-to-peer payments.</p>
+<p>To provide the best experience for their end-users, developers can choose between the following implementations:</p>
+<ul>
+<li><a href="../guide/about_breez_sdk_greenlight.html#what-is-the-greenlight-implementation">Breez SDK - Greenlight</a></li>
+<li><a href="https://sdk-doc-liquid.breez.technology/">Breez SDK - Liquid</a></li>
+</ul>
+<h2 id="what-is-the-greenlight-implementation"><a class="header" href="#what-is-the-greenlight-implementation"><strong>What Is the <em>Greenlight</em> Implementation?</strong></a></h2>
+<p>The <em>Greenlight</em> implementation is a cloud-based Lightning integration. It offers a self-custodial, end-to-end solution for integrating Lightning payments, utilizing nodes-on-demand provided by Blockstream’s Greenlight, with built-in Lightning Service Providers (LSP), on-chain interoperability, and third-party fiat on-ramps.</p>
+<p><strong>Core Functions</strong></p>
+<ul>
+<li><strong>Sending payments</strong> <em>via protocols such as: bolt11, keysend, lnurl-pay, lightning address, btc address.</em></li>
+<li><strong>Receiving payments</strong> <em>via protocols such as: bolt11, lnurl-withdraw, btc address.</em></li>
+<li><strong>Interacting with a node</strong> <em>e.g. balance, max allow to pay, max allow to receive, on-chain balance.</em></li>
+</ul>
+<p><strong>Key Features</strong></p>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+On-chain interoperability</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Built-in LSP</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Integrated watchtower</li>
+<li><input disabled="" type="checkbox" checked=""/>
+LNURL functionality</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Multi-app support</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Multi-device support</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Real-time state backup</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Keys are only held by users</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Fiat on-ramps</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Open-source</li>
+</ul>
+<h2 id="how-does-the-greenlight-implementation-work"><a class="header" href="#how-does-the-greenlight-implementation-work">How Does the Greenlight Implementation Work?</a></h2>
+<p>The <em>Greenlight</em> implementation allows end-users to send and receive payments using the Breez SDK through several key components:</p>
+<ul>
+<li>
+<p><strong>Signer</strong>: The app integrating the Breez SDK runs a validating signer that interacts with the end-user node.</p>
+</li>
+<li>
+<p><strong>Node</strong>: End-user nodes are hosted on Blockstream’s Greenlight cloud infrastructure. The SDK creates a node when an end-user needs to send or receive a payment via the Lightning Network. Each end-user has their own node.</p>
+</li>
+<li>
+<p><strong>Lightning Service Providers (LSP)</strong>: Design partners use LSPs, operated by entities other than Breez, to facilitate channel connectivity. LSP nodes are connected to Breez’s routing nodes, which in turn connect to other nodes in the Lightning Network.</p>
+</li>
+<li>
+<p><strong>Submarine Swaps</strong>: Submarine swaps and reverse submarine swaps are used for transactions involving BTC addresses (on-chain). When receiving funds, submarine swaps convert the BTC to the user node on the Lightning Network. When sending funds to BTC addresses, reverse submarine swaps convert Lightning Network funds back to BTC.</p>
+</li>
+</ul>
+<p><img src="https://github.com/breez/breez-sdk-docs/raw/main/src/images/BreezSDK_Greenlight.png" alt="Breez SDK - Greenlight" /></p>
+<h3 id="differences-between-implementations"><a class="header" href="#differences-between-implementations"><strong>Differences Between Implementations</strong></a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Greenlight Implementation</th><th>Liquid Implementation</th></tr></thead><tbody>
+<tr><td>Pure Lightning Network implementation</td><td>Trust profile is with the Liquid sidechain</td></tr>
+<tr><td>Uses Lightning Service Providers (LSPs) for liquidity</td><td>No channel management or LSP required</td></tr>
+<tr><td>Channel open and closing fees</td><td>No setup fees for end-users</td></tr>
+<tr><td>No minimum limit for transactions (after channel opening)</td><td>Minimum payment size of 1,000 sats</td></tr>
+<tr><td>Setup costs are correlated to Bitcoin mining fees</td><td>Static Liquid on-chain fees</td></tr>
+<tr><td>Requires an API key</td><td>Does not require an API key</td></tr>
+</tbody></table>
+</div>
+<h2 id="pricing"><a class="header" href="#pricing">Pricing</a></h2>
+<p>The Breez SDK - <em>Greenlight</em> is <strong>free</strong> for developers.</p>
+<h2 id="support"><a class="header" href="#support">Support</a></h2>
+<p>Have a question for the team? Join us on <a href="https://t.me/breezsdk">Telegram</a> or email us at <a href="mailto:contact@breez.technology">contact@breez.technology</a>.</p>
+<h2 id="repository"><a class="header" href="#repository">Repository</a></h2>
+<p>Head over to the <a href="https://github.com/breez/breez-sdk">Breez SDK - <em>Greenlight</em> repo</a>.</p>
+<h3 id="ready-to-light-up-your-app-get-started"><a class="header" href="#ready-to-light-up-your-app-get-started">Ready to light up your app? <strong><a href="https://sdk-doc.breez.technology/guide/getting_started.html">Get started.</a></strong></a></h3>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next prefetch" href="guide/getting_started.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next prefetch" href="guide/getting_started.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="tabs.js"></script>
+
+
+    </div>
+    </body>
+</html>
