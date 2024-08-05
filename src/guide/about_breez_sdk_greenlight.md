@@ -66,4 +66,8 @@ The Breez SDK - *Greenlight* is **free** for developers.
 
 Have a question for the team? Join us on [Telegram](https://t.me/breezsdk) or email us at [contact@breez.technology](mailto:contact@breez.technology).
 
-### Ready to light up your app? **[Get started](https://sdk-doc.breez.technology/guide/getting_started.html).**
+## Repository
+
+Head over to the [Breez SDK - *Greenlight* repo](https://github.com/breez/breez-sdk).
+
+### Ready to light up your app? **[Get started.](https://sdk-doc.breez.technology/guide/getting_started.html)**
