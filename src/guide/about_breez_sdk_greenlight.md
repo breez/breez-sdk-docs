@@ -32,7 +32,7 @@ It's a cloud-based Lightning integration that offers a self-custodial, end-to-en
 - [x]  Fiat on-ramps
 - [x]  Open-source
 
-## How Does the Native *(Greenlight Implementation)* Work?
+## How Does Native *(Greenlight Implementation)* Work?
 
 The Breez SDK - Native *(Greenlight Implementation)* allows end-users to send and receive payments using the Breez SDK through several key components:
 
