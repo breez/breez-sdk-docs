@@ -21,6 +21,7 @@ async fn pay(sdk: Arc<BreezServices>) -> Result<()> {
             amount_msat,
             comment: optional_comment,
             payment_label: optional_payment_label,
+            validate_success_action_url: Some(true)
         })
         .await?;
     }
