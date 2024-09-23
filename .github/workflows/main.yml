@@ -33,9 +33,9 @@ jobs:
   build-packages:
     needs: setup
     name: build packages
-    uses: breez/breez-sdk/.github/workflows/publish-all-platforms.yml@main
+    uses: breez/breez-sdk-greenlight/.github/workflows/publish-all-platforms.yml@main
     with:
-      repository: breez/breez-sdk
+      repository: breez/breez-sdk-greenlight
       ref: ${{ needs.setup.outputs.sdk-ref }}
       package-version: ${{ needs.setup.outputs.package-version }}
       packages-to-publish: '["csharp", "flutter", "golang", "react-native", "python"]'
@@ -68,13 +68,13 @@ jobs:
       - name: temporarily get sdk
         uses: actions/checkout@v4
         with:
-          repository: breez/breez-sdk
+          repository: breez/breez-sdk-greenlight
           ref: ${{ needs.setup.outputs.sdk-ref }}
-          path: breez-sdk
+          path: breez-sdk-greenlight
 
       - id: rev-parse
         name: get proper rev
-        working-directory: breez-sdk
+        working-directory: breez-sdk-greenlight
         run: |
           rev=$(git rev-parse HEAD)
           echo "$rev"
@@ -83,7 +83,7 @@ jobs:
       - name: set sdk version
         working-directory: snippets/rust
         run: |
-          cargo add --git https://github.com/breez/breez-sdk.git breez-sdk-core --rev "${{ steps.rev-parse.outputs.rev }}"
+          cargo add --git https://github.com/breez/breez-sdk-greenlight.git breez-sdk-core --rev "${{ steps.rev-parse.outputs.rev }}"
 
       - name: clippy
         working-directory: snippets/rust
