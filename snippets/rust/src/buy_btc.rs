@@ -9,6 +9,7 @@ async fn buy(sdk: Arc<BreezServices>) -> Result<()> {
         .buy_bitcoin(BuyBitcoinRequest {
             provider: BuyBitcoinProvider::Moonpay,
             opening_fee_params: None,
+            redirect_url: None,
         })
         .await?;
     // ANCHOR_END: buy-btc
