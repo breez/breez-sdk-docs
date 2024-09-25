@@ -55,7 +55,6 @@ The Breez SDK - Native *(Greenlight Implementation)* allows end-users to send an
 | Channel open and closing fees | No setup fees for end-users |
 | No minimum limit for transactions (after channel opening) | Minimum payment size of 1,000 sats |
 | Setup costs are correlated to Bitcoin mining fees | Static Liquid on-chain fees |
-| Requires an API key | Does not require an API key |
 
 
 ## Pricing
