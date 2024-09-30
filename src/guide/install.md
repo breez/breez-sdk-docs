@@ -89,11 +89,11 @@ dotnet add package Breez.Sdk
 ## rust
 
 We recommend to add breez sdk as a git dependency with a specific release tag.
-Check https://github.com/breez/breez-sdk/releases for the latest version.
+Check https://github.com/breez/breez-sdk-greenlight/releases for the latest version.
 
 ```toml
 [dependencies]
-breez-sdk-core = { git = "https://github.com/breez/breez-sdk", tag = "0.5.0" }
+breez-sdk-core = { git = "https://github.com/breez/breez-sdk-greenlight", tag = "0.6.1" }
 ```
 
 ## Flutter/Dart

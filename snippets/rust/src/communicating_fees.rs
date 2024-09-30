@@ -6,7 +6,7 @@ use log::info;
 
 async fn get_fee_info_before_receiving_payment(sdk: Arc<BreezServices>) -> Result<()> {
     // ANCHOR: get-fee-info-before-receiving-payment
-    let inbound_liquidity_msat = sdk.node_info()?.inbound_liquidity_msats;
+    let inbound_liquidity_msat = sdk.node_info()?.max_receivable_single_payment_amount_msat;
     let inbound_liquidity_sat = inbound_liquidity_msat / 1000;
 
     let opening_fee_response = sdk
@@ -49,7 +49,7 @@ async fn get_fee_info_receive_onchain(sdk: Arc<BreezServices>) -> Result<()> {
 
     let min_deposit_sat = swap_info.min_allowed_deposit;
     let max_deposit_sat = swap_info.max_allowed_deposit;
-    let inbound_liquidity_sat = sdk.node_info()?.inbound_liquidity_msats / 1000;
+    let inbound_liquidity_sat = sdk.node_info()?.max_receivable_single_payment_amount_msat / 1000;
 
     if let Some(swap_opening_fees) = swap_info.channel_opening_fees {
         let fee_percentage = (swap_opening_fees.proportional * 100) as f64 / 1_000_000_f64;

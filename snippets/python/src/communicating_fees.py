@@ -3,7 +3,7 @@ import breez_sdk
 def get_fee_info_before_receiving_payment(sdk_services):
     try:
         # ANCHOR: get-fee-info-before-receiving-payment
-        inbound_liquidity_msat = sdk_services.node_info().inbound_liquidity_msats
+        inbound_liquidity_msat = sdk_services.node_info().max_receivable_single_payment_amount_msat
         inbound_liquidity_sat = inbound_liquidity_msat / 1_000
 
         opening_fee_response = sdk_services.open_channel_fee()
@@ -43,7 +43,7 @@ def get_fee_info_receive_onchain(sdk_services):
 
         min_deposit_sat = swap_info.min_allowed_deposit
         max_deposit_sat = swap_info.max_allowed_deposit
-        inbound_liquidity_sat = sdk_services.node_info().inbound_liquidity_msats / 1_000
+        inbound_liquidity_sat = sdk_services.node_info().max_receivable_single_payment_amount_msat / 1_000
 
         swap_opening_fees = swap_info.channel_opening_fees
         if swap_opening_fees is not None:

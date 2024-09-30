@@ -16,9 +16,11 @@ public class LnurlPaySnippets
             if (input is InputType.LnUrlPay lnurlp)
             {
                 var amountMsat = lnurlp.data.minSendable;
+                var useTrampoline = false;
                 var optionalComment = "<comment>";
                 var optionalPaymentLabel = "<label>";
-                var req = new LnUrlPayRequest(lnurlp.data, amountMsat, optionalComment, optionalPaymentLabel);
+                
+                var req = new LnUrlPayRequest(lnurlp.data, amountMsat, useTrampoline, optionalComment, optionalPaymentLabel);
                 var result = sdk.PayLnurl(req);
             }
         }

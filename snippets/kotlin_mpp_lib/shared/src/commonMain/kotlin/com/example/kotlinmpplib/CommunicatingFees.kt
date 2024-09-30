@@ -4,7 +4,7 @@ import breez_sdk.*
 class CommunicatingFees {
     fun getFeeInfoBeforeInvoiceCreated(sdk: BlockingBreezServices) {
         // ANCHOR: get-fee-info-before-receiving-payment
-        val inboundLiquidityMsat = sdk.nodeInfo()?.inboundLiquidityMsats ?: 0u
+        val inboundLiquidityMsat = sdk.nodeInfo()?.maxReceivableSinglePaymentAmountMsat ?: 0u
         val inboundLiquiditySat = inboundLiquidityMsat / 1_000u
 
         val openingFeeResponse = sdk.openChannelFee(OpenChannelFeeRequest(null))
@@ -34,7 +34,7 @@ class CommunicatingFees {
 
         val minDepositSat = swapInfo.minAllowedDeposit
         val maxDepositSat = swapInfo.maxAllowedDeposit
-        val inboundLiquiditySat = (sdk.nodeInfo()?.inboundLiquidityMsats ?: 0u) / 1_000u
+        val inboundLiquiditySat = (sdk.nodeInfo()?.maxReceivableSinglePaymentAmountMsat ?: 0u) / 1_000u
 
         val swapOpeningFees = swapInfo.channelOpeningFees
         if (swapOpeningFees != null) {

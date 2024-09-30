@@ -5,7 +5,7 @@ Future<void> getFeeInfoBeforeInvoiceCreated() async {
   // ANCHOR: get-fee-info-before-receiving-payment
   NodeState? nodeInfo = await breezSDK.nodeInfo();
   if (nodeInfo != null) {
-    int inboundLiquiditySat = nodeInfo.inboundLiquidityMsats ~/ 1000;
+    int inboundLiquiditySat = nodeInfo.maxReceivableSinglePaymentAmountMsat ~/ 1000;
 
     OpenChannelFeeResponse openingFeeResponse = await breezSDK.openChannelFee(req: OpenChannelFeeRequest());
 
@@ -38,7 +38,7 @@ Future<void> getFeeInfoReceiveOnchain() async {
 
   NodeState? nodeInfo = await breezSDK.nodeInfo();
   if (nodeInfo != null) {
-    int inboundLiquiditySat = nodeInfo.inboundLiquidityMsats ~/ 1000;
+    int inboundLiquiditySat = nodeInfo.maxReceivableSinglePaymentAmountMsat ~/ 1000;
 
     OpeningFeeParams? swapOpeningFees = swapInfo.channelOpeningFees;
     if (swapOpeningFees != null) {

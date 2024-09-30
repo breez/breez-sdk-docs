@@ -1,5 +1,5 @@
-use std::{fs, path::PathBuf};
 use std::sync::Arc;
+use std::{fs, path::PathBuf};
 
 use anyhow::Result;
 use bip39::{Language, Mnemonic};

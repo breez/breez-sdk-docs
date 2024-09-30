@@ -16,14 +16,16 @@ func LnurlPay() {
 	if input, err := breez_sdk.ParseInput(lnurlPayUrl); err != nil {
 		switch inputType := input.(type) {
 		case breez_sdk.InputTypeLnUrlPay:
+			useTrampoline := false
 			amountMsat := inputType.Data.MinSendable
 			optionalComment := "<comment>"
 			optionalPaymentLabel := "<label>"
 			lnUrlPayRequest := breez_sdk.LnUrlPayRequest{
-				Data:         inputType.Data,
-				AmountMsat:   amountMsat,
-				Comment:      &optionalComment,
-				PaymentLabel: &optionalPaymentLabel,
+				Data:          inputType.Data,
+				UseTrampoline: useTrampoline,
+				AmountMsat:    amountMsat,
+				Comment:       &optionalComment,
+				PaymentLabel:  &optionalPaymentLabel,
 			}
 			if result, err := sdk.PayLnurl(lnUrlPayRequest); err != nil {
 				switch result.(type) {

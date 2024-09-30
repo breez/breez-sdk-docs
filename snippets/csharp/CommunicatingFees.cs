@@ -9,7 +9,7 @@ public class CommunicatingFeesSnippets
         {
             var nodeInfo = sdk.NodeInfo();
 
-            var inboundLiquiditySat = nodeInfo?.inboundLiquidityMsats / 1_000;
+            var inboundLiquiditySat = nodeInfo?.maxReceivableSinglePaymentAmountMsat / 1_000;
 
             var openingFeeResponse = sdk.OpenChannelFee(new OpenChannelFeeRequest(null));
             var openingFees = openingFeeResponse?.feeParams;
@@ -59,7 +59,7 @@ public class CommunicatingFeesSnippets
             var maxDepositSat = swapInfo?.maxAllowedDeposit;
 
             var nodeInfo = sdk.NodeInfo();
-            var inboundLiquiditySat = nodeInfo?.inboundLiquidityMsats / 1_000;
+            var inboundLiquiditySat = nodeInfo?.maxReceivableSinglePaymentAmountMsat / 1_000;
 
             var swapOpeningFees = swapInfo?.channelOpeningFees;
             if (swapOpeningFees != null)

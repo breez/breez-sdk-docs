@@ -9,7 +9,7 @@ import (
 func getFeeInfoBeforeInvoiceCreated() {
 	// ANCHOR: get-fee-info-before-receiving-payment
 	if nodeInfo, err := sdk.NodeInfo(); err == nil {
-		var inboundLiquiditySat = nodeInfo.InboundLiquidityMsats / 1_000
+		var inboundLiquiditySat = nodeInfo.MaxReceivableSinglePaymentAmountMsat / 1_000
 
 		if openingFeeResponse, err := sdk.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{}); err == nil {
 			var openingFees = openingFeeResponse.FeeParams
@@ -49,7 +49,7 @@ func getFeeInfoReceiveOnchain() {
 		var maxDepositSat = swapInfo.MaxAllowedDeposit
 
 		if nodeInfo, err := sdk.NodeInfo(); err == nil {
-			var inboundLiquiditySat = nodeInfo.InboundLiquidityMsats / 1_000
+			var inboundLiquiditySat = nodeInfo.MaxReceivableSinglePaymentAmountMsat / 1_000
 
 			var swapOpeningFees = swapInfo.ChannelOpeningFees
 			var feePercentage = (swapOpeningFees.Proportional * 100) / 1_000_000.0

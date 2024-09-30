@@ -9,7 +9,7 @@ import {
 const getFeeInfoBeforeInvoiceCreated = async () => {
   // ANCHOR: get-fee-info-before-receiving-payment
   const nodeState = await nodeInfo()
-  const inboundLiquidityMsat = nodeState.inboundLiquidityMsats
+  const inboundLiquidityMsat = nodeState.maxReceivableSinglePaymentAmountMsat
   const inboundLiquiditySat = inboundLiquidityMsat != null ? inboundLiquidityMsat / 1_000 : 0
 
   const openChannelFeeResponse = await openChannelFee({})
@@ -41,7 +41,7 @@ const getFeeInfoReceiveOnchain = async () => {
 
   const minDepositSat = swapInfo.minAllowedDeposit
   const maxDepositSat = swapInfo.maxAllowedDeposit
-  const inboundLiquidityMsat = nodeState?.inboundLiquidityMsats
+  const inboundLiquidityMsat = nodeState?.maxReceivableSinglePaymentAmountMsat
   const inboundLiquiditySat = inboundLiquidityMsat != null ? (inboundLiquidityMsat / 1_000) : 0
 
   const swapOpeningFees = swapInfo.channelOpeningFees

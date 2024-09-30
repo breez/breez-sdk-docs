@@ -12,10 +12,12 @@ class LnurlPay {
             val inputType = parseInput(lnurlPayUrl)
             if (inputType is InputType.LnUrlPay) {
                 val requestData = inputType.data
+                val useTrampoline = false;
                 val amountMsat = requestData.minSendable
                 val optionalComment = "<comment>";
                 val optionalPaymentLabel = "<label>";
-                val req = LnUrlPayRequest(requestData, amountMsat, optionalComment, optionalPaymentLabel)
+                
+                val req = LnUrlPayRequest(requestData, amountMsat, useTrampoline, optionalComment, optionalPaymentLabel)
                 sdk.payLnurl(req)
             }
         } catch (e: Exception) {

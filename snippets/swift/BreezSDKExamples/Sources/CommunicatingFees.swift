@@ -3,7 +3,7 @@ import BreezSDK
 func getFeeInfoBeforeInvoiceCreated(sdk: BlockingBreezServices) {
     // ANCHOR: get-fee-info-before-receiving-payment
     if let nodeInfo = try? sdk.nodeInfo() {
-        let inboundLiquiditySat = nodeInfo.inboundLiquidityMsats / 1_000;
+        let inboundLiquiditySat = nodeInfo.maxReceivableSinglePaymentAmountMsat / 1_000;
 
         let openingFeeResponse = try? sdk.openChannelFee(req: OpenChannelFeeRequest(amountMsat: nil));
 
@@ -39,7 +39,7 @@ func getFeeInfoReceiveOnchain(sdk: BlockingBreezServices) {
     let maxDepositSat = swapInfo!.maxAllowedDeposit;
 
     let nodeInfo = try? sdk.nodeInfo();
-    let inboundLiquiditySat = nodeInfo!.inboundLiquidityMsats / 1_000;
+    let inboundLiquiditySat = nodeInfo!.maxReceivableSinglePaymentAmountMsat / 1_000;
 
     if let swapOpeningFees = swapInfo!.channelOpeningFees {
         let feePercentage = Double(swapOpeningFees.proportional * 100) / 1_000_000.0;
