@@ -6,7 +6,7 @@ Receiving push notifications involves using an Notification Delivery Service (ND
 {
     "template": "payment_received",
     "data": {  
-        "payment_hash": "" // The payment hash that is in progress
+        "payment_hash": "..." // The payment hash that is in progress
     }
 }
 ```
