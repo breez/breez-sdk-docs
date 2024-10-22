@@ -5,7 +5,7 @@ The Notification Plugin by default handles a specific format of push notificatio
 {
     "notification_type": "payment_received",
     "notification_payload": "{ \"payment_hash\": \"\" }",
-    "app_data": ""
+    "app_data": "..."
 }
 ```
 

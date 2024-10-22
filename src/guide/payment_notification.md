@@ -18,7 +18,7 @@ By default the Notification Plugin should receive the push notification data in 
 {
     "notification_type": "payment_received",
     "notification_payload": "{ \"payment_hash\": \"\" }",
-    "app_data": ""
+    "app_data": "..."
 }
 ```
 The structure and fields of this data can be changed by [customising the push messages](/notifications/custom_messages.md) handling in the Notification Plugin to reflect how your NDS sends this data over push notifications.
@@ -36,7 +36,7 @@ The `payment_received` notification type will be received by the webhook in the 
 {
     "template": "payment_received",
     "data": {  
-        "payment_hash": "" // The payment hash that is in progress
+        "payment_hash": "..." // The payment hash that is in progress
     }
 }
 ```
@@ -50,7 +50,7 @@ The `address_txs_confirmed` notification type will be received by the webhook in
 {
     "template": "address_txs_confirmed",
     "data": {  
-        "address": "" // The address of the swap with confirmed funds
+        "address": "..." // The address of the swap with confirmed funds
     }
 }
 ```
@@ -66,8 +66,8 @@ The `lnurlpay_info` notification type will be received by the webhook in the fol
 {
     "template": "lnurlpay_info",
     "data": {  
-        "callback_url": "", // The URL of the LNURL service
-        "reply_url": "" // The URL to reply to this request
+        "callback_url": "...", // The URL of the LNURL service
+        "reply_url": "..." // The URL to reply to this request
     }
 }
 ```
@@ -79,7 +79,7 @@ The `lnurlpay_invoice` notification type will be received by the webhook in the 
     "template": "lnurlpay_invoice",
     "data": {  
         "amount": 0, // The amount in millisatoshis within the min/max sendable range
-        "reply_url": "" // The URL to reply to this request
+        "reply_url": "..." // The URL to reply to this request
     }
 }
 ```
