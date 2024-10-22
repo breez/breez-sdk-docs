@@ -5,7 +5,8 @@ class Webhooks {
     fun registerWebhook(sdk: BlockingBreezServices) {
         // ANCHOR: register-webook
         try {
-            sdk.registerWebhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>")
+            val url = "https://your-nds-service.com/notify?platform=<ios|android>&token=<PUSH_TOKEN>"
+            sdk.registerWebhook(url)
         } catch (e: Exception) {
             // Handle error
         }
@@ -15,7 +16,8 @@ class Webhooks {
     fun unregisterWebhook(sdk: BlockingBreezServices) {
         // ANCHOR: unregister-webook
         try {
-            sdk.unregisterWebhook("https://your-nds-service.com/notify?platform=ios&token=<PUSH_TOKEN>")
+            val url = "https://your-nds-service.com/notify?platform=<ios|android>&token=<PUSH_TOKEN>"
+            sdk.unregisterWebhook(url)
         } catch (e: Exception) {
             // Handle error
         }
