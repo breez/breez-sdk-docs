@@ -67,3 +67,19 @@ Once you have outbound liquidity you can start sending payments too.
 ```
 </section>
 </custom-tabs>
+
+## Trampoline payments
+
+In the above example, the `use_trampoline` flag can be set to `true` to enable
+trampoline payments. With trampoline, pathfinding through the lightning network
+is outsourced to the LSP. 
+
+This has several benefits:
+- The payment is more reliable and faster as the LSP has a better view of the
+  network topology and can find good routes faster.
+- There is less interaction between the user's app and the user's node in the
+  cloud, improving payment speed.
+
+The trade-offs are:
+- The payment can be more expensive as the LSP will take a fee for its services. 
+- The payment is less private as the LSP will learn the payment destination.

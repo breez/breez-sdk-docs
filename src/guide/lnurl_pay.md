@@ -68,6 +68,12 @@
 </section>
 </custom-tabs>
 
+## Trampoline payments
+
+In the above example, the `use_trampoline` flag can be set to `true` to enable
+trampoline payments. See
+[Trampoline payments](send_payment.md#trampoline-payments) for more details.
+
 ## Supported Specs
 - [LUD-01](https://github.com/lnurl/luds/blob/luds/01.md) LNURL bech32 encoding
 - [LUD-06](https://github.com/lnurl/luds/blob/luds/06.md) `payRequest` spec
