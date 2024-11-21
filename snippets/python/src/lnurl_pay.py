@@ -11,7 +11,7 @@ def pay(sdk_services):
     parsed_input = breez_sdk.parse_input(lnurl_pay_url)
     if isinstance(parsed_input, breez_sdk.InputType.LN_URL_PAY):
        amount_msat = parsed_input.data.min_sendable
-       use_trampoline = False
+       use_trampoline = True
        optional_comment = "<comment>"
        optional_payment_label = "<label>"
        req = breez_sdk.LnUrlPayRequest(parsed_input.data, amount_msat, use_trampoline, optional_comment, optional_payment_label)

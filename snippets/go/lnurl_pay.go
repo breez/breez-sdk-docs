@@ -16,7 +16,7 @@ func LnurlPay() {
 	if input, err := breez_sdk.ParseInput(lnurlPayUrl); err != nil {
 		switch inputType := input.(type) {
 		case breez_sdk.InputTypeLnUrlPay:
-			useTrampoline := false
+			useTrampoline := true
 			amountMsat := inputType.Data.MinSendable
 			optionalComment := "<comment>"
 			optionalPaymentLabel := "<label>"

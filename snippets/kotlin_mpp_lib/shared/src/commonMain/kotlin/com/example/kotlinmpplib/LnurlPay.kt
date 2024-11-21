@@ -12,7 +12,7 @@ class LnurlPay {
             val inputType = parseInput(lnurlPayUrl)
             if (inputType is InputType.LnUrlPay) {
                 val requestData = inputType.data
-                val useTrampoline = false;
+                val useTrampoline = true;
                 val amountMsat = requestData.minSendable
                 val optionalComment = "<comment>";
                 val optionalPaymentLabel = "<label>";

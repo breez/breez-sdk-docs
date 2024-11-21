@@ -16,7 +16,7 @@ public class LnurlPaySnippets
             if (input is InputType.LnUrlPay lnurlp)
             {
                 var amountMsat = lnurlp.data.minSendable;
-                var useTrampoline = false;
+                var useTrampoline = true;
                 var optionalComment = "<comment>";
                 var optionalPaymentLabel = "<label>";
                 

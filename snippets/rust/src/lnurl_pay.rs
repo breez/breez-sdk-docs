@@ -13,7 +13,7 @@ async fn pay(sdk: Arc<BreezServices>) -> Result<()> {
 
     if let Ok(LnUrlPay { data: pd }) = parse(lnurl_pay_url).await {
         let amount_msat = pd.min_sendable;
-        let use_trampoline = false;
+        let use_trampoline = true;
         let optional_comment = Some("<comment>".to_string());
         let optional_payment_label = Some("<label>".to_string());
 

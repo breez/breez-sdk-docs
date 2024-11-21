@@ -70,7 +70,7 @@
 
 ## Trampoline payments
 
-In the above example, the `use_trampoline` flag can be set to `true` to enable
+In the above example, the `use_trampoline` flag is set to `true` to enable
 trampoline payments. See
 [Trampoline payments](send_payment.md#trampoline-payments) for more details.
 

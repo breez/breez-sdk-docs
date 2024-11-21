@@ -18,7 +18,7 @@ func pay(sdk: BlockingBreezServices) -> LnUrlPayResult? {
     if let inputType = try? parseInput(s: lnurlPayUrl) {
         if case let .lnUrlPay(data) = inputType {
             let amountMsat = data.minSendable
-            let useTrampoline = false
+            let useTrampoline = true
             let optionalComment = "<comment>"
             let optionalPaymentLabel = "<label>"
             let req = LnUrlPayRequest(data: data, amountMsat: amountMsat, useTrampoline: useTrampoline, comment: optionalComment, paymentLabel: optionalPaymentLabel)

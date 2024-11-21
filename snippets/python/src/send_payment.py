@@ -5,7 +5,7 @@ def send_payment(sdk_services):
     # ANCHOR: send-payment
     bolt11 = "..."
     try:
-        use_trampoline = False
+        use_trampoline = True
         # The `amount_msat` param is optional and should only passed if the bolt11 doesn't specify an amount.
         # The amount_msat is required in case an amount is not specified in the bolt11 invoice'.
         optional_amount_msat = 3000000

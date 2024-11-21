@@ -11,7 +11,7 @@ Future<void> lnurlPay() async {
   InputType inputType = await breezSDK.parseInput(input: lnurlPayUrl);
   if (inputType is InputType_LnUrlPay) {
     int amountMsat = inputType.data.minSendable;
-    bool useTrampoline = false;
+    bool useTrampoline = true;
     String optionalComment = "<comment>";
     String optionalPaymentLabel = "<label>";
     LnUrlPayRequest req = LnUrlPayRequest(

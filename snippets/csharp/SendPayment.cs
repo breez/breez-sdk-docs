@@ -6,7 +6,7 @@ public class SendPaymentSnippets
     {
         // ANCHOR: send-payment
         var bolt11 = "...";
-        var useTrampoline = false;
+        var useTrampoline = true;
         ulong optionalAmountMsat = 3_000_000;
         var optionalLabel = "<label>";
         
