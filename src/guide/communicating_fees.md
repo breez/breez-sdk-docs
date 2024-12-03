@@ -161,7 +161,7 @@ Here is how you can build this message:
 </section>
 </custom-tabs>
 
-### Sending Lightning Payments
+### Sending a Lightning payment
 Routing fees for sending Lightning payments vary based on the available path, as some channels incur higher fees due to the distribution of liquidity across the network. Developers have the option to set limits on Lightning fees, which are capped by default at 1% of the payment amount. However, it's important to note that restricting fees can increase the likelihood of payment failures.
 
 For users leveraging trampoline payments (recommended for reliabily), routing fees are currently fixed at 0.5%.
@@ -240,3 +240,8 @@ Below code sample constructs this message.
 ```
 </section>
 </custom-tabs>
+
+### Sending an on-chain transaction
+Sending an on-chain transaction to a BTC address involves a trustless [reverse swap](https://medium.com/breez-technology/reverse-submarine-swaps-another-step-towards-a-p2p-lightning-economy-bacb040fdca7). Reverse swaps have a minimum transaction amount of 50,000 sats, which may increase during periods of high fees. The reverse swap provider, [Boltz](https://boltz.exchange/), charges a fixed service fee of 0.5% plus an additional mining fee based on current Bitcoin mempool usage.
+
+Follow the instructions [here](./pay_onchain.html) to calculate limits and fees.
