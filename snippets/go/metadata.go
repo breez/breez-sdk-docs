@@ -7,13 +7,17 @@ import (
 	"github.com/breez/breez-sdk-go/breez_sdk"
 )
 
-func SetPaymentMetadata() {
+func SetPaymentMetadata() error {
 	// ANCHOR: set-payment-metadata
-	sdk.SetPaymentMetadata("target-payment-hash", `{"myCustomValue":true}`)
+	err := sdk.SetPaymentMetadata("target-payment-hash", `{"myCustomValue":true}`)
+	if err != nil {
+		return err
+	}
 	// ANCHOR_END: set-payment-metadata
+	return nil
 }
 
-func FilterPaymentMetadata() {
+func FilterPaymentMetadata() error {
 	// ANCHOR: filter-payment-metadata
 	metadataFilters := []breez_sdk.MetadataFilter{
 		{JsonPath: "myCustomValue", JsonValue: "true"},
@@ -24,10 +28,11 @@ func FilterPaymentMetadata() {
 	})
 
 	if err != nil {
-		// handle error
+		return err
 	}
 	// ANCHOR_END: filter-payment-metadata
 	log.Printf("%#v", payments)
+	return nil
 }
 
 func FilterPaymentMetadataString() {
@@ -44,10 +49,7 @@ func FilterPaymentMetadataString() {
 		},
 	}
 	// ANCHOR_END: filter-payment-metadata-string
-
-	sdk.ListPayments(breez_sdk.ListPaymentsRequest{
-		MetadataFilters: &metadataFilters,
-	})
+	log.Printf("%#v", metadataFilters)
 }
 
 func FilterPaymentMetadataObject() {
@@ -65,8 +67,5 @@ func FilterPaymentMetadataObject() {
 		{JsonPath: "parent.nestedArray", JsonValue: string(jsonValue)},
 	}
 	// ANCHOR_END: filter-payment-metadata-object
-
-	sdk.ListPayments(breez_sdk.ListPaymentsRequest{
-		MetadataFilters: &metadataFilters,
-	})
+	log.Printf("%#v", metadataFilters)
 }

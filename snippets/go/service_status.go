@@ -6,15 +6,18 @@ import (
 	"github.com/breez/breez-sdk-go/breez_sdk"
 )
 
-func HealthCheckStatus() {
+func HealthCheckStatus() error {
 	// ANCHOR: health-check-status
-	if healthCheck, err := breez_sdk.ServiceHealthCheck("<api key>"); err != nil {
-		log.Printf("Current service status is: %v", healthCheck.Status)
+	healthCheck, err := breez_sdk.ServiceHealthCheck("<api key>")
+	if err != nil {
+		return err
 	}
+	log.Printf("Current service status is: %v", healthCheck.Status)
 	// ANCHOR_END: health-check-status
+	return nil
 }
 
-func ReportPaymentFailure() {
+func ReportPaymentFailure() error {
 	// ANCHOR: report-payment-failure
 	paymentHash := "..."
 	reportIssueRequest := breez_sdk.ReportIssueRequestPaymentFailure{
@@ -22,8 +25,11 @@ func ReportPaymentFailure() {
 			PaymentHash: paymentHash,
 		},
 	}
-	if err := sdk.ReportIssue(reportIssueRequest); err != nil {
+	err := sdk.ReportIssue(reportIssueRequest)
+	if err != nil {
 		log.Printf("%#v", err)
+		return err
 	}
 	// ANCHOR_END: report-payment-failure
+	return nil
 }

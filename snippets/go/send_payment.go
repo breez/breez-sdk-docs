@@ -6,7 +6,7 @@ import (
 	"github.com/breez/breez-sdk-go/breez_sdk"
 )
 
-func SendPayment() {
+func SendPayment() error {
 	// ANCHOR: send-payment
 	bolt11 := "bolt11 invoice"
 	useTrampoline := true
@@ -20,8 +20,11 @@ func SendPayment() {
 		AmountMsat:    &optionalAmountMsat,
 		Label:         &optionalLabel,
 	}
-	if response, err := sdk.SendPayment(sendPaymentRequest); err == nil {
-		log.Printf("%#v", response)
+	response, err := sdk.SendPayment(sendPaymentRequest)
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", response)
 	// ANCHOR_END: send-payment
+	return nil
 }

@@ -7,7 +7,7 @@ import (
 	"github.com/breez/breez-sdk-go/breez_sdk"
 )
 
-func SendSpontaneousPayment() {
+func SendSpontaneousPayment() error {
 	// ANCHOR: send-spontaneous-payment
 	optionalLabel := "<label>"
 	sendSpontaneousPaymentRequest := breez_sdk.SendSpontaneousPaymentRequest{
@@ -15,12 +15,16 @@ func SendSpontaneousPayment() {
 		AmountMsat: uint64(3_000_000),
 		Label:      &optionalLabel,
 	}
-	if response, err := sdk.SendSpontaneousPayment(sendSpontaneousPaymentRequest); err == nil {
-		log.Printf("%#v", response)
+	response, err := sdk.SendSpontaneousPayment(sendSpontaneousPaymentRequest)
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", response)
 	// ANCHOR_END: send-spontaneous-payment
+	return nil
 }
-func SendSpontaneousPaymentWithTlvs() {
+
+func SendSpontaneousPaymentWithTlvs() error {
 	// ANCHOR: send-spontaneous-payment-with-tlvs
 	value, _ := hex.DecodeString("Hello world!")
 	optionalExtraTlvs := []breez_sdk.TlvEntry{
@@ -34,8 +38,11 @@ func SendSpontaneousPaymentWithTlvs() {
 		AmountMsat: uint64(3_000_000),
 		ExtraTlvs:  &optionalExtraTlvs,
 	}
-	if response, err := sdk.SendSpontaneousPayment(sendSpontaneousPaymentRequest); err == nil {
-		log.Printf("%#v", response)
+	response, err := sdk.SendSpontaneousPayment(sendSpontaneousPaymentRequest)
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", response)
 	// ANCHOR_END: send-spontaneous-payment-with-tlvs
+	return nil
 }

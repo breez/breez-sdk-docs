@@ -6,15 +6,18 @@ import (
 	"github.com/breez/breez-sdk-go/breez_sdk"
 )
 
-func ListPayments() {
+func ListPayments() error {
 	// ANCHOR: list-payments
-	if payments, err := sdk.ListPayments(breez_sdk.ListPaymentsRequest{}); err == nil {
-		log.Printf("%#v", payments)
+	payments, err := sdk.ListPayments(breez_sdk.ListPaymentsRequest{})
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", payments)
 	// ANCHOR_END: list-payments
+	return nil
 }
 
-func ListPaymentsFiltered() {
+func ListPaymentsFiltered() error {
 	// ANCHOR: list-payments-filtered
 	filters := []breez_sdk.PaymentTypeFilter{breez_sdk.PaymentTypeFilterSent}
 	fromTimestamp := int64(1696880000)
@@ -24,8 +27,11 @@ func ListPaymentsFiltered() {
 		FromTimestamp:   &fromTimestamp,
 		IncludeFailures: &includeFailures,
 	}
-	if payments, err := sdk.ListPayments(listPaymentsRequest); err == nil {
-		log.Printf("%#v", payments)
+	payments, err := sdk.ListPayments(listPaymentsRequest)
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", payments)
 	// ANCHOR_END: list-payments-filtered
+	return nil
 }

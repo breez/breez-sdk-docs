@@ -6,16 +6,19 @@ import (
 	"github.com/breez/breez-sdk-go/breez_sdk"
 )
 
-func GetCurrentLimits() {
+func GetCurrentLimits() error {
 	// ANCHOR: get-current-reverse-swap-limits
-	if currentLimits, err := sdk.OnchainPaymentLimits(); err == nil {
-		log.Printf("Minimum amount, in sats: %v", currentLimits.MinSat)
-		log.Printf("Maximum amount, in sats: %v", currentLimits.MaxSat)
+	currentLimits, err := sdk.OnchainPaymentLimits()
+	if err != nil {
+		return err
 	}
+	log.Printf("Minimum amount, in sats: %v", currentLimits.MinSat)
+	log.Printf("Maximum amount, in sats: %v", currentLimits.MaxSat)
 	// ANCHOR_END: get-current-reverse-swap-limits
+	return nil
 }
 
-func PreparePayOnchain(currentLimits breez_sdk.OnchainPaymentLimitsResponse) {
+func PreparePayOnchain(currentLimits breez_sdk.OnchainPaymentLimitsResponse) error {
 	// ANCHOR: prepare-pay-onchain
 	sendAmountSat := currentLimits.MinSat
 	satPerVbyte := uint32(10)
@@ -26,15 +29,18 @@ func PreparePayOnchain(currentLimits breez_sdk.OnchainPaymentLimitsResponse) {
 		ClaimTxFeerate: satPerVbyte,
 	}
 
-	if prepareRes, err := sdk.PrepareOnchainPayment(req); err == nil {
-		log.Printf("Sender amount, in sats: %v", prepareRes.SenderAmountSat)
-		log.Printf("Recipient amount, in sats: %v", prepareRes.RecipientAmountSat)
-		log.Printf("Total fees, in sats: %v", prepareRes.TotalFees)
+	prepareRes, err := sdk.PrepareOnchainPayment(req)
+	if err != nil {
+		return err
 	}
+	log.Printf("Sender amount, in sats: %v", prepareRes.SenderAmountSat)
+	log.Printf("Recipient amount, in sats: %v", prepareRes.RecipientAmountSat)
+	log.Printf("Total fees, in sats: %v", prepareRes.TotalFees)
 	// ANCHOR_END: prepare-pay-onchain
+	return nil
 }
 
-func StartReverseSwap(prepareRes breez_sdk.PrepareOnchainPaymentResponse) {
+func StartReverseSwap(prepareRes breez_sdk.PrepareOnchainPaymentResponse) error {
 	// ANCHOR: start-reverse-swap
 	destinationAddress := "bc1.."
 
@@ -43,18 +49,24 @@ func StartReverseSwap(prepareRes breez_sdk.PrepareOnchainPaymentResponse) {
 		PrepareRes:       prepareRes,
 	}
 
-	if reverseSwapInfo, err := sdk.PayOnchain(payOnchainRequest); err == nil {
-		log.Printf("%#v", reverseSwapInfo)
+	reverseSwapInfo, err := sdk.PayOnchain(payOnchainRequest)
+	if err != nil {
+		return err
 	}
+	log.Printf("%#v", reverseSwapInfo)
 	// ANCHOR_END: start-reverse-swap
+	return nil
 }
 
-func CheckReverseSwapStatus() {
+func CheckReverseSwapStatus() error {
 	// ANCHOR: check-reverse-swaps-status
-	if swaps, err := sdk.InProgressOnchainPayments(); err == nil {
-		for _, swap := range swaps {
-			log.Printf("Onchain payment %v in progress, status is %v", swap.Id, swap.Status)
-		}
+	swaps, err := sdk.InProgressOnchainPayments()
+	if err != nil {
+		return err
+	}
+	for _, swap := range swaps {
+		log.Printf("Onchain payment %v in progress, status is %v", swap.Id, swap.Status)
 	}
 	// ANCHOR_END: check-reverse-swaps-status
+	return nil
 }
