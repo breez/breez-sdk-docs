@@ -164,7 +164,7 @@ Here is how you can build this message:
 ### Sending a Lightning payment
 Routing fees for sending Lightning payments vary based on the available path, as some channels incur higher fees due to the distribution of liquidity across the network. Developers have the option to set limits on Lightning fees, which are capped by default at 1% of the payment amount. However, it's important to note that restricting fees can increase the likelihood of payment failures.
 
-For users leveraging trampoline payments (recommended for reliabily), routing fees are currently fixed at 0.5%.
+For users leveraging trampoline payments (recommended for reliabily), routing fees are currently fixed at 0.5% + 4 sat.
 
 ### Receiving an on-chain transaction
 For receiving onchain, there is a minimum and a maximum amount the user can receive. The fees are made up of the same components as receiving a lightning payment.
