@@ -71,4 +71,4 @@ Head over to the [Breez SDK - Native *(Greenlight Implementation)* repo](https:/
 
 ### Ready to light up your app? 
 
-[Get started]!(https://sdk-doc.breez.technology/guide/getting_started.html)
+[Get started](https://sdk-doc.breez.technology/guide/getting_started.html)!
