@@ -44,7 +44,7 @@
       - [Setting up the Foreground Service](notifications/android_service.md)
       - [Adding the notification Plugin](notifications/android_plugin.md)
     - [iOS](notifications/ios_setup.md)
-      - [Setting up the notification service Extension](notifications/ios_service.md)
+      - [Setting up the notification service extension](notifications/ios_service.md)
       - [Adding the notification plugin](notifications/ios_plugin.md)
 
 ---
