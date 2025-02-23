@@ -69,4 +69,6 @@ Have a question for the team? Join us on [Telegram](https://t.me/breezsdk) or 
 
 Head over to the [Breez SDK - Native *(Greenlight Implementation)* repo](https://github.com/breez/breez-sdk).
 
-### Ready to light up your app? **[Get started.](https://sdk-doc.breez.technology/guide/getting_started.html)**
+### Ready to light up your app? 
+
+[Get started]!(https://sdk-doc.breez.technology/guide/getting_started.html)
