@@ -162,8 +162,8 @@
 }
 
 .navy {
-    --bg: hsl(226, 23%, 11%);
-    --fg: #bcbdd0;
+    --bg: #00091c;
+    --fg: #d6d6d6;
 
     --sidebar-bg: #282d3f;
     --sidebar-fg: #c8c9db;
@@ -176,7 +176,7 @@
     --icons: #737480;
     --icons-hover: #b7b9cc;
 
-    --links: #2b79a2;
+    --links: #0085fb;
 
     --inline-code-color: #c5c8c6;
 
