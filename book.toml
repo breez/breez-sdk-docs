@@ -11,6 +11,7 @@ additional-css = ["task-lists.css"]
 additional-js = ["tabs.js"]
 git-repository-url = "https://github.com/breez/breez-sdk-docs"
 edit-url-template = "https://github.com/breez/breez-sdk-docs/edit/main/{path}"
+no-section-label = true
 
 [output.html.fold]
 enable = true
