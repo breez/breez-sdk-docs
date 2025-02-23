@@ -16,8 +16,8 @@
   - [Listing payments](guide/list_payments.md)
   - [Adding and filtering for payment metadata](guide/payment_metadata.md)
 - [Connecting to an LSP](guide/connecting_lsp.md)
-- [Receiving an On-Chain Transaction](guide/receive_onchain.md)
-- [Sending an On-Chain Transaction](guide/pay_onchain.md)
+- [Receiving an on-chain transaction](guide/receive_onchain.md)
+- [Sending an on-chain transaction](guide/pay_onchain.md)
 - [Communicating fees](guide/communicating_fees.md)
 - [Using LNURL & Lightning addresses](guide/lnurl.md)
   - [Sending payments using LNURL-Pay/Lightning address](guide/lnurl_pay.md)
@@ -42,10 +42,10 @@
 - [Integrating the plugin](notifications/setup_plugin.md)
     - [Android](notifications/android_setup.md)
       - [Setting up the Foreground Service](notifications/android_service.md)
-      - [Adding the Notification Plugin](notifications/android_plugin.md)
+      - [Adding the notification Plugin](notifications/android_plugin.md)
     - [iOS](notifications/ios_setup.md)
-      - [Setting up the Notification Service Extension](notifications/ios_service.md)
-      - [Adding the Notification Plugin](notifications/ios_plugin.md)
+      - [Setting up the notification service Extension](notifications/ios_service.md)
+      - [Adding the notification plugin](notifications/ios_plugin.md)
 
 ---
 
