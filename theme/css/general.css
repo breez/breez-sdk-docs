@@ -261,3 +261,14 @@ sup {
 .result-no-output {
     font-style: italic;
 }
+
+.toggle div::before {
+    content: "\f105";
+    font-family: FontAwesome;
+    color: var(--sidebar-fg);
+    font-size: 2rem;
+}
+.toggle div {
+    color: var(--sidebar-bg);
+    width: 0;
+}
