@@ -21,6 +21,11 @@ body {
     text-rendering: optimizelegibility;
 }
 
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar) var(--bg);
+}
+
 code {
     font-family: var(--mono-font) !important;
     font-size: var(--code-font-size);
