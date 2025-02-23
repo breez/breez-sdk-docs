@@ -18,6 +18,7 @@ body {
     margin: 0;
     font-size: 1.6rem;
     overflow-x: hidden;
+    text-rendering: optimizelegibility;
 }
 
 code {
@@ -34,6 +35,19 @@ main {
 /* make wide tables scroll if they overflow */
 .table-wrapper {
     overflow-x: auto;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-top: 2.5rem;
+}
+h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+h3 {
+    font-size: 1.7rem;
+    margin-top: 1.7rem;
 }
 
 /* Don't change font size in headers. */
