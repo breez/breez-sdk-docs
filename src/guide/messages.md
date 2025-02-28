@@ -4,7 +4,7 @@ Through signing and verifying messages we can provide proof that a digital signa
 
 ## Signing a message
 
-By signing a message using the SDK we can provide a digital signature. Anyone with the message, pubkey and signature can verify the signature was created by the private key of this pubkey.
+By signing a message using the SDK we can provide a digital signature. Anyone with the `message`, `pubkey` and `signature` can verify the signature was created by the private key of this pubkey.
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>
@@ -74,7 +74,7 @@ By signing a message using the SDK we can provide a digital signature. Anyone wi
 
 ## Verifying a message
 
-You can prove control of a private key by verifying a message with it's signature and pubkey. 
+You can prove control of a private key by verifying a `message` with it's `signature` and `pubkey`. 
 
 <custom-tabs category="lang">
 <div slot="title">Rust</div>

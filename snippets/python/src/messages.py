@@ -6,7 +6,8 @@ def sign_message(sdk_services):
     # ANCHOR: sign-message
     message = "<message to sign>"
     try:
-        sign_message_response = sdk_services.sign_message(breez_sdk.SignMessageRequest(message))
+        sign_message_request = breez_sdk.SignMessageRequest(message)
+        sign_message_response = sdk_services.sign_message(sign_message_request)
 
         # Get the node info for your pubkey
         info = sdk_services.node_info()

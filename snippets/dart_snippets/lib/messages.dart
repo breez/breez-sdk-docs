@@ -3,8 +3,11 @@ import 'package:breez_sdk/bridge_generated.dart';
 
 Future<SignMessageResponse> signMessage() async {
   // ANCHOR: sign-message
+  SignMessageRequest signMessageRequest = SignMessageRequest(
+    message: "<message to sign>",
+  );
   SignMessageResponse signMessageResponse = await breezSDK.signMessage(
-    req: SignMessageRequest(message: "<message to sign>"),
+    req: signMessageRequest,
   );
 
   // Get the node info for your pubkey
@@ -21,12 +24,13 @@ Future<SignMessageResponse> signMessage() async {
 
 Future<CheckMessageResponse> checkMessage() async {
   // ANCHOR: check-message
+  CheckMessageRequest checkMessageRequest = CheckMessageRequest(
+    message: "<message>",
+    pubkey: "<pubkey of signer>",
+    signature: "<message signature>",
+  );
   CheckMessageResponse checkMessageResponse = await breezSDK.checkMessage(
-    req: CheckMessageRequest(
-      message: "<message>",
-      pubkey: "<pubkey of signer>",
-      signature: "<message signature>"
-    ),
+    req: checkMessageRequest,
   );
 
   bool isValid = checkMessageResponse.isValid;
