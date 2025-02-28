@@ -1,4 +1,5 @@
 book
 .DS_Store
 .idea
+*.sln
 *.nupkg

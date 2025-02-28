@@ -1,13 +1,11 @@
 import {
   type OnchainPaymentLimitsResponse,
   type PrepareOnchainPaymentResponse,
-  fetchReverseSwapFees,
   inProgressOnchainPayments,
   onchainPaymentLimits,
   payOnchain,
   prepareOnchainPayment,
-  SwapAmountType,
-  maxReverseSwapAmount
+  SwapAmountType
 } from '@breeztech/react-native-breez-sdk'
 
 const exampleFetchReverseSwapLimits = async () => {
