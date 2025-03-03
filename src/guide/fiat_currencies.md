@@ -1,4 +1,7 @@
-# Supporting fiat currencies
+<h1 id="supporting-fiat-currencies">
+    <a class="header" href="#supporting-fiat-currencies">Supporting fiat currencies</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.list_fiat_currencies">API docs</a>
+</h1>
 
 You can get the full details of supported fiat currencies, such as symbols and localized names:
 
@@ -67,6 +70,11 @@ You can get the full details of supported fiat currencies, such as symbols and l
 ```
 </section>
 </custom-tabs>
+
+<h1 id="fetch-fiat-rates">
+    <a class="header" href="#fetch-fiat-rates">Fetch fiat rates</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.fetch_fiat_rates">API docs</a>
+</h1>
 
 To get the current BTC rate in the various supported fiat currencies:
 

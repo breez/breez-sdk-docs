@@ -1,6 +1,9 @@
 # Using Webhooks
 
-## Registering a Webhook
+<h2 id="registering-a-webhook">
+    <a class="header" href="#registering-a-webhook">Registering a webhook</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.register_webhook">API docs</a>
+</h2>
 
 Once your vendor [NDS is set up](setup_nds.md) and can accept POST requests from the SDK services, you can within your main application register the webhook URL with the Breez SDK by calling the register webhook API as follows:
 
@@ -72,7 +75,10 @@ Once your vendor [NDS is set up](setup_nds.md) and can accept POST requests from
 
 When the NDS receives a POST request for the registered webhook URL, it will forward the request data via push notification to the applications Service Extension (iOS) or Foreground Service (Android) to be handled by the [Notification Plugin](setup_plugin.md).
 
-## Unregistering a Webhook
+<h2 id="unregistering-a-webhook">
+    <a class="header" href="#unregistering-a-webhook">Unregistering a webhook</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.unregister_webhook">API docs</a>
+</h2>
 
 When a webhook is no longer needed or the webhook URL has changed such that it needs unregistering (for example, the token is valid but the locale changes), you can call the unregister webhook API as follows:
 

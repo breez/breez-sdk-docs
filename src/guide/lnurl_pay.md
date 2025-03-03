@@ -1,4 +1,7 @@
-# LNURL-Pay
+<h1 id="lnurl-pay">
+    <a class="header" href="#lnurl-pay">LNURL-Pay</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.lnurl_pay">API docs</a>
+</h1>
 
 ## Usage
 

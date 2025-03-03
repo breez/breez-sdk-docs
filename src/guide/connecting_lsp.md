@@ -1,6 +1,9 @@
 # Connecting to an LSP
 
-## Getting the current LSP Information
+<h2 id="getting-the-current-lsp-information">
+    <a class="header" href="#getting-the-current-lsp-information">Getting the current LSP Information</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.lsp_info">API docs</a>
+</h2>
 
 Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:
 
@@ -70,7 +73,10 @@ Based on the API key provided to the Breez SDK, a default LSP is selected for yo
 </section>
 </custom-tabs>
 
-## Listing available LSPs
+<h2 id="listing-available-lsps">
+    <a class="header" href="#listing-available-lsps">Listing available LSPs</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.list_lsps">API docs</a>
+</h2>
 
 In order to list all available LSPs you may connect to, you may do the following:
 
@@ -140,7 +146,10 @@ In order to list all available LSPs you may connect to, you may do the following
 </section>
 </custom-tabs>
 
-## Switching to another LSP
+<h2 id="switching-to-another-lsp">
+    <a class="header" href="#switching-to-another-lsp">Switching to another LSP</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.connect_lsp">API docs</a>
+</h2>
 
 When you have selected an LSP you may then connect to it:
 

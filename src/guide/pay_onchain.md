@@ -1,8 +1,12 @@
-# Sending an on-chain transaction (Swap-Out)
+# Sending an on-chain transaction
 
 You can send funds from the Breez SDK wallet to an on-chain address as follows.
 
-## Checking the limits
+<h2 id="checking-the-limits">
+    <a class="header" href="#checking-the-limits">Checking the limits</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.onchain_payment_limits">API docs</a>
+</h2>
+
 First, fetch the current reverse swap limits:
 
 <custom-tabs category="lang">
@@ -81,7 +85,11 @@ It is best to fetch these limits just before your app shows the Pay Onchain (rev
 
 </div>
 
-## Preparing to send, checking fees
+<h2 id="preparing-to-send-checking-fees">
+    <a class="header" href="#preparing-to-send-checking-fees">Preparing to send, checking fees</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.prepare_onchain_payment">API docs</a>
+</h2>
+
 The next step is to get an overview of the exact amount that will be sent, the amount that will be received, and the fees.
 
 There are two ways to do this:
@@ -160,8 +168,10 @@ If instead you'd like to specify the recipient amount, simply change the `SwapAm
 
 In case you want to drain your channels and send the maximum amount possible, you can use the above snippet with `amount_sat` set to `current_limits.max_sat` and `amount_type` as `Send`.
 
-
-## Executing the Swap
+<h2 id="executing-the-swap">
+    <a class="header" href="#executing-the-swap">Executing the Swap</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.pay_onchain">API docs</a>
+</h2>
 
 Once you checked the amounts and the fees are acceptable, you can continue with sending the payment.
 
@@ -237,7 +247,10 @@ Starting the onchain payment (reverse swap) will trigger a HODL invoice payment,
 This means you will see an outgoing pending payment in your list of payments, which locks those funds until the invoice
 is either settled or cancelled. This will happen automatically at the end of the reverse swap.
 
-## List in-progress Swaps
+<h2 id="list-in-progress-swaps">
+    <a class="header" href="#list-in-progress-swaps">List in-progress Swaps</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.in_progress_onchain_payments">API docs</a>
+</h2>
 
 You can check the ongoing onchain payments (reverse swaps) and their status with:
 

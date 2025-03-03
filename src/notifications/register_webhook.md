@@ -1,4 +1,7 @@
-# Registering a webhook
+<h1 id="registering-a-webhook">
+    <a class="header" href="#registering-a-webhook">Registering a webhook</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.register_webhook">API docs</a>
+</h1>
 
 Once your [NDS is set up](setup_nds.md) and can accept POST requests from the SDK services, you can within your main application register the webhook URL with the Breez SDK. The registration of the webhook URL should be done **every time** the application is started and when the webhook URL changes. This can be done by calling the register webhook API as follows:
 

@@ -1,4 +1,7 @@
-# Buying Bitcoin
+<h1 id="buying-bitcoin">
+    <a class="header" href="#buying-bitcoin">Buying Bitcoin</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.buy_bitcoin">API docs</a>
+</h1>
 
 This section of the Breez SDK documentation provides an example on purchasing Bitcoin using Moonpay as the provider. The example code snippet demonstrates how to initiate a Bitcoin purchase transaction using the Breez SDK.
 

@@ -1,4 +1,7 @@
-# Reporting payment failures
+<h1 id="reporting-payment-failures">
+    <a class="header" href="#reporting-payment-failures">Reporting payment failures</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.report_issue">API docs</a>
+</h1>
 
 While attempting to send payments it may be that sometimes payment failures occur. Reporting these issues through the Breez SDK will help us to improve LSP routing.
 

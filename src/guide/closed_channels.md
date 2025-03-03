@@ -2,7 +2,11 @@
 
 When channels are closed (due to a misbehaving node or by the LSP), the remaining funds are sent to an on-chain address. To redeem these funds please follow the steps below.
 
-## Preparing the transaction
+<h2 id="preparing-the-transaction">
+    <a class="header" href="#preparing-the-transaction">Preparing the transaction</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.prepare_redeem_onchain_funds">API docs</a>
+</h2>
+
 Prepare the transaction to retrieve its weight and the calculated fees before broadcasting it:
 
 <custom-tabs category="lang">
@@ -71,7 +75,11 @@ Prepare the transaction to retrieve its weight and the calculated fees before br
 </section>
 </custom-tabs>
 
-## Redeeming the on-chain funds
+<h2 id="redeeming-the-on-chain-funds">
+    <a class="header" href="#redeeming-the-on-chain-funds">Redeeming the on-chain funds</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.redeem_onchain_funds">API docs</a>
+</h2>
+
 Redeem the on-chain funds by broadcasting the transaction to the network:
  
 <custom-tabs category="lang">

@@ -1,4 +1,7 @@
-# Connecting to a node
+<h1 id="connecting-to-a-node">
+    <a class="header" href="#connecting-to-a-node">Connecting to a node</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.connect">API docs</a>
+</h1>
 
 The first step is to construct the SDK configuration. In it the environment and Greenlight node configuration is defined, whether you are using an invite code or partner credentials.
 
