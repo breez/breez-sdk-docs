@@ -57,7 +57,7 @@ The `address_txs_confirmed` notification type will be received by the webhook in
 
 #### Handling LNURL pay requests
 
-Having the ability to process push notifications when the application is in the background or closed also opens up the ability to handle payment requests from a static LNURL address. To do this the application also needs to register a webhook with an [LNURL-pay service](lnurlpay.md), then when the LNURL service receives a request on the static LNURL address, it will forward it via the NDS to the application. The Notification Plugin handles the two-step flow for fulfilling these requests.
+Having the ability to process push notifications when the application is in the background or closed also opens up the ability to handle payment requests from a static LNURL address. To do this the application also needs to register a webhook with an [LNURL-pay service](lnurl_pay_service.md), then when the LNURL service receives a request on the static LNURL address, it will forward it via the NDS to the application. The Notification Plugin handles the two-step flow for fulfilling these requests.
 
 Firstly the LNURL service receives a request for LNURL-pay information to get the min/max amount that can be received. The LNURL service calls the registered webhook and when receiving this notification, the Notification Plugin will connect to the Breez SDK and send a response back to the LNURL service based on the node info. 
 
