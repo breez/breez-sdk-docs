@@ -9,7 +9,7 @@ To interact with the SDK, the service uses a simple protocol over push notificat
 * The service forwards the data to the payer.
 
 ## General workflow
-The following workflow is application specific and the steps detailed below refer to the misty-breez wallet implementation which requires running <b>[breez-lnurl](https://github.com/breez/breez-lnurl) </b>service.
+The following workflow is application specific and the steps detailed below refer to the c-breez wallet implementation which requires running <b>[breez-lnurl](https://github.com/breez/breez-lnurl) </b>service.
 
 ![pay](https://github.com/breez/breez-sdk-docs/assets/5394889/ef0a3111-3604-4789-89c6-23adbd7e5d52)
 
