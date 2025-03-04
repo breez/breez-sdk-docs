@@ -21,7 +21,7 @@
 - [Communicating fees](guide/communicating_fees.md)
 - [Using LNURL & Lightning addresses](guide/lnurl.md)
   - [Sending payments using LNURL-Pay/Lightning address](guide/lnurl_pay.md)
-  - [Receiving payments using LNURL-Pay/Lightning address](guide/lnurlpay.md)
+  - [Receiving payments using LNURL-Pay/Lightning address](guide/lnurl_pay_service.md)
   - [Receiving payments using LNURL-Withdraw](guide/lnurl_withdraw.md)
   - [Authenticating using LNURL-Auth](guide/lnurl_auth.md)
 - [Signing and verifying messages](guide/messages.md)
