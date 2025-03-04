@@ -1,4 +1,7 @@
-# Sending spontaneous Lightning payments
+<h1 id="sending-spontaneous-lightning-payments">
+    <a class="header" href="#sending-spontaneous-lightning-payments">Sending spontaneous Lightning payments</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.send_spontaneous_payment">API docs</a>
+</h1>
 
 They can even be spontaneous payments to a node without a bolt11 invoice.
 

@@ -1,4 +1,7 @@
-# Adding and filtering for payment metadata
+<h1 id="adding-and-filtering-for-payment-metadata">
+    <a class="header" href="#adding-and-filtering-for-payment-metadata">Adding and filtering for payment metadata</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.set_payment_metadata">API docs</a>
+</h1>
 
 ## Usage
 

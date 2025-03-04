@@ -1,4 +1,7 @@
-# Receiving Lightning payments
+<h1 id="receiving-lightning-payments">
+    <a class="header" href="#receiving-lightning-payments">Receiving Lightning payments</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.receive_payment">API docs</a>
+</h1>
 
 With the Breez SDK you aren't required to open a channel and set up your inbound liquidity.
 The Breez SDK automatically connects your node to the LSP peer and you can now receive payments.
@@ -73,7 +76,10 @@ The Breez SDK automatically connects your node to the LSP peer and you can now r
 Consider implementing the <a href="/notifications/getting_started.md">Notification Plugin</a> when using the Breez SDK in a mobile application. By registering a webhook the application can receive a payment notification to process the payment in the background.
 </div>
 
-# Calculating fees
+<h2 id="calculating-fees">
+    <a class="header" href="#calculating-fees">Calculating fees</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.open_channel_fee">API docs</a>
+</h2>
 
 When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
 

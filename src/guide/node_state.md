@@ -1,4 +1,7 @@
-# Getting the node state
+<h1 id="getting-the-node-state">
+    <a class="header" href="#getting-the-node-state">Getting the node state</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.node_info">API docs</a>
+</h1>
 
 At any point we can fetch our balance from the node and check the lightning and onchain balances.
 

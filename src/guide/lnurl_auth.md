@@ -1,4 +1,7 @@
-# LNURL-Auth
+<h1 id="lnurl-auth">
+    <a class="header" href="#lnurl-auth">LNURL-Auth</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.lnurl_auth">API docs</a>
+</h1>
 
 ## Usage
 

@@ -1,4 +1,7 @@
-# Sending Lightning Payments
+<h1 id="sending-lightning-payments">
+    <a class="header" href="#sending-lightning-payments">Sending Lightning payments</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.send_payment">API docs</a>
+</h1>
 
 Once you have outbound liquidity you can start sending payments too.
 

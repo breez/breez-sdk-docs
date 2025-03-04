@@ -1,4 +1,7 @@
-# Listing payments
+<h1 id="listing-payments">
+    <a class="header" href="#listing-payments">Listing payments</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.list_payments">API docs</a>
+</h1>
 
 To view your payment history you can list and filter all the sent and received payments made.
 

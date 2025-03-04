@@ -2,7 +2,11 @@
 
 In the LSP model, fees are involved when the user wants to receive a payment, but doesn't have a sufficient receivable amount. This section provides recommendations on how to communicate these fees to a user.
 
-### Before receiving a Lightning payment
+<h2 id="before-receiving-a-lightning-payment">
+    <a class="header" href="#before-receiving-a-lightning-payment">Before receiving a Lightning payment</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.open_channel_fee">API docs</a>
+</h2>
+
 When the user wants to receive a payment, a setup fee is paid when the resulting invoice would exceed the receivable amount.
 The setup fee is made up of two parts:
 - A minimum fee
@@ -80,7 +84,7 @@ You can construct this message as follows:
 </section>
 </custom-tabs>
 
-### After creating an invoice
+## After creating an invoice
 After calling `receive_payment`, you would typically show the recipient a screen containing a QR code with the invoice that the sender can scan.
 
 This is another place to show the user the opening fees applied to the invoice. At this point the amount the user wants to receive is known, so the message can be more concise:
@@ -161,12 +165,16 @@ Here is how you can build this message:
 </section>
 </custom-tabs>
 
-### Sending a Lightning payment
+## Sending a Lightning payment
 Routing fees for sending Lightning payments vary based on the available path, as some channels incur higher fees due to the distribution of liquidity across the network. Developers have the option to set limits on Lightning fees, which are capped by default at 1% of the payment amount. However, it's important to note that restricting fees can increase the likelihood of payment failures.
 
 For users leveraging trampoline payments (recommended for reliabily), routing fees are currently fixed at 0.5% + 4 sat.
 
-### Receiving an on-chain transaction
+<h2 id="receiving-an-on-chain-transaction">
+    <a class="header" href="#receiving-an-on-chain-transaction">Receiving an on-chain transaction</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.receive_onchain">API docs</a>
+</h2>
+
 For receiving onchain, there is a minimum and a maximum amount the user can receive. The fees are made up of the same components as receiving a lightning payment.
 
 The user gets an onchain address from `receive_onchain`. There is no way to know ahead of time exactly the amount that will be received on this address, so it is recommended to show the user the receivable boundaries and the fees involved:
@@ -241,7 +249,7 @@ Below code sample constructs this message.
 </section>
 </custom-tabs>
 
-### Sending an on-chain transaction
+## Sending an on-chain transaction
 Sending an on-chain transaction to a BTC address involves a trustless [reverse swap](https://medium.com/breez-technology/reverse-submarine-swaps-another-step-towards-a-p2p-lightning-economy-bacb040fdca7). Reverse swaps have a minimum transaction amount of 50,000 sats, which may increase during periods of high fees. The reverse swap provider, [Boltz](https://boltz.exchange/), charges a fixed service fee of 0.5% plus an additional mining fee based on current Bitcoin mempool usage.
 
 Follow the instructions [here](./pay_onchain.html) to calculate limits and fees.

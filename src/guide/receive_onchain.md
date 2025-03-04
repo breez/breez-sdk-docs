@@ -1,4 +1,7 @@
-# Receiving an on-chain transaction (Swap-In)
+<h1 id="receiving-an-on-chain-transaction">
+    <a class="header" href="#receiving-an-on-chain-transaction">Receiving an on-chain transaction</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.receive_onchain">API docs</a>
+</h1>
 
 There are cases when you have funds in some bitcoin address and you would like to send those to your lightning node.
 
@@ -79,8 +82,10 @@ The `swap_info` above includes maximum and minimum limits. Your application's us
 
 </div>
 
-
-## Get the in-progress Swap
+<h2 id="get-the-in-progress-swap">
+    <a class="header" href="#get-the-in-progress-swap">Get the in-progress Swap</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.in_progress_swap">API docs</a>
+</h2>
 
 Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:
 
@@ -170,7 +175,10 @@ This means that, when the user performs a swap-in (receive onchain), the app wil
 - automatically complete the swap in the background when the onchain transaction is confirmed, even if the app is closed
 - display an OS notification, informing the user of the received funds
 
-## Refund a Swap
+<h2 id="refund-a-swap">
+    <a class="header" href="#refund-a-swap">Refund a Swap</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.list_refundables">API docs</a>
+</h2>
 
 In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:
 
@@ -239,6 +247,11 @@ In order to execute a refund, you need to supply an on-chain address to where th
 ```
 </section>
 </custom-tabs>
+
+<h2 id="execute-a-refund">
+    <a class="header" href="#execute-a-refund">Execute a refund</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.refund">API docs</a>
+</h2>
 
 Once you have a refundable swap in hand, use the following code to execute a refund:
 
@@ -315,7 +328,10 @@ A refund can be attempted several times. A common scenario where this is useful 
 
 </div>
 
-# Rescanning swaps
+<h2 id="rescanning-swaps">
+    <a class="header" href="#rescanning-swaps">Rescanning swaps</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.rescan_swaps">API docs</a>
+</h2>
 
 The SDK continuously monitors any ongoing swap transactions until they are either completed or refunded. Once one of these outcomes occurs, the SDK ceases its monitoring activities, and users are advised against sending additional funds to the swap address. However, if users inadvertently send additional funds to a swap address that was already used, the SDK won't automatically recognize it. In such cases, the SDK provides an option to manually scan the used swap addressed to identify additional transactions. This action allows the address to be included in the list eligible for refunds, enabling the initiation of a refund process. For the purpose of rescanning all historical swap addresses and updating their on-chain status, the following code can be used:
 
@@ -385,7 +401,10 @@ The SDK continuously monitors any ongoing swap transactions until they are eithe
 </section>
 </custom-tabs>
 
-# Calculating fees
+<h2 id="calculating-fees">
+    <a class="header" href="#calculating-fees">Calculating fees</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.open_channel_fee">API docs</a>
+</h2>
 
 When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.
 

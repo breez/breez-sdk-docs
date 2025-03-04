@@ -1,4 +1,7 @@
-# Retrieving service status 
+<h1 id="retrieving-service-status">
+    <a class="header" href="#retrieving-service-status">Retrieving service status</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.service_health_check">API docs</a>
+</h1>
 
 You can check the general health status of the services provided by the Breez SDK. 
 The response status will inform you if there is maintenance occurring, a service disruption or the services are operational.
