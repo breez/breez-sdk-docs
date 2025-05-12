@@ -1,0 +1,455 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Connecting to an LSP - Breez SDK - Greenlight</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../styles.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Breez SDK - Greenlight</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/breez/breez-sdk-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/breez/breez-sdk-docs/edit/main/src/guide/connecting_lsp.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="connecting-to-an-lsp"><a class="header" href="#connecting-to-an-lsp">Connecting to an LSP</a></h1>
+<h2 id="getting-the-current-lsp-information">
+    <a class="header" href="#getting-the-current-lsp-information">Getting the current LSP Information</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.lsp_info">API docs</a>
+</h2>
+<p>Based on the API key provided to the Breez SDK, a default LSP is selected for your node to provide liquidity to it. To get the information about the selected LSP you can do the following:</p>
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+<pre><code class="language-rust ignore">let lsp_id = sdk.lsp_id().await?;
+let lsp_info = sdk.lsp_info().await?;</code></pre>
+</section>
+<div slot="title">Swift</div>
+<section>
+<pre><code class="language-swift ignore">let lspId = try? sdk.lspId()
+let lspInfo = try? sdk.lspInfo()
+</code></pre>
+</section>
+<div slot="title">Kotlin</div>
+<section>
+<pre><code class="language-kotlin ignore">try {
+    val lspId = sdk.lspId()
+    if (lspId != null) {
+        val lspInfo = sdk.lspInfo()
+    } else {
+        // Handle no lsp id scenario
+    }
+} catch (e: Exception) {
+    // Handle error
+}
+</code></pre>
+</section>
+<div slot="title">React Native</div>
+<section>
+<pre><code class="language-typescript">try {
+  const id = await lspId()
+  const info = await lspInfo()
+} catch (err) {
+  console.error(err)
+}
+</code></pre>
+</section>
+<div slot="title">Dart</div>
+<section>
+<pre><code class="language-dart ignore">String? lspId = await breezSDK.lspId();
+LspInformation? lspInfo = await breezSDK.lspInfo();
+print(lspId);
+print(lspInfo);
+</code></pre>
+</section>
+<div slot="title">Python</div>
+<section>
+<pre><code class="language-python ignore">lsp_id = sdk_services.lsp_id()
+lsp_info = sdk_services.lsp_info()
+</code></pre>
+</section>
+<div slot="title">Go</div>
+<section>
+<pre><code class="language-go ignore">lspId, err := sdk.LspId()
+if err != nil {
+    return err
+}
+if lspId != nil {
+    log.Printf("%#v", *lspId)
+}
+
+lspInfo, err := sdk.LspInfo()
+if err != nil {
+    return err
+}
+log.Printf("%#v", lspInfo)
+</code></pre>
+</section>
+<div slot="title">C#</div>
+<section>
+<pre><code class="language-cs ignore">try
+{
+    var lspId = sdk.LspId();
+    var lspInfo = sdk.LspInfo();
+}
+catch (Exception)
+{
+    // Handle error
+}
+</code></pre>
+</section>
+</custom-tabs>
+<h2 id="listing-available-lsps">
+    <a class="header" href="#listing-available-lsps">Listing available LSPs</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.list_lsps">API docs</a>
+</h2>
+<p>In order to list all available LSPs you may connect to, you may do the following:</p>
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+<pre><code class="language-rust ignore">let available_lsps = sdk.list_lsps().await?;</code></pre>
+</section>
+<div slot="title">Swift</div>
+<section>
+<pre><code class="language-swift ignore">let availableLsps = try? sdk.listLsps()
+</code></pre>
+</section>
+<div slot="title">Kotlin</div>
+<section>
+<pre><code class="language-kotlin ignore">try {
+    val availableLsps = sdk.listLsps()
+} catch (e: Exception) {
+    // Handle error
+}
+</code></pre>
+</section>
+<div slot="title">React Native</div>
+<section>
+<pre><code class="language-typescript">try {
+  const availableLsps = await listLsps()
+} catch (err) {
+  console.error(err)
+}
+</code></pre>
+</section>
+<div slot="title">Dart</div>
+<section>
+<pre><code class="language-dart ignore">List&lt;LspInformation&gt; availableLsps = await breezSDK.listLsps();
+</code></pre>
+</section>
+<div slot="title">Python</div>
+<section>
+<pre><code class="language-python ignore">available_lsps = sdk_services.list_lsps()
+</code></pre>
+</section>
+<div slot="title">Go</div>
+<section>
+<pre><code class="language-go ignore">lspList, err := sdk.ListLsps()
+if err != nil {
+    return err
+}
+log.Printf("%#v", lspList)
+</code></pre>
+</section>
+<div slot="title">C#</div>
+<section>
+<pre><code class="language-cs ignore">try
+{
+    var availableLsps = sdk.ListLsps();
+}
+catch (Exception)
+{
+    // Handle error
+}
+</code></pre>
+</section>
+</custom-tabs>
+<h2 id="switching-to-another-lsp">
+    <a class="header" href="#switching-to-another-lsp">Switching to another LSP</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.connect_lsp">API docs</a>
+</h2>
+<p>When you have selected an LSP you may then connect to it:</p>
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+<pre><code class="language-rust ignore">sdk.connect_lsp(lsp_id).await?;</code></pre>
+</section>
+<div slot="title">Swift</div>
+<section>
+<pre><code class="language-swift ignore">try? sdk.connectLsp(lspId: lspId)
+</code></pre>
+</section>
+<div slot="title">Kotlin</div>
+<section>
+<pre><code class="language-kotlin ignore">try {
+    sdk.connectLsp(lspId)
+} catch (e: Exception) {
+    // Handle error
+}
+</code></pre>
+</section>
+<div slot="title">React Native</div>
+<section>
+<pre><code class="language-typescript">try {
+  const id = 'your selected lsp id'
+  await connectLsp(id)
+} catch (err) {
+  console.error(err)
+}
+</code></pre>
+</section>
+<div slot="title">Dart</div>
+<section>
+<pre><code class="language-dart ignore">await breezSDK.connectLSP(lspId);
+</code></pre>
+</section>
+<div slot="title">Python</div>
+<section>
+<pre><code class="language-python ignore">sdk_services.connect_lsp(lsp_id)
+</code></pre>
+</section>
+<div slot="title">Go</div>
+<section>
+<pre><code class="language-go ignore">lspId := "your selected lsp id"
+
+err := sdk.ConnectLsp(lspId)
+if err != nil {
+    return err
+}
+</code></pre>
+</section>
+<div slot="title">C#</div>
+<section>
+<pre><code class="language-cs ignore">try
+{
+    sdk.ConnectLsp(lspId!);
+}
+catch (Exception)
+{
+    // Handle error
+}
+</code></pre>
+</section>
+</custom-tabs>
+<h1 id="channel-opening-fees"><a class="header" href="#channel-opening-fees">Channel Opening Fees</a></h1>
+<p>Some Breez SDK operations<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup> may need opening a new channel with the LSP. The SDK supports the LSP2 dynamic fees spec<sup class="footnote-reference" id="fr-2-1"><a href="#footnote-2">2</a></sup>,
+which describes how these channel opening fees are handled.</p>
+<p>For the client, the key points are:</p>
+<ul>
+<li>The <code>LspInformation</code> can be fetched at any point and includes a list of channel opening fees and the duration for which
+they are valid. The fees are sorted from cheapest to most expensive. The higher fees are typically also valid for longer.</li>
+<li>Depending on the application and use-case, the client may choose an appropriate fee and give it as an argument in the
+relevant Breez SDK method. If this fee argument is not provided, Breez SDK will choose an appropriate one instead.</li>
+</ul>
+<p>The channel opening fees are provided in a structure<sup class="footnote-reference" id="fr-3-1"><a href="#footnote-3">3</a></sup> that includes the conditions associated with these fees, like
+the minimum invoice amount or the date and time until when this opening fee is valid.</p>
+<hr />
+<hr>
+<ol class="footnote-definition"><li id="footnote-1">
+<p>See the service methods <code>receive_payment</code>, <code>receive_onchain</code> or <code>buy_bitcoin</code>. <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="footnote-2">
+<p>https://github.com/BitcoinAndLightningLayerSpecs/lsp/tree/main/LSPS2 <a href="#fr-2-1">↩</a></p>
+</li>
+<li id="footnote-3">
+<p>https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.OpeningFeeParams.html <a href="#fr-3-1">↩</a></p>
+</li>
+</ol>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../guide/payment_metadata.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../guide/receive_onchain.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../guide/payment_metadata.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../guide/receive_onchain.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../tabs.js"></script>
+
+
+    </div>
+    </body>
+</html>
