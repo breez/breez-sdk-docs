@@ -24,7 +24,7 @@ public class ListPaymentsSnippets
         {
             var payments = sdk.ListPayments(
                 new ListPaymentsRequest(
-                    new() { PaymentTypeFilter.SENT },
+                    new() { PaymentTypeFilter.Sent },
                     fromTimestamp: 1696880000,
                     includeFailures: true));
         }

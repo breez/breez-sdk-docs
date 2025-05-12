@@ -54,6 +54,7 @@ async fn execute_refund(
         to_address: destination_address,
         sat_per_vbyte,
         swap_address: refundable.bitcoin_address,
+        unilateral: None,
     })
     .await?;
     // ANCHOR_END: execute-refund

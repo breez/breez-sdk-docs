@@ -3,7 +3,8 @@ import breez_sdk
 def generate_receive_onchain_address(sdk_services):
   try: 
     # ANCHOR: generate-receive-onchain-address
-    swap_info = sdk_services.receive_onchain(breez_sdk.ReceiveOnchainRequest())
+    swap_info = sdk_services.receive_onchain(
+        req=breez_sdk.ReceiveOnchainRequest())
 
     # Send your funds to the below bitcoin address
     address = swap_info.bitcoin_address
@@ -34,32 +35,35 @@ def list_refundables(sdk_services):
         print(error)
         raise
 
+
 def execute_refund(sdk_services, refundable):
     if refundable is breez_sdk.SwapInfo:
         # ANCHOR: execute-refund
         destination_address = "..."
-        
         sat_per_vbyte = 5
         try:
-            result = sdk_services.refund(
-            swap_address=refundable.bitcoin_address,                         
-            to_address=destination_address,
-            sat_per_vbyte=sat_per_vbyte)
+            req = breez_sdk.RefundRequest(
+                swap_address=refundable.bitcoin_address,
+                to_address=destination_address,
+                sat_per_vbyte=sat_per_vbyte)
+            result = sdk_services.refund(req=req)
         # ANCHOR_END: execute-refund
         except Exception as error:
             print(error)
             raise
 
+
 def get_channel_opening_fees(sdk_services, amount_msat=None):
    try:
     # ANCHOR: get-channel-opening-fees
-    req = breez_sdk.OpenChannelFeeRequest(amount_msat)
-    channel_fees = sdk_services.open_channel_fee(req)
+    req = breez_sdk.OpenChannelFeeRequest(amount_msat=amount_msat)
+    channel_fees = sdk_services.open_channel_fee(req=req)
     # ANCHOR_END: get-channel-opening-fees
     return channel_fees
    except Exception as error:
        print(error)
        raise
+
 
 def rescan_swaps(sdk_services):
     try:

@@ -14,17 +14,24 @@ def getting_started(API_KEY,mnemonic,temp_dir):
     invite_code = "<invite code>"
     api_key = API_KEY
     config = breez_sdk.default_config(
-        breez_sdk.EnvironmentType.PRODUCTION, 
-        api_key, 
-        breez_sdk.NodeConfig.GREENLIGHT(breez_sdk.GreenlightNodeConfig(None, invite_code)))
+        env_type=breez_sdk.EnvironmentType.PRODUCTION, 
+        api_key=api_key, 
+        node_config=breez_sdk.NodeConfig.GREENLIGHT(
+            config=breez_sdk.GreenlightNodeConfig(
+                partner_credentials=None,
+                invite_code=invite_code)))
 
     # Customize the config object according to your needs
     config.working_dir = temp_dir
 
     try:
         # Connect to the Breez SDK make it ready for use
-        connect_request = breez_sdk.ConnectRequest(config, seed)
-        sdk_services = breez_sdk.connect(connect_request, SDKListener())
+        connect_request = breez_sdk.ConnectRequest(
+            config=config,
+            seed=seed)
+        sdk_services = breez_sdk.connect(
+            req=connect_request,
+            listener=SDKListener())
         
         return sdk_services
     except Exception as error:
@@ -35,8 +42,13 @@ def getting_started(API_KEY,mnemonic,temp_dir):
 def getting_started_restore_only(config, seed):
     try:
         # ANCHOR: init-sdk-restore-only
-        connect_request = breez_sdk.ConnectRequest(config, seed, restore_only=True)
-        sdk_services = breez_sdk.connect(connect_request, SDKListener())
+        connect_request = breez_sdk.ConnectRequest(
+            config=config,
+            seed=seed,
+            restore_only=True)
+        sdk_services = breez_sdk.connect(
+            req=connect_request,
+            listener=SDKListener())
         # ANCHOR_END: init-sdk-restore-only
         return sdk_services
     except Exception as error:
@@ -63,7 +75,7 @@ class SDKLogStream(breez_sdk.LogStream):
 
 def logging():
     try:
-        breez_sdk.set_log_stream(SDKLogStream())
+        breez_sdk.set_log_stream(log_stream=SDKLogStream())
     except Exception as error:
         print(error)
         raise

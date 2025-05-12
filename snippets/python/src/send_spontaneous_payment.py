@@ -8,8 +8,11 @@ def send_spontaneous_payment(sdk_services):
     amount_msat = 3000000
     optional_label = "<label>"
     try:
-        req = breez_sdk.SendSpontaneousPaymentRequest(node_id, amount_msat, label=optional_label)
-        result = sdk_services.send_spontaneous_payment(req)
+        req = breez_sdk.SendSpontaneousPaymentRequest(
+            node_id=node_id,
+            amount_msat=amount_msat,
+            label=optional_label)
+        result = sdk_services.send_spontaneous_payment(req=req)
         return result
     except Exception as error:
         print(error)
@@ -22,8 +25,11 @@ def send_spontaneous_payment_with_tlvs(sdk_services):
     amount_msat = 300000
     optional_extra_tlvs = [breez_sdk.TlvEntry(34349334, str.encode("Hello world!"))]
     try:
-        req = breez_sdk.SendSpontaneousPaymentRequest(node_id, amount_msat, optional_extra_tlvs)
-        result = sdk_services.send_spontaneous_payment(req)
+        req = breez_sdk.SendSpontaneousPaymentRequest(
+            node_id=node_id,
+            amount_msat=amount_msat,
+            extra_tlvs=optional_extra_tlvs)
+        result = sdk_services.send_spontaneous_payment(req=req)
         return result
     except Exception as error:
         print(error)
