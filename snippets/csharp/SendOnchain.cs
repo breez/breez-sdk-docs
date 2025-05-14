@@ -29,7 +29,7 @@ public class SendOnchainSnippets
             var prepareRes = sdk.PrepareOnchainPayment(
                 new PrepareOnchainPaymentRequest(
                     amountSat,
-                    SwapAmountType.SEND,
+                    SwapAmountType.Send,
                     claimTxFeerate));
 
             Console.WriteLine($"Sender amount, in sats: {prepareRes.senderAmountSat}");

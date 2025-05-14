@@ -39,7 +39,8 @@ def get_fee_info_after_invoice_created(receive_payment_response):
 def get_fee_info_receive_onchain(sdk_services):
     try:
         # ANCHOR: get-fee-info-receive-onchain
-        swap_info = sdk_services.receive_onchain(breez_sdk.ReceiveOnchainRequest())
+        req = breez_sdk.ReceiveOnchainRequest()
+        swap_info = sdk_services.receive_onchain(req=req)
 
         min_deposit_sat = swap_info.min_allowed_deposit
         max_deposit_sat = swap_info.max_allowed_deposit

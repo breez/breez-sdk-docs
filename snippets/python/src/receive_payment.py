@@ -7,7 +7,7 @@ def receive_payment(sdk_services):
         req = breez_sdk.ReceivePaymentRequest(
             amount_msat=3000000,
             description="Invoice for 3 000 sats")
-        receive_payment_response = sdk_services.receive_payment(req)
+        receive_payment_response = sdk_services.receive_payment(req=req)
 
         invoice = receive_payment_response.ln_invoice
         # ANCHOR_END: receive-payment

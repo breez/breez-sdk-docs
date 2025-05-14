@@ -13,7 +13,7 @@ public class GettingStartedSnippets
             new GreenlightNodeConfig(null, inviteCode)
         );
         var config = BreezSdkMethods.DefaultConfig(
-            EnvironmentType.PRODUCTION,
+            EnvironmentType.Production,
             apiKey,
             nodeConfig
         ) with

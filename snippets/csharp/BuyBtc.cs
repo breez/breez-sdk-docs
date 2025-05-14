@@ -8,7 +8,7 @@ public class BuyBtcSnippets
         try
         {
             var buyBitcoinResponse = sdk.BuyBitcoin(
-                new BuyBitcoinRequest(BuyBitcoinProvider.MOONPAY));
+                new BuyBitcoinRequest(BuyBitcoinProvider.Moonpay));
         }
         catch (Exception)
         {
