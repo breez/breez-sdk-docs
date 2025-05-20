@@ -73,3 +73,10 @@ async fn getting_started_logging(data_dir: String) -> Result<()> {
 
     Ok(())
 }
+
+// ANCHOR: disconnect
+async fn disconnect(sdk: Arc<BreezServices>) -> Result<()> {
+    sdk.disconnect().await?;
+    Ok(())
+}
+// ANCHOR_END: disconnect

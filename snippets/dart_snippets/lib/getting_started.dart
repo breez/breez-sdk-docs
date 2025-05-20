@@ -73,3 +73,9 @@ void logging(BreezSDK breezSDK) {
   breezSDK.logStream.listen(onLogEntry);
 }
 // ANCHOR_END: logging
+
+// ANCHOR: disconnect
+void disconnect() {
+  breezSDK.disconnect();
+}
+// ANCHOR_END: disconnect

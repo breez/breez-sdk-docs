@@ -68,3 +68,12 @@ def logging():
         print(error)
         raise
 # ANCHOR_END: logging
+
+# ANCHOR: disconnect
+def disconnect(sdk_services):
+    try:
+        sdk_services.disconnect()
+    except Exception as error:
+        logging.error(error)
+        raise
+# ANCHOR_END: disconnect

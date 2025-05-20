@@ -99,4 +99,17 @@ public class GettingStartedSnippets
     }
     // ANCHOR_END: logging
 
+    // ANCHOR: disconnect
+    public void Disconnect(BlockingBreezServices sdk)
+    {
+        try
+        {
+            sdk.Disconnect();
+        }
+        catch (Exception)
+        {
+            // Handle error
+        }
+    }
+    // ANCHOR_END: disconnect
 }
