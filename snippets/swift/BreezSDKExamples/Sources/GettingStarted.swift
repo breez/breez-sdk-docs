@@ -69,3 +69,9 @@ func logging() throws {
     try? setLogStream(logStream: SDKLogStream())
 }
 // ANCHOR_END: logging
+
+// ANCHOR: disconnect
+func disconnect(sdk: BlockingBreezServices) throws {
+    try? sdk.disconnect()
+}
+// ANCHOR_END: disconnect

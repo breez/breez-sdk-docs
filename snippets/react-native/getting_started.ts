@@ -4,6 +4,7 @@ import {
   type Config,
   type ConnectRequest,
   defaultConfig,
+  disconnect,
   EnvironmentType,
   mnemonicToSeed,
   type NodeConfig,
@@ -89,4 +90,10 @@ const exampleLogging = async () => {
 
   const subscription = await setLogStream(onLogEntry)
   // ANCHOR_END: logging
+}
+
+const exampleDisconnect = async () => {
+  // ANCHOR: disconnect
+  await disconnect()
+  // ANCHOR_END: disconnect
 }

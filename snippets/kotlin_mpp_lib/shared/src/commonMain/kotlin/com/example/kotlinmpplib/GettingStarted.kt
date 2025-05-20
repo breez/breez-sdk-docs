@@ -76,4 +76,14 @@ class GettingStarted {
         }
         // ANCHOR_END: logging
     }
+
+    // ANCHOR: disconnect
+    fun disconnect(sdk: BlockingBreezServices)  {
+        try {
+            sdk.disconnect()
+        } catch (e: Exception) {
+            // handle error
+        }
+    }
+    // ANCHOR_END: disconnect
 }

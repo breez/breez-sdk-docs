@@ -91,3 +91,9 @@ func GettingStartedLogging() {
 }
 
 // ANCHOR_END: logging
+
+// ANCHOR: disconnect
+func Disconnect(sdk *breez_sdk.BlockingBreezServices) {
+	sdk.Disconnect()
+}
+// ANCHOR_END: disconnect
