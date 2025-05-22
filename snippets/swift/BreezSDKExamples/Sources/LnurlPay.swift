@@ -16,7 +16,7 @@ func pay(sdk: BlockingBreezServices) -> LnUrlPayResult? {
     var response: LnUrlPayResult?
     let lnurlPayUrl = "lightning@address.com"
     if let inputType = try? parseInput(s: lnurlPayUrl) {
-        if case let .lnUrlPay(data) = inputType {
+        if case .lnUrlPay(let data, let _bip353Address) = inputType {
             let amountMsat = data.minSendable
             let useTrampoline = true
             let optionalComment = "<comment>"
