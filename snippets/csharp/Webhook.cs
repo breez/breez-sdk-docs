@@ -7,7 +7,7 @@ public class ServiceStatusSnippets
         // ANCHOR: register-webook
         try
         {
-            var url = "https://your-nds-service.com/notify?platform=<ios|android>&token=<PUSH_TOKEN>";
+            var url = "https://your-nds-service.com/api/v1/notify?platform=<ios|android>&token=<PUSH_TOKEN>";
             sdk.RegisterWebhook(url);
         }
         catch (Exception)
@@ -22,7 +22,7 @@ public class ServiceStatusSnippets
         // ANCHOR: unregister-webook
         try
         {
-            var url = "https://your-nds-service.com/notify?platform=<ios|android>&token=<PUSH_TOKEN>";
+            var url = "https://your-nds-service.com/api/v1/notify?platform=<ios|android>&token=<PUSH_TOKEN>";
             sdk.UnregisterWebhook(url);
         }
         catch (Exception)
