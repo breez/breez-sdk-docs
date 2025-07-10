@@ -7,10 +7,12 @@ kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "17"
             }
         }
     }
+
+    jvm()
     
     listOf(
         iosX64(),
@@ -25,18 +27,19 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
             implementation(libs.breez)
-
+            implementation(libs.kotlinx.coroutines.core)
+        }
+        androidMain.dependencies {
+            implementation("androidx.core:core-ktx:+")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
-        val commonMain by getting {
-            dependencies {
-                implementation("technology.breez:breez-sdk-kmp:0.7.1")
-            }
-        }
+    }
+
+    tasks.matching { it.name == "compileCommonMainKotlinMetadata" }.all {
+        enabled = false
     }
 }
 
@@ -44,11 +47,10 @@ android {
     namespace = "com.example.kotlinmpplib"
     compileSdk = 34
     defaultConfig {
-        minSdk = 34
+        minSdk = 24
     }
-}
-
-dependencies {
-    implementation(libs.breez)
-    implementation("androidx.core:core-ktx:+")
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 }
