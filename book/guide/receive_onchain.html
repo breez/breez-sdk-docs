@@ -1,0 +1,765 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Receiving an on-chain transaction - Breez SDK - Greenlight</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../styles.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Breez SDK - Greenlight</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/breez/breez-sdk-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/breez/breez-sdk-docs/edit/main/src/guide/receive_onchain.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="receiving-an-on-chain-transaction">
+    <a class="header" href="#receiving-an-on-chain-transaction">Receiving an on-chain transaction</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.receive_onchain">API docs</a>
+</h1>
+<p>There are cases when you have funds in some bitcoin address and you would like to send those to your lightning node.</p>
+<p>In such cases, the SDK might have to open a new channel, for which case you can specify an optional user-selected
+channel opening fee<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup>.
+In order to receive funds you first have to be connected to an <a href="connecting_lsp.html">LSP</a>.</p>
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+<pre><code class="language-rust ignore">let swap_info = sdk
+    .receive_onchain(ReceiveOnchainRequest::default())
+    .await?;
+
+// Send your funds to the below bitcoin address
+let address = swap_info.bitcoin_address;
+info!(
+    "Minimum amount allowed to deposit in sats: {}",
+    swap_info.min_allowed_deposit
+);
+info!(
+    "Maximum amount allowed to deposit in sats: {}",
+    swap_info.max_allowed_deposit
+);</code></pre>
+</section>
+<div slot="title">Swift</div>
+<section>
+<pre><code class="language-swift ignore">let swapInfo = try? sdk.receiveOnchain(req: ReceiveOnchainRequest())
+
+// Send your funds to the bellow bitcoin address
+let address = swapInfo?.bitcoinAddress
+print("Minimum amount allowed to deposit in sats: \(swapInfo!.minAllowedDeposit)")
+print("Maximum amount allowed to deposit in sats: \(swapInfo!.maxAllowedDeposit)")
+</code></pre>
+</section>
+<div slot="title">Kotlin</div>
+<section>
+<pre><code class="language-kotlin ignore">try {
+    val swapInfo = sdk.receiveOnchain(ReceiveOnchainRequest())
+    // Send your funds to the bellow bitcoin address
+    val address = swapInfo.bitcoinAddress
+    // Log.v("Breez", "Minimum amount allowed to deposit in sats: ${swapInfo.minAllowedDeposit}")
+    // Log.v("Breez", "Maximum amount allowed to deposit in sats: ${swapInfo.maxAllowedDeposit}")            
+} catch (e: Exception) {
+    // handle error
+}
+</code></pre>
+</section>
+<div slot="title">React Native</div>
+<section>
+<pre><code class="language-typescript">try {
+  const swapInfo = await receiveOnchain({})
+
+  // Send your funds to the below bitcoin address
+  const address = swapInfo.bitcoinAddress
+  console.log(`Minimum amount allowed to deposit in sats: ${swapInfo.minAllowedDeposit}`)
+  console.log(`Maximum amount allowed to deposit in sats: ${swapInfo.maxAllowedDeposit}`)
+} catch (err) {
+  console.error(err)
+}
+</code></pre>
+</section>
+<div slot="title">Dart</div>
+<section>
+<pre><code class="language-dart ignore">ReceiveOnchainRequest req = const ReceiveOnchainRequest();
+SwapInfo swapInfo = await breezSDK.receiveOnchain(req: req);
+
+// Send your funds to the below bitcoin address
+String address = swapInfo.bitcoinAddress;
+print(address);
+print("Minimum amount allowed to deposit in sats: ${swapInfo.minAllowedDeposit}");
+print("Maximum amount allowed to deposit in sats: ${swapInfo.maxAllowedDeposit}");
+return swapInfo;
+</code></pre>
+</section>
+<div slot="title">Python</div>
+<section>
+<pre><code class="language-python ignore">swap_info = sdk_services.receive_onchain(
+    req=breez_sdk.ReceiveOnchainRequest())
+
+# Send your funds to the below bitcoin address
+address = swap_info.bitcoin_address
+print("Minimum amount allowed to deposit in sats:", swap_info.min_allowed_deposit)
+print("Maximum amount allowed to deposit in sats:", swap_info.max_allowed_deposit)
+</code></pre>
+</section>
+<div slot="title">Go</div>
+<section>
+<pre><code class="language-go ignore">swapInfo, err := sdk.ReceiveOnchain(breez_sdk.ReceiveOnchainRequest{})
+if err != nil {
+    return err
+}
+// Send your funds to the below bitcoin address
+address := swapInfo.BitcoinAddress
+log.Printf("%v", address)
+
+log.Printf("Minimum amount allowed to deposit in sats: %v", swapInfo.MinAllowedDeposit)
+log.Printf("Maximum amount allowed to deposit in sats: %v", swapInfo.MaxAllowedDeposit)
+</code></pre>
+</section>
+<div slot="title">C#</div>
+<section>
+<pre><code class="language-cs ignore">try
+{
+    var swapInfo = sdk.ReceiveOnchain(new ReceiveOnchainRequest());
+    // Send your funds to the below bitcoin address
+    var address = swapInfo.bitcoinAddress;
+    Console.WriteLine($"Minimum amount allowed to deposit in sats: {swapInfo.minAllowedDeposit}");
+    Console.WriteLine($"Maximum amount allowed to deposit in sats: {swapInfo.maxAllowedDeposit}");
+}
+catch (Exception)
+{
+    // Handle error
+}
+</code></pre>
+</section>
+</custom-tabs>
+<div class="warning">
+<h4 id="developer-note"><a class="header" href="#developer-note">Developer note</a></h4>
+<p>The <code>swap_info</code> above includes maximum and minimum limits. Your application's users must be informed of these limits because if the amount transferred to the swap address falls outside this valid range, the funds will not be successfully received via lightning. In such cases, a refund will be necessary.</p>
+</div>
+<h2 id="get-the-in-progress-swap">
+    <a class="header" href="#get-the-in-progress-swap">Get the in-progress Swap</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.in_progress_swap">API docs</a>
+</h2>
+<p>Once you've sent the funds to the above address, the SDK will monitor this address for unspent confirmed outputs and use a trustless submarine swap to receive these into your Lightning node. You can always monitor the status of the current in-progress swap using the following code:</p>
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+<pre><code class="language-rust ignore">let swap_info = sdk.in_progress_swap().await?;</code></pre>
+</section>
+<div slot="title">Swift</div>
+<section>
+<pre><code class="language-swift ignore">let swapInfo = try? sdk.inProgressSwap()
+</code></pre>
+</section>
+<div slot="title">Kotlin</div>
+<section>
+<pre><code class="language-kotlin ignore">try {
+    val swapInfo = sdk.inProgressSwap()
+} catch (e: Exception) {
+    // handle error
+}
+</code></pre>
+</section>
+<div slot="title">React Native</div>
+<section>
+<pre><code class="language-typescript">try {
+  const swapInfo = await inProgressSwap()
+} catch (err) {
+  console.error(err)
+}
+</code></pre>
+</section>
+<div slot="title">Dart</div>
+<section>
+<pre><code class="language-dart ignore">SwapInfo? swapInfo = await breezSDK.inProgressSwap();
+print(swapInfo);
+</code></pre>
+</section>
+<div slot="title">Python</div>
+<section>
+<pre><code class="language-python ignore">swap_info = sdk_services.in_progress_swap()
+</code></pre>
+</section>
+<div slot="title">Go</div>
+<section>
+<pre><code class="language-go ignore">
+swapInfo, err := sdk.InProgressSwap()
+if err != nil {
+    return err
+}
+log.Printf("%#v", swapInfo)
+</code></pre>
+</section>
+<div slot="title">C#</div>
+<section>
+<pre><code class="language-cs ignore">try
+{
+    var swapInfo = sdk.InProgressSwap();
+}
+catch (Exception)
+{
+    // Handle error
+}
+</code></pre>
+</section>
+</custom-tabs>
+<p>The process of receiving funds via an on-chain address is trustless and uses a submarine swap. This means there are two ways to spend the sent funds:</p>
+<ol>
+<li>Either by a preimage that is exposed when the Lightning payment is completed - this is the positive case where the swap was successful.</li>
+<li>Or by your node when the swap didn't complete within a certain timeout (216 blocks) - this is the negative case where your node will execute a refund (funds become refundable after 288 blocks). Refund will also be available in case the amount sent wasn't within the limits.</li>
+</ol>
+<div class="warning">
+<h4 id="developer-note-1"><a class="header" href="#developer-note-1">Developer note</a></h4>
+Consider implementing the <a href="/notifications/getting_started.html">Notification Plugin</a> when using the Breez SDK in a mobile application. By registering a webhook the application can receive a transaction confirmation notification to redeem the swap in the background.
+</div>
+<h2 id="notifications"><a class="header" href="#notifications">Notifications</a></h2>
+<p>Enabling <a href="payment_notification.html">mobile notifications</a> will register your app for swap notifications.</p>
+<p>This means that, when the user performs a swap-in (receive onchain), the app will</p>
+<ul>
+<li>automatically complete the swap in the background when the onchain transaction is confirmed, even if the app is closed</li>
+<li>display an OS notification, informing the user of the received funds</li>
+</ul>
+<h2 id="refund-a-swap">
+    <a class="header" href="#refund-a-swap">Refund a Swap</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.list_refundables">API docs</a>
+</h2>
+<p>In order to execute a refund, you need to supply an on-chain address to where the refunded amount will be sent. The following code will retrieve the refundable swaps:</p>
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+<pre><code class="language-rust ignore">let refundables = sdk.list_refundables().await?;</code></pre>
+</section>
+<div slot="title">Swift</div>
+<section>
+<pre><code class="language-swift ignore">let refundables = try? sdk.listRefundables()
+</code></pre>
+</section>
+<div slot="title">Kotlin</div>
+<section>
+<pre><code class="language-kotlin ignore">try {
+    val refundables = sdk.listRefundables()
+} catch (e: Exception) {
+    // handle error
+}
+</code></pre>
+</section>
+<div slot="title">React Native</div>
+<section>
+<pre><code class="language-typescript">try {
+  const refundables = await listRefundables()
+} catch (err) {
+  console.error(err)
+}
+</code></pre>
+</section>
+<div slot="title">Dart</div>
+<section>
+<pre><code class="language-dart ignore">List&lt;SwapInfo&gt; refundables = await breezSDK.listRefundables();
+for (var refundable in refundables) {
+  print(refundable.bitcoinAddress);
+}
+</code></pre>
+</section>
+<div slot="title">Python</div>
+<section>
+<pre><code class="language-python ignore">refundables = sdk_services.list_refundables()
+</code></pre>
+</section>
+<div slot="title">Go</div>
+<section>
+<pre><code class="language-go ignore">refundables, err := sdk.ListRefundables()
+if err != nil {
+    return err
+}
+log.Printf("%#v", refundables)
+</code></pre>
+</section>
+<div slot="title">C#</div>
+<section>
+<pre><code class="language-cs ignore">try
+{
+    var refundables = sdk.ListRefundables();
+}
+catch (Exception)
+{
+    // Handle error
+}
+</code></pre>
+</section>
+</custom-tabs>
+<h2 id="execute-a-refund">
+    <a class="header" href="#execute-a-refund">Execute a refund</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.refund">API docs</a>
+</h2>
+<p>Once you have a refundable swap in hand, use the following code to execute a refund:</p>
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+<pre><code class="language-rust ignore">let destination_address = "...".into();
+let sat_per_vbyte = refund_tx_fee_rate;
+
+sdk.refund(RefundRequest {
+    to_address: destination_address,
+    sat_per_vbyte,
+    swap_address: refundable.bitcoin_address,
+    unilateral: None,
+})
+.await?;</code></pre>
+</section>
+<div slot="title">Swift</div>
+<section>
+<pre><code class="language-swift ignore">let destinationAddress = "..."
+let response = try? sdk.refund(req: RefundRequest(swapAddress: refundables.bitcoinAddress, toAddress: destinationAddress, satPerVbyte: satPerVbyte))
+</code></pre>
+</section>
+<div slot="title">Kotlin</div>
+<section>
+<pre><code class="language-kotlin ignore">val swapAddress = "..."
+val toAddress = "..."
+val satPerVbyte = 1.toUInt()
+try {
+    sdk.refund(RefundRequest(swapAddress, toAddress, satPerVbyte))
+} catch (e: Exception) {
+    // handle error
+}
+</code></pre>
+</section>
+<div slot="title">React Native</div>
+<section>
+<pre><code class="language-typescript">try {
+  const refundables = await listRefundables()
+  const toAddress = '...'
+  const satPerVbyte = 5
+
+  const refundResponse = await refund({
+    swapAddress: refundables[0].bitcoinAddress,
+    toAddress,
+    satPerVbyte
+  })
+} catch (err) {
+  console.error(err)
+}
+</code></pre>
+</section>
+<div slot="title">Dart</div>
+<section>
+<pre><code class="language-dart ignore">RefundRequest req = RefundRequest(
+  swapAddress: swapAddress,
+  toAddress: toAddress,
+  satPerVbyte: satPerVbyte,
+);
+RefundResponse resp = await breezSDK.refund(req: req);
+print(resp.refundTxId);
+</code></pre>
+</section>
+<div slot="title">Python</div>
+<section>
+<pre><code class="language-python ignore">destination_address = "..."
+sat_per_vbyte = 5
+try:
+    req = breez_sdk.RefundRequest(
+        swap_address=refundable.bitcoin_address,
+        to_address=destination_address,
+        sat_per_vbyte=sat_per_vbyte)
+    result = sdk_services.refund(req=req)
+</code></pre>
+</section>
+<div slot="title">Go</div>
+<section>
+<pre><code class="language-go ignore">refundables, err := sdk.ListRefundables()
+if err != nil {
+    return err
+}
+destinationAddress := "..."
+satPerVbyte := uint32(5)
+refundRequest := breez_sdk.RefundRequest{
+    SwapAddress: refundables[0].BitcoinAddress,
+    ToAddress:   destinationAddress,
+    SatPerVbyte: satPerVbyte,
+}
+result, err := sdk.Refund(refundRequest)
+if err != nil {
+    return err
+}
+log.Printf("%v", result)
+</code></pre>
+</section>
+<div slot="title">C#</div>
+<section>
+<pre><code class="language-cs ignore">var destinationAddress = "...";
+var satPerVbyte = refundTxFeeRate;
+try
+{
+    var result = sdk.Refund(
+        new RefundRequest(
+            refundable.bitcoinAddress,
+            destinationAddress,
+            satPerVbyte));
+}
+catch (Exception)
+{
+    // Handle error
+}
+</code></pre>
+</section>
+</custom-tabs>
+<div class="warning">
+<h4 id="developer-note-2"><a class="header" href="#developer-note-2">Developer note</a></h4>
+<p>A refund can be attempted several times. A common scenario where this is useful is if the initial refund transaction takes too long to mine, your application's users can be offered the ability to re-trigger the refund with a higher feerate.</p>
+</div>
+<h2 id="rescanning-swaps">
+    <a class="header" href="#rescanning-swaps">Rescanning swaps</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.rescan_swaps">API docs</a>
+</h2>
+<p>The SDK continuously monitors any ongoing swap transactions until they are either completed or refunded. Once one of these outcomes occurs, the SDK ceases its monitoring activities, and users are advised against sending additional funds to the swap address. However, if users inadvertently send additional funds to a swap address that was already used, the SDK won't automatically recognize it. In such cases, the SDK provides an option to manually scan the used swap addressed to identify additional transactions. This action allows the address to be included in the list eligible for refunds, enabling the initiation of a refund process. For the purpose of rescanning all historical swap addresses and updating their on-chain status, the following code can be used:</p>
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+<pre><code class="language-rust ignore">sdk.rescan_swaps().await?;</code></pre>
+</section>
+<div slot="title">Swift</div>
+<section>
+<pre><code class="language-swift ignore">try? sdk.rescanSwaps()
+</code></pre>
+</section>
+<div slot="title">Kotlin</div>
+<section>
+<pre><code class="language-kotlin ignore">try {
+    sdk.rescanSwaps()
+} catch (e: Exception) {
+    // handle error
+}
+</code></pre>
+</section>
+<div slot="title">React Native</div>
+<section>
+<pre><code class="language-typescript">try {
+  await rescanSwaps()
+} catch (err) {
+  console.error(err)
+}
+</code></pre>
+</section>
+<div slot="title">Dart</div>
+<section>
+<pre><code class="language-dart ignore">await breezSDK.rescanSwaps();  
+</code></pre>
+</section>
+<div slot="title">Python</div>
+<section>
+<pre><code class="language-python ignore">sdk_services.rescan_swaps()
+</code></pre>
+</section>
+<div slot="title">Go</div>
+<section>
+<pre><code class="language-go ignore">err := sdk.RescanSwaps()
+if err != nil {
+    return err
+}
+log.Println("Rescan finished")
+</code></pre>
+</section>
+<div slot="title">C#</div>
+<section>
+<pre><code class="language-cs ignore">try
+{
+    sdk.RescanSwaps();
+}
+catch (Exception)
+{
+    // Handle error
+}
+</code></pre>
+</section>
+</custom-tabs>
+<h2 id="calculating-fees">
+    <a class="header" href="#calculating-fees">Calculating fees</a>
+    <a class="tag" target="_blank" href="https://breez.github.io/breez-sdk-greenlight/breez_sdk_core/struct.BreezServices.html#method.open_channel_fee">API docs</a>
+</h2>
+<p>When the amount to be received exceeds the inbound liquidity of the node, a new channel will be opened by the LSP in order for the node to receive it. This can checked by retrieving the NodeState from the SDK and comparing the inbound liquidity to the amount to be received. If the amount is greater or equal to the inbound liquidity, a new channel opening is required.</p>
+<p>To calculate the fees for a channel being opened by the LSP:</p>
+<custom-tabs category="lang">
+<div slot="title">Rust</div>
+<section>
+<pre><code class="language-rust ignore">let channel_fees = sdk
+    .open_channel_fee(OpenChannelFeeRequest {
+        amount_msat,
+        expiry: None,
+    })
+    .await?;</code></pre>
+</section>
+<div slot="title">Swift</div>
+<section>
+<pre><code class="language-swift ignore">let response = try? sdk.openChannelFee(req: OpenChannelFeeRequest(amountMsat: amountMsat))
+</code></pre>
+</section>
+<div slot="title">Kotlin</div>
+<section>
+<pre><code class="language-kotlin ignore">try {
+    val amountMsat = 5_000.toULong();
+    val channelFees = sdk.openChannelFee(OpenChannelFeeRequest(amountMsat))
+} catch (e: Exception) {
+    // handle error
+}
+</code></pre>
+</section>
+<div slot="title">React Native</div>
+<section>
+<pre><code class="language-typescript">try {
+  const amountMsat = 10000
+  const openChannelFeeResponse = await openChannelFee({
+    amountMsat
+  })
+} catch (err) {
+  console.error(err)
+}
+</code></pre>
+</section>
+<div slot="title">Dart</div>
+<section>
+<pre><code class="language-dart ignore">OpenChannelFeeRequest req = OpenChannelFeeRequest(amountMsat: amountMsat, expiry: expiry);
+OpenChannelFeeResponse resp = await breezSDK.openChannelFee(req: req);
+print(resp.feeMsat);
+</code></pre>
+</section>
+<div slot="title">Python</div>
+<section>
+<pre><code class="language-python ignore">req = breez_sdk.OpenChannelFeeRequest(amount_msat=amount_msat)
+channel_fees = sdk_services.open_channel_fee(req=req)
+</code></pre>
+</section>
+<div slot="title">Go</div>
+<section>
+<pre><code class="language-go ignore">channelFees, err := sdk.OpenChannelFee(breez_sdk.OpenChannelFeeRequest{AmountMsat: amountMsat})
+if err != nil {
+    return err
+}
+log.Printf("%#v", channelFees)
+</code></pre>
+</section>
+<div slot="title">C#</div>
+<section>
+<pre><code class="language-cs ignore">try
+{
+    var channelFees = sdk.OpenChannelFee(
+        new OpenChannelFeeRequest(amountMsat));
+}
+catch (Exception)
+{
+    // Handle error
+}
+</code></pre>
+</section>
+</custom-tabs>
+<hr>
+<ol class="footnote-definition"><li id="footnote-1">
+<p>For more details on these fees, see <a href="connecting_lsp.html#channel-opening-fees">Channel Opening Fees</a> <a href="#fr-1-1">↩</a></p>
+</li>
+</ol>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../guide/connecting_lsp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../guide/pay_onchain.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../guide/connecting_lsp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../guide/pay_onchain.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../tabs.js"></script>
+
+
+    </div>
+    </body>
+</html>
