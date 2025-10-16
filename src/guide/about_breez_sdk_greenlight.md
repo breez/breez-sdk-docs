@@ -1,3 +1,13 @@
+> ⚠️ **DEPRECATION NOTICE** 
+> 
+> The Breez SDK - Native (Greenlight Implementation) (`breez-sdk-greenlight`) is **deprecated** and no longer maintained.
+>
+> Please migrate to the **Breez SDK – Nodeless**:
+> - [Liquid Implementation](https://sdk-doc-liquid.breez.technology/)
+> - [Spark Implementation](https://sdk-doc-spark.breez.technology/)
+
+***
+
 # About the Breez SDK - Native *(Greenlight Implementation)*
 
 ## **What Is the Breez SDK?**
