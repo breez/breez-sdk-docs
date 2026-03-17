@@ -1,16 +1,16 @@
 > ⚠️ **DEPRECATION NOTICE** 
 > 
-> The Breez SDK - Native (Greenlight Implementation) (`breez-sdk-greenlight`) is **deprecated** and no longer maintained.
+> The Breez SDK - Greenlight (`breez-sdk-greenlight`) is **deprecated** and no longer maintained.
 >
-> Please migrate to the **Breez SDK – Nodeless**:
-> - [Liquid Implementation](https://sdk-doc-liquid.breez.technology/)
-> - [Spark Implementation](https://sdk-doc-spark.breez.technology/)
+> Please migrate to:
+> - [Breez SDK - Spark](https://sdk-doc-spark.breez.technology/)
+> - [Breez SDK - Liquid](https://sdk-doc-liquid.breez.technology/)
 
 # Getting Started
 
 ## API Key and Invite Code
 
-Before you start, you will need an API Key to use the SDK, as well as an Invite Code when you create a new node.
+Before you start, you'll need an API Key to use the SDK, as well as an Invite Code when you create a new node.
 
 To get both of them, please contact Breez via email at <contact@breez.technology> or at <https://breez.technology/#contact-us-form>
 
