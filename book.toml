@@ -1,0 +1,15 @@
+[book]
+authors = ["Breez"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Breez SDK - Greenlight"
+
+[output.html]
+theme = "theme"
+additional-css = ["styles.css"]
+additional-js = ["tabs.js"]
+no-section-label = true
+
+[output.html.print]
+enable = false
