@@ -1,6 +1,6 @@
 # Breez SDK - Greenlight (deprecated)
 
-The Breez SDK - Greenlight is deprecated and no longer maintained.
+The Breez SDK - Greenlight is deprecated and no longer maintained. 
 
 Build with the **[Breez SDK - Spark](https://sdk-doc-spark.breez.technology/)**.
 
