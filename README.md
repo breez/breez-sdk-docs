@@ -1,4 +1,4 @@
-# Breez SDK - Greenlight (deprecated)
+# Breez SDK - Greenlight (Deprecated)
 
 The Breez SDK - Greenlight is deprecated and no longer maintained.
 
