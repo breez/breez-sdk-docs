@@ -1,3 +1,3 @@
 # Summary
 
-- [Breez SDK - Greenlight is deprecated](index.md)
+- [Breez SDK - Greenlight (Deprecated](index.md)
