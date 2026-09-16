@@ -4,9 +4,9 @@ The Breez SDK - Greenlight (`breez-sdk-greenlight`) is **deprecated and no longe
 
 ## Build with the Breez SDK - Spark
 
-To add instant, non-custodial bitcoin and stablecoins to your app or service, build with the Breez SDK - Spark.
+To add instant, non-custodial bitcoin and stablecoins to your app or service, build with the **Breez SDK - Spark**.
 
-You can read the documentation [here](https://sdk-doc-spark.breez.technology/)**.
+You can read the documentation [here](https://sdk-doc-spark.breez.technology/).
 
 ## Questions
 
